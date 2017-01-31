@@ -1,6 +1,7 @@
 package link.standen.michael.slideshow;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -87,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
 					updateFileList();
 				} else {
 					//TODO Show image
+					Intent intent = new Intent(MainActivity.this, ImageActivity.class);
+					intent.putExtra("image", fileItem.getPath());
+					MainActivity.this.startActivity(intent);
 				}
 			}
 		});
