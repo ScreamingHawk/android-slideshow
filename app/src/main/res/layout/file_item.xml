@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/content_main"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal">
+
+	<ImageView
+		android:id="@+id/file_image"
+		android:layout_width="@dimen/file_image_width"
+		android:layout_height="@dimen/file_image_height"/>
+
+	<TextView
+		android:id="@+id/file_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/file_image"
+		android:layout_alignTop="@+id/file_image"
+		android:layout_marginTop="@dimen/file_name_margin_top"
+		android:layout_marginLeft="@dimen/file_name_margin_left"
+		android:maxLines="1"
+		android:textStyle="bold"/>
+</RelativeLayout>
