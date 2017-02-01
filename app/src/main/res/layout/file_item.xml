@@ -9,16 +9,18 @@
 	<ImageView
 		android:id="@+id/file_image"
 		android:layout_width="@dimen/file_image_width"
-		android:layout_height="@dimen/file_image_height"/>
+		android:layout_height="@dimen/file_image_height"
+		android:contentDescription="@string/image_description"/>
 
 	<TextView
 		android:id="@+id/file_name"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@+id/file_image"
-		android:layout_alignTop="@+id/file_image"
-		android:layout_marginTop="@dimen/file_name_margin_top"
+		android:layout_centerVertical="true"
 		android:layout_marginLeft="@dimen/file_name_margin_left"
 		android:maxLines="1"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		android:textColor="@color/text_black"
 		android:textStyle="bold"/>
 </RelativeLayout>
