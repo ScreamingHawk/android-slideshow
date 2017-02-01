@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private static final String TAG = "MainActivity";
 
-	private String absPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separatorChar;
+	private String absPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 	private String currentPath;
 	private ListView listView;
 
@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void updateFileList(){
-		Log.d(TAG, currentPath);
+		Log.d(TAG, "currentpath: "+currentPath);
 
 		// Set title
-		setTitle(currentPath.replace(absPath, File.separator));
+		setTitle(currentPath.replace(absPath, ""));
 
 		// Create file list
 		final List fileList = new ArrayList<>();
@@ -116,6 +116,16 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onBackPressed(){
+		if (currentPath.equals(absPath)) {
+			super.onBackPressed();
+		} else {
+			currentPath = currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));
+			updateFileList();
+		}
 	}
 
 	/**
