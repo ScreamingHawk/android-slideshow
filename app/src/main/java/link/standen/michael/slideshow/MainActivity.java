@@ -61,10 +61,17 @@ public class MainActivity extends BaseActivity {
 					currentPath = fileItem.getPath();
 					updateListView();
 				} else {
-					Intent intent = new Intent(MainActivity.this, ImageActivity.class);
-					intent.putExtra("currentPath", currentPath);
-					intent.putExtra("imagePosition", fileList.indexOf(fileItem));
-					MainActivity.this.startActivity(intent);
+					if (!fileItem.getThumbnailAttempted()){
+						// Load thumbnail
+						new FileItemHelper().loadThumbnail(fileItem, MainActivity.this);
+					}
+					if (fileItem.getThumbnail() != null) {
+						// Only open images
+						Intent intent = new Intent(MainActivity.this, ImageActivity.class);
+						intent.putExtra("currentPath", currentPath);
+						intent.putExtra("imagePosition", fileList.indexOf(fileItem));
+						MainActivity.this.startActivity(intent);
+					}
 				}
 			}
 		});
