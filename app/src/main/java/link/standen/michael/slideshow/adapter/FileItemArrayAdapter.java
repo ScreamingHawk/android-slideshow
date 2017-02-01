@@ -1,6 +1,7 @@
 package link.standen.michael.slideshow.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 		return items.get(index);
 	}
 
-	public View getView(int position, View convertView, ViewGroup parent){
+	public @NonNull View getView(int position, View convertView, @NonNull ViewGroup parent){
 		View view = convertView;
 		FileItemViewHolder holder;
 		if (view == null){
@@ -53,10 +54,14 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 		if (item != null){
 			holder.setFileItem(item);
 			holder.getTextView().setText(item.getName());
-			if (item.getIsDirectory()){
+			// Set thumbnail image
+			if (item.getThumbnail() != null){
+				holder.getImageView().setImageBitmap(item.getThumbnail());
+			} else if (item.getIsDirectory()) {
 				holder.getImageView().setImageResource(R.mipmap.folder);
 			} else {
-				holder.getImageView().setImageURI(null); //TODO Thumbnail
+				//TODO Something else?
+				holder.getImageView().setImageBitmap(null);
 			}
 		}
 		return view;
