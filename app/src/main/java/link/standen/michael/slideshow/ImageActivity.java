@@ -105,16 +105,13 @@ public class ImageActivity extends BaseActivity {
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
 		mContentView = findViewById(R.id.fullscreen_content);
 
-		// Set up the user interaction to manually show or hide the system UI.
-		mContentView.setOnClickListener(new View.OnClickListener() {
+		// Gesture / click detection
+		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
 			@Override
-			public void onClick(View view) {
+			public void onClick() {
 				toggle();
 			}
-		});
 
-		// Gesture detection
-		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
 			@Override
 			public void onSwipeLeft() {
 				// Move to next image
