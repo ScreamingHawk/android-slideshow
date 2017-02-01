@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void updateFileList(){
-		Log.d(TAG, "currentpath: "+currentPath);
+		Log.d(TAG, "updateFileList currentPath: "+currentPath);
 
 		// Set title
-		setTitle(currentPath.replace(absPath, ""));
+		setTitle(currentPath.replace(absPath, "") + File.separatorChar);
 
 		// Create file list
 		final List<FileItem> fileList = new ArrayList<>();
@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 		File[] files = dir.listFiles();
 		if (files != null){
 			for (File file : files){
-				//TODO Thumbnail
 				FileItem item = new FileItem();
 				item.setName(file.getName());
 				item.setPath(file.getAbsolutePath());
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
 					currentPath = fileItem.getPath();
 					updateFileList();
 				} else {
-					//TODO Show image
 					Intent intent = new Intent(MainActivity.this, ImageActivity.class);
 					intent.putExtra("image", fileItem.getPath());
 					MainActivity.this.startActivity(intent);
