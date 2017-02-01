@@ -130,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Goes up a directory, unless at the top, then exits
+	 */
 	@Override
 	public void onBackPressed(){
 		if (currentPath.equals(absPath)) {
