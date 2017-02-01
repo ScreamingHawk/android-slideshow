@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 		setTitle(currentPath.replace(absPath, ""));
 
 		// Create file list
-		final List fileList = new ArrayList<>();
+		final List<FileItem> fileList = new ArrayList<>();
 		File dir = new File(currentPath);
 		if (!dir.canRead()){
 			setTitle(getTitle() + getResources().getString(R.string.inaccessible));
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 	 * Permissions handler
 	 */
 	@Override
-	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		Log.v(TAG,"Permission: " + permissions[0] + " was " + grantResults[0]);
 		if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
