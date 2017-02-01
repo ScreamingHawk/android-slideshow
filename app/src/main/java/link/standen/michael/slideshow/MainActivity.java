@@ -3,26 +3,16 @@ package link.standen.michael.slideshow;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
-import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import link.standen.michael.slideshow.adapter.FileItemArrayAdapter;
 import link.standen.michael.slideshow.model.FileItem;
@@ -31,12 +21,10 @@ import link.standen.michael.slideshow.model.FileItemViewHolder;
 /**
  * Slideshow main activity.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 	private static final String TAG = "MainActivity";
 
-	private String absPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-	private String currentPath;
 	private ListView listView;
 
 	@Override
@@ -54,45 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
 		// Permission check
 		if (isStoragePermissionGranted()){
-			updateFileList();
+			updateListView();
 		}
 		// else wait for permission handler to continue
 	}
 
-	private void updateFileList(){
-		Log.d(TAG, "updateFileList currentPath: "+currentPath);
-
-		// Set title
-		setTitle(currentPath.replace(absPath, "") + File.separatorChar);
-
-		// Create file list
-		final List<FileItem> fileList = new ArrayList<>();
-		File dir = new File(currentPath);
-		if (!dir.canRead()){
-			setTitle(getTitle() + getResources().getString(R.string.inaccessible));
-		}
-		File[] files = dir.listFiles();
-		if (files != null){
-			for (File file : files){
-				final FileItem item = new FileItem();
-				item.setName(file.getName());
-				item.setPath(file.getAbsolutePath());
-				item.setIsDirectory(file.isDirectory());
-				if (!item.getIsDirectory()){
-					new Handler().post(new Runnable() {
-						@Override
-						public void run() {
-							item.setThumbnail(ThumbnailUtils.extractThumbnail(
-									BitmapFactory.decodeFile(item.getPath()),
-									(int)getResources().getDimension(R.dimen.file_image_width),
-									(int)getResources().getDimension(R.dimen.file_image_height)));
-						}
-					});
-				}
-				fileList.add(item);
-			}
-		}
-		Collections.sort(fileList);
+	private void updateListView(){
+		updateFileList();
 
 		listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));
@@ -102,36 +58,15 @@ public class MainActivity extends AppCompatActivity {
 				FileItem fileItem = ((FileItemViewHolder) view.getTag()).getFileItem();
 				if (fileItem.getIsDirectory()){
 					currentPath = fileItem.getPath();
-					updateFileList();
+					updateListView();
 				} else {
 					Intent intent = new Intent(MainActivity.this, ImageActivity.class);
-					intent.putExtra("image", fileItem.getPath());
+					intent.putExtra("currentPath", currentPath);
+					intent.putExtra("imagePosition", fileList.indexOf(fileItem));
 					MainActivity.this.startActivity(intent);
 				}
 			}
 		});
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings) {
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
 	}
 
 	/**
@@ -143,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 			super.onBackPressed();
 		} else {
 			currentPath = currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));
-			updateFileList();
+			updateListView();
 		}
 	}
 
@@ -174,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		Log.v(TAG,"Permission: " + permissions[0] + " was " + grantResults[0]);
 		if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-			updateFileList();
+			updateListView();
 		}
 	}
 

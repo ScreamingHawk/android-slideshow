@@ -3,26 +3,22 @@ package link.standen.michael.slideshow;
 import android.annotation.SuppressLint;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
 import android.widget.ImageView;
 
-import java.io.File;
+import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
+import link.standen.michael.slideshow.model.FileItem;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class ImageActivity extends AppCompatActivity {
+public class ImageActivity extends BaseActivity {
 
-	private String imagePath;
-	private String imageDirectory;
+	private int imagePosition;
 
 	/**
 	 * Whether or not the system UI should be auto-hidden after
@@ -116,18 +112,44 @@ public class ImageActivity extends AppCompatActivity {
 			}
 		});
 
+		// Gesture detection
+		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
+			@Override
+			public void onSwipeLeft() {
+				// Move to next image
+				imagePosition++;
+				loadImage();
+			}
+
+			@Override
+			public void onSwipeRight() {
+				// Move to previous image
+				imagePosition--;
+				loadImage();
+			}
+		});
+
 		// Upon interacting with UI controls, delay any scheduled hide()
 		// operations to prevent the jarring behavior of controls going away
 		// while interacting with the UI.
 		findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-
-		imagePath = getIntent().getStringExtra("image");
+		/*imagePath = getIntent().getStringExtra("image");
 		File imageFile = new File(imagePath);
-		setTitle(imageFile.getName());
-		imageDirectory = imageFile.getAbsolutePath();
+		setTitle(imageFile.getName());*/
+		currentPath = getIntent().getStringExtra("currentPath");
+		imagePosition = getIntent().getIntExtra("imagePosition", -1);
+		//TODO -1 check
 
-		((ImageView)findViewById(R.id.fullscreen_content)).setImageBitmap(BitmapFactory.decodeFile(imagePath));
+		updateFileList();
+		loadImage();
+	}
+
+	private void loadImage(){
+		//TODO boundary test
+		FileItem item = fileList.get(imagePosition);
+		setTitle(item.getName());
+		((ImageView)findViewById(R.id.fullscreen_content)).setImageBitmap(BitmapFactory.decodeFile(item.getPath()));
 	}
 
 	@Override
@@ -138,30 +160,6 @@ public class ImageActivity extends AppCompatActivity {
 		// created, to briefly hint to the user that UI controls
 		// are available.
 		delayedHide(100);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return true;
-	}
-
-	/**
-	 * Handle options menu
-	 */
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-
-		if (id == android.R.id.home) {
-			// Do the same thing as the back button.
-			onBackPressed();
-			return true;
-		} else if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	private void toggle() {
