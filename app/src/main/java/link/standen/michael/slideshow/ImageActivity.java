@@ -12,11 +12,17 @@ import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.widget.ImageView;
 
+import java.io.File;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class ImageActivity extends AppCompatActivity {
+
+	private String imagePath;
+	private String imageDirectory;
+
 	/**
 	 * Whether or not the system UI should be auto-hidden after
 	 * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -114,7 +120,13 @@ public class ImageActivity extends AppCompatActivity {
 		// while interacting with the UI.
 		findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-		((ImageView)findViewById(R.id.fullscreen_content)).setImageBitmap(BitmapFactory.decodeFile(getIntent().getStringExtra("image")));
+
+		imagePath = getIntent().getStringExtra("image");
+		File imageFile = new File(imagePath);
+		setTitle(imageFile.getName());
+		imageDirectory = imageFile.getAbsolutePath();
+
+		((ImageView)findViewById(R.id.fullscreen_content)).setImageBitmap(BitmapFactory.decodeFile(imagePath));
 	}
 
 	@Override
