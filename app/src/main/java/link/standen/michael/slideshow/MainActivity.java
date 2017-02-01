@@ -17,6 +17,7 @@ import java.io.File;
 import link.standen.michael.slideshow.adapter.FileItemArrayAdapter;
 import link.standen.michael.slideshow.model.FileItem;
 import link.standen.michael.slideshow.model.FileItemViewHolder;
+import link.standen.michael.slideshow.util.FileItemHelper;
 
 /**
  * Slideshow main activity.
@@ -35,7 +36,7 @@ public class MainActivity extends BaseActivity {
 		setSupportActionBar(toolbar);
 
 		// Get path
-		currentPath = absPath;
+		currentPath = FileItemHelper.absPath;
 		if (getIntent().hasExtra("path")){
 			currentPath = getIntent().getStringExtra("path");
 		}
@@ -48,7 +49,7 @@ public class MainActivity extends BaseActivity {
 	}
 
 	private void updateListView(){
-		updateFileList();
+		fileList = new FileItemHelper().getFileList(currentPath, this);
 
 		listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));
@@ -74,7 +75,7 @@ public class MainActivity extends BaseActivity {
 	 */
 	@Override
 	public void onBackPressed(){
-		if (currentPath.equals(absPath)) {
+		if (currentPath.equals(FileItemHelper.absPath)) {
 			super.onBackPressed();
 		} else {
 			currentPath = currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));

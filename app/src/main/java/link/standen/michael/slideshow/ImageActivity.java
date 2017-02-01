@@ -11,9 +11,10 @@ import android.widget.ImageView;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
+import link.standen.michael.slideshow.util.FileItemHelper;
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e.
+ * A full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class ImageActivity extends BaseActivity {
@@ -117,14 +118,18 @@ public class ImageActivity extends BaseActivity {
 			@Override
 			public void onSwipeLeft() {
 				// Move to next image
-				imagePosition++;
+				do {
+					imagePosition++;
+				} while (!testCurrentIsImage());
 				loadImage();
 			}
 
 			@Override
 			public void onSwipeRight() {
 				// Move to previous image
-				imagePosition--;
+				do {
+					imagePosition--;
+				} while (!testCurrentIsImage());
 				loadImage();
 			}
 		});
@@ -141,8 +146,26 @@ public class ImageActivity extends BaseActivity {
 		imagePosition = getIntent().getIntExtra("imagePosition", -1);
 		//TODO -1 check
 
-		updateFileList();
+		fileList = new FileItemHelper().getFileList(currentPath, this);
 		loadImage();
+	}
+
+	/**
+	 * Tests if the current file item is an image.
+	 * @return True if image, false otherwise.
+     */
+	private boolean testCurrentIsImage(){
+		FileItem item = fileList.get(imagePosition);
+		if (item.getIsDirectory()) {
+			// Directories aren't images
+			return false;
+		}
+		if (!item.getThumbnailAttempted()) {
+			// Load the thumbnail
+			new FileItemHelper().loadThumbnail(item, this);
+		}
+		// Things with thumbnails are images
+		return item.getThumbnail() != null;
 	}
 
 	private void loadImage(){
