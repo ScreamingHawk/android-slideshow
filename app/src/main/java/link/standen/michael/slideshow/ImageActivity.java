@@ -155,8 +155,8 @@ public class ImageActivity extends AppCompatActivity {
 		int id = item.getItemId();
 
 		if (id == android.R.id.home) {
-			// This ID represents the Home or Up button.
-			NavUtils.navigateUpFromSameTask(this);
+			// Do the same thing as the back button.
+			onBackPressed();
 			return true;
 		} else if (id == R.id.action_settings) {
 			return true;
