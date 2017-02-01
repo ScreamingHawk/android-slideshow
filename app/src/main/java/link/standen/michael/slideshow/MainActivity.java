@@ -8,6 +8,7 @@ import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -73,15 +74,20 @@ public class MainActivity extends AppCompatActivity {
 		File[] files = dir.listFiles();
 		if (files != null){
 			for (File file : files){
-				FileItem item = new FileItem();
+				final FileItem item = new FileItem();
 				item.setName(file.getName());
 				item.setPath(file.getAbsolutePath());
 				item.setIsDirectory(file.isDirectory());
 				if (!item.getIsDirectory()){
-					item.setThumbnail(ThumbnailUtils.extractThumbnail(
-							BitmapFactory.decodeFile(item.getPath()),
-							(int)getResources().getDimension(R.dimen.file_image_width),
-							(int)getResources().getDimension(R.dimen.file_image_height)));
+					new Handler().post(new Runnable() {
+						@Override
+						public void run() {
+							item.setThumbnail(ThumbnailUtils.extractThumbnail(
+									BitmapFactory.decodeFile(item.getPath()),
+									(int)getResources().getDimension(R.dimen.file_image_width),
+									(int)getResources().getDimension(R.dimen.file_image_height)));
+						}
+					});
 				}
 				fileList.add(item);
 			}

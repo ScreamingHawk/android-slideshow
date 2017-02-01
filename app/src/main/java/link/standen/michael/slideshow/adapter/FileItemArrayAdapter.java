@@ -53,16 +53,10 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 		final FileItem item = getItem(position);
 		if (item != null){
 			holder.setFileItem(item);
+			item.setHolder(holder);
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
-			if (item.getThumbnail() != null){
-				holder.getImageView().setImageBitmap(item.getThumbnail());
-			} else if (item.getIsDirectory()) {
-				holder.getImageView().setImageResource(R.mipmap.folder);
-			} else {
-				//TODO Something else?
-				holder.getImageView().setImageBitmap(null);
-			}
+			item.setHolderImageView();
 		}
 		return view;
 	}
