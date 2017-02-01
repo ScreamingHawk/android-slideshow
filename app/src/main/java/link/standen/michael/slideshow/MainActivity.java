@@ -3,6 +3,8 @@ package link.standen.michael.slideshow;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -72,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
 		if (files != null){
 			for (File file : files){
 				//TODO Thumbnail
-				FileItem item = new FileItem(file.getName(), file.getAbsolutePath(), file.isDirectory());
+				FileItem item = new FileItem();
+				item.setName(file.getName());
+				item.setPath(file.getAbsolutePath());
+				item.setIsDirectory(file.isDirectory());
+				if (!item.getIsDirectory()){
+					item.setThumbnail(ThumbnailUtils.extractThumbnail(
+							BitmapFactory.decodeFile(item.getPath()),
+							(int)getResources().getDimension(R.dimen.file_image_width),
+							(int)getResources().getDimension(R.dimen.file_image_height)));
+				}
 				fileList.add(item);
 			}
 		}
