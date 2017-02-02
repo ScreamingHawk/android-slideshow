@@ -5,8 +5,10 @@
 	<string name="inaccessible"> (inaccessible)</string>
 
 	<string name="title_activity_image">ImageActivity</string>
-	<string name="dummy_button">Dummy Button</string>
-	<string name="dummy_content">DUMMY\nCONTENT</string>
+
+	<string name="delete_button">Delete</string>
+	<string name="image_deleted">Image deleted</string>
+	<string name="image_not_deleted">Unable to delete image</string>
 
 	<string name="image_description">Image</string>
 </resources>

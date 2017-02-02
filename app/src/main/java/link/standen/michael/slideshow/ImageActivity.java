@@ -1,13 +1,21 @@
 package link.standen.michael.slideshow;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.io.File;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
@@ -18,6 +26,8 @@ import link.standen.michael.slideshow.util.FileItemHelper;
  * status bar and navigation/system bar) with user interaction.
  */
 public class ImageActivity extends BaseActivity {
+
+	private static final String TAG = "ImageActivity";
 
 	private int imagePosition;
 
@@ -138,26 +148,35 @@ public class ImageActivity extends BaseActivity {
 			}
 		});
 
-		// Upon interacting with UI controls, delay any scheduled hide()
-		// operations to prevent the jarring behavior of controls going away
-		// while interacting with the UI.
-		findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-
-		/*imagePath = getIntent().getStringExtra("image");
-		File imageFile = new File(imagePath);
-		setTitle(imageFile.getName());*/
+		// Set up image list
 		currentPath = getIntent().getStringExtra("currentPath");
 		imagePosition = getIntent().getIntExtra("imagePosition", -1);
 		//TODO -1 check
 
 		fileList = new FileItemHelper().getFileList(currentPath, null);
+
+
 		loadImage();
+
+		// Upon interacting with UI controls, delay any scheduled hide()
+		// operations to prevent the jarring behavior of controls going away
+		// while interacting with the UI.
+		findViewById(R.id.delete_button).setOnTouchListener(mDelayHideTouchListener);
+		findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (isStoragePermissionGranted()) {
+					deleteImage();
+				}
+			}
+		});
 	}
 
 	/**
 	 * Show the next image.
 	 */
 	private void nextImage(){
+		//TODO What if loop?
 		do {
 			imagePosition++;
 			if (imagePosition >= fileList.size()){
@@ -171,6 +190,7 @@ public class ImageActivity extends BaseActivity {
 	 * Show the previous image.
 	 */
 	private void previousImage(){
+		//TODO What if loop?
 		do {
 			imagePosition--;
 			if (imagePosition < 0){
@@ -203,6 +223,21 @@ public class ImageActivity extends BaseActivity {
 		FileItem item = fileList.get(imagePosition);
 		setTitle(item.getName());
 		((ImageView)findViewById(R.id.fullscreen_content)).setImageBitmap(BitmapFactory.decodeFile(item.getPath()));
+	}
+
+	/**
+	 * Delete the current image
+	 */
+	private void deleteImage(){
+		FileItem item = fileList.get(imagePosition);
+		if (new File(item.getPath()).delete()) {
+			Toast.makeText(this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
+			// Show next image
+			imagePosition--;
+			nextImage();
+		} else {
+			Toast.makeText(this, R.string.image_not_deleted, Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	@Override
@@ -274,5 +309,38 @@ public class ImageActivity extends BaseActivity {
 	 */
 	private void stopSlideshow(){
 		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
+	}
+
+
+
+	/**
+	 * Permissions checker
+	 */
+	public boolean isStoragePermissionGranted() {
+		if (Build.VERSION.SDK_INT >= 23) {
+			if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+				Log.v(TAG,"Permission is granted");
+				return true;
+			} else {
+				Log.v(TAG,"Permission is revoked");
+				requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+				return false;
+			}
+		} else { //permission is automatically granted on sdk<23 upon installation
+			Log.v(TAG,"Permission is granted");
+			return true;
+		}
+	}
+
+	/**
+	 * Permissions handler
+	 */
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		Log.v(TAG,"Permission: " + permissions[0] + " was " + grantResults[0]);
+		if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+			deleteImage();
+		}
 	}
 }
