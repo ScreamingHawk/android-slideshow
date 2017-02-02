@@ -150,7 +150,7 @@ public class ImageActivity extends BaseActivity {
 		imagePosition = getIntent().getIntExtra("imagePosition", -1);
 		//TODO -1 check
 
-		fileList = new FileItemHelper().getFileList(currentPath, this);
+		fileList = new FileItemHelper().getFileList(currentPath, null);
 		loadImage();
 	}
 
