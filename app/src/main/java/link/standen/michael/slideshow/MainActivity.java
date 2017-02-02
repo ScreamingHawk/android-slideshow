@@ -40,6 +40,11 @@ public class MainActivity extends BaseActivity {
 		if (getIntent().hasExtra("path")){
 			currentPath = getIntent().getStringExtra("path");
 		}
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
 
 		// Permission check
 		if (isStoragePermissionGranted()){
