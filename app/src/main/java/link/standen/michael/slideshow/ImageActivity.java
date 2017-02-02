@@ -160,6 +160,9 @@ public class ImageActivity extends BaseActivity {
 	private void nextImage(){
 		do {
 			imagePosition++;
+			if (imagePosition >= fileList.size()){
+				imagePosition = 0;
+			}
 		} while (!testCurrentIsImage());
 		loadImage();
 	}
@@ -170,6 +173,9 @@ public class ImageActivity extends BaseActivity {
 	private void previousImage(){
 		do {
 			imagePosition--;
+			if (imagePosition < 0){
+				imagePosition = fileList.size() - 1;
+			}
 		} while (!testCurrentIsImage());
 		loadImage();
 	}
