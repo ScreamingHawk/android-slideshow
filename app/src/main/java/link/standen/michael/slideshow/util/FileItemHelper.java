@@ -51,16 +51,6 @@ public class FileItemHelper {
                 item.setName(file.getName());
                 item.setPath(file.getAbsolutePath());
                 item.setIsDirectory(file.isDirectory());
-                if (activity != null) {
-                    if (!item.getIsDirectory()) {
-                        new Handler().post(new Runnable() {
-                            @Override
-                            public void run() {
-                                loadThumbnail(item, activity);
-                            }
-                        });
-                    }
-                }
                 fileList.add(item);
             }
         }
