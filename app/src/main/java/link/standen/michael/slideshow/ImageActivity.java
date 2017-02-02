@@ -21,6 +21,18 @@ public class ImageActivity extends BaseActivity {
 
 	private int imagePosition;
 
+	private static final int SLIDESHOW_INITIAL_DELAY = 5000;
+	private static final int SLIDESHOW_DELAY = 3000;
+
+	private final Handler mSlideshowHandler = new Handler();
+	private final Runnable mSlideshowRunnable = new Runnable() {
+		@Override
+		public void run() {
+			nextImage();
+			mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
+		}
+	};
+
 	/**
 	 * Whether or not the system UI should be auto-hidden after
 	 * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -55,6 +67,9 @@ public class ImageActivity extends BaseActivity {
 					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 					| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
+			// Start slideshow
+			startSlideshow();
 		}
 	};
 	private View mControlsView;
@@ -114,20 +129,12 @@ public class ImageActivity extends BaseActivity {
 
 			@Override
 			public void onSwipeLeft() {
-				// Move to next image
-				do {
-					imagePosition++;
-				} while (!testCurrentIsImage());
-				loadImage();
+				nextImage();
 			}
 
 			@Override
 			public void onSwipeRight() {
-				// Move to previous image
-				do {
-					imagePosition--;
-				} while (!testCurrentIsImage());
-				loadImage();
+				previousImage();
 			}
 		});
 
@@ -144,6 +151,26 @@ public class ImageActivity extends BaseActivity {
 		//TODO -1 check
 
 		fileList = new FileItemHelper().getFileList(currentPath, this);
+		loadImage();
+	}
+
+	/**
+	 * Show the next image.
+	 */
+	private void nextImage(){
+		do {
+			imagePosition++;
+		} while (!testCurrentIsImage());
+		loadImage();
+	}
+
+	/**
+	 * Show the previous image.
+	 */
+	private void previousImage(){
+		do {
+			imagePosition--;
+		} while (!testCurrentIsImage());
 		loadImage();
 	}
 
@@ -191,6 +218,7 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	private void hide() {
+
 		// Hide UI first
 		ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null) {
@@ -204,8 +232,10 @@ public class ImageActivity extends BaseActivity {
 		mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
 	}
 
-	@SuppressLint("InlinedApi")
 	private void show() {
+		// Stop slideshow
+		stopSlideshow();
+
 		// Show the system bar
 		mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
@@ -223,5 +253,20 @@ public class ImageActivity extends BaseActivity {
 	private void delayedHide(int delayMillis) {
 		mHideHandler.removeCallbacks(mHideRunnable);
 		mHideHandler.postDelayed(mHideRunnable, delayMillis);
+	}
+
+	/**
+	 * Starts the slideshow
+	 */
+	private void startSlideshow(){
+		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
+		mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_INITIAL_DELAY);
+	}
+
+	/**
+	 * Stops the slideshow
+	 */
+	private void stopSlideshow(){
+		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
 	}
 }
