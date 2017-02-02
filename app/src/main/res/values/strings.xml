@@ -1,6 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
 <resources>
-	<string name="app_name">Slideshow</string>
+	<string name="app_name">&appname;</string>
 	<string name="action_settings">Settings</string>
+	<string name="action_credits">About</string>
 
 	<string name="inaccessible"> (inaccessible)</string>
 
@@ -11,4 +18,16 @@
 	<string name="image_not_deleted">Unable to delete image</string>
 
 	<string name="image_description">Image</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">About &appname;</string>
+	<string name="app_creator">by <a href="http://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow is a simple application for viewing images on your phone.
+	</string>
+	<string name="credits_content2">With no bells or whistles, this application is the simplest slideshow application on the market.
+	</string>
+	<string name="credits_content3">You can view the source code, log bugs or request features on <a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">This application is completely free and open source; licensed under the <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
 </resources>

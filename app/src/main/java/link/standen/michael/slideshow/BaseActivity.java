@@ -1,5 +1,6 @@
 package link.standen.michael.slideshow;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 			return true;
 		} else if (id == R.id.action_settings) {
 			return true;
+		} else if (id == R.id.action_credits) {
+			startActivity(new Intent(this, CreditsActivity.class));
 		}
 		return super.onOptionsItemSelected(item);
 	}
