@@ -17,11 +17,14 @@
 	<string name="image_deleted">Image deleted</string>
 	<string name="image_not_deleted">Unable to delete image</string>
 
+	<!-- Image descriptions -->
 	<string name="image_description">Image</string>
+	<string name="logo_description">Logo</string>
 
 	<!-- Credits -->
 	<string name="title_activity_credits">About &appname;</string>
-	<string name="app_creator">by <a href="http://michael.standen.link">&author;</a></string>
+	<string name="credits_creator">by <a href="http://michael.standen.link">&author;</a></string>
+
 	<string name="credits_content1">Slideshow is a simple application for viewing images on your phone.
 	</string>
 	<string name="credits_content2">With no bells or whistles, this application is the simplest slideshow application on the market.
