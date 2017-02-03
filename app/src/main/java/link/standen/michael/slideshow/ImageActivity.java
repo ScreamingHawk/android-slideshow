@@ -221,6 +221,7 @@ public class ImageActivity extends BaseActivity {
 	private void deleteImage(){
 		FileItem item = fileList.get(imagePosition);
 		if (new File(item.getPath()).delete()) {
+			fileList.remove(item);
 			Toast.makeText(this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
 			// Show next image
 			imagePosition--;
