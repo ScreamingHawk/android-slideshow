@@ -74,11 +74,7 @@ public class MainActivity extends BaseActivity {
 					currentPath = fileItem.getPath();
 					updateListView();
 				} else {
-					if (!fileItem.getThumbnailAttempted()){
-						// Load thumbnail
-						new FileItemHelper().loadThumbnail(fileItem, MainActivity.this, true);
-					}
-					if (fileItem.getThumbnail() != null) {
+					if (new FileItemHelper().isImage(fileItem)){
 						// Only open images
 						Intent intent = new Intent(MainActivity.this, ImageActivity.class);
 						intent.putExtra("currentPath", currentPath);

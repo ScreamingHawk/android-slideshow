@@ -205,16 +205,7 @@ public class ImageActivity extends BaseActivity {
      */
 	private boolean testCurrentIsImage(){
 		FileItem item = fileList.get(imagePosition);
-		if (item.getIsDirectory()) {
-			// Directories aren't images
-			return false;
-		}
-		if (!item.getThumbnailAttempted()) {
-			// Load the thumbnail
-			new FileItemHelper().loadThumbnail(item, this, true);
-		}
-		// Things with thumbnails are images
-		return item.getThumbnail() != null;
+		return new FileItemHelper().isImage(item);
 	}
 
 	private void loadImage(){

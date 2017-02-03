@@ -15,6 +15,7 @@ public class FileItem implements Comparable<FileItem> {
 	private Boolean isDirectory;
 	private Bitmap thumbnail;
 	private Boolean thumbnailAttempted = Boolean.FALSE;
+	private Boolean isImage;
 
 	private FileItemViewHolder holder;
 
@@ -96,5 +97,13 @@ public class FileItem implements Comparable<FileItem> {
 
 	public void setThumbnailAttempted(Boolean thumbnailAttempted) {
 		this.thumbnailAttempted = thumbnailAttempted;
+	}
+
+	public Boolean getIsImage() {
+		return isImage;
+	}
+
+	public void setIsImage(Boolean isImage) {
+		this.isImage = isImage;
 	}
 }

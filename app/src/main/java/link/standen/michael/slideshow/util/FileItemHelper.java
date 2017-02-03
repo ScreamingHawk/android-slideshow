@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.File;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -69,4 +70,19 @@ public class FileItemHelper {
                     (int) context.getResources().getDimension(R.dimen.file_image_height)));
         }
     }
+
+	/**
+	 * Checks the mime-type of the file to see if it is an image.
+	 */
+	public boolean isImage(FileItem item){
+		if (item.getIsDirectory()){
+			return false;
+		}
+		if (item.getIsImage() != null){
+			return item.getIsImage();
+		}
+		String mimeType = URLConnection.guessContentTypeFromName(item.getPath());
+		item.setIsImage(mimeType != null && mimeType.startsWith("image"));
+		return item.getIsImage();
+	}
 }
