@@ -1,11 +1,10 @@
 package link.standen.michael.slideshow.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.media.ThumbnailUtils;
 import android.os.Environment;
-import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -26,32 +25,27 @@ public class FileItemHelper {
     /**
      * Creates a list of fileitem for the given path.
      * @param currentPath The directory path.
-     * @param activity The calling activity. If supplied, the title will be updated, and thumbnail
-     *                 will be generated.
+     * @param context The context.
      */
-    public List<FileItem> getFileList(@NonNull String currentPath, final Activity activity){
+    public List<FileItem> getFileList(@NonNull String currentPath, final Context context){
         Log.d(TAG, "updateFileList currentPath: "+currentPath);
 
         // Create file list
         List<FileItem> fileList = new ArrayList<>();
         File dir = new File(currentPath);
 
-        // Set title
-        if (activity != null) {
-            activity.setTitle(currentPath.replace(absPath, "") + File.separatorChar);
-            if (!dir.canRead()){
-                activity.setTitle(activity.getTitle() + activity.getResources().getString(R.string.inaccessible));
-            }
-        }
-
         File[] files = dir.listFiles();
         if (files != null){
+			// Check hidden file preference
+			boolean showHiddenFiles = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_hidden_files", false);
             for (File file : files){
-                final FileItem item = new FileItem();
-                item.setName(file.getName());
-                item.setPath(file.getAbsolutePath());
-                item.setIsDirectory(file.isDirectory());
-                fileList.add(item);
+				if (showHiddenFiles || !file.getName().startsWith(".")) {
+					final FileItem item = new FileItem();
+					item.setName(file.getName());
+					item.setPath(file.getAbsolutePath());
+					item.setIsDirectory(file.isDirectory());
+					fileList.add(item);
+				}
             }
         }
         Collections.sort(fileList);

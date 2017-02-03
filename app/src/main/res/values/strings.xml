@@ -9,7 +9,7 @@
 	<string name="action_settings">Settings</string>
 	<string name="action_credits">About</string>
 
-	<string name="inaccessible"> (inaccessible)</string>
+	<string name="inaccessible">(inaccessible)</string>
 
 	<string name="title_activity_image">ImageActivity</string>
 
@@ -24,13 +24,40 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">About &appname;</string>
 	<string name="credits_creator">by <a href="http://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow is a simple application for viewing images on your
+		phone.
+	</string>
+	<string name="credits_content2">With no bells or whistles, this application is the simplest
+		slideshow application on the market.
+	</string>
+	<string name="credits_content3">You can view the source code, log bugs or request features on
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">This application is completely free and open source; licensed
+		under the <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
 
-	<string name="credits_content1">Slideshow is a simple application for viewing images on your phone.
-	</string>
-	<string name="credits_content2">With no bells or whistles, this application is the simplest slideshow application on the market.
-	</string>
-	<string name="credits_content3">You can view the source code, log bugs or request features on <a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
-	</string>
-	<string name="credits_content4">This application is completely free and open source; licensed under the <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
-	</string>
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Settings</string>
+
+	<string name="pref_title_show_hidden_files">Show hidden files</string>
+	<string name="pref_description_show_hidden_files">Displays files that are hidden by other
+		file managers.
+	</string><!--
+
+	<string name="pref_title_display_name">Display name</string>
+	<string name="pref_default_display_name">John Smith</string>
+
+	<string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+	<string-array name="pref_example_list_titles">
+		<item>Always</item>
+		<item>When possible</item>
+		<item>Never</item>
+	</string-array>
+	<string-array name="pref_example_list_values">
+		<item>1</item>
+		<item>0</item>
+		<item>-1</item>
+	</string-array>-->
 </resources>

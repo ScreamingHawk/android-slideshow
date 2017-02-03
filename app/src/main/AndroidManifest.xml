@@ -31,8 +31,13 @@
 				android:name="android.support.PARENT_ACTIVITY"
 				android:value="link.standen.michael.slideshow.MainActivity"/>
 		</activity>
-		<activity android:name=".CreditsActivity"
+		<activity
+			android:name=".CreditsActivity"
 			android:label="@string/title_activity_credits">
+		</activity>
+		<activity
+			android:name=".SettingsActivity"
+			android:label="@string/title_activity_settings">
 		</activity>
 	</application>
 

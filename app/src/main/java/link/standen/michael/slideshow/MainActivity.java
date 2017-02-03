@@ -56,6 +56,14 @@ public class MainActivity extends BaseActivity {
 	private void updateListView(){
 		fileList = new FileItemHelper().getFileList(currentPath, this);
 
+		// Set title
+		this.setTitle(currentPath.replace(FileItemHelper.absPath, "") + File.separatorChar);
+		if (!new File(currentPath).canRead()){
+			this.setTitle(String.format("%s %s",
+					getTitle(),
+					getResources().getString(R.string.inaccessible)));
+		}
+
 		listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
