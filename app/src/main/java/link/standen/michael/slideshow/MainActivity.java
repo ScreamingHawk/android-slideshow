@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity {
 				} else {
 					if (!fileItem.getThumbnailAttempted()){
 						// Load thumbnail
-						new FileItemHelper().loadThumbnail(fileItem, MainActivity.this);
+						new FileItemHelper().loadThumbnail(fileItem, MainActivity.this, true);
 					}
 					if (fileItem.getThumbnail() != null) {
 						// Only open images

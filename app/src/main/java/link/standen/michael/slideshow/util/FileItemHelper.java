@@ -55,10 +55,14 @@ public class FileItemHelper {
     /**
      * Loads the thumbnail of the fileitem.
      */
-    public void loadThumbnail(FileItem item, Context context){
+    public void loadThumbnail(FileItem item, Context context, boolean force){
         if (item.getIsDirectory()){
             item.setThumbnail(null);
         } else {
+			if (!force && !PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_thumbnails", true)){
+				// Thumbnail should not be loaded.
+				return;
+			}
             item.setThumbnail(ThumbnailUtils.extractThumbnail(
                     BitmapFactory.decodeFile(item.getPath()),
                     (int) context.getResources().getDimension(R.dimen.file_image_width),

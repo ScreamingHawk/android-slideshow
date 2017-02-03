@@ -44,7 +44,15 @@
 	<string name="pref_title_show_hidden_files">Show hidden files</string>
 	<string name="pref_description_show_hidden_files">Displays files that are hidden by other
 		file managers.
-	</string><!--
+	</string>
+
+	<string name="pref_title_show_thumbnails">Show thumbnails</string>
+	<string name="pref_description_show_thumbnails">Displays thumbnail images. Turning this off will
+		increase performance, however you will not be able to see which files are images and which
+		are not.
+	</string>
+
+	<!--
 
 	<string name="pref_title_display_name">Display name</string>
 	<string name="pref_default_display_name">John Smith</string>

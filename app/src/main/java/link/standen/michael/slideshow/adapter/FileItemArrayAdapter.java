@@ -62,7 +62,7 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			handler.post(new Runnable(){
 				@Override
 				public void run(){
-					new FileItemHelper().loadThumbnail(item, getContext());
+					new FileItemHelper().loadThumbnail(item, getContext(), false);
 				}
 			});
 			item.setHolderImageView();
