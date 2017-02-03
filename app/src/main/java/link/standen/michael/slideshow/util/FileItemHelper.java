@@ -62,9 +62,13 @@ public class FileItemHelper {
      * Loads the thumbnail of the fileitem.
      */
     public void loadThumbnail(FileItem item, Context context){
-        item.setThumbnail(ThumbnailUtils.extractThumbnail(
-                BitmapFactory.decodeFile(item.getPath()),
-                (int) context.getResources().getDimension(R.dimen.file_image_width),
-                (int) context.getResources().getDimension(R.dimen.file_image_height)));
+        if (item.getIsDirectory()){
+            item.setThumbnail(null);
+        } else {
+            item.setThumbnail(ThumbnailUtils.extractThumbnail(
+                    BitmapFactory.decodeFile(item.getPath()),
+                    (int) context.getResources().getDimension(R.dimen.file_image_width),
+                    (int) context.getResources().getDimension(R.dimen.file_image_height)));
+        }
     }
 }
