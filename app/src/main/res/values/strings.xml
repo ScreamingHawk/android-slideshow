@@ -14,6 +14,8 @@
 	<string name="title_activity_image">ImageActivity</string>
 
 	<string name="delete_button">Delete</string>
+	<string name="delete_dialog_title">Delete image</string>
+	<string name="delete_dialog_message">Are you sure?</string>
 	<string name="image_deleted">Image deleted</string>
 	<string name="image_not_deleted">Unable to delete image</string>
 

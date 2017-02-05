@@ -2,6 +2,7 @@ package link.standen.michael.slideshow;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -219,16 +221,32 @@ public class ImageActivity extends BaseActivity {
 	 * Delete the current image
 	 */
 	private void deleteImage(){
-		FileItem item = fileList.get(imagePosition);
-		if (new File(item.getPath()).delete()) {
-			fileList.remove(item);
-			Toast.makeText(this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
-			// Show next image
-			imagePosition--;
-			nextImage();
-		} else {
-			Toast.makeText(this, R.string.image_not_deleted, Toast.LENGTH_SHORT).show();
-		}
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.delete_dialog_title);
+		builder.setMessage(R.string.delete_dialog_message);
+		builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				FileItem item = fileList.get(imagePosition);
+				if (new File(item.getPath()).delete()) {
+					fileList.remove(item);
+					Toast.makeText(ImageActivity.this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
+					// Show next image
+					imagePosition--;
+					nextImage();
+				} else {
+					Toast.makeText(ImageActivity.this, R.string.image_not_deleted, Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+		builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		builder.create().show();
 	}
 
 	@Override
