@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
@@ -36,6 +38,7 @@ public class ImageActivity extends BaseActivity {
 	private int firstImagePosition;
 
 	private static boolean STOP_ON_COMPLETE;
+	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 
 	private final Handler mSlideshowHandler = new Handler();
@@ -116,6 +119,7 @@ public class ImageActivity extends BaseActivity {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		SLIDESHOW_DELAY = (int) Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000;
 		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
+		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 
 		// Gesture / click detection
 		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -138,12 +142,19 @@ public class ImageActivity extends BaseActivity {
 		// Set up image list
 		currentPath = getIntent().getStringExtra("currentPath");
 		imagePosition = getIntent().getIntExtra("imagePosition", -1);
-		firstImagePosition = imagePosition;
 		//TODO -1 check
 
 		fileList = new FileItemHelper().getFileList(currentPath, this);
-
-		loadImage();
+		if (RANDOM_ORDER){
+			Collections.shuffle(fileList);
+			// Call nextImage to ensure an image file is selected as the first file
+			nextImage();
+		} else {
+			// This is in the else as nextImage contains a call to loadImage and we don't want to
+			// duplicate the call
+			loadImage();
+		}
+		firstImagePosition = imagePosition;
 
 		// Upon interacting with UI controls, delay any scheduled hide()
 		// operations to prevent the jarring behavior of controls going away

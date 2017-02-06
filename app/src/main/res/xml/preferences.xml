@@ -12,18 +12,24 @@
 		android:summary="@string/pref_description_show_thumbnails"
 		android:title="@string/pref_title_show_thumbnails"/>
 
-	<SwitchPreference
-		android:defaultValue="false"
-		android:key="stop_on_complete"
-		android:summary="@string/pref_description_stop_on_complete"
-		android:title="@string/pref_title_stop_on_complete"/>
-
 	<EditTextPreference
 		android:defaultValue="3"
 		android:key="slide_delay"
 		android:summary="@string/pref_description_slide_delay"
 		android:title="@string/pref_title_slide_delay"
 		android:inputType="numberDecimal" />
+
+	<SwitchPreference
+		android:defaultValue="false"
+		android:key="stop_on_complete"
+		android:summary="@string/pref_description_stop_on_complete"
+		android:title="@string/pref_title_stop_on_complete"/>
+
+	<SwitchPreference
+		android:defaultValue="false"
+		android:key="random_order"
+		android:summary="@string/pref_description_random_order"
+		android:title="@string/pref_title_random_order"/>
 
 	<!-- NOTE: EditTextPreference accepts EditText attributes. -->
 	<!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
