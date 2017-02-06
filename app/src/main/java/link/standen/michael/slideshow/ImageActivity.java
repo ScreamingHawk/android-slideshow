@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -33,8 +34,7 @@ public class ImageActivity extends BaseActivity {
 
 	private int imagePosition;
 
-	private static final int SLIDESHOW_INITIAL_DELAY = 5000;
-	private static final int SLIDESHOW_DELAY = 3000;
+	private static int SLIDESHOW_DELAY = 3000;
 
 	private final Handler mSlideshowHandler = new Handler();
 	private final Runnable mSlideshowRunnable = new Runnable() {
@@ -131,6 +131,10 @@ public class ImageActivity extends BaseActivity {
 		mVisible = true;
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
 		mContentView = findViewById(R.id.fullscreen_content);
+
+		// Load preferences
+		SLIDESHOW_DELAY = (int) Float.parseFloat(PreferenceManager.getDefaultSharedPreferences(this)
+				.getString("slide_delay", "3")) * 1000;
 
 		// Gesture / click detection
 		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -310,7 +314,7 @@ public class ImageActivity extends BaseActivity {
 	 */
 	private void startSlideshow(){
 		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
-		mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_INITIAL_DELAY);
+		mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
 	}
 
 	/**

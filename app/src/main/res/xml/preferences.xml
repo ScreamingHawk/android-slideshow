@@ -12,6 +12,13 @@
 		android:summary="@string/pref_description_show_thumbnails"
 		android:title="@string/pref_title_show_thumbnails"/>
 
+	<EditTextPreference
+		android:defaultValue="3"
+		android:key="slide_delay"
+		android:summary="@string/pref_description_slide_delay"
+		android:title="@string/pref_title_slide_delay"
+		android:inputType="numberDecimal" />
+
 	<!-- NOTE: EditTextPreference accepts EditText attributes. -->
 	<!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
 	<!--<EditTextPreference
