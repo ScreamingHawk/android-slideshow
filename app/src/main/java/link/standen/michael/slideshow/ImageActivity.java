@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Collections;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
@@ -144,7 +143,7 @@ public class ImageActivity extends BaseActivity {
 		imagePosition = getIntent().getIntExtra("imagePosition", -1);
 		//TODO -1 check
 
-		fileList = new FileItemHelper().getFileList(currentPath, this);
+		fileList = new FileItemHelper(this).getFileList(currentPath);
 		if (RANDOM_ORDER){
 			Collections.shuffle(fileList);
 			// Call nextImage to ensure an image file is selected as the first file
@@ -203,7 +202,7 @@ public class ImageActivity extends BaseActivity {
      */
 	private boolean testCurrentIsImage(){
 		FileItem item = fileList.get(imagePosition);
-		return new FileItemHelper().isImage(item);
+		return new FileItemHelper(this).isImage(item);
 	}
 
 	private void loadImage(){

@@ -1,6 +1,8 @@
 package link.standen.michael.slideshow.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -53,20 +55,44 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 		}
 
 		final FileItem item = getItem(position);
-		final Handler handler = new Handler();
 		if (item != null){
 			holder.setFileItem(item);
 			item.setHolder(holder);
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
-			handler.post(new Runnable(){
-				@Override
-				public void run(){
-					new FileItemHelper().loadThumbnail(item, getContext(), false);
-				}
-			});
+			new ThumbnailTask(item).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 			item.setHolderImageView();
 		}
 		return view;
+	}
+
+	/**
+	 * Background task for loading thumbnails
+	 */
+	private class ThumbnailTask extends AsyncTask<Object, Void, Bitmap> {
+		private FileItem item;
+
+		private ThumbnailTask(FileItem item) {
+			this.item = item;
+		}
+
+		@Override
+		protected void onPostExecute(Bitmap result) {
+			if (item.getIsDirectory()){
+				return;
+			}
+			item.setThumbnail(result);
+		}
+
+		@Override
+		protected Bitmap doInBackground(Object[] params) {
+			if (item.getThumbnail() != null){
+				return item.getThumbnail();
+			}
+			if (item.getIsDirectory() || item.getThumbnailAttempted()){
+				return null;
+			}
+			return new FileItemHelper(context).createThumbnail(item, false);
+		}
 	}
 }

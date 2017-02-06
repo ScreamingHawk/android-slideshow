@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity {
 	}
 
 	private void updateListView(){
-		fileList = new FileItemHelper().getFileList(currentPath, this);
+		fileList = new FileItemHelper(this).getFileList(currentPath);
 
 		// Set title
 		this.setTitle(currentPath.replace(FileItemHelper.absPath, "") + File.separatorChar);
@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
 					currentPath = fileItem.getPath();
 					updateListView();
 				} else {
-					if (new FileItemHelper().isImage(fileItem)){
+					if (new FileItemHelper(MainActivity.this).isImage(fileItem)){
 						// Only open images
 						Intent intent = new Intent(MainActivity.this, ImageActivity.class);
 						intent.putExtra("currentPath", currentPath);

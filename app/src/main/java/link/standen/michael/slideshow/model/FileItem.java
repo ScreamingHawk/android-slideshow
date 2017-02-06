@@ -67,12 +67,12 @@ public class FileItem implements Comparable<FileItem> {
 	 */
 	public void setHolderImageView(){
 		if (holder != null && holder.getFileItem() == this){
-			if (thumbnail != null){
-				// Image thumb
-				holder.getImageView().setImageBitmap(thumbnail);
-			} else if (isDirectory) {
+			if (isDirectory) {
 				// Directory
 				holder.getImageView().setImageResource(R.mipmap.folder);
+			} else if (thumbnail != null){
+				// Image thumb
+				holder.getImageView().setImageBitmap(thumbnail);
 			} else if (thumbnailAttempted){
 				// Something unknown
 				holder.getImageView().setImageResource(R.mipmap.unknown);

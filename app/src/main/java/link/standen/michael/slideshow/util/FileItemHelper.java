@@ -1,6 +1,7 @@
 package link.standen.michael.slideshow.util;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.ThumbnailUtils;
 import android.os.Environment;
@@ -23,12 +24,20 @@ public class FileItemHelper {
 
     public static final String absPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 
+	private final Context context;
+
+	private static boolean SHOW_THUMBNAILS;
+
+	public FileItemHelper(Context context){
+		this.context = context;
+		SHOW_THUMBNAILS = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_thumbnails", true);
+	}
+
     /**
      * Creates a list of fileitem for the given path.
      * @param currentPath The directory path.
-     * @param context The context.
      */
-    public List<FileItem> getFileList(@NonNull String currentPath, final Context context){
+    public List<FileItem> getFileList(@NonNull String currentPath){
         Log.d(TAG, "updateFileList currentPath: "+currentPath);
 
         // Create file list
@@ -56,20 +65,30 @@ public class FileItemHelper {
     /**
      * Loads the thumbnail of the fileitem.
      */
-    public void loadThumbnail(FileItem item, Context context, boolean force){
+    public void loadThumbnail(FileItem item, boolean force){
         if (item.getIsDirectory()){
             item.setThumbnail(null);
         } else {
-			if (!force && !PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_thumbnails", true)){
-				// Thumbnail should not be loaded.
-				return;
-			}
-            item.setThumbnail(ThumbnailUtils.extractThumbnail(
-                    BitmapFactory.decodeFile(item.getPath()),
-                    (int) context.getResources().getDimension(R.dimen.file_image_width),
-                    (int) context.getResources().getDimension(R.dimen.file_image_height)));
+            item.setThumbnail(createThumbnail(item, force));
         }
     }
+
+	/**
+	 * Creates the thumbnail of the fileitem.
+	 */
+	public Bitmap createThumbnail(FileItem item, boolean force){
+		if (item.getIsDirectory()){
+			return null;
+		}
+		if (!force && !SHOW_THUMBNAILS){
+			// Thumbnail should not be loaded.
+			return null;
+		}
+		return ThumbnailUtils.extractThumbnail(
+				BitmapFactory.decodeFile(item.getPath()),
+				(int) context.getResources().getDimension(R.dimen.file_image_width),
+				(int) context.getResources().getDimension(R.dimen.file_image_height));
+	}
 
 	/**
 	 * Checks the mime-type of the file to see if it is an image.
