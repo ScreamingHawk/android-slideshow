@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -44,18 +43,6 @@ public class ImageActivity extends BaseActivity {
 			mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
 		}
 	};
-
-	/**
-	 * Whether or not the system UI should be auto-hidden after
-	 * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-	 */
-	private static final boolean AUTO_HIDE = true;
-
-	/**
-	 * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
-	 * user interaction before hiding the system UI.
-	 */
-	private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
 	/**
 	 * Some older devices needs a small delay between UI widget updates
@@ -101,20 +88,6 @@ public class ImageActivity extends BaseActivity {
 		@Override
 		public void run() {
 			hide();
-		}
-	};
-	/**
-	 * Touch listener to use for in-layout UI controls to delay hiding the
-	 * system UI. This is to prevent the jarring behavior of controls going away
-	 * while interacting with activity UI.
-	 */
-	private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-		@Override
-		public boolean onTouch(View view, MotionEvent motionEvent) {
-			if (AUTO_HIDE) {
-				delayedHide(AUTO_HIDE_DELAY_MILLIS);
-			}
-			return false;
 		}
 	};
 
@@ -166,7 +139,6 @@ public class ImageActivity extends BaseActivity {
 		// Upon interacting with UI controls, delay any scheduled hide()
 		// operations to prevent the jarring behavior of controls going away
 		// while interacting with the UI.
-		findViewById(R.id.delete_button).setOnTouchListener(mDelayHideTouchListener);
 		findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
