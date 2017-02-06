@@ -59,6 +59,11 @@
 		changing to the next image.
 	</string>
 
+	<string name="pref_title_stop_on_complete">Stop on complete</string>
+	<string name="pref_description_stop_on_complete">Stop the slideshow once every image has been
+		shown.
+	</string>
+
 	<!--
 
 	<string name="pref_title_display_name">Display name</string>

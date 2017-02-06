@@ -3,6 +3,7 @@ package link.standen.michael.slideshow;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -32,15 +33,21 @@ public class ImageActivity extends BaseActivity {
 	private static final String TAG = "ImageActivity";
 
 	private int imagePosition;
+	private int firstImagePosition;
 
-	private static int SLIDESHOW_DELAY = 3000;
+	private static boolean STOP_ON_COMPLETE;
+	private static int SLIDESHOW_DELAY;
 
 	private final Handler mSlideshowHandler = new Handler();
 	private final Runnable mSlideshowRunnable = new Runnable() {
 		@Override
 		public void run() {
 			nextImage();
-			mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
+			if (!(STOP_ON_COMPLETE && imagePosition == firstImagePosition)) {
+				mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
+			} else {
+				show();
+			}
 		}
 	};
 
@@ -106,8 +113,9 @@ public class ImageActivity extends BaseActivity {
 		mContentView = findViewById(R.id.fullscreen_content);
 
 		// Load preferences
-		SLIDESHOW_DELAY = (int) Float.parseFloat(PreferenceManager.getDefaultSharedPreferences(this)
-				.getString("slide_delay", "3")) * 1000;
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		SLIDESHOW_DELAY = (int) Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000;
+		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
 
 		// Gesture / click detection
 		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -130,6 +138,7 @@ public class ImageActivity extends BaseActivity {
 		// Set up image list
 		currentPath = getIntent().getStringExtra("currentPath");
 		imagePosition = getIntent().getIntExtra("imagePosition", -1);
+		firstImagePosition = imagePosition;
 		//TODO -1 check
 
 		fileList = new FileItemHelper().getFileList(currentPath, this);

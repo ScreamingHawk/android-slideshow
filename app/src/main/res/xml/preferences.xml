@@ -12,6 +12,12 @@
 		android:summary="@string/pref_description_show_thumbnails"
 		android:title="@string/pref_title_show_thumbnails"/>
 
+	<SwitchPreference
+		android:defaultValue="false"
+		android:key="stop_on_complete"
+		android:summary="@string/pref_description_stop_on_complete"
+		android:title="@string/pref_title_stop_on_complete"/>
+
 	<EditTextPreference
 		android:defaultValue="3"
 		android:key="slide_delay"
