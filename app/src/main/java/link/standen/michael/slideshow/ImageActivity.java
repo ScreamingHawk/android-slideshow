@@ -33,6 +33,8 @@ public class ImageActivity extends BaseActivity {
 
 	private static final String TAG = ImageActivity.class.getName();
 
+	private boolean blockPreferenceReload = false;
+
 	private int imagePosition;
 	private int firstImagePosition;
 
@@ -115,12 +117,9 @@ public class ImageActivity extends BaseActivity {
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
 		mContentView = findViewById(R.id.fullscreen_content);
 
-		// Load preferences
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		SLIDESHOW_DELAY = (int) Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000;
-		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
-		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
-		RANDOM_ORDER = preferences.getBoolean("random_order", false);
+		loadPreferences();
+		// Stop resume from reloading the same settings
+		blockPreferenceReload = true;
 
 		// Gesture / click detection
 		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -173,6 +172,30 @@ public class ImageActivity extends BaseActivity {
 		loadImage();
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		// Only reload the settings if not blocked by onCreate
+		if (blockPreferenceReload){
+			blockPreferenceReload = false;
+		} else {
+			loadPreferences();
+		}
+	}
+
+	/**
+	 * Load the relevant preferences.
+	 */
+	private void loadPreferences(){
+		// Load preferences
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		SLIDESHOW_DELAY = (int) Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000;
+		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
+		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
+		RANDOM_ORDER = preferences.getBoolean("random_order", false);
+	}
+
 	/**
 	 * Show the next image.
 	 */
@@ -203,7 +226,7 @@ public class ImageActivity extends BaseActivity {
 
 	/**
 	 * Show the following image.
-	 * This method handles whether or not the slideshow is in reverse order. 
+	 * This method handles whether or not the slideshow is in reverse order.
 	 */
 	private void followingImage(){
 		if (REVERSE_ORDER) {
