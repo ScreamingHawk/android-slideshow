@@ -26,11 +26,16 @@ public class FileItemHelper {
 
 	private final Context context;
 
+	// Preferences
 	private static boolean SHOW_THUMBNAILS;
+	private static Integer THUMBNAIL_IMAGE_WIDTH;
+	private static Integer THUMBNAIL_IMAGE_HEIGHT;
 
 	public FileItemHelper(Context context){
 		this.context = context;
 		SHOW_THUMBNAILS = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_thumbnails", true);
+		THUMBNAIL_IMAGE_WIDTH = (int) context.getResources().getDimension(R.dimen.file_image_width);
+		THUMBNAIL_IMAGE_HEIGHT = (int) context.getResources().getDimension(R.dimen.file_image_height);
 	}
 
     /**
@@ -76,8 +81,8 @@ public class FileItemHelper {
 		if (!item.getThumbnailAttempted() || item.getHasThumbnail()) {
 			return ThumbnailUtils.extractThumbnail(
 					BitmapFactory.decodeFile(item.getPath()),
-					(int) context.getResources().getDimension(R.dimen.file_image_width),
-					(int) context.getResources().getDimension(R.dimen.file_image_height));
+					THUMBNAIL_IMAGE_WIDTH,
+					THUMBNAIL_IMAGE_HEIGHT);
 		}
 		return null;
 	}
