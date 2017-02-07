@@ -6,17 +6,15 @@ Now you can view files on your devices with ease!
 
 Quickly browse through your file system for the directory you want to view, click an image and the slideshow will automatically begin.
 
-Great for showing off those vacation photos without having to manually scroll.
+Great for showing off those vacation photos without having to scroll.
 
 ## Features
 * Select any directory on your phone
 * Automatically begins playing slideshow
-* Ability to delete from within slideshow
-
-## Planned Features
+* Ability to delete images from within the slideshow
+* Sequential or random display order
 * Configurable delay
 * Show / hide hidden files
-* Remember where you left off
 
 ## Un-Features
 * No sign up
@@ -24,6 +22,9 @@ Great for showing off those vacation photos without having to manually scroll.
 * No requests to rate the app
 * No trail periods
 * No paid upgrades
+
+## Upcoming Features and Feature Requests
+All planned enhancements are here: https://github.com/ScreamingHawk/android-slideshow/labels/enhancement
 
 ## Credits
 [Michael Standen](http://michael.standen.link)
