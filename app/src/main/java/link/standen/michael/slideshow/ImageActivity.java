@@ -31,7 +31,7 @@ import link.standen.michael.slideshow.util.FileItemHelper;
  */
 public class ImageActivity extends BaseActivity {
 
-	private static final String TAG = "ImageActivity";
+	private static final String TAG = ImageActivity.class.getName();
 
 	private int imagePosition;
 	private int firstImagePosition;

@@ -24,7 +24,7 @@ import link.standen.michael.slideshow.util.FileItemHelper;
  */
 public class MainActivity extends BaseActivity {
 
-	private static final String TAG = "MainActivity";
+	private static final String TAG = MainActivity.class.getName();
 
 	private ListView listView;
 
