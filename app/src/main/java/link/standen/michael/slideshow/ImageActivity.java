@@ -140,26 +140,7 @@ public class ImageActivity extends BaseActivity {
 			}
 		});
 
-		// Set up image list
-		currentPath = getIntent().getStringExtra("currentPath");
-		imagePosition = getIntent().getIntExtra("imagePosition", -1);
-		//TODO -1 check
-
-		fileList = new FileItemHelper(this).getFileList(currentPath);
-		if (RANDOM_ORDER){
-			Collections.shuffle(fileList);
-			// Call followingImage to ensure an image file is selected as the first file
-			followingImage();
-		} else {
-			// This is in the else as nextImage contains a call to loadImage and we don't want to
-			// duplicate the call
-			loadImage();
-		}
-		firstImagePosition = imagePosition;
-
-		// Upon interacting with UI controls, delay any scheduled hide()
-		// operations to prevent the jarring behavior of controls going away
-		// while interacting with the UI.
+		// Configure delete button
 		findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -168,6 +149,28 @@ public class ImageActivity extends BaseActivity {
 				}
 			}
 		});
+
+		// Get starting values
+		currentPath = getIntent().getStringExtra("currentPath");
+		String imagePath = getIntent().getStringExtra("imagePath");
+
+		// Set up image list
+		fileList = new FileItemHelper(this).getFileList(currentPath);
+		if (RANDOM_ORDER){
+			Collections.shuffle(fileList);
+		}
+
+		// Find the selected image position
+		for (int i = 0; i < fileList.size(); i++){
+			if (imagePath.equals(fileList.get(i).getPath())){
+				imagePosition = i;
+				break;
+			}
+		}
+		firstImagePosition = imagePosition;
+
+		// Show the first image
+		loadImage();
 	}
 
 	/**

@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
 						// Only open images
 						Intent intent = new Intent(MainActivity.this, ImageActivity.class);
 						intent.putExtra("currentPath", currentPath);
-						intent.putExtra("imagePosition", fileList.indexOf(fileItem));
+						intent.putExtra("imagePath", fileItem.getPath());
 						MainActivity.this.startActivity(intent);
 					}
 				}
