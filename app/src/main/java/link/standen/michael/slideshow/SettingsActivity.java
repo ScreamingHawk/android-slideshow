@@ -3,25 +3,17 @@ package link.standen.michael.slideshow;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.support.v4.app.NavUtils;
+import android.preference.SwitchPreference;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
 import android.view.MenuItem;
-
-import java.util.List;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -138,6 +130,31 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 			super.onCreate(savedInstanceState);
 			addPreferencesFromResource(R.xml.preferences);
 			setHasOptionsMenu(true);
+
+			final SwitchPreference reverseOrderPref = (SwitchPreference)findPreference("reverse_order");
+			final SwitchPreference randomOrderPref = (SwitchPreference)findPreference("random_order");
+
+			// Enabling reverse disables random
+			reverseOrderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if (Boolean.TRUE.equals(newValue)){
+						randomOrderPref.setChecked(false);
+					}
+					return true;
+				}
+			});
+
+			// Enabling random disables reverse
+			randomOrderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if (Boolean.TRUE.equals(newValue)){
+						reverseOrderPref.setChecked(false);
+					}
+					return true;
+				}
+			});
 
 			// Bind the summaries of EditText/List/Dialog/Ringtone preferences
 			// to their values. When their values change, their summaries are
