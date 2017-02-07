@@ -155,7 +155,7 @@ public class ImageActivity extends BaseActivity {
 		String imagePath = getIntent().getStringExtra("imagePath");
 
 		// Set up image list
-		fileList = new FileItemHelper(this).getFileList(currentPath);
+		fileList = new FileItemHelper(this).getFileList(currentPath, false);
 		if (RANDOM_ORDER){
 			Collections.shuffle(fileList);
 		}
@@ -201,6 +201,10 @@ public class ImageActivity extends BaseActivity {
 		loadImage();
 	}
 
+	/**
+	 * Show the following image.
+	 * This method handles whether or not the slideshow is in reverse order. 
+	 */
 	private void followingImage(){
 		if (REVERSE_ORDER) {
 			previousImage();
@@ -219,7 +223,6 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	private void loadImage(){
-		//TODO boundary test
 		FileItem item = fileList.get(imagePosition);
 		setTitle(item.getName());
 		((ImageView)findViewById(R.id.fullscreen_content)).setImageBitmap(BitmapFactory.decodeFile(item.getPath()));
@@ -261,9 +264,8 @@ public class ImageActivity extends BaseActivity {
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 
-		// Trigger the initial hide() shortly after the activity has been
-		// created, to briefly hint to the user that UI controls
-		// are available.
+		// Trigger the initial hide() shortly after the activity has been created, to briefly hint
+		// to the user that UI controls are available.
 		delayedHide(100);
 	}
 
@@ -276,7 +278,6 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	private void hide() {
-
 		// Hide UI first
 		ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null) {
@@ -305,7 +306,7 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	/**
-	 * Schedules a call to hide() in [delay] milliseconds, canceling any
+	 * Schedules a call to hide() in [delayMillis] milliseconds, canceling any
 	 * previously scheduled calls.
 	 */
 	private void delayedHide(int delayMillis) {
@@ -327,8 +328,6 @@ public class ImageActivity extends BaseActivity {
 	private void stopSlideshow(){
 		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
 	}
-
-
 
 	/**
 	 * Permissions checker

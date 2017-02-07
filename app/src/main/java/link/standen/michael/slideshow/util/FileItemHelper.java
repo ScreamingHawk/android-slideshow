@@ -38,11 +38,21 @@ public class FileItemHelper {
 		THUMBNAIL_IMAGE_HEIGHT = (int) context.getResources().getDimension(R.dimen.file_image_height);
 	}
 
+
+	/**
+	 * Creates a list of fileitem for the given path. Includes all directories.
+	 * @param currentPath The directory path.
+	 */
+	public List<FileItem> getFileList(@NonNull String currentPath){
+		return getFileList(currentPath, true);
+	}
+
     /**
      * Creates a list of fileitem for the given path.
      * @param currentPath The directory path.
+	 * @param includeDirectories Whether or not to include directories.
      */
-    public List<FileItem> getFileList(@NonNull String currentPath){
+    public List<FileItem> getFileList(@NonNull String currentPath, boolean includeDirectories){
         Log.d(TAG, "updateFileList currentPath: "+currentPath);
 
         // Create file list
@@ -54,12 +64,16 @@ public class FileItemHelper {
 			// Check hidden file preference
 			boolean showHiddenFiles = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_hidden_files", false);
             for (File file : files){
+				// Test hidden files
 				if (showHiddenFiles || !file.getName().startsWith(".")) {
-					final FileItem item = new FileItem();
-					item.setName(file.getName());
-					item.setPath(file.getAbsolutePath());
-					item.setIsDirectory(file.isDirectory());
-					fileList.add(item);
+					// Test directories
+					if (includeDirectories || !file.isDirectory()) {
+						final FileItem item = new FileItem();
+						item.setName(file.getName());
+						item.setPath(file.getAbsolutePath());
+						item.setIsDirectory(file.isDirectory());
+						fileList.add(item);
+					}
 				}
             }
         }
