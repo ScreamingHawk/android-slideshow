@@ -27,6 +27,12 @@
 
 	<SwitchPreference
 		android:defaultValue="false"
+		android:key="reverse_order"
+		android:summary="@string/pref_description_reverse_order"
+		android:title="@string/pref_title_reverse_order"/>
+
+	<SwitchPreference
+		android:defaultValue="false"
 		android:key="random_order"
 		android:summary="@string/pref_description_random_order"
 		android:title="@string/pref_title_random_order"/>

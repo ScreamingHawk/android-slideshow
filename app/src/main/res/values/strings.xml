@@ -64,6 +64,11 @@
 		shown.
 	</string>
 
+	<string name="pref_title_reverse_order">Reverse order</string>
+	<string name="pref_description_reverse_order">Display the images in the slideshow in reverse
+		order.
+	</string>
+
 	<string name="pref_title_random_order">Random order</string>
 	<string name="pref_description_random_order">Display the images in the slideshow in a random
 		order.

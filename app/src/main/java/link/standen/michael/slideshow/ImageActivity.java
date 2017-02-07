@@ -37,6 +37,7 @@ public class ImageActivity extends BaseActivity {
 	private int firstImagePosition;
 
 	private static boolean STOP_ON_COMPLETE;
+	private static boolean REVERSE_ORDER;
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 
@@ -44,7 +45,7 @@ public class ImageActivity extends BaseActivity {
 	private final Runnable mSlideshowRunnable = new Runnable() {
 		@Override
 		public void run() {
-			nextImage();
+			followingImage();
 			if (!(STOP_ON_COMPLETE && imagePosition == firstImagePosition)) {
 				mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
 			} else {
@@ -118,6 +119,7 @@ public class ImageActivity extends BaseActivity {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		SLIDESHOW_DELAY = (int) Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000;
 		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
+		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 
 		// Gesture / click detection
@@ -146,8 +148,8 @@ public class ImageActivity extends BaseActivity {
 		fileList = new FileItemHelper(this).getFileList(currentPath);
 		if (RANDOM_ORDER){
 			Collections.shuffle(fileList);
-			// Call nextImage to ensure an image file is selected as the first file
-			nextImage();
+			// Call followingImage to ensure an image file is selected as the first file
+			followingImage();
 		} else {
 			// This is in the else as nextImage contains a call to loadImage and we don't want to
 			// duplicate the call
@@ -196,6 +198,14 @@ public class ImageActivity extends BaseActivity {
 		loadImage();
 	}
 
+	private void followingImage(){
+		if (REVERSE_ORDER) {
+			previousImage();
+		} else {
+			nextImage();
+		}
+	}
+
 	/**
 	 * Tests if the current file item is an image.
 	 * @return True if image, false otherwise.
@@ -228,8 +238,8 @@ public class ImageActivity extends BaseActivity {
 					fileList.remove(item);
 					Toast.makeText(ImageActivity.this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
 					// Show next image
-					imagePosition--;
-					nextImage();
+					imagePosition = imagePosition + (REVERSE_ORDER ? 1 : -1);
+					followingImage();
 				} else {
 					Toast.makeText(ImageActivity.this, R.string.image_not_deleted, Toast.LENGTH_SHORT).show();
 				}
