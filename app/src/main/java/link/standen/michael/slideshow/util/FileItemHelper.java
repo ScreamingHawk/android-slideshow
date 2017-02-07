@@ -20,7 +20,7 @@ import link.standen.michael.slideshow.model.FileItem;
 
 public class FileItemHelper {
 
-    private static final String TAG = "FolderHelper";
+    private static final String TAG = FileItemHelper.class.getName();
 
     public static final String absPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 
@@ -62,17 +62,6 @@ public class FileItemHelper {
         return fileList;
     }
 
-    /**
-     * Loads the thumbnail of the fileitem.
-     */
-    public void loadThumbnail(FileItem item, boolean force){
-        if (item.getIsDirectory()){
-            item.setThumbnail(null);
-        } else {
-            item.setThumbnail(createThumbnail(item, force));
-        }
-    }
-
 	/**
 	 * Creates the thumbnail of the fileitem.
 	 */
@@ -84,10 +73,13 @@ public class FileItemHelper {
 			// Thumbnail should not be loaded.
 			return null;
 		}
-		return ThumbnailUtils.extractThumbnail(
-				BitmapFactory.decodeFile(item.getPath()),
-				(int) context.getResources().getDimension(R.dimen.file_image_width),
-				(int) context.getResources().getDimension(R.dimen.file_image_height));
+		if (!item.getThumbnailAttempted() || item.getHasThumbnail()) {
+			return ThumbnailUtils.extractThumbnail(
+					BitmapFactory.decodeFile(item.getPath()),
+					(int) context.getResources().getDimension(R.dimen.file_image_width),
+					(int) context.getResources().getDimension(R.dimen.file_image_height));
+		}
+		return null;
 	}
 
 	/**

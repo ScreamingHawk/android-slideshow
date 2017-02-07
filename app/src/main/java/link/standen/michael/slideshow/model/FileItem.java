@@ -13,8 +13,18 @@ public class FileItem implements Comparable<FileItem> {
 	private String name;
 	private String path;
 	private Boolean isDirectory;
-	private Bitmap thumbnail;
+	private transient Bitmap thumbnail;
+	/**
+	 * At some point a thumbnail has been successfully generated.
+	 */
+	private Boolean hasThumbnail = Boolean.FALSE;
+	/**
+	 * At some point a thumbnail has been attempted (successfully or otherwise).
+	 */
 	private Boolean thumbnailAttempted = Boolean.FALSE;
+	/**
+	 * File passes the MIME type test.
+	 */
 	private Boolean isImage;
 
 	private FileItemViewHolder holder;
@@ -58,6 +68,9 @@ public class FileItem implements Comparable<FileItem> {
 
 	public void setThumbnail(Bitmap thumbnail) {
 		this.thumbnail = thumbnail;
+		if (thumbnail != null){
+			hasThumbnail = true;
+		}
 		this.thumbnailAttempted = true;
 		setHolderImageView();
 	}
@@ -73,7 +86,7 @@ public class FileItem implements Comparable<FileItem> {
 			} else if (thumbnail != null){
 				// Image thumb
 				holder.getImageView().setImageBitmap(thumbnail);
-			} else if (thumbnailAttempted){
+			} else if (thumbnailAttempted && !hasThumbnail){
 				// Something unknown
 				holder.getImageView().setImageResource(R.mipmap.unknown);
 			} else {
@@ -105,5 +118,13 @@ public class FileItem implements Comparable<FileItem> {
 
 	public void setIsImage(Boolean isImage) {
 		this.isImage = isImage;
+	}
+
+	public Boolean getHasThumbnail() {
+		return hasThumbnail;
+	}
+
+	public void setHasThumbnail(Boolean hasThumbnail) {
+		this.hasThumbnail = hasThumbnail;
 	}
 }

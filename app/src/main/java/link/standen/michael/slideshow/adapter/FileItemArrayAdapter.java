@@ -3,8 +3,8 @@ package link.standen.michael.slideshow.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.concurrent.RejectedExecutionException;
 
 import link.standen.michael.slideshow.R;
 import link.standen.michael.slideshow.model.FileItem;
@@ -23,6 +24,8 @@ import link.standen.michael.slideshow.util.FileItemHelper;
  * Class for managing lists of file items.
  */
 public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
+
+	private static final String TAG = FileItemArrayAdapter.class.getName();
 
 	private Context context;
 	private int resourceId;
@@ -60,7 +63,14 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			item.setHolder(holder);
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
-			new ThumbnailTask(item).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+			if (item.getThumbnail() == null){
+				try {
+					new ThumbnailTask(item).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+				} catch (RejectedExecutionException ex){
+					// Not important, log and continue
+					Log.e(TAG, "Rejected thumbnail job", ex);
+				}
+			}
 			item.setHolderImageView();
 		}
 		return view;
