@@ -27,8 +27,6 @@ public class MainActivity extends BaseActivity {
 
 	private static final String TAG = MainActivity.class.getName();
 
-	private ListView listView;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -82,7 +80,7 @@ public class MainActivity extends BaseActivity {
 					getResources().getString(R.string.inaccessible)));
 		}
 
-		listView = (ListView) findViewById(android.R.id.list);
+		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
@@ -124,7 +122,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * Permissions checker
 	 */
-	public boolean isStoragePermissionGranted() {
+	private boolean isStoragePermissionGranted() {
 		if (Build.VERSION.SDK_INT >= 23) {
 			if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 				Log.v(TAG,"Permission is granted");

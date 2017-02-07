@@ -27,9 +27,9 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 
 	private static final String TAG = FileItemArrayAdapter.class.getName();
 
-	private Context context;
-	private int resourceId;
-	private List<FileItem> items;
+	private final Context context;
+	private final int resourceId;
+	private final List<FileItem> items;
 
 	public FileItemArrayAdapter(Context context, int resourceId, List<FileItem> items) {
 		super(context, resourceId, items);
@@ -80,7 +80,7 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 	 * Background task for loading thumbnails
 	 */
 	private class ThumbnailTask extends AsyncTask<Object, Void, Bitmap> {
-		private FileItem item;
+		private final FileItem item;
 
 		private ThumbnailTask(FileItem item) {
 			this.item = item;
@@ -102,7 +102,7 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			if (item.getIsDirectory() || item.getThumbnailAttempted()){
 				return null;
 			}
-			return new FileItemHelper(context).createThumbnail(item, false);
+			return new FileItemHelper(context).createThumbnail(item);
 		}
 	}
 }

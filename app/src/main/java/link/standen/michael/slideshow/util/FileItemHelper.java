@@ -91,11 +91,11 @@ public class FileItemHelper {
 	/**
 	 * Creates the thumbnail of the fileitem.
 	 */
-	public Bitmap createThumbnail(FileItem item, boolean force){
+	public Bitmap createThumbnail(FileItem item){
 		if (item.getIsDirectory()){
 			return null;
 		}
-		if (!force && !SHOW_THUMBNAILS){
+		if (!SHOW_THUMBNAILS){
 			// Thumbnail should not be loaded.
 			return null;
 		}

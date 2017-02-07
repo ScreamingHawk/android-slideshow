@@ -241,8 +241,7 @@ public class ImageActivity extends BaseActivity {
 	 * @return True if image, false otherwise.
      */
 	private boolean testCurrentIsImage(){
-		FileItem item = fileList.get(imagePosition);
-		return new FileItemHelper(this).isImage(item);
+		return new FileItemHelper(this).isImage(fileList.get(imagePosition));
 	}
 
 	private void loadImage(){
@@ -355,7 +354,7 @@ public class ImageActivity extends BaseActivity {
 	/**
 	 * Permissions checker
 	 */
-	public boolean isStoragePermissionGranted() {
+	private boolean isStoragePermissionGranted() {
 		if (Build.VERSION.SDK_INT >= 23) {
 			if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 				Log.v(TAG,"Permission is granted");

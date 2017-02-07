@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/content_main"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
@@ -8,7 +9,8 @@
 	android:paddingBottom="@dimen/list_item_padding_vertical"
 	android:paddingLeft="@dimen/list_item_padding_horizontal"
 	android:paddingRight="@dimen/list_item_padding_horizontal"
-	android:orientation="horizontal">
+	android:orientation="horizontal"
+	tools:ignore="RtlHardcoded">
 
 	<ImageView
 		android:id="@+id/file_image"
