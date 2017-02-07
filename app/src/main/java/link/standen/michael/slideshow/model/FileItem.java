@@ -29,6 +29,8 @@ public class FileItem implements Comparable<FileItem> {
 
 	private FileItemViewHolder holder;
 
+	private boolean isSpecial = false;
+
 	public String getName() {
 		return name;
 	}
@@ -62,6 +64,12 @@ public class FileItem implements Comparable<FileItem> {
 		}
 	}
 
+	@Override
+	public boolean equals(Object other){
+		return !(other == null || !(other instanceof FileItem)) &&
+				this.getPath().equals(((FileItem)other).getPath());
+	}
+
 	public Bitmap getThumbnail() {
 		return thumbnail;
 	}
@@ -80,7 +88,10 @@ public class FileItem implements Comparable<FileItem> {
 	 */
 	public void setHolderImageView(){
 		if (holder != null && holder.getFileItem() == this){
-			if (isDirectory) {
+			if (isSpecial) {
+				// Special
+				holder.getImageView().setImageResource(R.mipmap.special_folder);
+			} else if (isDirectory) {
 				// Directory
 				holder.getImageView().setImageResource(R.mipmap.folder);
 			} else if (thumbnail != null){
@@ -126,5 +137,13 @@ public class FileItem implements Comparable<FileItem> {
 
 	public void setHasThumbnail(Boolean hasThumbnail) {
 		this.hasThumbnail = hasThumbnail;
+	}
+
+	public boolean getIsSpecial() {
+		return isSpecial;
+	}
+
+	public void setIsSpecial(boolean isSpecial) {
+		this.isSpecial = isSpecial;
 	}
 }

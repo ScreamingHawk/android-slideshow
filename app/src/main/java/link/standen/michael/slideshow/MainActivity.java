@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -56,6 +57,23 @@ public class MainActivity extends BaseActivity {
 	private void updateListView(){
 		fileList = new FileItemHelper(this).getFileList(currentPath);
 
+		if (isCurrentPathRoot()) {
+			// Put a star on special folders
+			FileItemHelper fileItemHelper = new FileItemHelper(this);
+			String[] specialPaths = new String[]{
+					Environment.DIRECTORY_DCIM,
+					Environment.DIRECTORY_PICTURES
+			};
+			for (String path : specialPaths) {
+				FileItem specialItem = fileItemHelper.createFileItem(
+						Environment.getExternalStoragePublicDirectory(path));
+				int index = fileList.indexOf(specialItem);
+				if (index != -1) {
+					fileList.get(index).setIsSpecial(true);
+				}
+			}
+		}
+
 		// Set title
 		this.setTitle(currentPath.replace(FileItemHelper.absPath, "") + File.separatorChar);
 		if (!new File(currentPath).canRead()){
@@ -86,12 +104,16 @@ public class MainActivity extends BaseActivity {
 		});
 	}
 
+	private boolean isCurrentPathRoot(){
+		return currentPath.equals(FileItemHelper.absPath);
+	}
+
 	/**
 	 * Goes up a directory, unless at the top, then exits
 	 */
 	@Override
 	public void onBackPressed(){
-		if (currentPath.equals(FileItemHelper.absPath)) {
+		if (isCurrentPathRoot()) {
 			super.onBackPressed();
 		} else {
 			currentPath = currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));

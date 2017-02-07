@@ -68,11 +68,7 @@ public class FileItemHelper {
 				if (showHiddenFiles || !file.getName().startsWith(".")) {
 					// Test directories
 					if (includeDirectories || !file.isDirectory()) {
-						final FileItem item = new FileItem();
-						item.setName(file.getName());
-						item.setPath(file.getAbsolutePath());
-						item.setIsDirectory(file.isDirectory());
-						fileList.add(item);
+						fileList.add(createFileItem(file));
 					}
 				}
             }
@@ -80,6 +76,17 @@ public class FileItemHelper {
         Collections.sort(fileList);
         return fileList;
     }
+
+	/**
+	 * Create a fileitem from the given file.
+	 */
+	public FileItem createFileItem(File file){
+		FileItem item = new FileItem();
+		item.setName(file.getName());
+		item.setPath(file.getAbsolutePath());
+		item.setIsDirectory(file.isDirectory());
+		return item;
+	}
 
 	/**
 	 * Creates the thumbnail of the fileitem.
