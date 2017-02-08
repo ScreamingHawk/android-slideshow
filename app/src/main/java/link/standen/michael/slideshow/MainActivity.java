@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -26,6 +27,9 @@ import link.standen.michael.slideshow.util.FileItemHelper;
 public class MainActivity extends BaseActivity {
 
 	private static final String TAG = MainActivity.class.getName();
+
+	private static final String LIST_STATE = "listState";
+	private Parcelable listState;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,27 @@ public class MainActivity extends BaseActivity {
 			updateListView();
 		}
 		// else wait for permission handler to continue
+	}
+
+	@Override
+	protected void onResume(){
+		super.onResume();
+		if (listState != null) {
+			((ListView) findViewById(android.R.id.list)).onRestoreInstanceState(listState);
+		}
+		listState = null;
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState){
+		super.onRestoreInstanceState(savedInstanceState);
+		listState = savedInstanceState.getParcelable(LIST_STATE);
+	}
+
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		listState = ((ListView) findViewById(android.R.id.list)).onSaveInstanceState();
+		outState.putParcelable(LIST_STATE, listState);
 	}
 
 	private void updateListView(){
