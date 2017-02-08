@@ -20,7 +20,7 @@
 	<string name="image_not_deleted">Unable to delete image</string>
 
 	<string name="share_button">Share</string>
-	<string name="share_via">Share via...</string>
+	<string name="share_via">Share via&#8230;</string>
 
 	<!-- Image descriptions -->
 	<string name="image_description">Image</string>
@@ -40,6 +40,9 @@
 	</string>
 	<string name="credits_content4">This application is completely free and open source; licensed
 		under the <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">Thank you to <a href="https://github.com/psyanite">Yan Tsui</a>
+		for testing and designing the &appname; icon.
 	</string>
 
 	<!-- Settings -->
