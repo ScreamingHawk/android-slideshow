@@ -19,6 +19,9 @@
 	<string name="image_deleted">Image deleted</string>
 	<string name="image_not_deleted">Unable to delete image</string>
 
+	<string name="share_button">Share</string>
+	<string name="share_via">Share via...</string>
+
 	<!-- Image descriptions -->
 	<string name="image_description">Image</string>
 	<string name="logo_description">Logo</string>

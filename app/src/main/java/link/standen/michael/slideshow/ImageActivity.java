@@ -3,9 +3,11 @@ package link.standen.michael.slideshow;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -149,6 +151,14 @@ public class ImageActivity extends BaseActivity {
 			}
 		});
 
+		// Congifure the share button
+		findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				shareImage();
+			}
+		});
+
 		// Get starting values
 		currentPath = getIntent().getStringExtra("currentPath");
 		String imagePath = getIntent().getStringExtra("imagePath");
@@ -280,6 +290,17 @@ public class ImageActivity extends BaseActivity {
 			}
 		});
 		builder.create().show();
+	}
+
+	/**
+	 * Share the current image
+	 */
+	private void shareImage(){
+		FileItem item = fileList.get(imagePosition);
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType(new FileItemHelper(this).getImageMimeType(item));
+		intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(item.getPath())));
+		startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_via)));
 	}
 
 	@Override

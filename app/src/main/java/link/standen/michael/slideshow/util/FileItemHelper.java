@@ -118,8 +118,15 @@ public class FileItemHelper {
 		if (item.getIsImage() != null){
 			return item.getIsImage();
 		}
-		String mimeType = URLConnection.guessContentTypeFromName(item.getPath());
+		String mimeType = getImageMimeType(item);
 		item.setIsImage(mimeType != null && mimeType.startsWith("image"));
 		return item.getIsImage();
+	}
+
+	/**
+	 * Returns the mime type of the given item.
+	 */
+	public String getImageMimeType(FileItem item){
+		return URLConnection.guessContentTypeFromName(item.getPath());
 	}
 }
