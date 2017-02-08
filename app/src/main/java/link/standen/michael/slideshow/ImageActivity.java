@@ -151,7 +151,7 @@ public class ImageActivity extends BaseActivity {
 			}
 		});
 
-		// Congifure the share button
+		// Configure the share button
 		findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -192,6 +192,19 @@ public class ImageActivity extends BaseActivity {
 		} else {
 			loadPreferences();
 		}
+
+		if (!mVisible){
+			// Start slideshow if no UI
+			startSlideshow();
+		}
+	}
+
+	@Override
+	protected void onPause(){
+		super.onPause();
+
+		// Stop slideshow
+		stopSlideshow();
 	}
 
 	/**
