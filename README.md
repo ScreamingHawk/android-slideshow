@@ -1,6 +1,11 @@
 # Android Slideshow
 A simple slideshow application for your mobile.
 
+<a href="https://f-droid.org/repository/browse/?fdid=link.standen.michael.slideshow" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+<a href="https://play.google.com/store/apps/details?id=link.standen.michael.slideshow" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/></a>
+
 ## Description
 Now you can view files on your devices with ease!
 
