@@ -51,7 +51,7 @@ public class ImageActivity extends BaseActivity {
 		public void run() {
 			followingImage();
 			if (!(STOP_ON_COMPLETE && imagePosition == firstImagePosition)) {
-				mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
+				queueSlide();
 			} else {
 				show();
 			}
@@ -133,11 +133,13 @@ public class ImageActivity extends BaseActivity {
 			@Override
 			public void onSwipeLeft() {
 				nextImage();
+				startSlideshowIfFullscreen();
 			}
 
 			@Override
 			public void onSwipeRight() {
 				previousImage();
+				startSlideshowIfFullscreen();
 			}
 		});
 
@@ -192,11 +194,8 @@ public class ImageActivity extends BaseActivity {
 		} else {
 			loadPreferences();
 		}
-
-		if (!mVisible){
-			// Start slideshow if no UI
-			startSlideshow();
-		}
+		// Start slideshow if no UI
+		startSlideshowIfFullscreen();
 	}
 
 	@Override
@@ -371,10 +370,26 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	/**
-	 * Starts the slideshow
+	 * Starts or restarts the slideshow if the view is in fullscreen mode. 
+	 */
+	private void startSlideshowIfFullscreen(){
+		if (!mVisible){
+			startSlideshow();
+		}
+	}
+
+	/**
+	 * Starts or restarts the slideshow
 	 */
 	private void startSlideshow(){
 		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
+		queueSlide();
+	}
+
+	/**
+	 * Queue the next slide in the slideshow
+	 */
+	private void queueSlide(){
 		mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
 	}
 
