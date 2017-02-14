@@ -2,9 +2,11 @@
 A simple slideshow application for your mobile.
 
 <a href="https://f-droid.org/repository/browse/?fdid=link.standen.michael.slideshow" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+	<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/>
+</a>
 <a href="https://play.google.com/store/apps/details?id=link.standen.michael.slideshow" target="_blank">
-<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/></a>
+	<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/>
+</a>
 
 ## Description
 Now you can view files on your devices with ease!
@@ -16,6 +18,8 @@ Great for showing off those vacation photos without having to scroll.
 ## Features
 * Select any directory on your phone
 * Automatically begins playing slideshow
+* Tap to pause, then tap to resume
+* Swipe left and right to skip
 * Ability to delete images from within the slideshow
 * Sequential or random display order
 * Configurable delay
