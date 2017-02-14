@@ -222,11 +222,16 @@ public class ImageActivity extends BaseActivity {
 	 * Show the next image.
 	 */
 	private void nextImage(){
-		//TODO What if loop?
+		int current = imagePosition;
 		do {
 			imagePosition++;
 			if (imagePosition >= fileList.size()){
 				imagePosition = 0;
+			}
+			if (imagePosition == current){
+				// Looped. Exit
+				onBackPressed();
+				return;
 			}
 		} while (!testCurrentIsImage());
 		loadImage();
@@ -236,11 +241,16 @@ public class ImageActivity extends BaseActivity {
 	 * Show the previous image.
 	 */
 	private void previousImage(){
-		//TODO What if loop?
+		int current = imagePosition;
 		do {
 			imagePosition--;
 			if (imagePosition < 0){
 				imagePosition = fileList.size() - 1;
+			}
+			if (imagePosition == current){
+				// Looped. Exit
+				onBackPressed();
+				return;
 			}
 		} while (!testCurrentIsImage());
 		loadImage();
@@ -370,7 +380,7 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	/**
-	 * Starts or restarts the slideshow if the view is in fullscreen mode. 
+	 * Starts or restarts the slideshow if the view is in fullscreen mode.
 	 */
 	private void startSlideshowIfFullscreen(){
 		if (!mVisible){
