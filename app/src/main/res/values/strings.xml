@@ -61,8 +61,8 @@
 	</string>
 
 	<string name="pref_title_slide_delay">Slide delay</string>
-	<string name="pref_description_slide_delay">The number of seconds an image will be shown before
-		changing to the next image.
+	<string name="pref_description_slide_delay">Click to change the number of seconds an image will
+		be shown before changing to the next image.
 	</string>
 
 	<string name="pref_title_stop_on_complete">Stop on complete</string>
