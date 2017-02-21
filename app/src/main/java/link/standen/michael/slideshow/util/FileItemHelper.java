@@ -22,8 +22,6 @@ public class FileItemHelper {
 
     private static final String TAG = FileItemHelper.class.getName();
 
-    public static final String absPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-
 	private final Context context;
 
 	// Preferences

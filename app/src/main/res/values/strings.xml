@@ -60,6 +60,12 @@
 		are not.
 	</string>
 
+	<string name="pref_title_use_device_root">Use device root</string>
+	<string name="pref_description_use_device_root">Enable navigation to the root directory of the
+		device. This will enable access to files anywhere on the device, including mounted storage
+		such as SD cards. Note: May require a rooted device to work correctly.
+	</string>
+
 	<string name="pref_title_slide_delay">Slide delay</string>
 	<string name="pref_description_slide_delay">Click to change the number of seconds an image will
 		be shown before changing to the next image.

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -28,6 +29,8 @@ public class MainActivity extends BaseActivity {
 
 	private static final String TAG = MainActivity.class.getName();
 
+	private String rootLocation;
+
 	private static final String LIST_STATE = "listState";
 	private Parcelable listState;
 
@@ -39,7 +42,8 @@ public class MainActivity extends BaseActivity {
 		setSupportActionBar(toolbar);
 
 		// Get path
-		currentPath = FileItemHelper.absPath;
+		updateRootLocation();
+		currentPath = rootLocation;
 		if (getIntent().hasExtra("path")){
 			currentPath = getIntent().getStringExtra("path");
 		}
@@ -59,6 +63,14 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onResume(){
 		super.onResume();
+		// Update the root location in case preferences changed
+		updateRootLocation();
+		if (!currentPath.contains(rootLocation)){
+			// Changed from root to non-root preference while in an upper directory. Reset
+			currentPath = rootLocation;
+			updateListView();
+		}
+		// Restore the list view scroll location
 		if (listState != null) {
 			((ListView) findViewById(android.R.id.list)).onRestoreInstanceState(listState);
 		}
@@ -77,10 +89,21 @@ public class MainActivity extends BaseActivity {
 		outState.putParcelable(LIST_STATE, listState);
 	}
 
+	/**
+	 * Updates the root location depending on preference settings.
+	 */
+	private void updateRootLocation(){
+		if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("use_device_root", false)){
+			rootLocation = "";
+		} else {
+			rootLocation = Environment.getExternalStorageDirectory().getAbsolutePath();
+		}
+	}
+
 	private void updateListView(){
 		fileList = new FileItemHelper(this).getFileList(currentPath);
 
-		if (isCurrentPathRoot()) {
+		if (currentPath.equals(Environment.getExternalStorageDirectory().getAbsolutePath())) {
 			// Put a star on special folders
 			FileItemHelper fileItemHelper = new FileItemHelper(this);
 			String[] specialPaths = new String[]{
@@ -98,7 +121,7 @@ public class MainActivity extends BaseActivity {
 		}
 
 		// Set title
-		this.setTitle(currentPath.replace(FileItemHelper.absPath, "") + File.separatorChar);
+		this.setTitle(currentPath.replace(rootLocation, "") + File.separatorChar);
 		if (!new File(currentPath).canRead()){
 			this.setTitle(String.format("%s %s",
 					getTitle(),
@@ -127,16 +150,12 @@ public class MainActivity extends BaseActivity {
 		});
 	}
 
-	private boolean isCurrentPathRoot(){
-		return currentPath.equals(FileItemHelper.absPath);
-	}
-
 	/**
 	 * Goes up a directory, unless at the top, then exits
 	 */
 	@Override
 	public void onBackPressed(){
-		if (isCurrentPathRoot()) {
+		if (currentPath.equals(rootLocation)) {
 			super.onBackPressed();
 		} else {
 			currentPath = currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));
