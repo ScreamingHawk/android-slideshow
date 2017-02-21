@@ -9,7 +9,6 @@
 	<string name="action_settings">Settings</string>
 	<string name="action_credits">About</string>
 
-	<string name="select_card">Select Storage Device</string>
 	<string name="inaccessible">(inaccessible)</string>
 
 	<string name="title_activity_image">ImageActivity</string>
@@ -49,11 +48,6 @@
 	<!-- Settings -->
 
 	<string name="title_activity_settings">Settings</string>
-
-	<string name="pref_title_show_storage_options">Show storage options</string>
-	<string name="pref_description_show_storage_options">Enable selection of different storage
-		devices, including SD cards. Note: This feature is experimental.
-	</string>
 
 	<string name="pref_title_show_hidden_files">Show hidden files</string>
 	<string name="pref_description_show_hidden_files">Displays files that are hidden by other

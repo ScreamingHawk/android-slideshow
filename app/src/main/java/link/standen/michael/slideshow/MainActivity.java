@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -16,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import link.standen.michael.slideshow.adapter.FileItemArrayAdapter;
 import link.standen.michael.slideshow.model.FileItem;
@@ -30,11 +28,6 @@ public class MainActivity extends BaseActivity {
 
 	private static final String TAG = MainActivity.class.getName();
 
-	/**
-	 * The path of the currently selected storage device.
-	 */
-	private String currentCardPath = "";
-
 	private static final String LIST_STATE = "listState";
 	private Parcelable listState;
 
@@ -46,7 +39,7 @@ public class MainActivity extends BaseActivity {
 		setSupportActionBar(toolbar);
 
 		// Get path
-		currentPath = "";
+		currentPath = FileItemHelper.absPath;
 		if (getIntent().hasExtra("path")){
 			currentPath = getIntent().getStringExtra("path");
 		}
@@ -84,35 +77,10 @@ public class MainActivity extends BaseActivity {
 		outState.putParcelable(LIST_STATE, listState);
 	}
 
-	private boolean getShowStorageOptionPref(){
-		return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("show_storage_options", false);
-	}
+	private void updateListView(){
+		fileList = new FileItemHelper(this).getFileList(currentPath);
 
-	/**
-	 * Updates the list view.
-	 */
-	private void updateListView() {
-		if (currentPath.isEmpty() && !getShowStorageOptionPref()){
-			// Do not show storage options.
-			currentPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-		}
-		if (currentPath.isEmpty()){
-			currentCardPath = "";
-			fileList = new FileItemHelper(this).getStorageList();
-		} else {
-			if (currentCardPath.isEmpty()){
-				currentCardPath = currentPath;
-			}
-			fileList = new FileItemHelper(this).getFileList(currentPath);
-		}
-		updateFileListView();
-	}
-
-	/**
-	 * Updates the list view with a list of files.
-	 */
-	private void updateFileListView() {
-		if (isCurrentPathCardRoot()) {
+		if (isCurrentPathRoot()) {
 			// Put a star on special folders
 			FileItemHelper fileItemHelper = new FileItemHelper(this);
 			String[] specialPaths = new String[]{
@@ -130,15 +98,11 @@ public class MainActivity extends BaseActivity {
 		}
 
 		// Set title
-		if (currentCardPath.isEmpty()){
-			this.setTitle(getResources().getString(R.string.select_card));
-		} else {
-			this.setTitle(currentPath.replace(currentCardPath, "") + File.separatorChar);
-			if (!new File(currentPath).canRead()) {
-				this.setTitle(String.format("%s %s",
-						getTitle(),
-						getResources().getString(R.string.inaccessible)));
-			}
+		this.setTitle(currentPath.replace(FileItemHelper.absPath, "") + File.separatorChar);
+		if (!new File(currentPath).canRead()){
+			this.setTitle(String.format("%s %s",
+					getTitle(),
+					getResources().getString(R.string.inaccessible)));
 		}
 
 		ListView listView = (ListView) findViewById(android.R.id.list);
@@ -163,8 +127,8 @@ public class MainActivity extends BaseActivity {
 		});
 	}
 
-	private boolean isCurrentPathCardRoot(){
-		return currentCardPath.equals(currentPath);
+	private boolean isCurrentPathRoot(){
+		return currentPath.equals(FileItemHelper.absPath);
 	}
 
 	/**
@@ -172,17 +136,10 @@ public class MainActivity extends BaseActivity {
 	 */
 	@Override
 	public void onBackPressed(){
-		if (currentCardPath.isEmpty() || (isCurrentPathCardRoot() && !getShowStorageOptionPref())) {
-			// Back on card select, or card root and don't show card select
+		if (isCurrentPathRoot()) {
 			super.onBackPressed();
 		} else {
-			if (isCurrentPathCardRoot()) {
-				// Move from card root to card select
-				currentCardPath = "";
-				currentPath = "";
-			} else {
-				currentPath = currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));
-			}
+			currentPath = currentPath.substring(0, currentPath.lastIndexOf(File.separatorChar));
 			updateListView();
 		}
 	}
