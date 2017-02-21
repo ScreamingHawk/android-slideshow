@@ -2,6 +2,12 @@
 
 	<SwitchPreference
 		android:defaultValue="false"
+		android:key="show_storage_options"
+		android:summary="@string/pref_description_show_storage_options"
+		android:title="@string/pref_title_show_storage_options"/>
+
+	<SwitchPreference
+		android:defaultValue="false"
 		android:key="show_hidden_files"
 		android:summary="@string/pref_description_show_hidden_files"
 		android:title="@string/pref_title_show_hidden_files"/>
