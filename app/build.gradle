@@ -10,7 +10,6 @@ android {
         versionCode 12
         versionName "1.1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -19,7 +18,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -32,4 +30,11 @@ dependencies {
     compile 'com.android.support:support-v4:25.1.1'
     compile 'com.android.support:support-vector-drawable:25.1.1'
     testCompile 'junit:junit:4.12'
+}
+
+android {
+    lintOptions {
+        disable 'MissingTranslation'
+        disable 'ExtraTranslation'
+    }
 }
