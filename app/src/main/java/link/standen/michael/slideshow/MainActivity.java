@@ -102,10 +102,10 @@ public class MainActivity extends BaseActivity {
 
 	private void updateListView(){
 		fileList = new FileItemHelper(this).getFileList(currentPath);
+		FileItemHelper fileItemHelper = new FileItemHelper(this);
 
 		if (currentPath.equals(Environment.getExternalStorageDirectory().getAbsolutePath())) {
 			// Put a star on special folders
-			FileItemHelper fileItemHelper = new FileItemHelper(this);
 			String[] specialPaths = new String[]{
 					Environment.DIRECTORY_DCIM,
 					Environment.DIRECTORY_PICTURES
@@ -126,7 +126,12 @@ public class MainActivity extends BaseActivity {
 			this.setTitle(String.format("%s %s",
 					getTitle(),
 					getResources().getString(R.string.inaccessible)));
+
+			// Add Go Home item
+			fileList.clear();
+			fileList.add(fileItemHelper.createGoHomeFileItem());
 		}
+
 
 		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));

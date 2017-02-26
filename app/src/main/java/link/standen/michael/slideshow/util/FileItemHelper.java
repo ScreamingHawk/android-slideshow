@@ -87,6 +87,18 @@ public class FileItemHelper {
 	}
 
 	/**
+	 * Create a special file item for a folder linking to the default External Storage location.
+	 */
+	public FileItem createGoHomeFileItem(){
+		FileItem item = new FileItem();
+		item.setName(context.getResources().getString(R.string.go_home_folder));
+		item.setPath(Environment.getExternalStorageDirectory().getAbsolutePath());
+		item.setIsDirectory(true);
+		item.setIsSpecial(true);
+		return item;
+	}
+
+	/**
 	 * Creates the thumbnail of the fileitem.
 	 */
 	public Bitmap createThumbnail(FileItem item){

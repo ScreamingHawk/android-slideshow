@@ -9,8 +9,11 @@
 	<string name="action_settings">Settings</string>
 	<string name="action_credits">About</string>
 
+	<!-- List -->
 	<string name="inaccessible">(inaccessible)</string>
+	<string name="go_home_folder">Stuck? Click to go Home</string>
 
+	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>
 
 	<string name="delete_button">Delete</string>
