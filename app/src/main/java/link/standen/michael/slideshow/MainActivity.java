@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
 
 		// Get path
 		updateRootLocation();
-		currentPath = rootLocation;
+		currentPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 		if (getIntent().hasExtra("path")){
 			currentPath = getIntent().getStringExtra("path");
 		}
