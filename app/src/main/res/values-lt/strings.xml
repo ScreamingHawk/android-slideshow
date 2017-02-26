@@ -75,19 +75,4 @@
 	<string name="pref_title_random_order">Atsitiktinė tvarka</string>
 	<string name="pref_description_random_order">Rodyti nuotraukas skaidrių rėžime atsitiktine tvarka.
 	</string>
-
-	<!--
-	<string name="pref_title_display_name">Rodyti pavadinimą</string>
-	<string name="pref_default_display_name">John Smith</string>
-	<string name="pref_title_add_friends_to_messages">Pridėti draugus į žinutes</string>
-	<string-array name="pref_example_list_titles">
-		<item>Visada</item>
-		<item>Kai įmanoma</item>
-		<item>Niekada</item>
-	</string-array>
-	<string-array name="pref_example_list_values">
-		<item>1</item>
-		<item>0</item>
-		<item>-1</item>
-	</string-array>-->
 </resources>
