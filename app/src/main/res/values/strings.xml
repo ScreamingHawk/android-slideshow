@@ -25,6 +25,10 @@
 	<string name="share_button">Share</string>
 	<string name="share_via">Share via&#8230;</string>
 
+	<string name="image_detail_dimensions">Dimensions: %1$dx%2$d</string>
+	<string name="image_detail_size">File Size: %1$s</string>
+	<string name="image_detail_modified">Modified: %1$s</string>
+
 	<!-- Image descriptions -->
 	<string name="image_description">Image</string>
 	<string name="logo_description">Logo</string>
@@ -72,6 +76,10 @@
 	<string name="pref_title_slide_delay">Slide delay</string>
 	<string name="pref_description_slide_delay">Click to change the number of seconds an image will
 		be shown before changing to the next image.
+	</string>
+
+	<string name="pref_title_image_details">Show image details</string>
+	<string name="pref_description_image_details">Overlay image details during slideshow.
 	</string>
 
 	<string name="pref_title_stop_on_complete">Stop on complete</string>

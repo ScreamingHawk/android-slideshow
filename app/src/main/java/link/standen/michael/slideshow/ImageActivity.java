@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
@@ -15,9 +16,12 @@ import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
+import android.text.format.DateFormat;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -44,6 +48,7 @@ public class ImageActivity extends BaseActivity {
 	private static boolean REVERSE_ORDER;
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
+	private static boolean IMAGE_DETAILS;
 
 	private final Handler mSlideshowHandler = new Handler();
 	private final Runnable mSlideshowRunnable = new Runnable() {
@@ -64,7 +69,7 @@ public class ImageActivity extends BaseActivity {
 	 */
 	private static final int UI_ANIMATION_DELAY = 300;
 	private final Handler mHideHandler = new Handler();
-	private View mContentView;
+	private ImageView mContentView;
 	private final Runnable mHidePart2Runnable = new Runnable() {
 		@SuppressLint("InlinedApi")
 		@Override
@@ -80,11 +85,15 @@ public class ImageActivity extends BaseActivity {
 					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 					| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+			if (IMAGE_DETAILS) {
+				mDetailsView.setVisibility(View.VISIBLE);
+			}
 
 			// Start slideshow
 			startSlideshow();
 		}
 	};
+	private View mDetailsView;
 	private View mControlsView;
 	private final Runnable mShowPart2Runnable = new Runnable() {
 		@Override
@@ -117,7 +126,8 @@ public class ImageActivity extends BaseActivity {
 
 		mVisible = true;
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
-		mContentView = findViewById(R.id.fullscreen_content);
+		mContentView = (ImageView) findViewById(R.id.fullscreen_content);
+		mDetailsView = findViewById(R.id.image_details);
 
 		loadPreferences();
 		// Stop resume from reloading the same settings
@@ -216,6 +226,7 @@ public class ImageActivity extends BaseActivity {
 		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
+		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
 	}
 
 	/**
@@ -279,7 +290,24 @@ public class ImageActivity extends BaseActivity {
 	private void loadImage(){
 		FileItem item = fileList.get(imagePosition);
 		setTitle(item.getName());
-		((ImageView)findViewById(R.id.fullscreen_content)).setImageBitmap(BitmapFactory.decodeFile(item.getPath()));
+		Bitmap image = BitmapFactory.decodeFile(item.getPath());
+		mContentView.setImageBitmap(image);
+
+		if (IMAGE_DETAILS) {
+			// Update image details
+			File file = new File(item.getPath());
+			// Dimensions
+			((TextView)findViewById(R.id.image_detail_dimensions)).setText(getResources().getString(
+					R.string.image_detail_dimensions, image.getWidth(), image.getHeight()));
+			// Size
+			String size = Formatter.formatShortFileSize(this, file.length());
+			((TextView)findViewById(R.id.image_detail_size)).setText(getResources().getString(
+					R.string.image_detail_size, size));
+			// Modified
+			((TextView)findViewById(R.id.image_detail_modified)).setText(getResources().getString(
+					R.string.image_detail_modified,
+					DateFormat.getDateFormat(this).format(file.lastModified())));
+		}
 	}
 
 	/**
@@ -363,6 +391,7 @@ public class ImageActivity extends BaseActivity {
 		// Show the system bar
 		mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+		mDetailsView.setVisibility(View.GONE);
 		mVisible = true;
 
 		// Schedule a runnable to display UI elements after a delay

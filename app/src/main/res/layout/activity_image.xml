@@ -5,9 +5,6 @@
 			 android:background="@color/image_background"
 			 tools:context="link.standen.michael.slideshow.ImageActivity">
 
-	<!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
 	<ImageView
 		android:id="@+id/fullscreen_content"
 		android:layout_width="match_parent"
@@ -15,6 +12,35 @@
 		android:gravity="center"
 		android:keepScreenOn="true"
 		android:contentDescription="@string/image_description"/>
+
+	<!-- Image Details Overlay -->
+	<LinearLayout
+		android:id="@+id/image_details"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|start"
+		android:orientation="vertical"
+		android:visibility="gone"
+		android:background="@color/black_overlay"
+		android:padding="@dimen/overlay_padding">
+
+		<TextView
+			android:id="@+id/image_detail_dimensions"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/primary"/>
+		<TextView
+			android:id="@+id/image_detail_size"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/primary"/>
+		<TextView
+			android:id="@+id/image_detail_modified"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/primary"/>
+
+	</LinearLayout>
 
 	<!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
