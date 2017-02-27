@@ -7,8 +7,8 @@ android {
         applicationId "link.standen.michael.slideshow"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 13
-        versionName "1.2.0"
+        versionCode 14
+        versionName "1.2.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -17,6 +17,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //noinspection GroovyMissingReturnStatement
+    lintOptions {
+        disable 'MissingTranslation'
+        disable 'ExtraTranslation'
     }
 }
 
@@ -30,11 +35,4 @@ dependencies {
     compile 'com.android.support:support-v4:25.2.0'
     compile 'com.android.support:support-vector-drawable:25.2.0'
     testCompile 'junit:junit:4.12'
-}
-
-android {
-    lintOptions {
-        disable 'MissingTranslation'
-        disable 'ExtraTranslation'
-    }
 }
