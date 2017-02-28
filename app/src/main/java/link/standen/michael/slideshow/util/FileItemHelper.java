@@ -110,10 +110,16 @@ public class FileItemHelper {
 			return null;
 		}
 		if (!item.getThumbnailAttempted() || item.getHasThumbnail()) {
-			return ThumbnailUtils.extractThumbnail(
-					BitmapFactory.decodeFile(item.getPath()),
-					THUMBNAIL_IMAGE_WIDTH,
-					THUMBNAIL_IMAGE_HEIGHT);
+			try {
+				return ThumbnailUtils.extractThumbnail(
+						BitmapFactory.decodeFile(item.getPath()),
+						THUMBNAIL_IMAGE_WIDTH,
+						THUMBNAIL_IMAGE_HEIGHT);
+			} catch (OutOfMemoryError e){
+				// Ignore. Process will try again automatically.
+				item.setThumbnailAttempted(false);
+				item.setHasThumbnail(false);
+			}
 		}
 		return null;
 	}
