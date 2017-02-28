@@ -8,10 +8,12 @@
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Nustatymai</string>
 	<string name="action_credits">Apie</string>
-
-	<string name="select_card">Pasirinkite Atmintinės įrenginį</string>
+	
+	<!-- List -->
 	<string name="inaccessible">(nepasiekiama)</string>
-
+	<string name="go_home_folder">Užstrigo? Paspauskite, kad grįžti įpradžią</string>
+	
+	<!-- Slideshow -->
 	<string name="title_activity_image">Nuotraukų veiksena</string>
 
 	<string name="delete_button">Ištrinti</string>
@@ -22,6 +24,10 @@
 
 	<string name="share_button">Pasidalinti</string>
 	<string name="share_via">Pasidalinti per&#8230;</string>
+	
+	<string name="image_detail_dimensions">Matmenys: %1$dx%2$d</string>
+	<string name="image_detail_size">Bylos dydis: %1$s</string>
+	<string name="image_detail_modified">Pakeista: %1$s</string>
 
 	<!-- Image descriptions -->
 	<string name="image_description">Nuotrauka</string>
@@ -30,15 +36,17 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Apie &appname;</string>
 	<string name="credits_creator">sukūrė <a href="http://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow yra paprasta programėlė nuotraukų peržiūrai Jūsų telefone.
+	<string name="credits_content1">Slideshow yra paprasta programėlė nuotraukų peržiūrai Jūsų 
+		telefone.
 	</string>
 	<string name="credits_content2">Be jokių ypatingų priedų, ši programėlė yra pati papraščiausia
 		skaidrių programėlė iš visų esančių.
 	</string>
-	<string name="credits_content3">You can view the source code, log bugs or request features on
+	<string name="credits_content3">Jūs galite peržiūrėti išeities kodus, klaidų įrašus ar siūlomus papildymus
 		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
 	</string>
-	<string name="credits_content4">Ši programėlė yra visiškai nemokama ir atviro kodo; licenzijuota pagal<a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	<string name="credits_content4">Ši programėlė yra visiškai nemokama ir atviro kodo; licenzijuota
+		pagal<a href="https://tldrlegal.com/license/mit-license">MIT licenziją</a>.
 	</string>
 	<string name="credits_content5">Ačiū tau<a href="https://github.com/psyanite">Yan Tsui</a>
 		už &appname; tesatavimą ir ikonėlės dizainą.
@@ -47,32 +55,45 @@
 	<!-- Settings -->
 
 	<string name="title_activity_settings">Nustatymai</string>
-
-	<string name="pref_title_show_storage_options">Rodyti atmintinės parinktis</string>
-	<string name="pref_description_show_storage_options">Įgalinti įvairių atminties įrenginių pasirinkimą, įskaitant micro-SD kortelių. Pastaba: Ši ypatybė yra eksperimentinė.
-	</string>
-
+	
 	<string name="pref_title_show_hidden_files">Rodyti paslėptas bylas</string>
-	<string name="pref_description_show_hidden_files">Parodo bylas, kurios yra paslėptos kitose failų tvarkymo programos.
+	<string name="pref_description_show_hidden_files">Parodo bylas, kurios yra paslėptos kitose 
+		failų tvarkymo programose.
 	</string>
-
+	
 	<string name="pref_title_show_thumbnails">Rodyti miniatiūras</string>
-	<string name="pref_description_show_thumbnails">Rodo miniatiūrines nuotraukas. Išjungus šią ypatybę padidėja efektyvumas, tačiau Jūs negalėsite matyti kokia tai byla ar tai nuotrauka ar ne.
+	<string name="pref_description_show_thumbnails">Rodo miniatiūrines nuotraukas. Išjungus šią ypatybę
+		padidėja efektyvumas, tačiau Jūs negalėsite matyti kokia tai byla ar tai nuotrauka 
+		ar ne.
 	</string>
 
+	<string name="pref_title_use_device_root">Naudoti įrenginio šakninį aplankalą</string>
+	<string name="pref_description_use_device_root">Įgalinti priėjimą prie įrenginio šakninio 
+		aplankalo. Tai įgalins priėjimą prie bet kurių bylų esančių įrenginyje, Įskaitant prijungtus atminties 
+		įrenginius, kaip sd korteles. Pastaba: kad tinkamai veiktų galima būti reikalaujama, kad įrenginys būtų su įgalintu šakniniu rėžimu.
+	</string>
+	
 	<string name="pref_title_slide_delay">Skaidrės užlaikymas</string>
-	<string name="pref_description_slide_delay">Paspauskite, kad pakeisti sekundžių kiekį, po kurio bus ma kita nuotrauka.
+	<string name="pref_description_slide_delay">Paspauskite, kad pakeisti sekundžių kiekį, 
+		po kurio bus rodoma kita nuotrauka.
 	</string>
 
+	<string name="pref_title_image_details">Rodyti paveikslėlio informaciją</string>
+	<string name="pref_description_image_details">Rodyti paveikslėlio informaciją peržiūros metu.
+	</string>
+	
 	<string name="pref_title_stop_on_complete">Stop on complete</string>
-	<string name="pref_description_stop_on_complete">Sustabdyti skaidrių peržiūrą, kai visos nuotraukos baigtos peržiūrėti.
+	<string name="pref_description_stop_on_complete">Sustabdyti skaidrių peržiūrą, kai visos nuotraukos baigtos 
+		peržiūrėti.
 	</string>
 
 	<string name="pref_title_reverse_order">Atgalinė tvarka</string>
-	<string name="pref_description_reverse_order">Rodyti nuotraukas skaidrių rėžime atbuline tvarka.
+	<string name="pref_description_reverse_order">Rodyti nuotraukas skaidrių rėžime atbuline 
+		tvarka.
 	</string>
 
 	<string name="pref_title_random_order">Atsitiktinė tvarka</string>
-	<string name="pref_description_random_order">Rodyti nuotraukas skaidrių rėžime atsitiktine tvarka.
+	<string name="pref_description_random_order">Rodyti nuotraukas skaidrių rėžime atsitiktine 
+		tvarka.
 	</string>
 </resources>
