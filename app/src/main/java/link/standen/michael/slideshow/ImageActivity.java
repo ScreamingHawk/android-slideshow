@@ -129,7 +129,7 @@ public class ImageActivity extends BaseActivity {
 		mVisible = true;
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
 		mContentView = (ImageView) findViewById(R.id.fullscreen_content);
-		mDetailsView = findViewById(R.id.image_details);
+		mDetailsView = findViewById(R.id.image_details1); // Visible during slideshow play
 
 		loadPreferences();
 		// Stop resume from reloading the same settings
@@ -229,6 +229,11 @@ public class ImageActivity extends BaseActivity {
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
+
+		if (!IMAGE_DETAILS){
+			// Hide the image details that are show during pause
+			findViewById(R.id.image_details2).setVisibility(View.GONE);
+		}
 	}
 
 	/**
@@ -342,16 +347,19 @@ public class ImageActivity extends BaseActivity {
 			// Update image details
 			File file = new File(item.getPath());
 			// Dimensions
-			((TextView)findViewById(R.id.image_detail_dimensions)).setText(getResources().getString(
-					R.string.image_detail_dimensions, width, height));
+			String dimensions = getResources().getString(R.string.image_detail_dimensions, width, height);
+			((TextView)findViewById(R.id.image_detail_dimensions1)).setText(dimensions);
+			((TextView)findViewById(R.id.image_detail_dimensions2)).setText(dimensions);
 			// Size
-			String size = Formatter.formatShortFileSize(this, file.length());
-			((TextView)findViewById(R.id.image_detail_size)).setText(getResources().getString(
-					R.string.image_detail_size, size));
+			String size = getResources().getString(R.string.image_detail_size,
+					Formatter.formatShortFileSize(this, file.length()));
+			((TextView)findViewById(R.id.image_detail_size1)).setText(size);
+			((TextView)findViewById(R.id.image_detail_size2)).setText(size);
 			// Modified
-			((TextView)findViewById(R.id.image_detail_modified)).setText(getResources().getString(
-					R.string.image_detail_modified,
-					DateFormat.getDateFormat(this).format(file.lastModified())));
+			String modified = getResources().getString(R.string.image_detail_modified,
+					DateFormat.getDateFormat(this).format(file.lastModified()));
+			((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
+			((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
 		}
 	}
 

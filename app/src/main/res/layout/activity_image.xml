@@ -15,7 +15,7 @@
 
 	<!-- Image Details Overlay -->
 	<LinearLayout
-		android:id="@+id/image_details"
+		android:id="@+id/image_details1"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="bottom|start"
@@ -25,17 +25,17 @@
 		android:padding="@dimen/overlay_padding">
 
 		<TextView
-			android:id="@+id/image_detail_dimensions"
+			android:id="@+id/image_detail_dimensions1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textColor="@color/primary"/>
 		<TextView
-			android:id="@+id/image_detail_size"
+			android:id="@+id/image_detail_size1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textColor="@color/primary"/>
 		<TextView
-			android:id="@+id/image_detail_modified"
+			android:id="@+id/image_detail_modified1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textColor="@color/primary"/>
@@ -49,33 +49,68 @@
 		android:layout_height="match_parent"
 		android:fitsSystemWindows="true">
 
-		<LinearLayout
+		<RelativeLayout
 			android:id="@+id/fullscreen_content_controls"
-			style="?metaButtonBarStyle"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_gravity="bottom|center_horizontal"
-			android:background="@color/black_overlay"
-			android:orientation="horizontal"
 			tools:ignore="UselessParent">
 
-			<Button
-				android:id="@+id/delete_button"
-				style="?metaButtonBarButtonStyle"
-				android:layout_width="0dp"
+			<LinearLayout
+				android:id="@+id/fullscreen_content_controls_buttons"
+				style="?metaButtonBarStyle"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:text="@string/delete_button"/>
+				android:layout_alignParentBottom="true"
+				android:layout_centerHorizontal="true"
+				android:background="@color/black_overlay"
+				android:orientation="horizontal">
 
-			<Button
-				android:id="@+id/share_button"
-				style="?metaButtonBarButtonStyle"
-				android:layout_width="0dp"
+				<Button
+					android:id="@+id/delete_button"
+					style="?metaButtonBarButtonStyle"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/delete_button"/>
+
+				<Button
+					android:id="@+id/share_button"
+					style="?metaButtonBarButtonStyle"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/share_button"/>
+			</LinearLayout>
+
+			<!-- Image Details Overlay -->
+			<LinearLayout
+				android:id="@+id/image_details2"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:text="@string/share_button"/>
+				android:layout_above="@+id/fullscreen_content_controls_buttons"
+				android:layout_alignParentStart="true"
+				android:orientation="vertical"
+				android:background="@color/black_overlay"
+				android:padding="@dimen/overlay_padding">
 
-		</LinearLayout>
+				<TextView
+					android:id="@+id/image_detail_dimensions2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="@color/primary"/>
+				<TextView
+					android:id="@+id/image_detail_size2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="@color/primary"/>
+				<TextView
+					android:id="@+id/image_detail_modified2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="@color/primary"/>
+
+			</LinearLayout>
+		</RelativeLayout>
 	</FrameLayout>
 
 </FrameLayout>
