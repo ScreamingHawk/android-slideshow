@@ -27,6 +27,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.Collections;
 
+import javax.microedition.khronos.opengles.GL11;
+
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
 import link.standen.michael.slideshow.util.FileItemHelper;
@@ -290,7 +292,50 @@ public class ImageActivity extends BaseActivity {
 	private void loadImage(){
 		FileItem item = fileList.get(imagePosition);
 		setTitle(item.getName());
-		Bitmap image = BitmapFactory.decodeFile(item.getPath());
+
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(item.getPath(), options);
+
+		int sampleSize = 1;
+		int width = options.outWidth;
+		int height = options.outHeight;
+
+		/*
+		 * Downscale strategy taken from:
+		 * https://android.googlesource.com/platform/packages/apps/Camera2/src/com/android/camera/data/FilmstripItemUtils.java
+		 *
+		 * For large (> MAXIMUM_TEXTURE_SIZE) high aspect ratio (panorama)
+		 * Bitmap requests:
+		 *   Step 1: ask for double size.
+		 *   Step 2: scale maximum edge down to MAXIMUM_TEXTURE_SIZE.
+		 *
+		 * Here's the step 1: double size.
+		 */
+		if (width > GL11.GL_MAX_TEXTURE_SIZE || height > GL11.GL_MAX_TEXTURE_SIZE) {
+			sampleSize = 2;
+		}
+
+		options = new BitmapFactory.Options();
+		options.inSampleSize = sampleSize;
+		/** 32K buffer. */
+		options.inTempStorage = new byte[32 * 1024];
+
+		// Load image
+		Bitmap image = BitmapFactory.decodeFile(item.getPath(), options);
+
+		/*
+		 * Step 2: scale maximum edge down to maximum texture size.
+		 * If Bitmap maximum edge > MAXIMUM_TEXTURE_SIZE, which can happen for panoramas,
+		 * scale to fit in MAXIMUM_TEXTURE_SIZE.
+		 */
+		if (image.getWidth() > GL11.GL_MAX_TEXTURE_SIZE || image.getHeight() > GL11.GL_MAX_TEXTURE_SIZE){
+			// Scale down
+			int maxEdge = Math.max(width, height);
+			image = Bitmap.createScaledBitmap(image, width * GL11.GL_MAX_TEXTURE_SIZE / maxEdge,
+					height * GL11.GL_MAX_TEXTURE_SIZE / maxEdge, false);
+		}
+
 		mContentView.setImageBitmap(image);
 
 		if (IMAGE_DETAILS) {
@@ -298,7 +343,7 @@ public class ImageActivity extends BaseActivity {
 			File file = new File(item.getPath());
 			// Dimensions
 			((TextView)findViewById(R.id.image_detail_dimensions)).setText(getResources().getString(
-					R.string.image_detail_dimensions, image.getWidth(), image.getHeight()));
+					R.string.image_detail_dimensions, width, height));
 			// Size
 			String size = Formatter.formatShortFileSize(this, file.length());
 			((TextView)findViewById(R.id.image_detail_size)).setText(getResources().getString(
