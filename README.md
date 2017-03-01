@@ -21,9 +21,12 @@ Great for showing off those vacation photos without having to scroll.
 * Tap to pause, then tap to resume
 * Swipe left and right to skip
 * Ability to delete images from within the slideshow
-* Sequential or random display order
-* Configurable delay
+* Ability to share images from within the slideshow
+* Sequential, reversed or random display order
+* Configurable slideshow delay
 * Show / hide hidden files
+* Show image details (dimensions, size, modified date) from within the slideshow
+* Enable navigation to the root of the device
 
 ## Un-Features
 * No sign up
@@ -35,8 +38,11 @@ Great for showing off those vacation photos without having to scroll.
 ## Upcoming Features and Feature Requests
 All planned enhancements are here: https://github.com/ScreamingHawk/android-slideshow/labels/enhancement
 
+A number of requested features have been added!
+[Request yours](https://github.com/ScreamingHawk/android-slideshow/issues/new) today!
+
 ## Credits
-[Michael Standen](http://michael.standen.link)
+[Michael Standen](https://michael.standen.link)
 
 This software is provided under the [MIT License](https://tldrlegal.com/license/mit-license) so it's free to use so long as you give me credit.
 
