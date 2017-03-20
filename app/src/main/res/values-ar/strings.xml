@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">ЧсХкЯЧЯЧЪ</string>
+	<string name="action_credits">ЭцсфЧ</string>
+
+	<!-- List -->
+	<string name="inaccessible">(inaccessibile)</string>
+	<string name="go_home_folder">кЧсоП Чфоб ссахЧШ ЧсбЦэгэЩ</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">Эан</string>
+	<string name="delete_dialog_title">Эан ЧсецбЩ</string>
+	<string name="delete_dialog_message">хс УфЪ уЪУпЯП</string>
+	<string name="image_deleted">Ъу Эан ЧсецЩ</string>
+	<string name="image_not_deleted">су эЪу Эан ЧсецЩ</string>
+
+	<string name="share_button">дЧбп</string>
+	<string name="share_via">дЧбп кШб &#8230;</string>
+
+	<string name="image_detail_dimensions">ЧсУШкЧЯ: %1$dx%2$d</string>
+	<string name="image_detail_size">ЭЬу Чсусн: %1$s</string>
+	<string name="image_detail_modified">кЯс: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">ЧсецбЩ</string>
+	<string name="logo_description">ЧсдкЧб</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">Эцс &appname;</string>
+	<string name="credits_creator">ШцЧгиЩ <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow хц ЪиШэо Шгэи скбж Чсецб ксь хЧЪнп.	</string>
+	<string name="credits_content2">Яцф УЬбЧг Уц енЧбЧЪ хаЧ ЧсЪиШэо хц УШги ЪиШэо кбж ЧсдбЧЦЭ нэ Чсгцо.
+	</string>
+	<string name="credits_content3">эупфп кбж днбЩ ЧсуеЯбЁ цЪгЬэс ЧсУЮиЧС Уц исШ ууэвЧЪ ксь
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">хаЧ ЧсЪиШэо хц ЮЧс ЪуЧуЧ цунЪцЭ ЧсуеЯб. убЮе ШуцЬШ <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">дпбЧ сп<a href="https://github.com/psyanite">Yan Tsui</a>
+		сЧЮЪШЧб цЪеуэу УэоцфЩ &appname;.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">ЧсХкЯЧЯЧЪ</string>
+
+	<string name="pref_title_show_hidden_files">ХйхЧб ЧсуснЧЪ ЧсуЮнэЩ</string>
+	<string name="pref_description_show_hidden_files">экбж ЧсуснЧЪ ЧсЪэ Ъу ХЮнЧФхЧ уф оШс уЯэбэ ЧсуснЧЪ ЧсУЮбь.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Чкбж Чсецб Чсуелбх</string>
+	<string name="pref_description_show_thumbnails">экбж Чсецб ЧсуелбЩ. ХинЧС хах ЧсуэвЩ эбнк угЪць ЧсУЯЧСЁ цспф сф Ъпцф оЧЯбЧ ксь бФэЩ ЧсуснЧЪ ЧсЪэ хэ Чсецб цлэб Чсецб.
+	</string>
+
+	<string name="pref_title_use_device_root">ХгЪЮЯЧу бцЪ ЧсЬхЧв</string>
+	<string name="pref_description_use_device_root">Ъупэф ЧсЪфос Хсь уЬсЯ Ьаб ЧсЬхЧв. хаЧ гэупф Чсцецс Хсь ЧсуснЧЪ нэ Уэ упЧф ксь ЧсЬхЧвЁ ШуЧ нэ асп ШиЧоЧЪ ЧсЪЮвэф ЧсуЭуцсЩ уЫс  ЧсШиЧоЧЪ ЧсЮЧбЬэЩ.
+усЧЭйЩ: оЯ эЪисШ бцЪ ЧсЬхЧв сскус Шдпс еЭэЭ.
+	</string>
+
+	<string name="pref_title_slide_delay">ЪУЮэб ЧсдбЧЦЭ</string>
+	<string name="pref_description_slide_delay">Чфоб сЪлээб кЯЯ ЫцЧфэ кбж ЧсецбЩ оШс ЧсЪлээб Хсь ЧсецбЩ ЧсЪЧсэЩ.
+	</string>
+
+	<string name="pref_title_image_details">кбж ЪнЧеэс ЧсецбЩ</string>
+	<string name="pref_description_image_details">ХжхЧб ЪнЧеэс ЧсецбЩ УЫфЧС кбж ЧсдбЧЦЭ.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Ъцон кфЯ ЧсХфЪхЧС</string>
+	<string name="pref_description_stop_on_complete">ХэоЧн кбж ЧсдбЧЦЭ ШкЯ ХжхЧб пс Чсецб.
+	</string>
+
+	<string name="pref_title_reverse_order">кпг ЧсЪбЪэШ</string>
+	<string name="pref_description_reverse_order">кбж Чсецб нэ кбж ЧсдбЧЦЭ нэ ЪбЪэШ кпгэ.
+	</string>
+
+	<string name="pref_title_random_order">ЪбЪэШ кдцЧЦэ</string>
+	<string name="pref_description_random_order">кбж Чсецб нэ кбж ЧсдбЧЦЭ нэ ЪбЪэШ кдцЧЦэ.
+	</string>
+</resources>
