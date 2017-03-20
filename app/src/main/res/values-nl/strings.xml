@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Instellingen</string>
+	<string name="action_credits">Over</string>
+
+	<!-- List -->
+	<string name="inaccessible">(ontoegankelijk)</string>
+	<string name="go_home_folder">Zit je vast? Klik hier om terug te keren.</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">BeeldActiviteit</string>
+
+	<string name="delete_button">Verwijderen</string>
+	<string name="delete_dialog_title">Verwijder beeld</string>
+	<string name="delete_dialog_message">Ben je zeker?</string>
+	<string name="image_deleted">Beeld verwijderd</string>
+	<string name="image_not_deleted">Onmogelijk het beeld te verwijderen</string>
+
+	<string name="share_button">Delen</string>
+	<string name="share_via">Deel via&#8230;</string>
+
+	<string name="image_detail_dimensions">Afmetingen: %1$dx%2$d</string>
+	<string name="image_detail_size">Bestandsgrootte: %1$s</string>
+	<string name="image_detail_modified">Aangepast: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Beeld</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">Over &appname;</string>
+	<string name="credits_creator">door <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow is een eenvoudige applicatie om beelden te bekijken op je telefoon.
+
+	</string>
+	<string name="credits_content2">Zonder toeters of bellen is dit simpelweg de eenvoudigste applicatie op de markt.
+
+	</string>
+	<string name="credits_content3">Je kan de broncode bekijken, problemen melden of producteigenschappen aanvragen via
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">Deze applicatie is volledig vrij en "open source"; gelicentieerd
+		onder de <a href="https://tldrlegal.com/license/mit-license">MIT licentie</a>.
+	</string>
+	<string name="credits_content5">Met dank aan <a href="https://github.com/psyanite">Yan Tsui</a>
+		voor het testen en het ontwerpen van het &appname; icoon.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Instellingen</string>
+
+	<string name="pref_title_show_hidden_files">Toon verborgen bestanden</string>
+	<string name="pref_description_show_hidden_files">Toont bestanden die verborgen zijn door andere 
+		bestand managers.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Toon miniaturen</string>
+	<string name="pref_description_show_thumbnails">Toont beeldminiaturen. Dit uitschakelen verhoogt 
+		de performantie, echter kan je dan niet zien welke bestanden beelden zijn en welke niet.
+	</string>
+
+	<string name="pref_title_use_device_root">Gebruik toestel root</string>
+	<string name="pref_description_use_device_root">Schakel toegang tot de root folder van het toestel in.
+		Dit laat toegang toe tot elk bestand in alle folders op het toestel inclusied externe opslag 
+		zoals SD kaarten. Nota: Mogelijks heb je een "rooted" toestel nodig om dit te doen werken.
+	</string>
+
+	<string name="pref_title_slide_delay">Dia vertraging</string>
+	<string name="pref_description_slide_delay">Klik om het aantal seconden te veranderen dat een beeld 
+		zal getoond worden alvorens het volgende beeld te tonen.
+	</string>
+
+	<string name="pref_title_image_details">Toon beeld details</string>
+	<string name="pref_description_image_details">Toon de beeld details tijdens de diavoorstelling.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Stop bij einde</string>
+	<string name="pref_description_stop_on_complete">Stop de diavoorstelling wanneer alle beelden zijn 
+		getoond.
+	</string>
+
+	<string name="pref_title_reverse_order">Omgekeerde volgorde</string>
+	<string name="pref_description_reverse_order">Toon de beelden van de diavoorstelling in omgekeerde 
+		volgorde.
+	</string>
+
+	<string name="pref_title_random_order">Willekeurige volgorde</string>
+	<string name="pref_description_random_order">Toon de beelden van de diavoorstelling in willekeurige 
+		volgorde.
+	</string>
+</resources>
