@@ -8,11 +8,11 @@
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Nustatymai</string>
 	<string name="action_credits">Apie</string>
-	
+
 	<!-- List -->
 	<string name="inaccessible">(nepasiekiama)</string>
 	<string name="go_home_folder">Užstrigo? Paspauskite, kad grįžti įpradžią</string>
-	
+
 	<!-- Slideshow -->
 	<string name="title_activity_image">Nuotraukų veiksena</string>
 
@@ -24,7 +24,7 @@
 
 	<string name="share_button">Pasidalinti</string>
 	<string name="share_via">Pasidalinti per&#8230;</string>
-	
+
 	<string name="image_detail_dimensions">Matmenys: %1$dx%2$d</string>
 	<string name="image_detail_size">Bylos dydis: %1$s</string>
 	<string name="image_detail_modified">Pakeista: %1$s</string>
@@ -35,7 +35,7 @@
 
 	<!-- Credits -->
 	<string name="title_activity_credits">Apie &appname;</string>
-	<string name="credits_creator">sukūrė <a href="http://michael.standen.link">&author;</a></string>
+	<string name="credits_creator">sukūrė <a href="https://michael.standen.link">&author;</a></string>
 	<string name="credits_content1">Slideshow yra paprasta programėlė nuotraukų peržiūrai Jūsų 
 		telefone.
 	</string>
@@ -55,12 +55,12 @@
 	<!-- Settings -->
 
 	<string name="title_activity_settings">Nustatymai</string>
-	
+
 	<string name="pref_title_show_hidden_files">Rodyti paslėptas bylas</string>
 	<string name="pref_description_show_hidden_files">Parodo bylas, kurios yra paslėptos kitose 
 		failų tvarkymo programose.
 	</string>
-	
+
 	<string name="pref_title_show_thumbnails">Rodyti miniatiūras</string>
 	<string name="pref_description_show_thumbnails">Rodo miniatiūrines nuotraukas. Išjungus šią ypatybę
 		padidėja efektyvumas, tačiau Jūs negalėsite matyti kokia tai byla ar tai nuotrauka 
@@ -72,7 +72,7 @@
 		aplankalo. Tai įgalins priėjimą prie bet kurių bylų esančių įrenginyje, Įskaitant prijungtus atminties 
 		įrenginius, kaip sd korteles. Pastaba: kad tinkamai veiktų galima būti reikalaujama, kad įrenginys būtų su įgalintu šakniniu rėžimu.
 	</string>
-	
+
 	<string name="pref_title_slide_delay">Skaidrės užlaikymas</string>
 	<string name="pref_description_slide_delay">Paspauskite, kad pakeisti sekundžių kiekį, 
 		po kurio bus rodoma kita nuotrauka.
@@ -81,7 +81,7 @@
 	<string name="pref_title_image_details">Rodyti paveikslėlio informaciją</string>
 	<string name="pref_description_image_details">Rodyti paveikslėlio informaciją peržiūros metu.
 	</string>
-	
+
 	<string name="pref_title_stop_on_complete">Stop on complete</string>
 	<string name="pref_description_stop_on_complete">Sustabdyti skaidrių peržiūrą, kai visos nuotraukos baigtos 
 		peržiūrėti.

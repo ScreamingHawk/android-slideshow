@@ -35,7 +35,7 @@
 
 	<!-- Credits -->
 	<string name="title_activity_credits">About &appname;</string>
-	<string name="credits_creator">by <a href="http://michael.standen.link">&author;</a></string>
+	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
 	<string name="credits_content1">Slideshow is a simple application for viewing images on your
 		phone.
 	</string>
