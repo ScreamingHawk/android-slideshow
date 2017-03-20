@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Einstellungen</string>
+	<string name="action_credits">Info</string>
+
+	<!-- List -->
+	<string name="inaccessible">(unerreichbar)</string>
+	<string name="go_home_folder">Hängengeblieben? Klicken Sie hier, nach Ihren Persönlichen Ordner zu gehen.</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">Bildaktivität</string>
+
+	<string name="delete_button">Löschen</string>
+	<string name="delete_dialog_title">Bild löschen</string>
+	<string name="delete_dialog_message">Bist du sicher?</string>
+	<string name="image_deleted">Bild gelöscht</string>
+	<string name="image_not_deleted">Bild konnte nicht gelöscht werden</string>
+
+	<string name="share_button">Teilen</string>
+	<string name="share_via">Teilen durch&#8230;</string>
+
+	<string name="image_detail_dimensions">Dimensionen: %1$dx%2$d</string>
+	<string name="image_detail_size">Dateigröße: %1$s</string>
+        <string name="image_detail_modified">Geändert: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Bild</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">Info &appname;</string>
+	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow ist eine einfache Anwendung für die Anzeige von Bildern auf Ihrem Handy.
+	</string>
+	<string name="credits_content2">Ohne zusätzlichen Quatsch, diese Anwendung ist die einfachste Diashow-Anwendung auf dem Markt.
+	</string>
+	<string name="credits_content3">Sie können den Quellcode anschauen, Bugs protokollieren, oder Funktionen auf 
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a> anfordern.
+	</string>
+	<string name="credits_content4">Diese Anwendung ist völlig kostenlos und Open Source; lizenziert
+		unter den <a href="https://tldrlegal.com/license/mit-license">MIT Lizenz</a>.
+	</string>
+	<string name="credits_content5">Danke an <a href="https://github.com/psyanite">Yan Tsui</a>
+		für die Prüfung und den Aussehen der &appname; Ikone.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Einstellungen</string>
+
+	<string name="pref_title_show_hidden_files">Verborgene Dateien anzeigen</string>
+	<string name="pref_description_show_hidden_files">Zeigt auch Dateien, die von anderen Dateimanagern versteckt sind.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Vorschaubilder anzeigen</string>
+	<string name="pref_description_show_thumbnails">Zeigt Miniaturbilder an. Wenn Sie dies ausschalten, erhöht sich die Leistung, aber Sie werden nicht in der Lage sein, Bilder von anderen Daten zu unterscheiden.
+	</string>
+
+	<string name="pref_title_use_device_root">Stammverzeichnis des Gerätes verwenden</string>
+	<string name="pref_description_use_device_root">Aktiviere die Navigation zum Stammverzeichnis des Gerätes. Dies ermöglicht den Zugriff auf Dateien überall auf dem Gerät, einschließlich montierten Speicher wie SD-Karten.
+	</string>
+
+	<string name="pref_title_slide_delay">Folienverzögerung</string>
+	<string name="pref_description_slide_delay">Klicken Sie auf, um die Anzahl der Sekunden zu ändern, in der ein Bild angezeigt wird, bevor Sie zum nächsten Bild wechseln.
+	</string>
+
+	<string name="pref_title_image_details">Bilddetails anzeigen</string>
+	<string name="pref_description_image_details">Die Bilddetails während der Diashow überlagern.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Aufhören, wenn fertig</string>
+	<string name="pref_description_stop_on_complete">Die Diashow aufhören, sobald jedes Bild gezeigt wurde.
+	</string>
+
+	<string name="pref_title_reverse_order">Umgekehrte Reihenfolge</string>
+	<string name="pref_description_reverse_order">Die Bilder in der Diashow in umgekehrter Reihenfolge anzeigen.
+	</string>
+
+	<string name="pref_title_random_order">Zufällige Reihenfolge
+</string>
+	<string name="pref_description_random_order">Die Bilder in der Diashow in zufällige Reihenfolge anzeigen.
+	</string>
+</resources>
