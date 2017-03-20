@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Indstillinger</string>
+	<string name="action_credits">Omkring</string>
+
+	<!-- List -->
+	<string name="inaccessible">(utilgængelig)</string>
+	<string name="go_home_folder">Sidder du fast? Klik for at gå til hjem</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">Slet</string>
+	<string name="delete_dialog_title">Slet billede</string>
+	<string name="delete_dialog_message">Er du sikker?</string>
+	<string name="image_deleted">Billede slettet</string>
+	<string name="image_not_deleted">Kan ikke slette billedet</string>
+
+	<string name="share_button">Del</string>
+	<string name="share_via">Del via&#8230;</string>
+
+	<string name="image_detail_dimensions">Dimensioner: %1$dx%2$d</string>
+	<string name="image_detail_size">Fil Størrelse: %1$s</string>
+	<string name="image_detail_modified">Ændret: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Billede</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">Omkring &appname;</string>
+	<string name="credits_creator">Lavet af <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow er et simpelt program til at se billeder på din telefon.
+	</string>
+	<string name="credits_content2">Uden unødvendige ting er dette program det simpleste slideshow program på markedet</string>
+	<string name="credits_content3">Du kan se kildekoden, rapportere fejl eller forspørge funktioner på 
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">Dette program er gratis og licenseret under <a href="https://tldrlegal.com/license/mit-license">MIT licensen</a>.
+	</string>
+	<string name="credits_content5">Tak til <a href="https://github.com/psyanite">Yan Tsui</a>
+		for at teste og designe &appname; iconet.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Indstillinger</string>
+
+	<string name="pref_title_show_hidden_files">Vis skjulte filer</string>
+	<string name="pref_description_show_hidden_files">Vis filer som er skjult af andre fil programmer.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Vis miniature</string>
+	<string name="pref_description_show_thumbnails">Vis miniature billeder. Det vil give forbedret ydeevne ved at slå dette fra, men man kan ikke se hvilke filer der er billeder og ikke er</string>
+
+	<string name="pref_title_use_device_root">Brug device root</string>
+	<string name="pref_description_use_device_root">Aktivér navigation i rod biblioteket af enheden. Dette vil give adgang til alle filer på enheden, dette inkluderer alle filer på enheden, også monteret opbevaring såsom SD kort. Note: Kan kræve rodadgang på enheden for at fungere korrekt.
+	</string>
+
+	<string name="pref_title_slide_delay">Slide forsinkelse</string>
+	<string name="pref_description_slide_delay">Klik for at ændre hvor mange sekunder billedet bliver vist inden næste billede bliver vist.
+	</string>
+
+	<string name="pref_title_image_details">Vis billede detaljer</string>
+	<string name="pref_description_image_details">Overlejre billededetaljer under slideshowet. 
+	</string>
+
+	<string name="pref_title_stop_on_complete">Stop efter sidste billede</string>
+	<string name="pref_description_stop_on_complete">Stop slideshowet når alle billeder er vist.
+	</string>
+
+	<string name="pref_title_reverse_order">Omvendt rækkefølge</string>
+	<string name="pref_description_reverse_order">Vis billederne i omvendt rækkefølge.
+	</string>
+
+	<string name="pref_title_random_order">Vilkårlig rækkefølge</string>
+	<string name="pref_description_random_order">Vis billederne i slideshowet i vilkårlig rækkefølge.
+	</string>
+</resources>
