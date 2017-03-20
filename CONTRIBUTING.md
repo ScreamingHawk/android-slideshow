@@ -20,12 +20,13 @@ I'll personally respond to all issues.
 
 Great!
 
-1. Download the source code using `git clone https://github.com/ScreamingHawk/android-slideshow.git`.
-2. Open the project in [Android Studio](https://developer.android.com/studio/index.html) or another Android development environment.
-3. Make your changes.
-4. Click run.
-5. **Ensure each commit references the issue / feature number** with `#<Number>`.
-6. Submit a pull request via Github.
+1. Fork the source code!
+2. Download your fork of the source code using `git clone https://github.com/<your_username>/android-slideshow.git` where `<your_username>` is your Github username.
+3. Open the project in [Android Studio](https://developer.android.com/studio/index.html) or another Android development environment.
+4. Make your changes.
+5. Click run.
+6. **Ensure each commit references the issue / feature number** with `#<Number>`.
+7. Submit a pull request via Github.
 
 Look forward to your fix being included!
 
@@ -33,13 +34,14 @@ Look forward to your fix being included!
 
 Yes please!
 
-1. Download the source code using `git clone https://github.com/ScreamingHawk/android-slideshow.git`.
-2. Navigate to `android-slideshow/app/src/main/res`
-3. Create a new directory named `values-<language_code>` where `<language_code>` is the code from [ISO 639.1][2]. e.g. `values-it` for Italian
-4. Copy `values/strings.xml` into your new `values-<language_code>` directory.
-5. Translate each of the resource strings into your language. (Please do not translate or alter the links or author name).
-6. Commit your changes **with `#26 <language> translation` in the commit comment**, where `<language>` is your language.
-7. Submit a pull request via Github.
+1. Fork the source code!
+2. Download your fork of the source code using `git clone https://github.com/<your_username>/android-slideshow.git` where `<your_username>` is your Github username.
+3. Navigate to `android-slideshow/app/src/main/res`
+4. Create a new directory named `values-<language_code>` where `<language_code>` is the code from [ISO 639.1][2]. e.g. `values-it` for Italian
+5. Copy `values/strings.xml` into your new `values-<language_code>` directory.
+6. Translate each of the resource strings into your language. (Please do not translate or alter the links or author name).
+7. Commit your changes **with `#26 <language> translation` in the commit comment**, where `<language>` is your language.
+8. Submit a pull request via Github.
 
 Thanks a lot for this!
 
