@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Impostazioni</string>
+	<string name="action_credits">About</string>
+
+	<!-- List -->
+	<string name="inaccessible">(inaccessibile)</string>
+	<string name="go_home_folder">Bloccato? Clicca per andare alla Home</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">Rimuovi</string>
+	<string name="delete_dialog_title">Rimuovi immagine</string>
+	<string name="delete_dialog_message">Sei sicuro?</string>
+	<string name="image_deleted">Immagine rimossa</string>
+	<string name="image_not_deleted">Impossible rimuove l'immagine</string>
+
+	<string name="share_button">Condividi</string>
+	<string name="share_via">Condividi via&#8230;</string>
+
+	<string name="image_detail_dimensions">Dimensioni: %1$dx%2$d</string>
+	<string name="image_detail_size">Dimensione documento: %1$s</string>
+	<string name="image_detail_modified">Modificato: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Immagine</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">About &appname;</string>
+	<string name="credits_creator">da <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow è una semplice applicazione per vedere immagini sul tuo
+	  telefono.
+	</string>
+	<string name="credits_content2">Senza fronzolli, questa applicazione è lo slideshow più semplice 
+	  sul mercato.
+	</string>
+	<string name="credits_content3">Puoi vedere il codice sorgente, segnalare un bug o richidere funzionalità su
+	  <a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">Questa applicazione è interamente gratis ed open source; distribuito
+		sotto la <a href="https://tldrlegal.com/license/mit-license">licenza MIT</a>.
+	</string>
+	<string name="credits_content5">Grazie a <a href="https://github.com/psyanite">Yan Tsui</a>
+		per testare e progettare l'icona &appname;.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Impostazioni</string>
+
+	<string name="pref_title_show_hidden_files">Mostra documenti nascosti</string>
+	<string name="pref_description_show_hidden_files">Mostra documenti che sono nascosti da altri 
+		gestori di documenti.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Mostra thumbnails</string>
+	<string name="pref_description_show_thumbnails">Mostra thumbnail d'immagini. Spegnendo questo
+	  migliorerà la prestazione, ma non sarai in grado di vedere quali documenti sono immagini
+	  e quali no.
+	</string>
+
+	<string name="pref_title_use_device_root">Usa radice dispositivo</string>
+	<string name="pref_description_use_device_root">Ti permette di navigare nella cartella alla
+	  radice del dispositivo. Questo ti permetterà di accedere ai documenti ovunque nel dispositivo,
+	  anche in dispositivi montabili quali schede di memoria SD.
+	</string>
+
+	<string name="pref_title_slide_delay">Durata diapositiva</string>
+	<string name="pref_description_slide_delay">Clicca per cambiare il numero di secondi applicati
+	  per mostrare un'immagine prima di passare alla prossima.
+	</string>
+
+	<string name="pref_title_image_details">Mostra dettagli immagine</string>
+	<string name="pref_description_image_details">Sovrapponi dettagli immagine durante lo slideshow.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Ferma quando completato</string>
+	<string name="pref_description_stop_on_complete">Ferma lo slideshow quando tutte le immagini sono
+	  state mostrate.
+	</string>
+
+	<string name="pref_title_reverse_order">Invertire ordine</string>
+	<string name="pref_description_reverse_order">Mostra le immagini dello slideshow nell'ordine
+	  inverso.
+	</string>
+
+	<string name="pref_title_random_order">Ordine casuale</string>
+	<string name="pref_description_random_order">Mostra le immagini dello slideshow in ordine
+	  casuale.
+	</string>
+</resources>
