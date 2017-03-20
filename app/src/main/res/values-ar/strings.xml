@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">الإعدادات</string>
+	<string name="action_credits">حولنا</string>
+
+	<!-- List -->
+	<string name="inaccessible">(inaccessibile)</string>
+	<string name="go_home_folder">عالق؟ انقر للذهاب الرئيسية</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">حذف</string>
+	<string name="delete_dialog_title">حذف الصورة</string>
+	<string name="delete_dialog_message">هل أنت متأكد؟</string>
+	<string name="image_deleted">تم حذف الصوة</string>
+	<string name="image_not_deleted">لم يتم حذف الصوة</string>
+
+	<string name="share_button">شارك</string>
+	<string name="share_via">شارك عبر &#8230;</string>
+
+	<string name="image_detail_dimensions">الأبعاد: %1$dx%2$d</string>
+	<string name="image_detail_size">حجم الملف: %1$s</string>
+	<string name="image_detail_modified">عدل: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">الصورة</string>
+	<string name="logo_description">الشعار</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">حول &appname;</string>
+	<string name="credits_creator">بواسطة <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow هو تطبيق بسيط لعرض الصور على هاتفك.	</string>
+	<string name="credits_content2">دون أجراس أو صفارات هذا التطبيق هو أبسط تطبيق عرض الشرائح في السوق.
+	</string>
+	<string name="credits_content3">يمكنك عرض شفرة المصدر، وتسجيل الأخطاء أو طلب مميزات على
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">هذا التطبيق هو خال تماما ومفتوح المصدر. مرخص بموجب <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">شكرا لك<a href="https://github.com/psyanite">Yan Tsui</a>
+		لاختبار وتصميم أيقونة &appname;.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">الإعدادات</string>
+
+	<string name="pref_title_show_hidden_files">إظهار الملفات المخفية</string>
+	<string name="pref_description_show_hidden_files">يعرض الملفات التي تم إخفاؤها من قبل مديري الملفات الأخرى.
+	</string>
+
+	<string name="pref_title_show_thumbnails">اعرض الصور المصغره</string>
+	<string name="pref_description_show_thumbnails">يعرض الصور المصغرة. إطفاء هذه الميزة يرفع مستوى الأداء، ولكن لن تكون قادرا على رؤية الملفات التي هي الصور وغير الصور.
+	</string>
+
+	<string name="pref_title_use_device_root">إستخدام روت الجهاز</string>
+	<string name="pref_description_use_device_root">تمكين التنقل إلى مجلد جذر الجهاز. هذا سيمكن الوصول إلى الملفات في أي مكان على الجهاز، بما في ذلك بطاقات التخزين المحمولة مثل  البطاقات الخارجية.
+ملاحظة: قد يتطلب روت الجهاز للعمل بشكل صحيح.
+	</string>
+
+	<string name="pref_title_slide_delay">تأخير الشرائح</string>
+	<string name="pref_description_slide_delay">انقر لتغيير عدد ثواني عرض الصورة قبل التغيير إلى الصورة التالية.
+	</string>
+
+	<string name="pref_title_image_details">عرض تفاصيل الصورة</string>
+	<string name="pref_description_image_details">إضهار تفاصيل الصورة أثناء عرض الشرائح.
+	</string>
+
+	<string name="pref_title_stop_on_complete">توقف عند الإنتهاء</string>
+	<string name="pref_description_stop_on_complete">إيقاف عرض الشرائح بعد إضهار كل الصور.
+	</string>
+
+	<string name="pref_title_reverse_order">عكس الترتيب</string>
+	<string name="pref_description_reverse_order">عرض الصور في عرض الشرائح في ترتيب عكسي.
+	</string>
+
+	<string name="pref_title_random_order">ترتيب عشوائي</string>
+	<string name="pref_description_random_order">عرض الصور في عرض الشرائح في ترتيب عشوائي.
+	</string>
+</resources>
