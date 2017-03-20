@@ -46,4 +46,8 @@ A number of requested features have been added!
 
 This software is provided under the [MIT License](https://tldrlegal.com/license/mit-license) so it's free to use so long as you give me credit.
 
+### Thanks
 
+Special thanks to all [the contributors](https://github.com/ScreamingHawk/android-slideshow/graphs/contributors) of Slideshow, who have provided images and translations.
+
+I really mean it. You guys rock!
