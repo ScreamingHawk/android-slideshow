@@ -7,7 +7,7 @@
 <resources>
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Ajustes</string>
-	<string name="action_credits">Acerca de</string>
+	<string name="action_credits">De Acerca</string>
 
 	<!-- List -->
 	<string name="inaccessible">(inaccessible)</string>
