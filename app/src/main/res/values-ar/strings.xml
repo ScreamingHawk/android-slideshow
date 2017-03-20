@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+๏ปฟ<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
 	<!ENTITY appname "Slideshow">
 	<!ENTITY author "Michael Standen">
@@ -6,82 +6,82 @@
 
 <resources>
 	<string name="app_name">&appname;</string>
-	<string name="action_settings">วแลฺฯวฯวส</string>
-	<string name="action_credits">อๆแไว</string>
+	<string name="action_settings">ุงูุฅุนุฏุงุฏุงุช</string>
+	<string name="action_credits">ุญูููุง</string>
 
 	<!-- List -->
 	<string name="inaccessible">(inaccessibile)</string>
-	<string name="go_home_folder">ฺวแÞฟ วไÞั แแะๅวศ วแัฦํำํษ</string>
+	<string name="go_home_folder">ุนุงููุ ุงููุฑ ููุฐูุงุจ ุงูุฑุฆูุณูุฉ</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>
 
-	<string name="delete_button">อะÝ</string>
-	<string name="delete_dialog_title">อะÝ วแีๆัษ</string>
-	<string name="delete_dialog_message">ๅแ รไส ใสร฿ฯฟ</string>
-	<string name="image_deleted">สใ อะÝ วแีๆษ</string>
-	<string name="image_not_deleted">แใ ํสใ อะÝ วแีๆษ</string>
+	<string name="delete_button">ุญุฐู</string>
+	<string name="delete_dialog_title">ุญุฐู ุงูุตูุฑุฉ</string>
+	<string name="delete_dialog_message">ูู ุฃูุช ู…ุชุฃูุฏุ</string>
+	<string name="image_deleted">ุชู… ุญุฐู ุงูุตูุฉ</string>
+	<string name="image_not_deleted">ูู… ูุชู… ุญุฐู ุงูุตูุฉ</string>
 
-	<string name="share_button">ิวั฿</string>
-	<string name="share_via">ิวั฿ ฺศั &#8230;</string>
+	<string name="share_button">ุดุงุฑู</string>
+	<string name="share_via">ุดุงุฑู ุนุจุฑ &#8230;</string>
 
-	<string name="image_detail_dimensions">วแรศฺวฯ: %1$dx%2$d</string>
-	<string name="image_detail_size">อฬใ วแใแÝ: %1$s</string>
-	<string name="image_detail_modified">ฺฯแ: %1$s</string>
+	<string name="image_detail_dimensions">ุงูุฃุจุนุงุฏ: %1$dx%2$d</string>
+	<string name="image_detail_size">ุญุฌู… ุงูู…ูู: %1$s</string>
+	<string name="image_detail_modified">ุนุฏู: %1$s</string>
 
 	<!-- Image descriptions -->
-	<string name="image_description">วแีๆัษ</string>
-	<string name="logo_description">วแิฺวั</string>
+	<string name="image_description">ุงูุตูุฑุฉ</string>
+	<string name="logo_description">ุงูุดุนุงุฑ</string>
 
 	<!-- Credits -->
-	<string name="title_activity_credits">อๆแ &appname;</string>
-	<string name="credits_creator">ศๆวำุษ <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow ๅๆ สุศํÞ ศำํุ แฺัึ วแีๆั ฺแ์ ๅวสÝ฿.	</string>
-	<string name="credits_content2">ฯๆไ รฬัวำ รๆ ีÝวัวส ๅะว วแสุศํÞ ๅๆ รศำุ สุศํÞ ฺัึ วแิัวฦอ Ýํ วแำๆÞ.
+	<string name="title_activity_credits">ุญูู &appname;</string>
+	<string name="credits_creator">ุจูุงุณุทุฉ <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow ูู ุชุทุจูู ุจุณูุท ูุนุฑุถ ุงูุตูุฑ ุนูู ูุงุชูู.	</string>
+	<string name="credits_content2">ุฏูู ุฃุฌุฑุงุณ ุฃู ุตูุงุฑุงุช ูุฐุง ุงูุชุทุจูู ูู ุฃุจุณุท ุชุทุจูู ุนุฑุถ ุงูุดุฑุงุฆุญ ูู ุงูุณูู.
 	</string>
-	<string name="credits_content3">ํใ฿ไ฿ ฺัึ ิÝัษ วแใีฯัก ๆสำฬํแ วแรฮุวม รๆ ุแศ ใใําวส ฺแ์
+	<string name="credits_content3">ูู…ููู ุนุฑุถ ุดูุฑุฉ ุงูู…ุตุฏุฑุ ูุชุณุฌูู ุงูุฃุฎุทุงุก ุฃู ุทูุจ ู…ู…ูุฒุงุช ุนูู
 		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
 	</string>
-	<string name="credits_content4">ๅะว วแสุศํÞ ๅๆ ฮวแ สใวใว ๆใÝสๆอ วแใีฯั. ใัฮี ศใๆฬศ <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	<string name="credits_content4">ูุฐุง ุงูุชุทุจูู ูู ุฎุงู ุชู…ุงู…ุง ูู…ูุชูุญ ุงูู…ุตุฏุฑ. ู…ุฑุฎุต ุจู…ูุฌุจ <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
 	</string>
-	<string name="credits_content5">ิ฿ัว แ฿<a href="https://github.com/psyanite">Yan Tsui</a>
-		แวฮสศวั ๆสีใํใ รํÞๆไษ &appname;.
+	<string name="credits_content5">ุดูุฑุง ูู<a href="https://github.com/psyanite">Yan Tsui</a>
+		ูุงุฎุชุจุงุฑ ูุชุตู…ูู… ุฃููููุฉ &appname;.
 	</string>
 
 	<!-- Settings -->
 
-	<string name="title_activity_settings">วแลฺฯวฯวส</string>
+	<string name="title_activity_settings">ุงูุฅุนุฏุงุฏุงุช</string>
 
-	<string name="pref_title_show_hidden_files">ลูๅวั วแใแÝวส วแใฮÝํษ</string>
-	<string name="pref_description_show_hidden_files">ํฺัึ วแใแÝวส วแสํ สใ ลฮÝวฤๅว ใไ Þศแ ใฯํัํ วแใแÝวส วแรฮั์.
+	<string name="pref_title_show_hidden_files">ุฅุธูุงุฑ ุงูู…ููุงุช ุงูู…ุฎููุฉ</string>
+	<string name="pref_description_show_hidden_files">ูุนุฑุถ ุงูู…ููุงุช ุงูุชู ุชู… ุฅุฎูุงุคูุง ู…ู ูุจู ู…ุฏูุฑู ุงูู…ููุงุช ุงูุฃุฎุฑู.
 	</string>
 
-	<string name="pref_title_show_thumbnails">วฺัึ วแีๆั วแใีÛัๅ</string>
-	<string name="pref_description_show_thumbnails">ํฺัึ วแีๆั วแใีÛัษ. ลุÝวม ๅะๅ วแใําษ ํัÝฺ ใำสๆ์ วแรฯวมก ๆแ฿ไ แไ ส฿ๆไ Þวฯัว ฺแ์ ัฤํษ วแใแÝวส วแสํ ๅํ วแีๆั ๆÛํั วแีๆั.
+	<string name="pref_title_show_thumbnails">ุงุนุฑุถ ุงูุตูุฑ ุงูู…ุตุบุฑู</string>
+	<string name="pref_description_show_thumbnails">ูุนุฑุถ ุงูุตูุฑ ุงูู…ุตุบุฑุฉ. ุฅุทูุงุก ูุฐู ุงูู…ูุฒุฉ ูุฑูุน ู…ุณุชูู ุงูุฃุฏุงุกุ ูููู ูู ุชููู ูุงุฏุฑุง ุนูู ุฑุคูุฉ ุงูู…ููุงุช ุงูุชู ูู ุงูุตูุฑ ูุบูุฑ ุงูุตูุฑ.
 	</string>
 
-	<string name="pref_title_use_device_root">ลำสฮฯวใ ัๆส วแฬๅวา</string>
-	<string name="pref_description_use_device_root">สใ฿ํไ วแสไÞแ ลแ์ ใฬแฯ ฬะั วแฬๅวา. ๅะว ำํใ฿ไ วแๆีๆแ ลแ์ วแใแÝวส Ýํ รํ ใ฿วไ ฺแ์ วแฬๅวาก ศใว Ýํ ะแ฿ ศุวÞวส วแสฮาํไ วแใอใๆแษ ใหแ  วแศุวÞวส วแฮวัฬํษ.
-ใแวอูษ: Þฯ ํสุแศ ัๆส วแฬๅวา แแฺใแ ศิ฿แ ีอํอ.
+	<string name="pref_title_use_device_root">ุฅุณุชุฎุฏุงู… ุฑูุช ุงูุฌูุงุฒ</string>
+	<string name="pref_description_use_device_root">ุชู…ููู ุงูุชููู ุฅูู ู…ุฌูุฏ ุฌุฐุฑ ุงูุฌูุงุฒ. ูุฐุง ุณูู…ูู ุงููุตูู ุฅูู ุงูู…ููุงุช ูู ุฃู ู…ูุงู ุนูู ุงูุฌูุงุฒุ ุจู…ุง ูู ุฐูู ุจุทุงูุงุช ุงูุชุฎุฒูู ุงูู…ุญู…ููุฉ ู…ุซู  ุงูุจุทุงูุงุช ุงูุฎุงุฑุฌูุฉ.
+ู…ูุงุญุธุฉ: ูุฏ ูุชุทูุจ ุฑูุช ุงูุฌูุงุฒ ููุนู…ู ุจุดูู ุตุญูุญ.
 	</string>
 
-	<string name="pref_title_slide_delay">สรฮํั วแิัวฦอ</string>
-	<string name="pref_description_slide_delay">วไÞั แสÛํํั ฺฯฯ หๆวไํ ฺัึ วแีๆัษ Þศแ วแสÛํํั ลแ์ วแีๆัษ วแสวแํษ.
+	<string name="pref_title_slide_delay">ุชุฃุฎูุฑ ุงูุดุฑุงุฆุญ</string>
+	<string name="pref_description_slide_delay">ุงููุฑ ูุชุบููุฑ ุนุฏุฏ ุซูุงูู ุนุฑุถ ุงูุตูุฑุฉ ูุจู ุงูุชุบููุฑ ุฅูู ุงูุตูุฑุฉ ุงูุชุงููุฉ.
 	</string>
 
-	<string name="pref_title_image_details">ฺัึ สÝวีํแ วแีๆัษ</string>
-	<string name="pref_description_image_details">ลึๅวั สÝวีํแ วแีๆัษ รหไวม ฺัึ วแิัวฦอ.
+	<string name="pref_title_image_details">ุนุฑุถ ุชูุงุตูู ุงูุตูุฑุฉ</string>
+	<string name="pref_description_image_details">ุฅุถูุงุฑ ุชูุงุตูู ุงูุตูุฑุฉ ุฃุซูุงุก ุนุฑุถ ุงูุดุฑุงุฆุญ.
 	</string>
 
-	<string name="pref_title_stop_on_complete">สๆÞÝ ฺไฯ วแลไสๅวม</string>
-	<string name="pref_description_stop_on_complete">ลํÞวÝ ฺัึ วแิัวฦอ ศฺฯ ลึๅวั ฿แ วแีๆั.
+	<string name="pref_title_stop_on_complete">ุชููู ุนูุฏ ุงูุฅูุชูุงุก</string>
+	<string name="pref_description_stop_on_complete">ุฅููุงู ุนุฑุถ ุงูุดุฑุงุฆุญ ุจุนุฏ ุฅุถูุงุฑ ูู ุงูุตูุฑ.
 	</string>
 
-	<string name="pref_title_reverse_order">ฺ฿ำ วแสัสํศ</string>
-	<string name="pref_description_reverse_order">ฺัึ วแีๆั Ýํ ฺัึ วแิัวฦอ Ýํ สัสํศ ฺ฿ำํ.
+	<string name="pref_title_reverse_order">ุนูุณ ุงูุชุฑุชูุจ</string>
+	<string name="pref_description_reverse_order">ุนุฑุถ ุงูุตูุฑ ูู ุนุฑุถ ุงูุดุฑุงุฆุญ ูู ุชุฑุชูุจ ุนูุณู.
 	</string>
 
-	<string name="pref_title_random_order">สัสํศ ฺิๆวฦํ</string>
-	<string name="pref_description_random_order">ฺัึ วแีๆั Ýํ ฺัึ วแิัวฦอ Ýํ สัสํศ ฺิๆวฦํ.
+	<string name="pref_title_random_order">ุชุฑุชูุจ ุนุดูุงุฆู</string>
+	<string name="pref_description_random_order">ุนุฑุถ ุงูุตูุฑ ูู ุนุฑุถ ุงูุดุฑุงุฆุญ ูู ุชุฑุชูุจ ุนุดูุงุฆู.
 	</string>
 </resources>
