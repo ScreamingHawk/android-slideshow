@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Paramètres</string>
+	<string name="action_credits">A Propos</string>
+
+	<!-- List -->
+	<string name="inaccessible">(inaccessible)</string>
+	<string name="go_home_folder">Bloqué? Retour à l'Accueil</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">Supprimer</string>
+	<string name="delete_dialog_title">Supprimer l'image</string>
+	<string name="delete_dialog_message">Êtes-vous sûr?</string>
+	<string name="image_deleted">Image Supprimée</string>
+	<string name="image_not_deleted">Impossible de supprimer l'image</string>
+
+	<string name="share_button">Partager</string>
+	<string name="share_via">Partager par&#8230;</string>
+
+	<string name="image_detail_dimensions">Dimensions: %1$dx%2$d</string>
+	<string name="image_detail_size">Taille du fichier: %1$s</string>
+	<string name="image_detail_modified">Modifié le: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Image</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">A Propos de &appname;</string>
+	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow est une simple application visualiser des images sur votre téléphone.
+	</string>
+	<string name="credits_content2">Sans fioritures, cette application est la plus simple visionneuse
+		sur le marché.
+	</string>
+	<string name="credits_content3">Vous pouvez voir le code source, l'historiques des bugs ou demandes d'évolutionss sur
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">Cette application est libre et open source; license
+        <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">Merci à <a href="https://github.com/psyanite">Yan Tsui</a>
+		pour les tests et le design de l'icône &appname;.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Paramètres</string>
+
+	<string name="pref_title_show_hidden_files">Montrer les fichiers cachés</string>
+	<string name="pref_description_show_hidden_files">Afficher mes fichier qui sont masqués par d'autre gestionaires de fichiers.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Montrer les vignettes</string>
+	<string name="pref_description_show_thumbnails">Afficher les vignettes. Désactiver cette option va
+		augmenter les performances, mais vous ne verez plus quels fichiers sont des images et ce qui n'en sont pas.
+	</string>
+
+	<string name="pref_title_use_device_root">Utiliser la racine du péripherique</string>
+	<string name="pref_description_use_device_root">Permet la navigation jusqua'à la racine du périphérique. 
+        Ceci permet d'acceder à n'importe quel fichier sur periphérique, y compris sur les stockages externes ( comme les cartes SD ). 
+        Note: Peut nécesiter que le périphérique soit 'rooté' pour fonctionner.
+	</string>
+
+	<string name="pref_title_slide_delay">Intervale</string>
+	<string name="pref_description_slide_delay">Cliquez pour changer le nombre de secondes durant lesquelles une image sera affichée
+		avant la suivante.
+	</string>
+
+	<string name="pref_title_image_details">Détails de l'image</string>
+	<string name="pref_description_image_details">Sur-imprimer les détails de l'image pendant la présentation.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Stopper quand fini</string>
+	<string name="pref_description_stop_on_complete">Stopper la présentation après que la denière image ait été montrée.
+	</string>
+
+	<string name="pref_title_reverse_order">Inverser</string>
+	<string name="pref_description_reverse_order">Afficher les images dans l'ordre inverse.
+	</string>
+
+	<string name="pref_title_random_order">Aléatoire</string>
+	<string name="pref_description_random_order">Afficher les images dans un ordre aléatoire.
+	</string>
+</resources>
