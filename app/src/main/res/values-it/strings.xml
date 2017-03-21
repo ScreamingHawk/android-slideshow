@@ -20,7 +20,7 @@
 	<string name="delete_dialog_title">Rimuovi immagine</string>
 	<string name="delete_dialog_message">Sei sicuro?</string>
 	<string name="image_deleted">Immagine rimossa</string>
-	<string name="image_not_deleted">Impossible rimuove l'immagine</string>
+	<string name="image_not_deleted">Impossible rimuove l\'immagine</string>
 
 	<string name="share_button">Condividi</string>
 	<string name="share_via">Condividi via&#8230;</string>
@@ -49,7 +49,7 @@
 		sotto la <a href="https://tldrlegal.com/license/mit-license">licenza MIT</a>.
 	</string>
 	<string name="credits_content5">Grazie a <a href="https://github.com/psyanite">Yan Tsui</a>
-		per testare e progettare l'icona &appname;.
+		per testare e progettare l\'icona &appname;.
 	</string>
 
 	<!-- Settings -->
@@ -62,7 +62,7 @@
 	</string>
 
 	<string name="pref_title_show_thumbnails">Mostra thumbnails</string>
-	<string name="pref_description_show_thumbnails">Mostra thumbnail d'immagini. Spegnendo questo
+	<string name="pref_description_show_thumbnails">Mostra thumbnail d\'immagini. Spegnendo questo
 	  migliorerà la prestazione, ma non sarai in grado di vedere quali documenti sono immagini
 	  e quali no.
 	</string>
@@ -75,7 +75,7 @@
 
 	<string name="pref_title_slide_delay">Durata diapositiva</string>
 	<string name="pref_description_slide_delay">Clicca per cambiare il numero di secondi applicati
-	  per mostrare un'immagine prima di passare alla prossima.
+	  per mostrare un\'immagine prima di passare alla prossima.
 	</string>
 
 	<string name="pref_title_image_details">Mostra dettagli immagine</string>
@@ -88,7 +88,7 @@
 	</string>
 
 	<string name="pref_title_reverse_order">Invertire ordine</string>
-	<string name="pref_description_reverse_order">Mostra le immagini dello slideshow nell'ordine
+	<string name="pref_description_reverse_order">Mostra le immagini dello slideshow nell\'ordine
 	  inverso.
 	</string>
 
