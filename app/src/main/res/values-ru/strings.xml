@@ -4,7 +4,7 @@
     <!ENTITY author "Michael Standen">
     ]>
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">&appname;</string>
     <string name="action_credits">О приложении</string>
     <string name="action_settings">Настройки</string>
     <string name="credits_content1">Slideshow это простое приложение для просмотра изображений на Вашем телефоне</string>
