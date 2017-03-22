@@ -38,8 +38,8 @@
     <string name="credits_creator">Создано <a href="https://michael.standen.link">&author;</a></string>
     <string name="credits_content1">Slideshow это простое приложение для просмотра изображений на Вашем телефоне</string>
     <string name="credits_content2">Без каких-либо наворотов, это приложение - самое простое приложение для показа слайдов в магазине.</string>
-    <string name="credits_content3">Вы можете посмотреть исходный код приложения, сообщить о проблеме или предложить новые функции на <a href="https://github.com/Screaminghawk/android-slideshow">Github</a>. \t</string>
-    <string name="credits_content4">Это приложение с открытым исходным кодом и оно полностью бесплатно; лицензировано в соответствии с <a href="https://tldrlegal.com/license/mit-license">MIT license</a>. \t</string>
+    <string name="credits_content3">Вы можете посмотреть исходный код приложения, сообщить о проблеме или предложить новые функции на <a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.</string>
+    <string name="credits_content4">Это приложение с открытым исходным кодом и оно полностью бесплатно; лицензировано в соответствии с <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.</string>
     <string name="credits_content5">Благодарности  <a href="https://github.com/psyanite">Yan Tsui</a> за тестирование и дизайн иконки.</string>
 
 	<!-- Settings -->
