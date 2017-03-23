@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_credits">О приложении</string>
+
+	<!-- List -->
+    <string name="inaccessible">(недоступен)</string>
+    <string name="go_home_folder">Застряли? Нажмите чтобы вернуться домой</string>
+
+	<!-- Slideshow -->
+    <string name="title_activity_image">Окно изображений</string>
+
+    <string name="delete_button">Удалить</string>
+    <string name="delete_dialog_title">Удалить изображение</string>
+    <string name="delete_dialog_message">Вы уверены?</string>
+    <string name="image_deleted">Изображение удалено</string>
+    <string name="image_not_deleted">Не удалось удалить изображение</string>
+
+    <string name="share_button">Поделиться</string>
+    <string name="share_via">Поделиться с&#8230;</string>
+
+    <string name="image_detail_dimensions">Размерности: %1$dx%2$d</string>
+    <string name="image_detail_size">Размер файла: %1$s</string>
+    <string name="image_detail_modified">Модифицирован: %1$s</string>
+
+	<!-- Image descriptions -->
+    <string name="image_description">Изображение</string>
+    <string name="logo_description">Логотип</string>
+
+	<!-- Credits -->
+    <string name="title_activity_credits">О приложении</string>
+    <string name="credits_creator">Создано <a href="https://michael.standen.link">&author;</a></string>
+    <string name="credits_content1">Slideshow это простое приложение для просмотра изображений на Вашем телефоне</string>
+    <string name="credits_content2">Без каких-либо наворотов, это приложение - самое простое приложение для показа слайдов в магазине.</string>
+    <string name="credits_content3">Вы можете посмотреть исходный код приложения, сообщить о проблеме или предложить новые функции на <a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.</string>
+    <string name="credits_content4">Это приложение с открытым исходным кодом и оно полностью бесплатно; лицензировано в соответствии с <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.</string>
+    <string name="credits_content5">Благодарности  <a href="https://github.com/psyanite">Yan Tsui</a> за тестирование и дизайн иконки.</string>
+
+	<!-- Settings -->
+
+    <string name="title_activity_settings">Настройки</string>
+
+    <string name="pref_title_show_hidden_files">Показать скрытые файлы</string>
+    <string name="pref_description_show_hidden_files">Отобразить файлы скрытые другими файловыми менеджерами.</string>
+
+    <string name="pref_title_show_thumbnails">Показать миниатюры</string>
+    <string name="pref_description_show_thumbnails">Отображает уменьшенные изображения. Отключение этого режима приведет к увеличению производительности, однако вы не сможете увидеть, какие файлы являются изображениями, а какие нет.</string>
+
+    <string name="pref_title_use_device_root">Использовать корень устройства</string>
+    <string name="pref_description_use_device_root">Включить навигацию к корневому каталогу устройства. Это позволит получить доступ к файлам в любом месте устройства, включая подключенные хранилища, такие как SD-карты. Примечание. Может потребоваться устройство с root доступом.</string>
+
+    <string name="pref_title_slide_delay">Пауза слайдов</string>
+    <string name="pref_description_slide_delay">Нажмите чтобы изменить количество секунд в течении которых изображение будет показано перед сменой изображения.</string>
+
+    <string name="pref_title_image_details">Отобразить информацию изображения</string>
+    <string name="pref_description_image_details">Отобразить информацию изображения во время слайд-шоу.</string>
+
+    <string name="pref_title_stop_on_complete">Остановить по завершению</string>
+    <string name="pref_description_stop_on_complete">Остановить слайд-шоу после того как все изображения будут показаны.</string>
+
+    <string name="pref_title_reverse_order">Обратный порядок</string>
+    <string name="pref_description_reverse_order">Отобразить изображения во время слайд-шоу в обратном порядке.</string>
+
+    <string name="pref_title_random_order">Случайный порядок</string>
+    <string name="pref_description_random_order">Отобразить изображения во время слайд-шоу в случайном порядке.</string>
+</resources>
