@@ -81,7 +81,7 @@
 	<string name="pref_description_reverse_order">Mostrar las imágenes en la presentación en orden inverso.
 	</string>
 
-	<string name="pref_title_random_order">Random order</string>
+	<string name="pref_title_random_order">Orden aleatorio</string>
 	<string name="pref_description_random_order">Mostrar las imágenes en la presentación aleatoriamente.
 	</string>
 </resources>
