@@ -7,11 +7,12 @@
 <resources>
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Indstillinger</string>
-	<string name="action_credits">Omkring</string>
+	<string name="action_credits">Om...</string>
 
 	<!-- List -->
 	<string name="inaccessible">(utilgængelig)</string>
 	<string name="go_home_folder">Sidder du fast? Klik for at gå til hjem</string>
+	<string name="play_folder">Afspil Slideshow herfra</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>
@@ -34,7 +35,7 @@
 	<string name="logo_description">Logo</string>
 
 	<!-- Credits -->
-	<string name="title_activity_credits">Omkring &appname;</string>
+	<string name="title_activity_credits">Om &appname;</string>
 	<string name="credits_creator">Lavet af <a href="https://michael.standen.link">&author;</a></string>
 	<string name="credits_content1">Slideshow er et simpelt program til at se billeder på din telefon.
 	</string>
@@ -53,11 +54,15 @@
 	<string name="title_activity_settings">Indstillinger</string>
 
 	<string name="pref_title_show_hidden_files">Vis skjulte filer</string>
-	<string name="pref_description_show_hidden_files">Vis filer som er skjult af andre fil programmer.
+	<string name="pref_description_show_hidden_files">Vis filer som er skjult af andre fil browsere.
 	</string>
 
 	<string name="pref_title_show_thumbnails">Vis miniature</string>
 	<string name="pref_description_show_thumbnails">Vis miniature billeder. Det vil give forbedret ydeevne ved at slå dette fra, men man kan ikke se hvilke filer der er billeder og ikke er</string>
+
+	<string name="pref_title_play_from_here">Aktivér "Afspil herfra" knap</string>
+	<string name="pref_description_play_from_here"> Afspil herfra knappen vil være synlige og gøre dig i stand til at starte et slideshow fra den givne folder og alle underfolder. Denne feature er deaktiveret som standard, da den kan have en negativ effekt på ydeevnen.
+	</string>
 
 	<string name="pref_title_use_device_root">Brug device root</string>
 	<string name="pref_description_use_device_root">Aktivér navigation i rod biblioteket af enheden. Dette vil give adgang til alle filer på enheden, dette inkluderer alle filer på enheden, også monteret opbevaring såsom SD kort. Note: Kan kræve rodadgang på enheden for at fungere korrekt.
