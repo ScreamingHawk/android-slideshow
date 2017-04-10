@@ -14,6 +14,12 @@
 
 	<SwitchPreference
 		android:defaultValue="false"
+		android:key="play_from_here"
+		android:summary="@string/pref_description_play_from_here"
+		android:title="@string/pref_title_play_from_here"/>
+
+	<SwitchPreference
+		android:defaultValue="false"
 		android:key="use_device_root"
 		android:summary="@string/pref_description_use_device_root"
 		android:title="@string/pref_title_use_device_root"/>

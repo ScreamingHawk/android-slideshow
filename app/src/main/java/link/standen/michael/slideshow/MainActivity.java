@@ -130,7 +130,7 @@ public class MainActivity extends BaseActivity {
 			// Add Go Home item
 			fileList.clear();
 			fileList.add(fileItemHelper.createGoHomeFileItem());
-		} else {
+		} else if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("play_from_here", false)) {
 			fileList.add(0, fileItemHelper.createPlayFileItem());
 		}
 

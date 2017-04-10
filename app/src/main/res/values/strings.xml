@@ -68,6 +68,12 @@
 		are not.
 	</string>
 
+	<string name="pref_title_play_from_here">Enable "Play from here" button</string>
+	<string name="pref_description_play_from_here">The "Play from here" button appears in the file
+		list and allow you to begin a Slideshow from the current folder, including all sub folders.
+		This feature is disabled by default as it may have a negative performance impact.
+	</string>
+
 	<string name="pref_title_use_device_root">Use device root</string>
 	<string name="pref_description_use_device_root">Enable navigation to the root directory of the
 		device. This will enable access to files anywhere on the device, including mounted storage
