@@ -89,8 +89,13 @@ public class FileItem implements Comparable<FileItem> {
 	public void setHolderImageView(){
 		if (holder != null && holder.getFileItem() == this){
 			if (isSpecial) {
-				// Special
-				holder.getImageView().setImageResource(R.mipmap.special_folder);
+				if (isDirectory) {
+					// Special Directory
+					holder.getImageView().setImageResource(R.mipmap.special_folder);
+				} else {
+					// Special Play
+					holder.getImageView().setImageResource(R.mipmap.play_folder);
+				}
 			} else if (isDirectory) {
 				// Directory
 				holder.getImageView().setImageResource(R.mipmap.folder);

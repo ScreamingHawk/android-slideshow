@@ -42,7 +42,7 @@ public class FileItemHelper {
 	 * @param currentPath The directory path.
 	 */
 	public List<FileItem> getFileList(@NonNull String currentPath){
-		return getFileList(currentPath, true);
+		return getFileList(currentPath, true, false);
 	}
 
     /**
@@ -50,7 +50,8 @@ public class FileItemHelper {
      * @param currentPath The directory path.
 	 * @param includeDirectories Whether or not to include directories.
      */
-    public List<FileItem> getFileList(@NonNull String currentPath, boolean includeDirectories){
+    public List<FileItem> getFileList(@NonNull String currentPath, boolean includeDirectories,
+			boolean includeSubDirectories){
         Log.d(TAG, "updateFileList currentPath: "+currentPath);
 
         // Create file list
@@ -67,6 +68,8 @@ public class FileItemHelper {
 					// Test directories
 					if (includeDirectories || !file.isDirectory()) {
 						fileList.add(createFileItem(file));
+					} else if (includeSubDirectories){
+						fileList.addAll(getFileList(file.getAbsolutePath(), includeDirectories, includeSubDirectories));
 					}
 				}
             }
@@ -94,6 +97,17 @@ public class FileItemHelper {
 		item.setName(context.getResources().getString(R.string.go_home_folder));
 		item.setPath(Environment.getExternalStorageDirectory().getAbsolutePath());
 		item.setIsDirectory(true);
+		item.setIsSpecial(true);
+		return item;
+	}
+
+	/**
+	 * Create a special file item for a folder linking to the default External Storage location.
+	 */
+	public FileItem createPlayFileItem(){
+		FileItem item = new FileItem();
+		item.setName(context.getResources().getString(R.string.play_folder));
+		item.setIsDirectory(false);
 		item.setIsSpecial(true);
 		return item;
 	}

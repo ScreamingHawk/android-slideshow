@@ -130,8 +130,9 @@ public class MainActivity extends BaseActivity {
 			// Add Go Home item
 			fileList.clear();
 			fileList.add(fileItemHelper.createGoHomeFileItem());
+		} else {
+			fileList.add(0, fileItemHelper.createPlayFileItem());
 		}
-
 
 		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));
@@ -139,17 +140,15 @@ public class MainActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				FileItem fileItem = ((FileItemViewHolder) view.getTag()).getFileItem();
-				if (fileItem.getIsDirectory()){
+				if (fileItem.getIsDirectory()) {
 					currentPath = fileItem.getPath();
 					updateListView();
-				} else {
-					if (new FileItemHelper(MainActivity.this).isImage(fileItem)){
-						// Only open images
-						Intent intent = new Intent(MainActivity.this, ImageActivity.class);
-						intent.putExtra("currentPath", currentPath);
-						intent.putExtra("imagePath", fileItem.getPath());
-						MainActivity.this.startActivity(intent);
-					}
+				} else if (fileItem.getIsSpecial() || new FileItemHelper(MainActivity.this).isImage(fileItem)){
+					// Only open images
+					Intent intent = new Intent(MainActivity.this, ImageActivity.class);
+					intent.putExtra("currentPath", currentPath);
+					intent.putExtra("imagePath", fileItem.getPath());
+					MainActivity.this.startActivity(intent);
 				}
 			}
 		});

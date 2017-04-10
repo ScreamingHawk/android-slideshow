@@ -12,6 +12,7 @@
 	<!-- List -->
 	<string name="inaccessible">(inaccessible)</string>
 	<string name="go_home_folder">Stuck? Click to go Home</string>
+	<string name="play_folder">Play Slideshow from here</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>

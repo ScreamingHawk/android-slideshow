@@ -178,16 +178,21 @@ public class ImageActivity extends BaseActivity {
 		String imagePath = getIntent().getStringExtra("imagePath");
 
 		// Set up image list
-		fileList = new FileItemHelper(this).getFileList(currentPath, false);
+		fileList = new FileItemHelper(this).getFileList(currentPath, false, imagePath == null);
 		if (RANDOM_ORDER){
 			Collections.shuffle(fileList);
 		}
 
 		// Find the selected image position
-		for (int i = 0; i < fileList.size(); i++){
-			if (imagePath.equals(fileList.get(i).getPath())){
-				imagePosition = i;
-				break;
+		if (imagePath == null) {
+			imagePosition = 0;
+			nextImage();
+		} else {
+			for (int i = 0; i < fileList.size(); i++) {
+				if (imagePath.equals(fileList.get(i).getPath())) {
+					imagePosition = i;
+					break;
+				}
 			}
 		}
 		firstImagePosition = imagePosition;
