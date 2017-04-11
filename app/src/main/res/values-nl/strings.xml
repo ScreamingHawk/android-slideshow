@@ -66,6 +66,12 @@
 		de performantie, echter kan je dan niet zien welke bestanden beelden zijn en welke niet.
 	</string>
 
+	<string name="pref_title_play_from_here">Inschakelen "Speel vanaf hier" knop</string>
+	<string name="pref_description_play_from_here">De "Speel vanaf hier" knop verschijnt in de bestandslijst
+		en laat je toe de diashow te beginnen vanuit de huidige folder, inclusief alle onderliggende folders.
+		Deze functie is standard uitgeschakeld daar het mogelijks nadelig is voor de performantie.
+	</string>
+
 	<string name="pref_title_use_device_root">Gebruik toestel root</string>
 	<string name="pref_description_use_device_root">Schakel toegang tot de root folder van het toestel in.
 		Dit laat toegang toe tot elk bestand in alle folders op het toestel inclusied externe opslag 
