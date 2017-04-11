@@ -68,8 +68,8 @@
 
 	<string name="pref_title_play_from_here">Inschakelen "Speel vanaf hier" knop</string>
 	<string name="pref_description_play_from_here">De "Speel vanaf hier" knop verschijnt in de bestandslijst
-		en laat je toe de diashow te beginnen vanuit de huidige folder, inclusief alle onderliggende folders.
-		Deze functie is standard uitgeschakeld daar het mogelijks nadelig is voor de performantie.
+		en laat je toe de diashow te beginnen vanuit de huidige folder inclusief alle onderliggende folders.
+		Deze functie is standaard uitgeschakeld daar het mogelijks nadelig is voor de performantie.
 	</string>
 
 	<string name="pref_title_use_device_root">Gebruik toestel root</string>
