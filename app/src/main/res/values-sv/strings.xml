@@ -19,7 +19,7 @@
 
 	<string name="delete_button">Ta bort</string>
 	<string name="delete_dialog_title">Ta bort bild</string>
-	<string name="delete_dialog_message">Är du <s>				</s>äker?</string>
+	<string name="delete_dialog_message">Är du säker?</string>
 	<string name="image_deleted">Bild borttagen</string>
 	<string name="image_not_deleted">Bilden gick inte att ta bort</string>
 
