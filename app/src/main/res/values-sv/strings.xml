@@ -45,7 +45,7 @@
 		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
 	</string>
 	<string name="credits_content4">Den här applikationen är helt gratis och opensource enligt
-		under the <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+		<a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
 	</string>
 	<string name="credits_content5">Tack till <a href="https://github.com/psyanite">Yan Tsui</a>
 		för tester och design av &appname; ikonen.
@@ -62,7 +62,6 @@
 	<string name="pref_title_show_thumbnails">Visa minatyrer</string>
 	<string name="pref_description_show_thumbnails">Visa minatyrbilder. Stäng av detta för att öka prestanda,
 		observera att du inte kommer att kunna se vilka filer som är bilder och vilka som inte är det.
-
 	</string>
 
 	<string name="pref_title_play_from_here">Aktivera spela upp bildspel härifrån</string>
@@ -77,7 +76,7 @@
 	</string>
 
 	<string name="pref_title_slide_delay">Fördröjning</string>
-	<string name="pref_description_slide_delay">Kicka för att ändra hur många sekunder varje bild visas.
+	<string name="pref_description_slide_delay">Klicka för att ändra hur många sekunder varje bild visas.
 	</string>
 
 	<string name="pref_title_image_details">Visa bilddetaljer</string>
