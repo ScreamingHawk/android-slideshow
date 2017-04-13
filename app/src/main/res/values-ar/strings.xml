@@ -12,6 +12,7 @@
 	<!-- List -->
 	<string name="inaccessible">(inaccessibile)</string>
 	<string name="go_home_folder">عالق؟ انقر للذهاب الرئيسية</string>
+	<string name="play_folder">تشغيل عرض الشرائح من هنا</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>
