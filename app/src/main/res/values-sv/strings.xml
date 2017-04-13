@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Inställningar</string>
+	<string name="action_credits">Om appen</string>
+
+	<!-- List -->
+	<string name="inaccessible">(otillgänglig)</string>
+	<string name="go_home_folder">Fastnat? Klicka för att komma till hemskärmen</string>
+	<string name="play_folder">Spela upp bildspel härifrån</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">Ta bort</string>
+	<string name="delete_dialog_title">Ta bort bild</string>
+	<string name="delete_dialog_message">Är du säker?</string>
+	<string name="image_deleted">Bild borttagen</string>
+	<string name="image_not_deleted">Bilden gick inte att ta bort</string>
+
+	<string name="share_button">Dela</string>
+	<string name="share_via">Dela via&#8230;</string>
+
+	<string name="image_detail_dimensions">Dimensioner: %1$dx%2$d</string>
+	<string name="image_detail_size">Filstorlek: %1$s</string>
+	<string name="image_detail_modified">Senast ändrad: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Bild</string>
+	<string name="logo_description">Logga</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">Om &appname;</string>
+	<string name="credits_creator">av <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow är ett enkelt program för att visa bilder på din telefon.
+	</string>
+	<string name="credits_content2">Utan onödiga funktioner, den här appen är den enklaste bildspelsapplikationen på marknaden.
+	</string>
+	<string name="credits_content3">Du kan se källkod, rapportera buggar och föreslå nya funktioner på
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">Den här applikationen är helt gratis och opensource enligt
+		<a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">Tack till <a href="https://github.com/psyanite">Yan Tsui</a>
+		för tester och design av &appname; ikonen.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Inställningar</string>
+
+	<string name="pref_title_show_hidden_files">Visa dolda filer</string>
+	<string name="pref_description_show_hidden_files">Visa filer som är dolda av andra filhanterare.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Visa minatyrer</string>
+	<string name="pref_description_show_thumbnails">Visa minatyrbilder. Stäng av detta för att öka prestanda,
+		observera att du inte kommer att kunna se vilka filer som är bilder och vilka som inte är det.
+	</string>
+
+	<string name="pref_title_play_from_here">Aktivera spela upp bildspel härifrån</string>
+	<string name="pref_description_play_from_here">"Spela upp bildspel härifrån"-knappen visas i fillistan och låter dig
+		börja ett bildspel från den mapp du står i och inkluderar alla undermappar.
+		Funktionen är avaktiverad som default eftersom den kan ha negativ påverkan på prestandan.
+	</string>
+
+	<string name="pref_title_use_device_root">Använd enhetens rotkatalog</string>
+	<string name="pref_description_use_device_root">Aktivera navigering till rotkatalogen för enheten. Detta gör att du får tillgång till filer överallt på enheten,
+		även extern lagring så som SD-kort. Notis: Kan kräva rootad enhet för att fungera korrekt.
+	</string>
+
+	<string name="pref_title_slide_delay">Fördröjning</string>
+	<string name="pref_description_slide_delay">Klicka för att ändra hur många sekunder varje bild visas.
+	</string>
+
+	<string name="pref_title_image_details">Visa bilddetaljer</string>
+	<string name="pref_description_image_details">Visar detaljerad information om bilden under bildspelets gång.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Stoppa efter sista bilden</string>
+	<string name="pref_description_stop_on_complete">Stoppa bildspelet efter att alla bilder har visats en gång.
+	</string>
+
+	<string name="pref_title_reverse_order">Omvänd ordning</string>
+	<string name="pref_description_reverse_order">Visa bildspelet i omvänd ordning.
+	</string>
+
+	<string name="pref_title_random_order">Slumpmässig ordning</string>
+	<string name="pref_description_random_order">Visa bildspelet i slumpmässig ordning.
+	</string>
+</resources>
