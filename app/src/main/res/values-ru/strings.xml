@@ -12,6 +12,7 @@
 	<!-- List -->
     <string name="inaccessible">(недоступен)</string>
     <string name="go_home_folder">Застряли? Нажмите чтобы вернуться домой</string>
+    <string name="play_folder">Запустить Слайдшоу отсюда</string>
 
 	<!-- Slideshow -->
     <string name="title_activity_image">Окно изображений</string>
@@ -52,6 +53,12 @@
     <string name="pref_title_show_thumbnails">Показать миниатюры</string>
     <string name="pref_description_show_thumbnails">Отображает уменьшенные изображения. Отключение этого режима приведет к увеличению производительности, однако вы не сможете увидеть, какие файлы являются изображениями, а какие нет.</string>
 
+    <string name="pref_title_play_from_here">Активировать "Запустить отсюда" кнопку</string>
+    <string name="pref_description_play_from_here">Кнопка "Запустить отсюда" появится в списке файлов
+	    и позволит вам начать Слайдшоу из текущей директории, включая все поддиректории.
+		По умолчания эта свойство отключено, так как оно может негативно сказаться на производительности
+    </string>
+	
     <string name="pref_title_use_device_root">Использовать корень устройства</string>
     <string name="pref_description_use_device_root">Включить навигацию к корневому каталогу устройства. Это позволит получить доступ к файлам в любом месте устройства, включая подключенные хранилища, такие как SD-карты. Примечание. Может потребоваться устройство с root доступом.</string>
 
