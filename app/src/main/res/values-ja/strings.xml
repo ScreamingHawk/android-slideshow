@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">設定</string>
+	<string name="action_credits">アプリについて</string>
+
+	<!-- List -->
+	<string name="inaccessible">(アクセス不可)</string>
+	<string name="go_home_folder">スタック? クリックしてホームに移動</string>
+	<string name="play_folder">ここからスライドショーを再生</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">削除</string>
+	<string name="delete_dialog_title">画像を削除</string>
+	<string name="delete_dialog_message">よろしいですか?</string>
+	<string name="image_deleted">画像を削除しました</string>
+	<string name="image_not_deleted">画像を削除できません</string>
+
+	<string name="share_button">共有</string>
+	<string name="share_via">共有&#8230;</string>
+
+	<string name="image_detail_dimensions">寸法: %1$dx%2$d</string>
+	<string name="image_detail_size">ファイルサイズ: %1$s</string>
+	<string name="image_detail_modified">更新: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">画像</string>
+	<string name="logo_description">ロゴ</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">&appname; について</string>
+	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow はお使いの電話で画像を表示する
+		シンプルなアプリケーションです。
+	</string>
+	<string name="credits_content2">ベルや笛はありません。このアプリケーションは
+		マーケットで最もシンプルなスライドショーアプリケーションです。
+	</string>
+	<string name="credits_content3"><a href="https://github.com/Screaminghawk/android-slideshow">Github</a>
+		でソースコードの参照、バグの報告、機能のリクエストを行うことができます。
+	</string>
+	<string name="credits_content4">このアプリケーションは完全に無料のオープンソースです。
+		<a href="https://tldrlegal.com/license/mit-license">MIT ライセンス</a> の下でライセンスされます。
+	</string>
+	<string name="credits_content5"><a href="https://github.com/psyanite">Yan Tsui</a>
+		のテストと &appname; アイコンのデザインに感謝します。
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">設定</string>
+
+	<string name="pref_title_show_hidden_files">隠しファイルを表示</string>
+	<string name="pref_description_show_hidden_files">他のファイルマネージャーの
+		隠しファイルを表示します。
+	</string>
+
+	<string name="pref_title_show_thumbnails">サムネイルを表示</string>
+	<string name="pref_description_show_thumbnails">サムネイル画像を表示します。
+		これをオフにするとパフォーマンスは向上しますが、どのファイルが画像で、
+		どのファイルが画像でないかはわかりません。
+	</string>
+
+	<string name="pref_title_play_from_here">"ここから再生" ボタンを有効にする</string>
+	<string name="pref_description_play_from_here">"ここから再生" ボタンがファイルリストに表示され、
+		すべてのサブフォルダーを含む現在のフォルダーからスライドショーを開始できます。
+		この機能はパフォーマンスに悪影響を与える可能性があるため、デフォルトでは無効になっています。
+	</string>
+
+	<string name="pref_title_use_device_root">デバイスのルートを使用する</string>
+	<string name="pref_description_use_device_root">デバイスのルートディレクトリへのナビゲーションを有効にします。
+		 これにより、SD カードなどのマウントされたストレージなど、デバイス上の任意の場所にあるファイルにアクセスできます。
+		 注: 正しく機能するために root 化デバイスが必要になる場合があります。
+	</string>
+
+	<string name="pref_title_slide_delay">スライド待ち時間</string>
+	<string name="pref_description_slide_delay">クリックして次の画像に変更するまでに
+		画像が表示される秒数を変更できます。
+	</string>
+
+	<string name="pref_title_image_details">画像の詳細を表示</string>
+	<string name="pref_description_image_details">スライドショー中の画像の詳細をオーバーレイします。
+	</string>
+
+	<string name="pref_title_stop_on_complete">完了時に停止</string>
+	<string name="pref_description_stop_on_complete">すべての画像を表示したら、
+		スライドショーを停止します。
+	</string>
+
+	<string name="pref_title_reverse_order">逆順</string>
+	<string name="pref_description_reverse_order">スライドショーの画像を
+		逆順に表示します。
+	</string>
+
+	<string name="pref_title_random_order">ランダム順</string>
+	<string name="pref_description_random_order">スライドショーの画像をランダムな順番に
+		表示します。
+	</string>
+</resources>
