@@ -12,6 +12,7 @@
 	<!-- List -->
 	<string name="inaccessible">(ontoegankelijk)</string>
 	<string name="go_home_folder">Zit je vast? Klik hier om terug te keren.</string>
+	<string name="play_folder">Speel Slideshow vanaf hier</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">BeeldActiviteit</string>
@@ -64,6 +65,12 @@
 	<string name="pref_title_show_thumbnails">Toon miniaturen</string>
 	<string name="pref_description_show_thumbnails">Toont beeldminiaturen. Dit uitschakelen verhoogt 
 		de performantie, echter kan je dan niet zien welke bestanden beelden zijn en welke niet.
+	</string>
+
+	<string name="pref_title_play_from_here">Inschakelen "Speel vanaf hier" knop</string>
+	<string name="pref_description_play_from_here">De "Speel vanaf hier" knop verschijnt in de bestandslijst
+		en laat je toe de diashow te beginnen vanuit de huidige folder inclusief alle onderliggende folders.
+		Deze functie is standaard uitgeschakeld daar het mogelijks nadelig is voor de performantie.
 	</string>
 
 	<string name="pref_title_use_device_root">Gebruik toestel root</string>
