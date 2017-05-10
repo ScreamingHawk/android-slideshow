@@ -43,3 +43,6 @@ captures/
 # Misc
 .DS_Store
 .externalNativeBuild
+
+# VisualStudio
+.vs
