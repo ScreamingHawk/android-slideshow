@@ -11,14 +11,15 @@
 
 	<!-- List -->
 	<string name="inaccessible">(inaccessible)</string>
-	<string name="go_home_folder">Atascado? Clic para ir al Inicio</string>
-
+	<string name="go_home_folder">¿Atascado? Clic para ir al Inicio</string>
+    <string name="play_folder">Comenzar Slideshow desde aquí</string>
+	
 	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>
 
 	<string name="delete_button">Borrar</string>
 	<string name="delete_dialog_title">Borrar imagen</string>
-	<string name="delete_dialog_message">Estás seguro?</string>
+	<string name="delete_dialog_message">¿Estás seguro?</string>
 	<string name="image_deleted">Imagen borrada</string>
 	<string name="image_not_deleted">No se pudo borrar la imagen</string>
 
@@ -40,10 +41,10 @@
 	</string>
 	<string name="credits_content2">Sin fanfarrias, esta es la mejor aplicación de presentación de diapositivas del mercado.
 	</string>
-	<string name="credits_content3">Puedes ver el código fuente, reportar errores or requerir nuevas características en
+	<string name="credits_content3">Puedes ver el código fuente, reportar errores o requerir nuevas características en
 		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
 	</string>
-	<string name="credits_content4">Esta aplicación es completamente gratis y de código abierto; bajo la licencia <a href="https://tldrlegal.com/license/mit-license">MIT</a>.
+	<string name="credits_content4">Esta aplicación es completamente gratis y de código abierto, bajo la licencia <a href="https://tldrlegal.com/license/mit-license">MIT</a>.
 	</string>
 	<string name="credits_content5">Gracias a <a href="https://github.com/psyanite">Yan Tsui</a>
 		por probar y diseñar el ícono &appname;.
@@ -58,7 +59,12 @@
 	</string>
 
 	<string name="pref_title_show_thumbnails">Mostrar miniaturas</string>
-	<string name="pref_description_show_thumbnails">Mostrar imágenes en miniatura. Desactivar esta opción mejorará el rendimiento, sin embargo tu no podrás distinguir cuales archivos son imágenes.
+	<string name="pref_description_show_thumbnails">Mostrar imágenes en miniatura. Desactivar esta opción mejorará el rendimiento, sin embargo no podrás distinguir cuáles archivos son imágenes.
+	</string>
+	
+	<string name="pref_title_play_from_here">Activar botón "Reproducir desde aquí"</string>
+	<string name="pref_description_play_from_here">El botón "Reproducir desde aquí" aparece en la lista de
+	    archivos y permite comenzar una reproducción de diapositivas desde la carpeta actual, incluyendo todas las sub-carpetas. Esta característica está deshabilitada por defecto dado que puede tener un impacto negativo en el rendimiento. 
 	</string>
 
 	<string name="pref_title_use_device_root">Usar directorio raíz del dispositivo</string>

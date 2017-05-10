@@ -12,6 +12,7 @@
 	<!-- List -->
 	<string name="inaccessible">(inaccessibile)</string>
 	<string name="go_home_folder">عالق؟ انقر للذهاب الرئيسية</string>
+	<string name="play_folder">تشغيل عرض الشرائح من هنا</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>
@@ -58,6 +59,11 @@
 
 	<string name="pref_title_show_thumbnails">اعرض الصور المصغره</string>
 	<string name="pref_description_show_thumbnails">يعرض الصور المصغرة. إطفاء هذه الميزة يرفع مستوى الأداء، ولكن لن تكون قادرا على رؤية الملفات التي هي الصور وغير الصور.
+	</string>
+
+	<string name="pref_title_play_from_here"> زر تفعيل " تشغيل من هنا"</string>
+	<string name="pref_description_play_from_here">يظهر زر "تشغيل من هنا" في قائمة الملفات ويسمح لك ببدء عرض الشرائح من المجلد الحالي، بما في ذلك كافة المجلدات الفرعية.
+يتم تعطيل هذه الميزة بشكل افتراضي حيث قد يكون لها تأثير سلبي على الأداء.
 	</string>
 
 	<string name="pref_title_use_device_root">إستخدام روت الجهاز</string>
