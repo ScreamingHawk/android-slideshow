@@ -12,7 +12,7 @@
 	<!-- List -->
 	<string name="inaccessible">(ontoegankelijk)</string>
 	<string name="go_home_folder">Zit je vast? Klik hier om terug te keren.</string>
-  <string name="play_folder">Speel Slideshow vanaf hier</string>
+	<string name="play_folder">Speel Slideshow vanaf hier</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">BeeldActiviteit</string>
