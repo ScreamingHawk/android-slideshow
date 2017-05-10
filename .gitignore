@@ -44,5 +44,5 @@ captures/
 .DS_Store
 .externalNativeBuild
 
-# VisualStudio
+# VisualStudio Directory
 .vs/
