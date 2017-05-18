@@ -8,10 +8,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
@@ -197,6 +197,9 @@ public class ImageActivity extends BaseActivity {
 		}
 		firstImagePosition = imagePosition;
 
+		Log.v(TAG, "First item is at index: "+imagePosition);
+		Log.v(TAG, "File list has size of: "+fileList.size());
+
 		// Show the first image
 		loadImage();
 	}
@@ -328,7 +331,7 @@ public class ImageActivity extends BaseActivity {
 
 		options = new BitmapFactory.Options();
 		options.inSampleSize = sampleSize;
-		/** 32K buffer. */
+		/* 32K buffer. */
 		options.inTempStorage = new byte[32 * 1024];
 
 		// Load image
@@ -407,7 +410,10 @@ public class ImageActivity extends BaseActivity {
 		FileItem item = fileList.get(imagePosition);
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType(new FileItemHelper(this).getImageMimeType(item));
-		intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(item.getPath())));
+		intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this,
+				getApplicationContext().getPackageName() + ".provider",
+				new File(item.getPath())));
+		intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 		startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_via)));
 	}
 
