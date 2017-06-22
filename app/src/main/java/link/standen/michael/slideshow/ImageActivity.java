@@ -240,9 +240,11 @@ public class ImageActivity extends BaseActivity {
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
 
+		// Show/Hide the image details that are show during pause
 		if (!IMAGE_DETAILS){
-			// Hide the image details that are show during pause
 			findViewById(R.id.image_details2).setVisibility(View.GONE);
+		} else {
+			findViewById(R.id.image_details2).setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -360,31 +362,29 @@ public class ImageActivity extends BaseActivity {
 	 * Update the image details
 	 */
 	private void updateImageDetails(FileItem item, int width, int height){
-		if (IMAGE_DETAILS) {
-			// Update image details
-			File file = new File(item.getPath());
-			// Location
-			String location = item.getPath().replace(getRootLocation(), "");
-			if (location.length() > LOCATION_DETAIL_MAX_LENGTH){
-				location = "..." + location.substring(location.length() - (LOCATION_DETAIL_MAX_LENGTH - 3));
-			}
-			((TextView)findViewById(R.id.image_detail_location1)).setText(location);
-			((TextView)findViewById(R.id.image_detail_location2)).setText(location);
-			// Dimensions
-			String dimensions = getResources().getString(R.string.image_detail_dimensions, width, height);
-			((TextView)findViewById(R.id.image_detail_dimensions1)).setText(dimensions);
-			((TextView)findViewById(R.id.image_detail_dimensions2)).setText(dimensions);
-			// Size
-			String size = getResources().getString(R.string.image_detail_size,
-					Formatter.formatShortFileSize(this, file.length()));
-			((TextView)findViewById(R.id.image_detail_size1)).setText(size);
-			((TextView)findViewById(R.id.image_detail_size2)).setText(size);
-			// Modified
-			String modified = getResources().getString(R.string.image_detail_modified,
-					DateFormat.getDateFormat(this).format(file.lastModified()));
-			((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
-			((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
+		// Update image details
+		File file = new File(item.getPath());
+		// Location
+		String location = item.getPath().replace(getRootLocation(), "");
+		if (location.length() > LOCATION_DETAIL_MAX_LENGTH){
+			location = "..." + location.substring(location.length() - (LOCATION_DETAIL_MAX_LENGTH - 3));
 		}
+		((TextView)findViewById(R.id.image_detail_location1)).setText(location);
+		((TextView)findViewById(R.id.image_detail_location2)).setText(location);
+		// Dimensions
+		String dimensions = getResources().getString(R.string.image_detail_dimensions, width, height);
+		((TextView)findViewById(R.id.image_detail_dimensions1)).setText(dimensions);
+		((TextView)findViewById(R.id.image_detail_dimensions2)).setText(dimensions);
+		// Size
+		String size = getResources().getString(R.string.image_detail_size,
+				Formatter.formatShortFileSize(this, file.length()));
+		((TextView)findViewById(R.id.image_detail_size1)).setText(size);
+		((TextView)findViewById(R.id.image_detail_size2)).setText(size);
+		// Modified
+		String modified = getResources().getString(R.string.image_detail_modified,
+				DateFormat.getDateFormat(this).format(file.lastModified()));
+		((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
+		((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
 	}
 
 	/**
