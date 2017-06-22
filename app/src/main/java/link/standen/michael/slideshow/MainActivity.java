@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
 		setSupportActionBar(toolbar);
 
 		// Get path
-		updateRootLocation();
+		rootLocation = getRootLocation();
 		currentPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 		if (getIntent().hasExtra("path")){
 			currentPath = getIntent().getStringExtra("path");
@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
 	protected void onResume(){
 		super.onResume();
 		// Update the root location in case preferences changed
-		updateRootLocation();
+		rootLocation = getRootLocation();
 		if (!currentPath.contains(rootLocation)){
 			// Changed from root to non-root preference while in an upper directory. Reset
 			currentPath = rootLocation;
@@ -87,17 +87,6 @@ public class MainActivity extends BaseActivity {
 		super.onSaveInstanceState(outState);
 		listState = ((ListView) findViewById(android.R.id.list)).onSaveInstanceState();
 		outState.putParcelable(LIST_STATE, listState);
-	}
-
-	/**
-	 * Updates the root location depending on preference settings.
-	 */
-	private void updateRootLocation(){
-		if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("use_device_root", false)){
-			rootLocation = "";
-		} else {
-			rootLocation = Environment.getExternalStorageDirectory().getAbsolutePath();
-		}
 	}
 
 	private void updateListView(){
