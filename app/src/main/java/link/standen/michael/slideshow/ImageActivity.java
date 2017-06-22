@@ -181,6 +181,14 @@ public class ImageActivity extends BaseActivity {
 
 		// Set up image list
 		fileList = new FileItemHelper(this).getFileList(currentPath, false, imagePath == null);
+		if (fileList.size() == 0){
+			// No files to view. Exit
+			Log.i(TAG, "No files in list.");
+			onBackPressed();
+			//TODO Notify user
+			return;
+		}
+
 		if (RANDOM_ORDER){
 			Collections.shuffle(fileList);
 		}
