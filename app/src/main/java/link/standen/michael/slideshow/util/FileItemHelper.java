@@ -157,6 +157,11 @@ public class FileItemHelper {
 	 * Returns the mime type of the given item.
 	 */
 	public String getImageMimeType(FileItem item){
-		return URLConnection.guessContentTypeFromName(item.getPath());
+		try {
+			return URLConnection.guessContentTypeFromName(item.getPath());
+		} catch (StringIndexOutOfBoundsException e){
+			// Not sure the cause of this issue but it occurred on production so handling as blank mime.
+			return "";
+		}
 	}
 }
