@@ -26,12 +26,25 @@ public class CreditsActivity extends AppCompatActivity {
 			Log.e(TAG, "Unable to get package version", e);
 		}
 
-		// Linkify
-		((TextView)findViewById(R.id.credits_creator)).setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView)findViewById(R.id.credits_content1)).setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView)findViewById(R.id.credits_content2)).setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView)findViewById(R.id.credits_content3)).setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView)findViewById(R.id.credits_content4)).setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView)findViewById(R.id.credits_content5)).setMovementMethod(LinkMovementMethod.getInstance());
+		// Set up links
+		int[] toLink = new int[]{
+				R.id.credits_creator,
+				R.id.credits_content1,
+				R.id.credits_content2,
+				R.id.credits_content3,
+				R.id.credits_content4,
+				R.id.credits_content5,
+				R.id.credits_content6
+		};
+		for (int id : toLink){
+			linkify(id);
+		}
+	}
+
+	/**
+	 * Add movement method linkifier.
+	 */
+	private void linkify(int id){
+		((TextView)findViewById(id)).setMovementMethod(LinkMovementMethod.getInstance());
 	}
 }

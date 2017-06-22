@@ -52,6 +52,9 @@
 	<string name="credits_content5">Thank you to <a href="https://github.com/psyanite">Yan Tsui</a>
 		for testing and designing the &appname; icon.
 	</string>
+	<string name="credits_content6">This translation of &appname; is brought to you by
+		<a href="https://michael.standen.link">&author;</a>.
+	</string>
 
 	<!-- Settings -->
 
