@@ -52,6 +52,8 @@ public class ImageActivity extends BaseActivity {
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
 
+	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
+
 	private final Handler mSlideshowHandler = new Handler();
 	private final Runnable mSlideshowRunnable = new Runnable() {
 		@Override
@@ -351,9 +353,23 @@ public class ImageActivity extends BaseActivity {
 
 		mContentView.setImageBitmap(image);
 
+		updateImageDetails(item, width, height);
+	}
+
+	/**
+	 * Update the image details
+	 */
+	private void updateImageDetails(FileItem item, int width, int height){
 		if (IMAGE_DETAILS) {
 			// Update image details
 			File file = new File(item.getPath());
+			// Location
+			String location = item.getPath().replace(getRootLocation(), "");
+			if (location.length() > LOCATION_DETAIL_MAX_LENGTH){
+				location = "..." + location.substring(location.length() - (LOCATION_DETAIL_MAX_LENGTH - 3));
+			}
+			((TextView)findViewById(R.id.image_detail_location1)).setText(location);
+			((TextView)findViewById(R.id.image_detail_location2)).setText(location);
 			// Dimensions
 			String dimensions = getResources().getString(R.string.image_detail_dimensions, width, height);
 			((TextView)findViewById(R.id.image_detail_dimensions1)).setText(dimensions);

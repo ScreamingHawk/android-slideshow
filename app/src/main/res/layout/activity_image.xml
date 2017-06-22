@@ -25,6 +25,11 @@
 		android:padding="@dimen/overlay_padding">
 
 		<TextView
+			android:id="@+id/image_detail_location1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/primary"/>
+		<TextView
 			android:id="@+id/image_detail_dimensions1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -93,6 +98,11 @@
 				android:background="@color/black_overlay"
 				android:padding="@dimen/overlay_padding">
 
+				<TextView
+					android:id="@+id/image_detail_location2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="@color/primary"/>
 				<TextView
 					android:id="@+id/image_detail_dimensions2"
 					android:layout_width="wrap_content"

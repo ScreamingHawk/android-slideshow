@@ -1,7 +1,9 @@
 package link.standen.michael.slideshow;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,5 +50,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	/**
+	 * Get the root location, considering the preferences.
+	 */
+	protected String getRootLocation(){
+		if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("use_device_root", false)){
+			return "";
+		}
+		return Environment.getExternalStorageDirectory().getAbsolutePath();
 	}
 }
