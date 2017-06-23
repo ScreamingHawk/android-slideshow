@@ -52,6 +52,9 @@
 	<string name="credits_content5"><a href="https://github.com/psyanite">Yan Tsui</a>
 		のテストと &appname; アイコンのデザインに感謝します。
 	</string>
+	<string name="credits_content6">この &appname; の翻訳は
+		<a href="https://github.com/naofum">Naofumi Fukue</a> によって提供されています。
+	</string>
 
 	<!-- Settings -->
 
