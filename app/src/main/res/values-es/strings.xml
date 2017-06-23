@@ -37,17 +37,24 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Acerca de &appname;</string>
 	<string name="credits_creator">por <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow es una aplicación simple para ver imágenes en tu teléfono.
+	<string name="credits_content1">Slideshow es una aplicación simple para ver imágenes en tu
+		teléfono.
 	</string>
-	<string name="credits_content2">Sin fanfarrias, esta es la mejor aplicación de presentación de diapositivas del mercado.
+	<string name="credits_content2">Con su interfaz sencilla, esta es la aplicación de presentación
+		de diapositivas más simple del mercado.
 	</string>
-	<string name="credits_content3">Puedes ver el código fuente, reportar errores o requerir nuevas características en
-		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	<string name="credits_content3">Puedes ver el código fuente, reportar errores o solicitar nuevas
+		características en <a href="https://github.com/Screaminghawk/android-slideshow">GitHub</a>.
 	</string>
-	<string name="credits_content4">Esta aplicación es completamente gratis y de código abierto, bajo la licencia <a href="https://tldrlegal.com/license/mit-license">MIT</a>.
+	<string name="credits_content4">Esta aplicación es completamente gratis y de código abierto,
+		bajo la licencia <a href="https://tldrlegal.com/license/mit-license">MIT</a>.
 	</string>
 	<string name="credits_content5">Gracias a <a href="https://github.com/psyanite">Yan Tsui</a>
-		por probar y diseñar el ícono &appname;.
+		por probar y diseñar el ícono de &appname;.
+	</string>
+	<string name="credits_content6">Esta traducción de &appname; fue contribuida por
+		<a href="https://github.com/uzluisf">Luis F. Uceta</a> y
+		<a href="https://github.com/lbaca">Leandro Baca</a>.
 	</string>
 
 	<!-- Settings -->
@@ -55,39 +62,52 @@
 	<string name="title_activity_settings">Ajustes</string>
 
 	<string name="pref_title_show_hidden_files">Mostrar archivos ocultos</string>
-	<string name="pref_description_show_hidden_files">Mostrar archivos que están ocultos por otros administradores de archivos.
+	<string name="pref_description_show_hidden_files">Mostrar archivos que están ocultos por otros
+		administradores de archivos.
 	</string>
 
 	<string name="pref_title_show_thumbnails">Mostrar miniaturas</string>
-	<string name="pref_description_show_thumbnails">Mostrar imágenes en miniatura. Desactivar esta opción mejorará el rendimiento, sin embargo no podrás distinguir cuáles archivos son imágenes.
+	<string name="pref_description_show_thumbnails">Mostrar imágenes en miniatura. Desactivar esta
+		opción mejorará el rendimiento, sin embargo no podrás distinguir cuáles archivos son
+		imágenes.
 	</string>
 	
 	<string name="pref_title_play_from_here">Activar botón "Reproducir desde aquí"</string>
-	<string name="pref_description_play_from_here">El botón "Reproducir desde aquí" aparece en la lista de
-	    archivos y permite comenzar una reproducción de diapositivas desde la carpeta actual, incluyendo todas las sub-carpetas. Esta característica está deshabilitada por defecto dado que puede tener un impacto negativo en el rendimiento. 
+	<string name="pref_description_play_from_here">El botón "Reproducir desde aquí" aparece en la
+		lista de archivos y permite comenzar una reproducción de diapositivas desde la carpeta
+		actual, incluyendo todas las sub-carpetas. Esta característica está deshabilitada por
+		defecto dado que puede tener un impacto negativo en el rendimiento.
 	</string>
 
 	<string name="pref_title_use_device_root">Usar directorio raíz del dispositivo</string>
-	<string name="pref_description_use_device_root">Activar navegación al directorio raíz del dispositivo. Esto activará el acceso a los archivos en cualquier parte del dispositivo, incluyendo almacenamiento extra como tarjetas SD. Nota: Para esto trabajar correctamente, el dispositivo debe tener superusuario habilitado.
+	<string name="pref_description_use_device_root">Activar navegación al directorio raíz del
+		dispositivo. Esto activará el acceso a los archivos en cualquier parte del dispositivo,
+		incluyendo almacenamiento extra como tarjetas SD. Atención: para que esto funcione
+		correctamente, el dispositivo debe tener el modo superusuario habilitado.
 	</string>
 
 	<string name="pref_title_slide_delay">Intervalo de presentación</string>
-	<string name="pref_description_slide_delay">Clic para cambiar la cantidad de segundos que una imagen será mostrada antes que la siguiente imagen.
+	<string name="pref_description_slide_delay">Clic para cambiar la cantidad de segundos que una
+		imagen será mostrada antes de pasar a la imagen siguiente.
 	</string>
 
 	<string name="pref_title_image_details">Mostrar detalles de la imagen</string>
-	<string name="pref_description_image_details">Superponer detalles de la imagen durante la presentación.
+	<string name="pref_description_image_details">Superponer detalles de la imagen durante la
+		presentación.
 	</string>
 
 	<string name="pref_title_stop_on_complete">Cerrar al terminar</string>
-	<string name="pref_description_stop_on_complete">Parar la presentación una vez que todas las imágenes hayan sido mostradas.
+	<string name="pref_description_stop_on_complete">Parar la presentación una vez que todas las
+		imágenes hayan sido mostradas.
 	</string>
 
 	<string name="pref_title_reverse_order">Orden inverso</string>
-	<string name="pref_description_reverse_order">Mostrar las imágenes en la presentación en orden inverso.
+	<string name="pref_description_reverse_order">Mostrar las imágenes en la presentación en orden
+		inverso.
 	</string>
 
 	<string name="pref_title_random_order">Orden aleatorio</string>
-	<string name="pref_description_random_order">Mostrar las imágenes en la presentación aleatoriamente.
+	<string name="pref_description_random_order">Mostrar las imágenes en la presentación
+		aleatoriamente.
 	</string>
 </resources>
