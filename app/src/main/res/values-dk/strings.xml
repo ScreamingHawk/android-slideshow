@@ -49,6 +49,8 @@
 		for at teste og designe &appname; iconet.
 	</string>
 
+	<string name="credits_content6">&appname; blev oversat af <a href="https://github.com/KristianTurner">KristianTurner</a>.
+	</string>
 	<!-- Settings -->
 
 	<string name="title_activity_settings">Indstillinger</string>
