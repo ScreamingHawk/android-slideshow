@@ -12,6 +12,7 @@
 	<!-- List -->
 	<string name="inaccessible">(inaccessible)</string>
 	<string name="go_home_folder">Bloqué? Retour à l\'Accueil</string>
+	<string name="play_folder">Démarrer la présentation ici</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">ImageActivity</string>
@@ -36,8 +37,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">A Propos de &appname;</string>
 	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow est une simple application visualiser des images sur votre téléphone.
-	</string>
+	<string name="credits_content1">Slideshow est une application pour visualiser des images sur votre téléphone.</string>
 	<string name="credits_content2">Sans fioritures, cette application est la plus simple visionneuse
 		sur le marché.
 	</string>
@@ -50,10 +50,15 @@
 	<string name="credits_content5">Merci à <a href="https://github.com/psyanite">Yan Tsui</a>
 		pour les tests et le design de l\'icône &appname;.
 	</string>
-
+	<string name="credits_content6">La traduction de &appname; vous est proposée par
+		<a href="https://github.com/thlabbe">Thomas LABBÉ</a>.
+	</string>
 	<!-- Settings -->
 
 	<string name="title_activity_settings">Paramètres</string>
+	<string name="pref_title_show_hidden_files">Montrer les fichiers cachés</string>
+	<string name="pref_description_show_hidden_files">Affiche les fichiersqui sont cachés par les gestionnaires de fichiers.
+	</string>
 
 	<string name="pref_title_show_hidden_files">Montrer les fichiers cachés</string>
 	<string name="pref_description_show_hidden_files">Afficher mes fichier qui sont masqués par d\'autre gestionaires de fichiers.
