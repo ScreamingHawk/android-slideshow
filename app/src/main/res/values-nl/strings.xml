@@ -52,6 +52,10 @@
 	<string name="credits_content5">Met dank aan <a href="https://github.com/psyanite">Yan Tsui</a>
 		voor het testen en het ontwerpen van het &appname; icoon.
 	</string>
+	<string name="credits_content6">Deze vertaling van &appname; werd voorzien door
+		<a href="https://zephyrict.com">ZephyrICT</a>.
+	</string>
+
 
 	<!-- Settings -->
 
