@@ -32,9 +32,17 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textAlignment="center"
-				android:padding="@dimen/credits_padding"
+				android:paddingTop="@dimen/credits_padding"
 				android:text="@string/app_name"
 				android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+			<TextView
+				android:id="@+id/credits_version"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textAlignment="center"
+				android:paddingBottom="@dimen/credits_padding"
+				android:text="@string/credits_creator"/>
 
 			<TextView
 				android:id="@+id/credits_creator"
@@ -78,6 +86,13 @@
 				android:layout_height="wrap_content"
 				android:padding="@dimen/credits_padding"
 				android:text="@string/credits_content5"/>
+
+			<TextView
+				android:id="@+id/credits_content6"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="@dimen/credits_padding"
+				android:text="@string/credits_content6"/>
 
 		</LinearLayout>
 	</ScrollView>

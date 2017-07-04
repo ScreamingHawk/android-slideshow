@@ -32,7 +32,7 @@ Great for showing off those vacation photos without having to scroll.
 * No sign up
 * No internet connection
 * No requests to rate the app
-* No trail periods
+* No trial periods
 * No paid upgrades
 
 ## Upcoming Features and Feature Requests

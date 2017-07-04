@@ -8,10 +8,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
@@ -51,6 +51,8 @@ public class ImageActivity extends BaseActivity {
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
+
+	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
 	private final Handler mSlideshowHandler = new Handler();
 	private final Runnable mSlideshowRunnable = new Runnable() {
@@ -179,6 +181,14 @@ public class ImageActivity extends BaseActivity {
 
 		// Set up image list
 		fileList = new FileItemHelper(this).getFileList(currentPath, false, imagePath == null);
+		if (fileList.size() == 0){
+			// No files to view. Exit
+			Log.i(TAG, "No files in list.");
+			onBackPressed();
+			//TODO Notify user
+			return;
+		}
+
 		if (RANDOM_ORDER){
 			Collections.shuffle(fileList);
 		}
@@ -196,6 +206,9 @@ public class ImageActivity extends BaseActivity {
 			}
 		}
 		firstImagePosition = imagePosition;
+
+		Log.v(TAG, "First item is at index: "+imagePosition);
+		Log.v(TAG, "File list has size of: "+fileList.size());
 
 		// Show the first image
 		loadImage();
@@ -235,9 +248,11 @@ public class ImageActivity extends BaseActivity {
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
 
+		// Show/Hide the image details that are show during pause
 		if (!IMAGE_DETAILS){
-			// Hide the image details that are show during pause
 			findViewById(R.id.image_details2).setVisibility(View.GONE);
+		} else {
+			findViewById(R.id.image_details2).setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -328,7 +343,7 @@ public class ImageActivity extends BaseActivity {
 
 		options = new BitmapFactory.Options();
 		options.inSampleSize = sampleSize;
-		/** 32K buffer. */
+		/* 32K buffer. */
 		options.inTempStorage = new byte[32 * 1024];
 
 		// Load image
@@ -348,24 +363,36 @@ public class ImageActivity extends BaseActivity {
 
 		mContentView.setImageBitmap(image);
 
-		if (IMAGE_DETAILS) {
-			// Update image details
-			File file = new File(item.getPath());
-			// Dimensions
-			String dimensions = getResources().getString(R.string.image_detail_dimensions, width, height);
-			((TextView)findViewById(R.id.image_detail_dimensions1)).setText(dimensions);
-			((TextView)findViewById(R.id.image_detail_dimensions2)).setText(dimensions);
-			// Size
-			String size = getResources().getString(R.string.image_detail_size,
-					Formatter.formatShortFileSize(this, file.length()));
-			((TextView)findViewById(R.id.image_detail_size1)).setText(size);
-			((TextView)findViewById(R.id.image_detail_size2)).setText(size);
-			// Modified
-			String modified = getResources().getString(R.string.image_detail_modified,
-					DateFormat.getDateFormat(this).format(file.lastModified()));
-			((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
-			((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
+		updateImageDetails(item, width, height);
+	}
+
+	/**
+	 * Update the image details
+	 */
+	private void updateImageDetails(FileItem item, int width, int height){
+		// Update image details
+		File file = new File(item.getPath());
+		// Location
+		String location = item.getPath().replace(getRootLocation(), "");
+		if (location.length() > LOCATION_DETAIL_MAX_LENGTH){
+			location = "..." + location.substring(location.length() - (LOCATION_DETAIL_MAX_LENGTH - 3));
 		}
+		((TextView)findViewById(R.id.image_detail_location1)).setText(location);
+		((TextView)findViewById(R.id.image_detail_location2)).setText(location);
+		// Dimensions
+		String dimensions = getResources().getString(R.string.image_detail_dimensions, width, height);
+		((TextView)findViewById(R.id.image_detail_dimensions1)).setText(dimensions);
+		((TextView)findViewById(R.id.image_detail_dimensions2)).setText(dimensions);
+		// Size
+		String size = getResources().getString(R.string.image_detail_size,
+				Formatter.formatShortFileSize(this, file.length()));
+		((TextView)findViewById(R.id.image_detail_size1)).setText(size);
+		((TextView)findViewById(R.id.image_detail_size2)).setText(size);
+		// Modified
+		String modified = getResources().getString(R.string.image_detail_modified,
+				DateFormat.getDateFormat(this).format(file.lastModified()));
+		((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
+		((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
 	}
 
 	/**
@@ -407,7 +434,10 @@ public class ImageActivity extends BaseActivity {
 		FileItem item = fileList.get(imagePosition);
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType(new FileItemHelper(this).getImageMimeType(item));
-		intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(item.getPath())));
+		intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this,
+				getApplicationContext().getPackageName() + ".provider",
+				new File(item.getPath())));
+		intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 		startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_via)));
 	}
 

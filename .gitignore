@@ -12,6 +12,7 @@
 bin/
 gen/
 out/
+output.json
 
 # Gradle files
 .gradle/
@@ -43,3 +44,6 @@ captures/
 # Misc
 .DS_Store
 .externalNativeBuild
+
+# VisualStudio Directory
+.vs/
