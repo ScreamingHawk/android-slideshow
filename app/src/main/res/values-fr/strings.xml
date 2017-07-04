@@ -56,12 +56,9 @@
 	<!-- Settings -->
 
 	<string name="title_activity_settings">Paramètres</string>
-	<string name="pref_title_show_hidden_files">Montrer les fichiers cachés</string>
-	<string name="pref_description_show_hidden_files">Affiche les fichiersqui sont cachés par les gestionnaires de fichiers.
-	</string>
 
 	<string name="pref_title_show_hidden_files">Montrer les fichiers cachés</string>
-	<string name="pref_description_show_hidden_files">Afficher mes fichier qui sont masqués par d\'autre gestionaires de fichiers.
+	<string name="pref_description_show_hidden_files">Affiche les fichiersqui sont cachés par les gestionnaires de fichiers.
 	</string>
 
 	<string name="pref_title_show_thumbnails">Montrer les vignettes</string>
