@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.net.URLConnection;
@@ -157,11 +158,21 @@ public class FileItemHelper {
 	 * Returns the mime type of the given item.
 	 */
 	public String getImageMimeType(FileItem item){
+		String mime = "";
 		try {
-			return URLConnection.guessContentTypeFromName(item.getPath());
+			mime = URLConnection.guessContentTypeFromName(item.getPath());
 		} catch (StringIndexOutOfBoundsException e){
 			// Not sure the cause of this issue but it occurred on production so handling as blank mime.
-			return "";
 		}
+
+		if (mime == null || mime.isEmpty()){
+			// Test mime type by loading the image
+			BitmapFactory.Options opt = new BitmapFactory.Options();
+			opt.inJustDecodeBounds = true;
+			BitmapFactory.decodeFile(item.getPath(), opt);
+			mime = opt.outMimeType;
+		}
+
+		return mime;
 	}
 }
