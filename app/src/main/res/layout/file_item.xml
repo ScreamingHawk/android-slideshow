@@ -26,6 +26,7 @@
 		android:layout_centerVertical="true"
 		android:layout_marginLeft="@dimen/file_name_margin_left"
 		android:maxLines="1"
+		android:ellipsize="end"
 		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
 		android:textStyle="bold"/>
 </RelativeLayout>
