@@ -20,7 +20,6 @@ android {
     //noinspection GroovyMissingReturnStatement
     lintOptions {
         disable 'MissingTranslation'
-        disable 'ExtraTranslation'
     }
 }
 
