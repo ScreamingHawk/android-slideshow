@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import link.standen.michael.slideshow.R;
 import link.standen.michael.slideshow.model.FileItem;
@@ -31,12 +30,25 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 	private final int resourceId;
 	private final List<FileItem> items;
 
+	private final LinkedBlockingDeque<FileItem> thumbnailDeque = new LinkedBlockingDeque<>();
+	private static final int THUMBNAIL_TASK_EMPTY_DELAY = 1000;
+
 	public FileItemArrayAdapter(Context context, int resourceId, List<FileItem> items) {
 		super(context, resourceId, items);
 
 		this.context = context;
 		this.resourceId = resourceId;
 		this.items = items;
+
+		// Kick off the thumbnail generation background task loop.
+		startThumbnailTask();
+	}
+
+	/**
+	 * Start a background thumbnail generation task.
+	 */
+	private void startThumbnailTask(){
+		new ThumbnailTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 	}
 
 	public FileItem getItem(int index){
@@ -64,12 +76,8 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
 			if (item.getThumbnail() == null){
-				try {
-					new ThumbnailTask(item).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-				} catch (RejectedExecutionException ex){
-					// Not important, log and continue
-					Log.e(TAG, "Rejected thumbnail job", ex);
-				}
+				// Queue thumbnail generation
+				thumbnailDeque.push(item);
 			}
 			item.setHolderImageView();
 		}
@@ -77,25 +85,29 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 	}
 
 	/**
-	 * Background task for loading thumbnails
+	 * Background task for loading thumbnails.
+	 * On complete, this task calls for another task to be run.
+	 * If no items are in the queue, there is a small delay before processing the next task.
 	 */
 	private class ThumbnailTask extends AsyncTask<Object, Void, Bitmap> {
-		private final FileItem item;
-
-		private ThumbnailTask(FileItem item) {
-			this.item = item;
-		}
+		private FileItem item;
 
 		@Override
 		protected void onPostExecute(Bitmap result) {
-			if (item.getIsDirectory()){
-				return;
+			if (item != null) {
+				if (item.getIsDirectory()) {
+					return;
+				}
+				item.setThumbnail(result);
 			}
-			item.setThumbnail(result);
+			FileItemArrayAdapter.this.startThumbnailTask();
 		}
 
 		@Override
 		protected Bitmap doInBackground(Object[] params) {
+			if (item == null){
+				return null;
+			}
 			if (item.getThumbnail() != null){
 				return item.getThumbnail();
 			}
@@ -103,6 +115,20 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 				return null;
 			}
 			return new FileItemHelper(context).createThumbnail(item);
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			item = FileItemArrayAdapter.this.thumbnailDeque.poll();
+			if (item == null) {
+				try {
+					// No items in the queue. Wait a second before continuing
+					Thread.sleep(THUMBNAIL_TASK_EMPTY_DELAY);
+				} catch (InterruptedException e) {
+					// Who cares
+				}
+			}
 		}
 	}
 }
