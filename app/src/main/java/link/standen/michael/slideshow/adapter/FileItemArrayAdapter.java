@@ -1,8 +1,10 @@
 package link.standen.michael.slideshow.adapter;
 
 import android.content.Context;
-import android.os.Handler;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Stack;
-import java.util.TimerTask;
+import java.util.concurrent.RejectedExecutionException;
 
 import link.standen.michael.slideshow.R;
 import link.standen.michael.slideshow.model.FileItem;
@@ -29,32 +30,6 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 	private final Context context;
 	private final int resourceId;
 	private final List<FileItem> items;
-
-	private final Stack<FileItem> thumbnailStack = new Stack<>();
-	private final Handler thumbnailHandler = new Handler();
-
-	/**
-	 * Background task for loading thumbnails
-	 */
-	private final Runnable thumbnailTask = new TimerTask() {
-		@Override
-		synchronized public void run() {
-			if (thumbnailStack.isEmpty()){
-				// No items
-				return;
-			}
-			FileItem item = thumbnailStack.pop();
-			if (item == null){
-				// No items
-				return;
-			}
-			if (item.getIsDirectory() || item.getThumbnailAttempted() || item.getThumbnail() != null){
-				// Not valid, already attempted, or already succeeded.
-				return;
-			}
-			item.setThumbnail(new FileItemHelper(context).createThumbnail(item));
-		}
-	};
 
 	public FileItemArrayAdapter(Context context, int resourceId, List<FileItem> items) {
 		super(context, resourceId, items);
@@ -89,11 +64,45 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
 			if (item.getThumbnail() == null){
-				thumbnailStack.push(item);
-				thumbnailHandler.post(thumbnailTask);
+				try {
+					new ThumbnailTask(item).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+				} catch (RejectedExecutionException ex){
+					// Not important, log and continue
+					Log.e(TAG, "Rejected thumbnail job", ex);
+				}
 			}
 			item.setHolderImageView();
 		}
 		return view;
+	}
+
+	/**
+	 * Background task for loading thumbnails
+	 */
+	private class ThumbnailTask extends AsyncTask<Object, Void, Bitmap> {
+		private final FileItem item;
+
+		private ThumbnailTask(FileItem item) {
+			this.item = item;
+		}
+
+		@Override
+		protected void onPostExecute(Bitmap result) {
+			if (item.getIsDirectory()){
+				return;
+			}
+			item.setThumbnail(result);
+		}
+
+		@Override
+		protected Bitmap doInBackground(Object[] params) {
+			if (item.getThumbnail() != null){
+				return item.getThumbnail();
+			}
+			if (item.getIsDirectory() || item.getThumbnailAttempted()){
+				return null;
+			}
+			return new FileItemHelper(context).createThumbnail(item);
+		}
 	}
 }
