@@ -2,15 +2,20 @@ package link.standen.michael.slideshow;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class CreditsActivity extends AppCompatActivity {
 
 	private static final String TAG = CreditsActivity.class.getName();
+	private static final String DEFAULT_LANGUAGE = new Locale("en").getLanguage();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +39,13 @@ public class CreditsActivity extends AppCompatActivity {
 				R.id.credits_content3,
 				R.id.credits_content4,
 				R.id.credits_content5,
-				R.id.credits_content6
+				R.id.credits_content6,
 		};
 		for (int id : toLink){
 			linkify(id);
+		}
+		if (getCurrentLocale().getLanguage().equals(DEFAULT_LANGUAGE)){
+			findViewById(R.id.credits_content6).setVisibility(View.GONE);
 		}
 	}
 
@@ -46,5 +54,17 @@ public class CreditsActivity extends AppCompatActivity {
 	 */
 	private void linkify(int id){
 		((TextView)findViewById(id)).setMovementMethod(LinkMovementMethod.getInstance());
+	}
+
+	/**
+	 * A version save way to get the current locale.
+	 */
+	public Locale getCurrentLocale(){
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+			return getResources().getConfiguration().getLocales().get(0);
+		} else {
+			//noinspection deprecation
+			return getResources().getConfiguration().locale;
+		}
 	}
 }
