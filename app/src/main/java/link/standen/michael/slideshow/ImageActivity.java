@@ -378,7 +378,7 @@ public class ImageActivity extends BaseActivity {
 		// Update image details
 		File file = new File(item.getPath());
 		// Location
-		String location = item.getPath().replace(getRootLocation(), "");
+		String location = file.getParent().replace(getRootLocation(), "");
 		if (location.length() > LOCATION_DETAIL_MAX_LENGTH){
 			location = "..." + location.substring(location.length() - (LOCATION_DETAIL_MAX_LENGTH - 3));
 		}
