@@ -2,6 +2,7 @@ package link.standen.michael.slideshow;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,8 +44,16 @@ public class MainActivity extends BaseActivity {
 
 		// Get path
 		rootLocation = getRootLocation();
+
+		// Path is external absolute directory
 		currentPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		if (preferences.getBoolean("remember_location", false)){
+			// Override using remembered location
+			currentPath = preferences.getString("remembered_location", currentPath);
+		}
 		if (getIntent().hasExtra("path")){
+			// Override using passed value
 			currentPath = getIntent().getStringExtra("path");
 		}
 	}

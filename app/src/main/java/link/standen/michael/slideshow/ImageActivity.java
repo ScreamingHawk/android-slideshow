@@ -179,6 +179,11 @@ public class ImageActivity extends BaseActivity {
 		currentPath = getIntent().getStringExtra("currentPath");
 		String imagePath = getIntent().getStringExtra("imagePath");
 
+		// Save the current path
+		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+		editor.putString("remembered_location", currentPath);
+		editor.apply();
+
 		// Set up image list
 		fileList = new FileItemHelper(this).getFileList(currentPath, false, imagePath == null);
 		if (fileList.size() == 0){
