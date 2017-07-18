@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }

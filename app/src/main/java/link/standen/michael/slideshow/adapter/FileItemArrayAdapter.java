@@ -2,7 +2,7 @@ package link.standen.michael.slideshow.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +11,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
 
 import link.standen.michael.slideshow.R;
 import link.standen.michael.slideshow.model.FileItem;
 import link.standen.michael.slideshow.model.FileItemViewHolder;
-import link.standen.michael.slideshow.util.FileItemHelper;
 
 /**
  * Class for managing lists of file items.
@@ -29,9 +31,9 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 	private final Context context;
 	private final int resourceId;
 	private final List<FileItem> items;
+	private final ImageLoader imageLoader = ImageLoader.getInstance();
 
-	private final LinkedBlockingDeque<FileItem> thumbnailDeque = new LinkedBlockingDeque<>();
-	private static final int THUMBNAIL_TASK_EMPTY_DELAY = 1000;
+	private transient Boolean thumbnailPreference;
 
 	public FileItemArrayAdapter(Context context, int resourceId, List<FileItem> items) {
 		super(context, resourceId, items);
@@ -39,16 +41,16 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 		this.context = context;
 		this.resourceId = resourceId;
 		this.items = items;
-
-		// Kick off the thumbnail generation background task loop.
-		startThumbnailTask();
 	}
 
 	/**
-	 * Start a background thumbnail generation task.
+	 * Determine if the thumbnail preference is set.
 	 */
-	private void startThumbnailTask(){
-		new ThumbnailTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+	private boolean thumbnailPreferenceOn(){
+		if (thumbnailPreference == null) {
+			thumbnailPreference = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_thumbnails", true);
+		}
+		return thumbnailPreference;
 	}
 
 	public FileItem getItem(int index){
@@ -75,60 +77,32 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			item.setHolder(holder);
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
-			if (item.getThumbnail() == null){
-				// Queue thumbnail generation
-				thumbnailDeque.push(item);
+			if (thumbnailPreferenceOn() && item.couldHaveThumbnail() && item.getThumbnail() == null){
+				imageLoader.displayImage(item.getPathUri(),
+						holder.getImageView(),
+						new ImageLoadingListener(){
+							@Override
+							public void onLoadingStarted(String s, View view) {}
+
+							@Override
+							public void onLoadingFailed(String s, View view, FailReason failReason) {
+								item.setThumbnailAttempted(true);
+								item.setHolderImageView();
+							}
+
+							@Override
+							public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+								item.setThumbnail(bitmap);
+							}
+
+							@Override
+							public void onLoadingCancelled(String s, View view) {}
+						});
+
+
 			}
 			item.setHolderImageView();
 		}
 		return view;
-	}
-
-	/**
-	 * Background task for loading thumbnails.
-	 * On complete, this task calls for another task to be run.
-	 * If no items are in the queue, there is a small delay before processing the next task.
-	 */
-	private class ThumbnailTask extends AsyncTask<Object, Void, Bitmap> {
-		private FileItem item;
-
-		@Override
-		protected void onPostExecute(Bitmap result) {
-			if (item != null) {
-				if (item.getIsDirectory()) {
-					return;
-				}
-				item.setThumbnail(result);
-			}
-			FileItemArrayAdapter.this.startThumbnailTask();
-		}
-
-		@Override
-		protected Bitmap doInBackground(Object[] params) {
-			if (item == null){
-				return null;
-			}
-			if (item.getThumbnail() != null){
-				return item.getThumbnail();
-			}
-			if (item.getIsDirectory() || item.getThumbnailAttempted()){
-				return null;
-			}
-			return new FileItemHelper(context).createThumbnail(item);
-		}
-
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			item = FileItemArrayAdapter.this.thumbnailDeque.poll();
-			if (item == null) {
-				try {
-					// No items in the queue. Wait a second before continuing
-					Thread.sleep(THUMBNAIL_TASK_EMPTY_DELAY);
-				} catch (InterruptedException e) {
-					// Who cares
-				}
-			}
-		}
 	}
 }

@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import java.io.File;
 
 import link.standen.michael.slideshow.adapter.FileItemArrayAdapter;
@@ -41,6 +44,9 @@ public class MainActivity extends BaseActivity {
 		setContentView(R.layout.activity_main);
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+
+		// Set up thumbnail loader
+		ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(this).build());
 
 		// Get path
 		rootLocation = getRootLocation();

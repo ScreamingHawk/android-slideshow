@@ -1,7 +1,10 @@
 package link.standen.michael.slideshow.model;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+
+import java.io.File;
 
 import link.standen.michael.slideshow.R;
 
@@ -12,6 +15,7 @@ public class FileItem implements Comparable<FileItem> {
 
 	private String name;
 	private String path;
+	private String pathUri;
 	private Boolean isDirectory;
 	private transient Bitmap thumbnail;
 	/**
@@ -22,13 +26,13 @@ public class FileItem implements Comparable<FileItem> {
 	 * At some point a thumbnail has been attempted (successfully or otherwise).
 	 */
 	private Boolean thumbnailAttempted = Boolean.FALSE;
+
 	/**
 	 * File passes the MIME type test.
 	 */
 	private Boolean isImage;
 
 	private FileItemViewHolder holder;
-
 	private boolean isSpecial = false;
 
 	public String getName() {
@@ -45,6 +49,7 @@ public class FileItem implements Comparable<FileItem> {
 
 	public void setPath(String path) {
 		this.path = path;
+		this.pathUri = Uri.fromFile(new File(path)).toString();
 	}
 
 	public Boolean getIsDirectory() {
@@ -81,6 +86,10 @@ public class FileItem implements Comparable<FileItem> {
 		}
 		this.thumbnailAttempted = true;
 		setHolderImageView();
+	}
+
+	public boolean couldHaveThumbnail(){
+		return !(isDirectory || isSpecial);
 	}
 
 	/**
@@ -150,5 +159,9 @@ public class FileItem implements Comparable<FileItem> {
 
 	public void setIsSpecial(boolean isSpecial) {
 		this.isSpecial = isSpecial;
+	}
+
+	public String getPathUri() {
+		return this.pathUri;
 	}
 }
