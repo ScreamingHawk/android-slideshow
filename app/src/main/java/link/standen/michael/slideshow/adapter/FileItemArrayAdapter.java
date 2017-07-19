@@ -78,11 +78,12 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
 			if (thumbnailPreferenceOn() && item.couldHaveThumbnail() && item.getThumbnail() == null){
-				imageLoader.displayImage(item.getPathUri(),
-						holder.getImageView(),
+				imageLoader.loadImage(item.getPathUri(),
 						new ImageLoadingListener(){
 							@Override
-							public void onLoadingStarted(String s, View view) {}
+							public void onLoadingStarted(String s, View view) {
+								item.setHolderImageView();
+							}
 
 							@Override
 							public void onLoadingFailed(String s, View view, FailReason failReason) {
@@ -93,15 +94,17 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 							@Override
 							public void onLoadingComplete(String s, View view, Bitmap bitmap) {
 								item.setThumbnail(bitmap);
+								item.setHolderImageView();
 							}
 
 							@Override
-							public void onLoadingCancelled(String s, View view) {}
+							public void onLoadingCancelled(String s, View view) {
+								item.setHolderImageView();
+							}
 						});
-
-
+			} else {
+				item.setHolderImageView();
 			}
-			item.setHolderImageView();
 		}
 		return view;
 	}
