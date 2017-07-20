@@ -74,14 +74,12 @@
 	</string>
 
 	<string name="pref_title_use_device_root">用根设备</string>
-	<string name="pref_description_use_device_root">Enable navigation to the root directory of the
-		device. This will enable access to files anywhere on the device, including mounted storage
-		such as SD cards. Note: May require a rooted device to work correctly.
+	<string name="pref_description_use_device_root">使导航往设备的根目录。这个会让你在什么手机的地方都可以
+		访问文件。还可以访问存储比如存储卡。(可能需要有根目录正确工作。）
 	</string>
 
-	<string name="pref_title_slide_delay">Slide delay</string>
-	<string name="pref_description_slide_delay">Click to change the number of seconds an image will
-		be shown before changing to the next image.
+	<string name="pref_title_slide_delay">幻灯片的延迟</string>
+	<string name="pref_description_slide_delay">单击为了改变一张照片的展示的时间。
 	</string>
 
 	<string name="pref_title_image_details">展示照片的细节</string>
