@@ -220,8 +220,8 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	@Override
-	protected void onResume() {
-		super.onResume();
+	protected void onStart() {
+		super.onStart();
 
 		// Only reload the settings if not blocked by onCreate
 		if (blockPreferenceReload){
@@ -234,8 +234,8 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	@Override
-	protected void onPause(){
-		super.onPause();
+	protected void onStop(){
+		super.onStop();
 
 		// Stop slideshow
 		stopSlideshow();
