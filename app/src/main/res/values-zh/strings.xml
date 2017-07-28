@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">设定</string>
+	<string name="action_credits">关于</string>
+
+	<!-- List -->
+	<string name="inaccessible">(不可达)</string>
+	<string name="go_home_folder">有问题吗？点击返回首页</string>
+	<string name="play_folder">在这儿看幻灯片</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">删除</string>
+	<string name="delete_dialog_title">删除照片</string>
+	<string name="delete_dialog_message">有把握吗？</string>
+	<string name="image_deleted">照片被删除了</string>
+	<string name="image_not_deleted">不能删除照片</string>
+
+	<string name="share_button">分享</string>
+	<string name="share_via">通过...分享</string>
+
+	<string name="image_detail_dimensions">尺寸: %1$dx%2$d</string>
+	<string name="image_detail_size">文件大小: %1$s</string>
+	<string name="image_detail_modified">修改了: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">照片</string>
+	<string name="logo_description">商标</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">关于 &appname;</string>
+	<string name="credits_creator">被 <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">幻灯片是一个简单的应用软件为了在手机上看照片。</string>
+	<string name="credits_content2">因为没有编钟和口哨，这个应用软件是市场最简单的幻灯片应用软件。</string>
+	<string name="credits_content3">在<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>
+		你可以看源代码，扽入故障，和请求特点。
+	</string>
+	<string name="credits_content4">这个应用软件全又免费又开源；有
+		<a href="https://tldrlegal.com/license/mit-license">MIT 许可证</a>。
+	</string>
+	<string name="credits_content5">谢谢<a href="https://github.com/psyanite">Yan Tsui</a>
+		为了测试和设计&appname;图标.
+	</string>
+	<string name="credits_content6"> <a href="https://github.com/wardbradt">Ward Bradt</a>
+		把&appname;从英文翻译成中文。
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">设定</string>
+
+	<string name="pref_title_show_hidden_files">展示隐藏的文件</string>
+	<string name="pref_description_show_hidden_files">展示被别的文件管理器隐藏的文件。</string>
+
+	<string name="pref_title_show_thumbnails">展示略图图像</string>
+	<string name="pref_description_show_thumbnails">展示略图图像。如果关掉的话提高性能。但是你不能知道一个
+		文件是不是照片。
+	</string>
+
+	<string name="pref_title_remember_location">在以前的地点开始</string>
+	<string name="pref_description_remember_location">开了的时候 &appname; 在用最后一次看幻灯片的地点开始。
+	</string>
+
+	<string name="pref_title_play_from_here">使"在这儿打"的键</string>
+	<string name="pref_description_play_from_here">在文件的列表的"在这儿打"键让你在目前的文件夹和子文件夹。
+		基于可能产生负面影响原因，预设禁用这个特点。
+	</string>
+
+	<string name="pref_title_use_device_root">用根设备</string>
+	<string name="pref_description_use_device_root">使导航往设备的根目录。这个会让你在什么手机的地方都可以
+		访问文件。还可以访问存储比如存储卡。(可能需要有根目录正确工作。）
+	</string>
+
+	<string name="pref_title_slide_delay">幻灯片的延迟</string>
+	<string name="pref_description_slide_delay">单击为了改变一张照片的展示的时间。
+	</string>
+
+	<string name="pref_title_image_details">展示照片的细节</string>
+	<string name="pref_description_image_details">在展示幻灯片期间用图形叠置法展示的细节。
+	</string>
+
+	<string name="pref_title_stop_on_complete">安全就以后停止</string>
+	<string name="pref_description_stop_on_complete">什么照片都展示就以后停止展示幻灯片。
+	</string>
+
+	<string name="pref_title_reverse_order">倒序</string>
+	<string name="pref_description_reverse_order">倒序展示幻灯片的照片。
+	</string>
+
+	<string name="pref_title_random_order">随机顺序</string>
+	<string name="pref_description_random_order">随机展示幻灯片的图片。
+	</string>
+</resources>
