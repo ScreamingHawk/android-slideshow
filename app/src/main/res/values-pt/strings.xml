@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Configurações</string>
+	<string name="action_credits">Sobre</string>
+
+	<!-- List -->
+	<string name="inaccessible">(inacessivel)</string>
+	<string name="go_home_folder">Travado? Click para voltar ao Inicio</string>
+	<string name="play_folder">Tocar Slideshow daqui</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">ImageActivity</string>
+
+	<string name="delete_button">Deletar</string>
+	<string name="delete_dialog_title">Deletar imagem</string>
+	<string name="delete_dialog_message">Você tem certeza?</string>
+	<string name="image_deleted">Imagem deletada</string>
+	<string name="image_not_deleted">Não foi possível deletar a imagem</string>
+
+	<string name="share_button">Compartilhar</string>
+	<string name="share_via">Compartilhar via&#8230;</string>
+
+	<string name="image_detail_dimensions">Dimensões: %1$dx%2$d</string>
+	<string name="image_detail_size">Tamanho do Arquivo: %1$s</string>
+	<string name="image_detail_modified">Modificado: %1$s</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Imagem</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">Sobre &appname;</string>
+	<string name="credits_creator">por <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow é uma aplicação simples para visualizar 
+		imagens no seu smartphone.
+	</string>
+	<string name="credits_content2">Sem enrolações, esta aplicação é a mais simples
+		aplicação de slideshow do mercado.
+	</string>
+	<string name="credits_content3">Você pode ver o codigo fonte, relatar erros ou solicitar novas funcionalidades no
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">Esta aplicação é completamete Gratis e OpenSource; licenciada
+		sob a <a href="https://tldrlegal.com/license/mit-license">Licença MIT</a>.
+	</string>
+	<string name="credits_content5">Obrigado a <a href="https://github.com/psyanite">Yan Tsui</a>
+		por testar o icone do &appname;.
+	</string>
+	<string name="credits_content6">Esta tradução de &appname; foi trazida a você por
+		<a href="https://github.com/melkyfb">@MelkyFB</a>.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Configurações</string>
+
+	<string name="pref_title_show_hidden_files">Mostrar arquivos ocultos</string>
+	<string name="pref_description_show_hidden_files">Mostrar arquivos ocultos de outros 
+		gerenciadores de arquivos.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Mostrar miniaturas</string>
+	<string name="pref_description_show_thumbnails">Mostrar miniaturas das imagens. Desabilitando isso
+		aumentará a performance, entretanto você não saberá qual arquivo de imagem é.
+	</string>
+
+	<string name="pref_title_remember_location">Iniciar na ultima localização</string>
+	<string name="pref_description_remember_location">Quando aberto, &appname; começará na ultima
+		localização onde parou.
+	</string>
+
+	<string name="pref_title_play_from_here">Habilitar Botão "Tocar Daqui"</string>
+	<string name="pref_description_play_from_here">O Bõtão "Tocar Daqui" aparece na lista de arquivos
+		e habilita você a começar a tocar da pasta inicial, incluindo todas as subpastas.
+		Esta funcionalidade está desabilitada por padrão, pois pode afetar a performance.
+	</string>
+
+	<string name="pref_title_use_device_root">Usar raiz do dispositivo</string>
+	<string name="pref_description_use_device_root">Habilita começar a navegação da raiz
+		do dispositivo. Isso vai habilitar o acesso aos arquivos em qualquer lugar do dispositivo,
+		incluindo dispositivos montados, como Cartoes SD. Nota: Talvez necessite de um Dispositivo "Roteado".
+	</string>
+
+	<string name="pref_title_slide_delay">Atraso do Slide</string>
+	<string name="pref_description_slide_delay">Clique para mudar a quantidade de segundos que uma imagem
+		será mostrada antes de mudar para a próxima imagem.
+	</string>
+
+	<string name="pref_title_image_details">Mostrar detalhes da imagem</string>
+	<string name="pref_description_image_details">Sobrepõe os detalhes da imagem durante o slideshow.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Parar ao completar</string>
+	<string name="pref_description_stop_on_complete">Para o slideshow assim que todas as imagens são
+		mostradas
+	</string>
+
+	<string name="pref_title_reverse_order">Ordem Reversa</string>
+	<string name="pref_description_reverse_order">Mostra as imagens no slideshow na ordem reversa.
+	</string>
+
+	<string name="pref_title_random_order">Ordem Aleatória</string>
+	<string name="pref_description_random_order">Mostra as imagens no slideshow na ordem aleatória.
+	</string>
+</resources>
