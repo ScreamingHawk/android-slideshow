@@ -50,6 +50,7 @@ public class FileItemHelper {
      * Creates a list of fileitem for the given path.
      * @param currentPath The directory path.
 	 * @param includeDirectories Whether or not to include directories.
+	 * @param includeSubDirectories Whether or not to include sub directories.
      */
     public List<FileItem> getFileList(@NonNull String currentPath, boolean includeDirectories,
 			boolean includeSubDirectories){
