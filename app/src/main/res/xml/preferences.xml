@@ -19,6 +19,12 @@
 		android:title="@string/pref_title_play_from_here"/>
 
 	<SwitchPreference
+		android:defaultValue="true"
+		android:key="enable_gif_support"
+		android:summary="@string/pref_description_enable_gif_support"
+		android:title="@string/pref_title_enable_gif_support"/>
+
+	<SwitchPreference
 		android:defaultValue="false"
 		android:key="remember_location"
 		android:summary="@string/pref_description_remember_location"

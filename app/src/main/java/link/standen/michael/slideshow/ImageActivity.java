@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.preference.PreferenceManager;
@@ -24,10 +23,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.DrawableTypeRequest;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+
 import java.io.File;
 import java.util.Collections;
-
-import javax.microedition.khronos.opengles.GL11;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
@@ -48,11 +53,14 @@ public class ImageActivity extends BaseActivity {
 	private int imagePosition;
 	private int firstImagePosition;
 
+	private boolean isRunning = false;
+
 	private static boolean STOP_ON_COMPLETE;
 	private static boolean REVERSE_ORDER;
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
+	private static boolean PLAY_GIF;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -61,9 +69,7 @@ public class ImageActivity extends BaseActivity {
 		@Override
 		public void run() {
 			followingImage();
-			if (!(STOP_ON_COMPLETE && imagePosition == firstImagePosition)) {
-				queueSlide();
-			} else {
+			if (STOP_ON_COMPLETE && imagePosition == firstImagePosition) {
 				show();
 			}
 		}
@@ -261,6 +267,7 @@ public class ImageActivity extends BaseActivity {
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
+		PLAY_GIF = preferences.getBoolean("enable_gif_support", true);
 
 		// Show/Hide the image details that are show during pause
 		if (!IMAGE_DETAILS){
@@ -328,56 +335,60 @@ public class ImageActivity extends BaseActivity {
 		return new FileItemHelper(this).isImage(fileList.get(imagePosition));
 	}
 
+	/**
+	 * Load the image to the screen.
+	 */
 	private void loadImage(){
 		FileItem item = fileList.get(imagePosition);
 		setTitle(item.getName());
 
-		BitmapFactory.Options options = new BitmapFactory.Options();
-		options.inJustDecodeBounds = true;
-		BitmapFactory.decodeFile(item.getPath(), options);
+		DrawableTypeRequest<String> glide = Glide
+				.with(this)
+				.load(item.getPath());
+		if (PLAY_GIF) {
+			// Play GIFs
+			glide
+					.placeholder(mContentView.getDrawable())
+					.fitCenter()
+					.dontAnimate()
+					.listener(new RequestListener<String, GlideDrawable>() {
+						@Override
+						public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
+							Log.e(TAG, "Error loading image", e);
+							return false;
+						}
 
-		int sampleSize = 1;
-		int width = options.outWidth;
-		int height = options.outHeight;
+						@Override
+						public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
+							if (glideDrawable instanceof GifDrawable) {
+								// Queue the next slide after the animation completes
+								GifDrawable gifDrawable = (GifDrawable) glideDrawable;
 
-		/*
-		 * Downscale strategy taken from:
-		 * https://android.googlesource.com/platform/packages/apps/Camera2/src/com/android/camera/data/FilmstripItemUtils.java
-		 *
-		 * For large (> MAXIMUM_TEXTURE_SIZE) high aspect ratio (panorama)
-		 * Bitmap requests:
-		 *   Step 1: ask for double size.
-		 *   Step 2: scale maximum edge down to MAXIMUM_TEXTURE_SIZE.
-		 *
-		 * Here's the step 1: double size.
-		 */
-		if (width > GL11.GL_MAX_TEXTURE_SIZE || height > GL11.GL_MAX_TEXTURE_SIZE) {
-			sampleSize = 2;
+								int duration = 0;
+								GifDecoder decoder = gifDrawable.getDecoder();
+								for (int i = 0; i < gifDrawable.getFrameCount(); i++) {
+									duration += decoder.getDelay(i);
+								}
+
+								queueSlide(duration);
+							} else {
+								queueSlide();
+							}
+							return false;
+						}
+					})
+					.into(mContentView);
+		} else {
+			// Force bitmap so GIFs don't play
+			glide
+					.asBitmap()
+					.placeholder(mContentView.getDrawable())
+					.fitCenter()
+					.dontAnimate()
+					.into(mContentView);
 		}
 
-		options = new BitmapFactory.Options();
-		options.inSampleSize = sampleSize;
-		/* 32K buffer. */
-		options.inTempStorage = new byte[32 * 1024];
-
-		// Load image
-		Bitmap image = BitmapFactory.decodeFile(item.getPath(), options);
-
-		/*
-		 * Step 2: scale maximum edge down to maximum texture size.
-		 * If Bitmap maximum edge > MAXIMUM_TEXTURE_SIZE, which can happen for panoramas,
-		 * scale to fit in MAXIMUM_TEXTURE_SIZE.
-		 */
-		if (image.getWidth() > GL11.GL_MAX_TEXTURE_SIZE || image.getHeight() > GL11.GL_MAX_TEXTURE_SIZE){
-			// Scale down
-			int maxEdge = Math.max(width, height);
-			image = Bitmap.createScaledBitmap(image, width * GL11.GL_MAX_TEXTURE_SIZE / maxEdge,
-					height * GL11.GL_MAX_TEXTURE_SIZE / maxEdge, false);
-		}
-
-		mContentView.setImageBitmap(image);
-
-		updateImageDetails(item, width, height);
+		updateImageDetails(item);
 		saveCurrentImagePath();
 	}
 
@@ -397,9 +408,16 @@ public class ImageActivity extends BaseActivity {
 	/**
 	 * Update the image details
 	 */
-	private void updateImageDetails(FileItem item, int width, int height){
-		// Update image details
+	private void updateImageDetails(FileItem item){
 		File file = new File(item.getPath());
+
+		// Decode dimensions
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(item.getPath(), options);
+		int width = options.outWidth;
+		int height = options.outHeight;
+
 		// Location
 		String location = file.getParent().replace(getRootLocation(), "");
 		if (location.length() > LOCATION_DETAIL_MAX_LENGTH){
@@ -537,6 +555,7 @@ public class ImageActivity extends BaseActivity {
 	 * Starts or restarts the slideshow
 	 */
 	private void startSlideshow(){
+		isRunning = true;
 		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
 		queueSlide();
 	}
@@ -545,13 +564,28 @@ public class ImageActivity extends BaseActivity {
 	 * Queue the next slide in the slideshow
 	 */
 	private void queueSlide(){
-		mSlideshowHandler.postDelayed(mSlideshowRunnable, SLIDESHOW_DELAY);
+		queueSlide(SLIDESHOW_DELAY);
+	}
+
+	/**
+	 * Queue the next slide in the slideshow
+	 */
+	private void queueSlide(int delayMillis){
+		if (delayMillis < SLIDESHOW_DELAY){
+			delayMillis = SLIDESHOW_DELAY;
+		}
+		if (isRunning) {
+			// Ensure only one runnable is in the queue
+			mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
+			mSlideshowHandler.postDelayed(mSlideshowRunnable, delayMillis);
+		}
 	}
 
 	/**
 	 * Stops the slideshow
 	 */
 	private void stopSlideshow(){
+		isRunning = false;
 		mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
 	}
 
