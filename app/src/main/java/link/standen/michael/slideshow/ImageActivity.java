@@ -43,6 +43,8 @@ public class ImageActivity extends BaseActivity {
 
 	private boolean blockPreferenceReload = false;
 
+	private SharedPreferences preferences;
+
 	private int imagePosition;
 	private int firstImagePosition;
 
@@ -51,6 +53,7 @@ public class ImageActivity extends BaseActivity {
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
+	private static boolean AUTO_START;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -178,10 +181,11 @@ public class ImageActivity extends BaseActivity {
 		// Get starting values
 		currentPath = getIntent().getStringExtra("currentPath");
 		String imagePath = getIntent().getStringExtra("imagePath");
-
-		// Save the current path
-		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+		Log.i(TAG, String.format("Starting slideshow at %s %s", currentPath, imagePath));
+		// Save the starting values
+		SharedPreferences.Editor editor = preferences.edit();
 		editor.putString("remembered_location", currentPath);
+		editor.putString("remembered_image", imagePath);
 		editor.apply();
 
 		// Set up image list
@@ -198,6 +202,11 @@ public class ImageActivity extends BaseActivity {
 			Collections.shuffle(fileList);
 		}
 
+		if (AUTO_START){
+			// Auto start from last image
+			imagePath = preferences.getString("remembered_image_current", null);
+			Log.d(TAG, String.format("Remembered start location: %s", imagePath));
+		}
 		// Find the selected image position
 		if (imagePath == null) {
 			imagePosition = 0;
@@ -212,8 +221,8 @@ public class ImageActivity extends BaseActivity {
 		}
 		firstImagePosition = imagePosition;
 
-		Log.v(TAG, "First item is at index: "+imagePosition);
-		Log.v(TAG, "File list has size of: "+fileList.size());
+		Log.v(TAG, String.format("First item is at index: %s", imagePosition));
+		Log.v(TAG, String.format("File list has size of: %s", fileList.size()));
 
 		// Show the first image
 		loadImage();
@@ -245,13 +254,14 @@ public class ImageActivity extends BaseActivity {
 	 * Load the relevant preferences.
 	 */
 	private void loadPreferences(){
+		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		// Load preferences
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		SLIDESHOW_DELAY = (int) Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000;
 		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
+		AUTO_START = preferences.getBoolean("auto_start", false);
 
 		// Show/Hide the image details that are show during pause
 		if (!IMAGE_DETAILS){
@@ -369,6 +379,20 @@ public class ImageActivity extends BaseActivity {
 		mContentView.setImageBitmap(image);
 
 		updateImageDetails(item, width, height);
+		saveCurrentImagePath();
+	}
+
+	/**
+	 * Save the current image path for instant restore features.
+	 */
+	private void saveCurrentImagePath(){
+		// Save the current image path
+		if (preferences == null){
+			loadPreferences();
+		}
+		SharedPreferences.Editor editor = preferences.edit();
+		editor.putString("remembered_image_current", fileList.get(imagePosition).getPath());
+		editor.apply();
 	}
 
 	/**

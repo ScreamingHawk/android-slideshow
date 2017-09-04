@@ -133,7 +133,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
 			final SwitchPreference reverseOrderPref = (SwitchPreference)findPreference("reverse_order");
 			final SwitchPreference randomOrderPref = (SwitchPreference)findPreference("random_order");
-
 			// Enabling reverse disables random
 			reverseOrderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 				@Override
@@ -144,13 +143,25 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 					return true;
 				}
 			});
-
 			// Enabling random disables reverse
 			randomOrderPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 				@Override
 				public boolean onPreferenceChange(Preference preference, Object newValue) {
 					if (Boolean.TRUE.equals(newValue)){
 						reverseOrderPref.setChecked(false);
+					}
+					return true;
+				}
+			});
+
+			final SwitchPreference rememberLocationPref = (SwitchPreference)findPreference("remember_location");
+			final SwitchPreference autoStartPref = (SwitchPreference)findPreference("auto_start");
+			// Disabling remember location disables auto start
+			rememberLocationPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if (Boolean.FALSE.equals(newValue)){
+						autoStartPref.setChecked(false);
 					}
 					return true;
 				}

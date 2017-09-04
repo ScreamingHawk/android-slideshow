@@ -57,6 +57,11 @@ public class MainActivity extends BaseActivity {
 		if (preferences.getBoolean("remember_location", false)){
 			// Override using remembered location
 			currentPath = preferences.getString("remembered_location", currentPath);
+			if (preferences.getBoolean("auto_start", false)){
+				// Start the slideshow automatically
+				startSlideshowAt(currentPath, preferences.getString("remembered_image", null));
+				return;
+			}
 		}
 		if (getIntent().hasExtra("path")){
 			// Override using passed value
@@ -149,13 +154,23 @@ public class MainActivity extends BaseActivity {
 					updateListView();
 				} else if (fileItem.getIsSpecial() || new FileItemHelper(MainActivity.this).isImage(fileItem)){
 					// Only open images
-					Intent intent = new Intent(MainActivity.this, ImageActivity.class);
-					intent.putExtra("currentPath", currentPath);
-					intent.putExtra("imagePath", fileItem.getPath());
-					MainActivity.this.startActivity(intent);
+					startSlideshowAt(currentPath, fileItem.getPath());
 				}
 			}
 		});
+	}
+
+	/**
+	 * Begin a slideshow at the given point
+	 * @param folderPath The folder location
+	 * @param filePath The file path
+	 */
+	private void startSlideshowAt(String folderPath, String filePath){
+		Log.i(TAG, String.format("Calling slideshow at %s %s", folderPath, filePath));
+		Intent intent = new Intent(MainActivity.this, ImageActivity.class);
+		intent.putExtra("currentPath", folderPath);
+		intent.putExtra("imagePath", filePath);
+		this.startActivity(intent);
 	}
 
 	/**
