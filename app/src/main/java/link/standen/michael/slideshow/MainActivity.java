@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		// Set up thumbnail loader
@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity {
 			currentPath = preferences.getString("remembered_location", currentPath);
 			if (preferences.getBoolean("auto_start", false)){
 				// Start the slideshow automatically
-				startSlideshowAt(currentPath, preferences.getString("remembered_image", null));
+				startSlideshowAt(currentPath, preferences.getString("remembered_image", null), true);
 				return;
 			}
 		}
@@ -143,7 +143,7 @@ public class MainActivity extends BaseActivity {
 			fileList.add(0, fileItemHelper.createPlayFileItem());
 		}
 
-		ListView listView = (ListView) findViewById(android.R.id.list);
+		ListView listView = findViewById(android.R.id.list);
 		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity {
 					updateListView();
 				} else if (fileItem.getIsSpecial() || new FileItemHelper(MainActivity.this).isImage(fileItem)){
 					// Only open images
-					startSlideshowAt(currentPath, fileItem.getPath());
+					startSlideshowAt(currentPath, fileItem.getPath(), false);
 				}
 			}
 		});
@@ -165,11 +165,12 @@ public class MainActivity extends BaseActivity {
 	 * @param folderPath The folder location
 	 * @param filePath The file path
 	 */
-	private void startSlideshowAt(String folderPath, String filePath){
+	private void startSlideshowAt(String folderPath, String filePath, boolean autoStart){
 		Log.i(TAG, String.format("Calling slideshow at %s %s", folderPath, filePath));
 		Intent intent = new Intent(MainActivity.this, ImageActivity.class);
 		intent.putExtra("currentPath", folderPath);
 		intent.putExtra("imagePath", filePath);
+		intent.putExtra("autoStart", autoStart);
 		this.startActivity(intent);
 	}
 

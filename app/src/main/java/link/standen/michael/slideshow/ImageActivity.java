@@ -53,7 +53,6 @@ public class ImageActivity extends BaseActivity {
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
-	private static boolean AUTO_START;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -133,7 +132,7 @@ public class ImageActivity extends BaseActivity {
 
 		mVisible = true;
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
-		mContentView = (ImageView) findViewById(R.id.fullscreen_content);
+		mContentView = findViewById(R.id.fullscreen_content);
 		mDetailsView = findViewById(R.id.image_details1); // Visible during slideshow play
 
 		loadPreferences();
@@ -181,6 +180,7 @@ public class ImageActivity extends BaseActivity {
 		// Get starting values
 		currentPath = getIntent().getStringExtra("currentPath");
 		String imagePath = getIntent().getStringExtra("imagePath");
+		boolean autoStart = getIntent().getBooleanExtra("autoStart", false);
 		Log.i(TAG, String.format("Starting slideshow at %s %s", currentPath, imagePath));
 		// Save the starting values
 		SharedPreferences.Editor editor = preferences.edit();
@@ -202,7 +202,7 @@ public class ImageActivity extends BaseActivity {
 			Collections.shuffle(fileList);
 		}
 
-		if (AUTO_START){
+		if (autoStart){
 			// Auto start from last image
 			imagePath = preferences.getString("remembered_image_current", null);
 			Log.d(TAG, String.format("Remembered start location: %s", imagePath));
@@ -261,7 +261,6 @@ public class ImageActivity extends BaseActivity {
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
-		AUTO_START = preferences.getBoolean("auto_start", false);
 
 		// Show/Hide the image details that are show during pause
 		if (!IMAGE_DETAILS){
