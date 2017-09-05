@@ -9,7 +9,7 @@ import android.view.View;
  * Monitors for swipe events.
  * http://stackoverflow.com/a/12938787
  */
-public class OnSwipeTouchListener implements View.OnTouchListener {
+public abstract class OnSwipeTouchListener implements View.OnTouchListener {
 
 	private final GestureDetector gestureDetector;
 
@@ -71,27 +71,27 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
 	}
 
 	/**
-	 * Override this method to handle swipe right events
+	 * Implement this method to handle swipe right events
 	 */
-	public void onSwipeRight() {}
+	protected abstract void onSwipeRight();
 
 	/**
-	 * Override this method to handle swipe left events
+	 * Implement this method to handle swipe left events
 	 */
-	public void onSwipeLeft() {}
+	protected abstract void onSwipeLeft();
 
 	/**
-	 * Override this method to handle swipe up events
+	 * Implement this method to handle swipe up events
 	 */
-	public void onSwipeUp() {}
+	protected abstract void onSwipeUp();
 
 	/**
-	 * Override this method to handle swipe down events
+	 * Implement this method to handle swipe down events
 	 */
-	public void onSwipeDown() {}
+	protected abstract void onSwipeDown();
 
 	/**
-	 * Override this method to handle click events
+	 * Implement this method to handle click events
 	 */
-	public void onClick() {}
+	protected abstract void onClick();
 }

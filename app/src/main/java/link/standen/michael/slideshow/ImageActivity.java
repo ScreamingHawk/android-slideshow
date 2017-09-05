@@ -164,6 +164,12 @@ public class ImageActivity extends BaseActivity {
 				previousImage();
 				startSlideshowIfFullscreen();
 			}
+
+			@Override
+			protected void onSwipeUp() {}
+
+			@Override
+			protected void onSwipeDown() {}
 		});
 
 		// Configure delete button
