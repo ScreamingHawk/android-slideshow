@@ -18,7 +18,7 @@ import link.standen.michael.slideshow.model.FileItem;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-	protected String currentPath;
+	String currentPath;
 	List<FileItem> fileList = new ArrayList<>();
 
 	@Override
@@ -55,7 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 	/**
 	 * Get the root location, considering the preferences.
 	 */
-	protected String getRootLocation(){
+	String getRootLocation(){
 		if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("use_device_root", false)){
 			return "";
 		}

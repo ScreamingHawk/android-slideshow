@@ -97,10 +97,6 @@ public class FileItem implements Comparable<FileItem> {
 		}
 	}
 
-	public FileItemViewHolder getHolder() {
-		return holder;
-	}
-
 	public void setHolder(FileItemViewHolder holder) {
 		this.holder = holder;
 	}
@@ -123,10 +119,6 @@ public class FileItem implements Comparable<FileItem> {
 
 	public String getPathUri() {
 		return this.pathUri;
-	}
-
-	public Boolean getHasNoThumbnail() {
-		return hasNoThumbnail;
 	}
 
 	public void setHasNoThumbnail() {
