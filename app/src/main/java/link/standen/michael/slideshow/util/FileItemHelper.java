@@ -1,14 +1,11 @@
 package link.standen.michael.slideshow.util;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.ThumbnailUtils;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.net.URLConnection;
@@ -25,16 +22,8 @@ public class FileItemHelper {
 
 	private final Context context;
 
-	// Preferences
-	private static boolean SHOW_THUMBNAILS;
-	private static Integer THUMBNAIL_IMAGE_WIDTH;
-	private static Integer THUMBNAIL_IMAGE_HEIGHT;
-
 	public FileItemHelper(Context context){
 		this.context = context;
-		SHOW_THUMBNAILS = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_thumbnails", true);
-		THUMBNAIL_IMAGE_WIDTH = (int) context.getResources().getDimension(R.dimen.file_image_width);
-		THUMBNAIL_IMAGE_HEIGHT = (int) context.getResources().getDimension(R.dimen.file_image_height);
 	}
 
 
@@ -112,32 +101,6 @@ public class FileItemHelper {
 		item.setIsDirectory(false);
 		item.setIsSpecial(true);
 		return item;
-	}
-
-	/**
-	 * Creates the thumbnail of the fileitem.
-	 */
-	public Bitmap createThumbnail(FileItem item){
-		if (item.getIsDirectory()){
-			return null;
-		}
-		if (!SHOW_THUMBNAILS){
-			// Thumbnail should not be loaded.
-			return null;
-		}
-		if (!item.getThumbnailAttempted() || item.getHasThumbnail()) {
-			try {
-				return ThumbnailUtils.extractThumbnail(
-						BitmapFactory.decodeFile(item.getPath()),
-						THUMBNAIL_IMAGE_WIDTH,
-						THUMBNAIL_IMAGE_HEIGHT);
-			} catch (OutOfMemoryError e){
-				// Ignore. Process will try again automatically.
-				item.setThumbnailAttempted(false);
-				item.setHasThumbnail(false);
-			}
-		}
-		return null;
 	}
 
 	/**

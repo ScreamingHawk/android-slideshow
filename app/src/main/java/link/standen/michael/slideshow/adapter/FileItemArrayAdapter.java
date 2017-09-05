@@ -11,9 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
 
@@ -31,7 +31,6 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 	private final Context context;
 	private final int resourceId;
 	private final List<FileItem> items;
-	private final ImageLoader imageLoader = ImageLoader.getInstance();
 
 	private transient Boolean thumbnailPreference;
 
@@ -77,33 +76,29 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			item.setHolder(holder);
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
-			if (thumbnailPreferenceOn() && item.couldHaveThumbnail() && item.getThumbnail() == null){
-				imageLoader.loadImage(item.getPathUri(),
-						new ImageLoadingListener(){
+			final ImageView imageView = holder.getImageView();
+			if (thumbnailPreferenceOn() && item.couldHaveThumbnail()){
+				Glide.with(context)
+						.load(item.getPathUri())
+						.asBitmap()
+						.placeholder(R.mipmap.loading)
+						.listener(new RequestListener<String, Bitmap>() {
 							@Override
-							public void onLoadingStarted(String s, View view) {
-								item.setHolderImageView();
+							public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
+								item.setHasNoThumbnail(true);
+								return false;
 							}
 
 							@Override
-							public void onLoadingFailed(String s, View view, FailReason failReason) {
-								item.setThumbnailAttempted(true);
-								item.setHolderImageView();
+							public boolean onResourceReady(Bitmap bitmap, String s, Target<Bitmap> target, boolean b, boolean b1) {
+								return false;
 							}
-
-							@Override
-							public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-								item.setThumbnail(bitmap);
-								item.setHolderImageView();
-							}
-
-							@Override
-							public void onLoadingCancelled(String s, View view) {
-								item.setHolderImageView();
-							}
-						});
+						}).error(item.getImageResource())
+						.into(imageView);
 			} else {
-				item.setHolderImageView();
+				Glide.with(context)
+						.load(item.getImageResource())
+						.into(imageView);
 			}
 		}
 		return view;

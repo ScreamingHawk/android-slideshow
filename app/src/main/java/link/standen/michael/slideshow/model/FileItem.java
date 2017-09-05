@@ -1,6 +1,5 @@
 package link.standen.michael.slideshow.model;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
@@ -17,15 +16,10 @@ public class FileItem implements Comparable<FileItem> {
 	private String path;
 	private String pathUri;
 	private Boolean isDirectory;
-	private transient Bitmap thumbnail;
 	/**
-	 * At some point a thumbnail has been successfully generated.
+	 * At some point a thumbnail has failed generation.
 	 */
-	private Boolean hasThumbnail = Boolean.FALSE;
-	/**
-	 * At some point a thumbnail has been attempted (successfully or otherwise).
-	 */
-	private Boolean thumbnailAttempted = Boolean.FALSE;
+	private Boolean hasNoThumbnail = Boolean.FALSE;
 
 	/**
 	 * File passes the MIME type test.
@@ -33,7 +27,7 @@ public class FileItem implements Comparable<FileItem> {
 	private Boolean isImage;
 
 	private FileItemViewHolder holder;
-	private boolean isSpecial = false;
+	private Boolean isSpecial = Boolean.FALSE;
 
 	public String getName() {
 		return name;
@@ -75,49 +69,31 @@ public class FileItem implements Comparable<FileItem> {
 				this.getPath().equals(((FileItem)other).getPath());
 	}
 
-	public Bitmap getThumbnail() {
-		return thumbnail;
-	}
-
-	public void setThumbnail(Bitmap thumbnail) {
-		this.thumbnail = thumbnail;
-		if (thumbnail != null){
-			hasThumbnail = true;
-		}
-		this.thumbnailAttempted = true;
-		setHolderImageView();
-	}
-
 	public boolean couldHaveThumbnail(){
 		return !(isDirectory || isSpecial);
 	}
 
 	/**
-	 * Update the image view of the holder
+	 * Get the drawable image resource for the file item.
 	 */
-	public void setHolderImageView(){
-		if (holder != null && holder.getFileItem() == this){
-			if (isSpecial) {
-				if (isDirectory) {
-					// Special Directory
-					holder.getImageView().setImageResource(R.mipmap.special_folder);
-				} else {
-					// Special Play
-					holder.getImageView().setImageResource(R.mipmap.play_folder);
-				}
-			} else if (isDirectory) {
-				// Directory
-				holder.getImageView().setImageResource(R.mipmap.folder);
-			} else if (thumbnail != null){
-				// Image thumb
-				holder.getImageView().setImageBitmap(thumbnail);
-			} else if (thumbnailAttempted && !hasThumbnail){
-				// Something unknown
-				holder.getImageView().setImageResource(R.mipmap.unknown);
+	public int getImageResource(){
+		if (isSpecial) {
+			if (isDirectory) {
+				// Special Directory
+				return R.mipmap.special_folder;
 			} else {
-				// Loading
-				holder.getImageView().setImageResource(R.mipmap.loading);
+				// Special Play
+				return R.mipmap.play_folder;
 			}
+		} else if (isDirectory) {
+			// Directory
+			return R.mipmap.folder;
+		} else if (hasNoThumbnail) {
+			// Something unknown
+			return R.mipmap.unknown;
+		} else {
+			// Loading
+			return R.mipmap.loading;
 		}
 	}
 
@@ -129,28 +105,12 @@ public class FileItem implements Comparable<FileItem> {
 		this.holder = holder;
 	}
 
-	public Boolean getThumbnailAttempted() {
-		return thumbnailAttempted;
-	}
-
-	public void setThumbnailAttempted(Boolean thumbnailAttempted) {
-		this.thumbnailAttempted = thumbnailAttempted;
-	}
-
 	public Boolean getIsImage() {
 		return isImage;
 	}
 
 	public void setIsImage(Boolean isImage) {
 		this.isImage = isImage;
-	}
-
-	public Boolean getHasThumbnail() {
-		return hasThumbnail;
-	}
-
-	public void setHasThumbnail(Boolean hasThumbnail) {
-		this.hasThumbnail = hasThumbnail;
 	}
 
 	public boolean getIsSpecial() {
@@ -163,5 +123,13 @@ public class FileItem implements Comparable<FileItem> {
 
 	public String getPathUri() {
 		return this.pathUri;
+	}
+
+	public Boolean getHasNoThumbnail() {
+		return hasNoThumbnail;
+	}
+
+	public void setHasNoThumbnail(Boolean hasNoThumbnail) {
+		this.hasNoThumbnail = hasNoThumbnail;
 	}
 }
