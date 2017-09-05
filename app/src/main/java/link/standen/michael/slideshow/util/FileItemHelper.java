@@ -88,7 +88,7 @@ public class FileItemHelper {
 		item.setName(context.getResources().getString(R.string.go_home_folder));
 		item.setPath(Environment.getExternalStorageDirectory().getAbsolutePath());
 		item.setIsDirectory(true);
-		item.setIsSpecial(true);
+		item.setIsSpecial();
 		return item;
 	}
 
@@ -99,7 +99,7 @@ public class FileItemHelper {
 		FileItem item = new FileItem();
 		item.setName(context.getResources().getString(R.string.play_folder));
 		item.setIsDirectory(false);
-		item.setIsSpecial(true);
+		item.setIsSpecial();
 		return item;
 	}
 

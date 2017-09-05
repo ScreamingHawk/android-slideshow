@@ -118,7 +118,7 @@ public class MainActivity extends BaseActivity {
 						Environment.getExternalStoragePublicDirectory(path));
 				int index = fileList.indexOf(specialItem);
 				if (index != -1) {
-					fileList.get(index).setIsSpecial(true);
+					fileList.get(index).setIsSpecial();
 				}
 			}
 		}
@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity {
 		}
 
 		ListView listView = findViewById(android.R.id.list);
-		listView.setAdapter(new FileItemArrayAdapter(this, R.layout.file_item, fileList));
+		listView.setAdapter(new FileItemArrayAdapter(this, fileList));
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -1,5 +1,6 @@
 package link.standen.michael.slideshow;
 
+import android.annotation.SuppressLint;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -17,6 +18,7 @@ public class CreditsActivity extends AppCompatActivity {
 	private static final String TAG = CreditsActivity.class.getName();
 	private static final String DEFAULT_LANGUAGE = new Locale("en").getLanguage();
 
+	@SuppressLint("SetTextI18n")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -34,11 +34,11 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 
 	private transient Boolean thumbnailPreference;
 
-	public FileItemArrayAdapter(Context context, int resourceId, List<FileItem> items) {
-		super(context, resourceId, items);
+	public FileItemArrayAdapter(Context context, List<FileItem> items) {
+		super(context, R.layout.file_item, items);
 
 		this.context = context;
-		this.resourceId = resourceId;
+		this.resourceId = R.layout.file_item;
 		this.items = items;
 	}
 
@@ -85,7 +85,7 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 						.listener(new RequestListener<String, Bitmap>() {
 							@Override
 							public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
-								item.setHasNoThumbnail(true);
+								item.setHasNoThumbnail();
 								return false;
 							}
 

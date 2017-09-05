@@ -509,7 +509,7 @@ public class ImageActivity extends BaseActivity {
 
 		// Trigger the initial hide() shortly after the activity has been created, to briefly hint
 		// to the user that UI controls are available.
-		delayedHide(100);
+		delayedHide();
 	}
 
 	private void toggle() {
@@ -550,12 +550,11 @@ public class ImageActivity extends BaseActivity {
 	}
 
 	/**
-	 * Schedules a call to hide() in [delayMillis] milliseconds, canceling any
-	 * previously scheduled calls.
+	 * Schedules a call to hide() in 100 milliseconds, canceling any previously scheduled calls.
 	 */
-	private void delayedHide(int delayMillis) {
+	private void delayedHide() {
 		mHideHandler.removeCallbacks(mHideRunnable);
-		mHideHandler.postDelayed(mHideRunnable, delayMillis);
+		mHideHandler.postDelayed(mHideRunnable, 100);
 	}
 
 	/**

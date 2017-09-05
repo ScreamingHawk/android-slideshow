@@ -117,8 +117,8 @@ public class FileItem implements Comparable<FileItem> {
 		return isSpecial;
 	}
 
-	public void setIsSpecial(boolean isSpecial) {
-		this.isSpecial = isSpecial;
+	public void setIsSpecial() {
+		this.isSpecial = true;
 	}
 
 	public String getPathUri() {
@@ -129,7 +129,7 @@ public class FileItem implements Comparable<FileItem> {
 		return hasNoThumbnail;
 	}
 
-	public void setHasNoThumbnail(Boolean hasNoThumbnail) {
-		this.hasNoThumbnail = hasNoThumbnail;
+	public void setHasNoThumbnail() {
+		this.hasNoThumbnail = true;
 	}
 }
