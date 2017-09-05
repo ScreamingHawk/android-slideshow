@@ -24,7 +24,7 @@
 	<string name="image_not_deleted">不能删除照片</string>
 
 	<string name="share_button">分享</string>
-	<string name="share_via">通过...分享</string>
+	<string name="share_via">通过&#8230;分享</string>
 
 	<string name="image_detail_dimensions">尺寸: %1$dx%2$d</string>
 	<string name="image_detail_size">文件大小: %1$s</string>

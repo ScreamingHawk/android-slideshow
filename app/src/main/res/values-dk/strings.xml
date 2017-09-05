@@ -7,7 +7,7 @@
 <resources>
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Indstillinger</string>
-	<string name="action_credits">Om...</string>
+	<string name="action_credits">Om&#8230;</string>
 
 	<!-- List -->
 	<string name="inaccessible">(utilgængelig)</string>
@@ -40,7 +40,7 @@
 	<string name="credits_content1">Slideshow er et simpelt program til at se billeder på din telefon.
 	</string>
 	<string name="credits_content2">Uden unødvendige ting er dette program det simpleste slideshow program på markedet</string>
-	<string name="credits_content3">Du kan se kildekoden, rapportere fejl eller forspørge funktioner på 
+	<string name="credits_content3">Du kan se kildekoden, rapportere fejl eller forspørge funktioner på
 		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
 	</string>
 	<string name="credits_content4">Dette program er gratis og licenseret under <a href="https://tldrlegal.com/license/mit-license">MIT licensen</a>.
@@ -75,7 +75,7 @@
 	</string>
 
 	<string name="pref_title_image_details">Vis billede detaljer</string>
-	<string name="pref_description_image_details">Overlejre billededetaljer under slideshowet. 
+	<string name="pref_description_image_details">Overlejre billededetaljer under slideshowet.
 	</string>
 
 	<string name="pref_title_stop_on_complete">Stop efter sidste billede</string>
