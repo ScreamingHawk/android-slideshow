@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.preference.PreferenceManager;
@@ -339,7 +340,7 @@ public class ImageActivity extends BaseActivity {
 	 * Load the image to the screen.
 	 */
 	private void loadImage(){
-		FileItem item = fileList.get(imagePosition);
+		final FileItem item = fileList.get(imagePosition);
 		setTitle(item.getName());
 
 		DrawableTypeRequest<String> glide = Glide
@@ -374,6 +375,9 @@ public class ImageActivity extends BaseActivity {
 							} else {
 								queueSlide();
 							}
+
+							// Update image details
+							updateImageDetails(item);
 							return false;
 						}
 					})
@@ -385,10 +389,22 @@ public class ImageActivity extends BaseActivity {
 					.placeholder(mContentView.getDrawable())
 					.fitCenter()
 					.dontAnimate()
+					.listener(new RequestListener<String, Bitmap>() {
+						@Override
+						public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
+							return false;
+						}
+
+						@Override
+						public boolean onResourceReady(Bitmap bitmap, String s, Target<Bitmap> target, boolean b, boolean b1) {
+							updateImageDetails(item);
+
+							return false;
+						}
+					})
 					.into(mContentView);
 		}
 
-		updateImageDetails(item);
 		saveCurrentImagePath();
 	}
 
