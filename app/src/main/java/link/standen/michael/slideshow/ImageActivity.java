@@ -206,8 +206,8 @@ public class ImageActivity extends BaseActivity {
 		if (fileList.size() == 0){
 			// No files to view. Exit
 			Log.i(TAG, "No files in list.");
+			Toast.makeText(this, R.string.toast_no_files, Toast.LENGTH_SHORT).show();
 			onBackPressed();
-			//TODO Notify user
 			return;
 		}
 
