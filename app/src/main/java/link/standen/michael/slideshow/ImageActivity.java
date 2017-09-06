@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.BitmapTypeRequest;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.gifdecoder.GifDecoder;
@@ -69,7 +70,7 @@ public class ImageActivity extends BaseActivity {
 	private final Runnable mSlideshowRunnable = new Runnable() {
 		@Override
 		public void run() {
-			followingImage();
+			followingImage(false);
 			if (STOP_ON_COMPLETE && imagePosition == firstImagePosition) {
 				show();
 			}
@@ -155,13 +156,13 @@ public class ImageActivity extends BaseActivity {
 
 			@Override
 			public void onSwipeLeft() {
-				nextImage();
+				nextImage(true, false);
 				startSlideshowIfFullscreen();
 			}
 
 			@Override
 			public void onSwipeRight() {
-				previousImage();
+				nextImage(false, false);
 				startSlideshowIfFullscreen();
 			}
 
@@ -223,7 +224,7 @@ public class ImageActivity extends BaseActivity {
 		// Find the selected image position
 		if (imagePath == null) {
 			imagePosition = 0;
-			nextImage();
+			nextImage(true, true);
 		} else {
 			for (int i = 0; i < fileList.size(); i++) {
 				if (imagePath.equals(fileList.get(i).getPath())) {
@@ -238,7 +239,7 @@ public class ImageActivity extends BaseActivity {
 		Log.v(TAG, String.format("File list has size of: %s", fileList.size()));
 
 		// Show the first image
-		loadImage();
+		loadImage(imagePosition, false);
 	}
 
 	@Override
@@ -287,131 +288,121 @@ public class ImageActivity extends BaseActivity {
 	/**
 	 * Show the next image.
 	 */
-	private void nextImage(){
+	private void nextImage(boolean forwards, boolean preload){
 		int current = imagePosition;
+		int newPosition = imagePosition;
 		do {
-			imagePosition++;
-			if (imagePosition >= fileList.size()){
-				imagePosition = 0;
+			newPosition += forwards ? 1 : -1;
+			if (newPosition < 0){
+				newPosition = fileList.size() - 1;
 			}
-			if (imagePosition == current){
+			if (newPosition >= fileList.size()){
+				newPosition = 0;
+			}
+			if (newPosition == current){
 				// Looped. Exit
 				onBackPressed();
 				return;
 			}
-		} while (!testCurrentIsImage());
-		loadImage();
-	}
-
-	/**
-	 * Show the previous image.
-	 */
-	private void previousImage(){
-		int current = imagePosition;
-		do {
-			imagePosition--;
-			if (imagePosition < 0){
-				imagePosition = fileList.size() - 1;
-			}
-			if (imagePosition == current){
-				// Looped. Exit
-				onBackPressed();
-				return;
-			}
-		} while (!testCurrentIsImage());
-		loadImage();
+		} while (!testPositionIsImage(newPosition));
+		if (!preload){
+			imagePosition = newPosition;
+		}
+		loadImage(newPosition, preload);
 	}
 
 	/**
 	 * Show the following image.
 	 * This method handles whether or not the slideshow is in reverse order.
 	 */
-	private void followingImage(){
-		if (REVERSE_ORDER) {
-			previousImage();
-		} else {
-			nextImage();
-		}
+	private void followingImage(boolean preload){
+		nextImage(!REVERSE_ORDER, preload);
 	}
 
 	/**
 	 * Tests if the current file item is an image.
 	 * @return True if image, false otherwise.
      */
-	private boolean testCurrentIsImage(){
-		return new FileItemHelper(this).isImage(fileList.get(imagePosition));
+	private boolean testPositionIsImage(int position){
+		return new FileItemHelper(this).isImage(fileList.get(position));
 	}
 
 	/**
 	 * Load the image to the screen.
 	 */
-	private void loadImage(){
-		final FileItem item = fileList.get(imagePosition);
-		setTitle(item.getName());
+	private void loadImage(int position, boolean preload){
+		final FileItem item = fileList.get(position);
 
-		DrawableTypeRequest<String> glide = Glide
+		final DrawableTypeRequest<String> glideLoad = Glide
 				.with(this)
 				.load(item.getPath());
 		if (PLAY_GIF) {
 			// Play GIFs
-			glide
-					.placeholder(mContentView.getDrawable())
-					.fitCenter()
-					.dontAnimate()
-					.listener(new RequestListener<String, GlideDrawable>() {
-						@Override
-						public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
-							Log.e(TAG, "Error loading image", e);
-							return false;
-						}
-
-						@Override
-						public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
-							if (glideDrawable instanceof GifDrawable) {
-								// Queue the next slide after the animation completes
-								GifDrawable gifDrawable = (GifDrawable) glideDrawable;
-
-								int duration = 0;
-								GifDecoder decoder = gifDrawable.getDecoder();
-								for (int i = 0; i < gifDrawable.getFrameCount(); i++) {
-									duration += decoder.getDelay(i);
-								}
-
-								queueSlide(duration);
-							} else {
-								queueSlide();
+			if (preload) {
+				glideLoad.preload();
+			} else {
+				glideLoad
+						.placeholder(mContentView.getDrawable())
+						.fitCenter()
+						.dontAnimate()
+						.listener(new RequestListener<String, GlideDrawable>() {
+							@Override
+							public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
+								Log.e(TAG, "Error loading image", e);
+								return false;
 							}
 
-							// Update image details
-							updateImageDetails(item);
-							return false;
-						}
-					})
-					.into(mContentView);
+							@Override
+							public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
+								if (glideDrawable instanceof GifDrawable) {
+									// Queue the next slide after the animation completes
+									GifDrawable gifDrawable = (GifDrawable) glideDrawable;
+
+									int duration = 0;
+									GifDecoder decoder = gifDrawable.getDecoder();
+									for (int i = 0; i < gifDrawable.getFrameCount(); i++) {
+										duration += decoder.getDelay(i);
+									}
+
+									queueSlide(duration);
+								} else {
+									queueSlide();
+								}
+
+								// Update image details
+								updateImageDetails(item);
+								return false;
+							}
+						})
+						.into(mContentView);
+			}
 		} else {
 			// Force bitmap so GIFs don't play
-			glide
-					.asBitmap()
-					.placeholder(mContentView.getDrawable())
-					.fitCenter()
-					.dontAnimate()
-					.listener(new RequestListener<String, Bitmap>() {
-						@Override
-						public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
-							return false;
-						}
+			BitmapTypeRequest<String> glideBitmap = glideLoad
+					.asBitmap();
+			if (preload){
+				glideBitmap.preload();
+			} else {
+				glideBitmap
+						.placeholder(mContentView.getDrawable())
+						.fitCenter()
+						.dontAnimate()
+						.listener(new RequestListener<String, Bitmap>() {
+							@Override
+							public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
+								return false;
+							}
 
-						@Override
-						public boolean onResourceReady(Bitmap bitmap, String s, Target<Bitmap> target, boolean b, boolean b1) {
-							updateImageDetails(item);
+							@Override
+							public boolean onResourceReady(Bitmap bitmap, String s, Target<Bitmap> target, boolean b, boolean b1) {
+								updateImageDetails(item);
 
-							return false;
-						}
-					})
-					.into(mContentView);
+								return false;
+							}
+						})
+						.into(mContentView);
+			}
 		}
-
-		saveCurrentImagePath();
 	}
 
 	/**
@@ -431,6 +422,7 @@ public class ImageActivity extends BaseActivity {
 	 * Update the image details
 	 */
 	private void updateImageDetails(FileItem item){
+		setTitle(item.getName());
 		File file = new File(item.getPath());
 
 		// Decode dimensions
@@ -461,6 +453,9 @@ public class ImageActivity extends BaseActivity {
 				DateFormat.getDateFormat(this).format(file.lastModified()));
 		((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
 		((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
+
+		// Save this spot
+		saveCurrentImagePath();
 	}
 
 	/**
@@ -480,7 +475,7 @@ public class ImageActivity extends BaseActivity {
 					Toast.makeText(ImageActivity.this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
 					// Show next image
 					imagePosition = imagePosition + (REVERSE_ORDER ? 1 : -1);
-					followingImage();
+					followingImage(false);
 				} else {
 					Toast.makeText(ImageActivity.this, R.string.image_not_deleted, Toast.LENGTH_SHORT).show();
 				}
@@ -599,6 +594,8 @@ public class ImageActivity extends BaseActivity {
 			// Ensure only one runnable is in the queue
 			mSlideshowHandler.removeCallbacks(mSlideshowRunnable);
 			mSlideshowHandler.postDelayed(mSlideshowRunnable, delayMillis);
+			// Preload the next image
+			followingImage(true);
 		}
 	}
 
