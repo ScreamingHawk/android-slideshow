@@ -53,6 +53,12 @@
 
 	<SwitchPreference
 		android:defaultValue="false"
+		android:key="skip_long_load"
+		android:summary="@string/pref_description_skip_long_load"
+		android:title="@string/pref_title_skip_long_load"/>
+
+	<SwitchPreference
+		android:defaultValue="false"
 		android:key="image_details"
 		android:summary="@string/pref_description_image_details"
 		android:title="@string/pref_title_image_details"/>

@@ -33,7 +33,8 @@
 	<string name="toast_no_files">No files to show</string>
 
 	<string name="long_loading_warning">%1$s is taking a long time to load.</string>
-	<string name="long_loading_skip">Skip</string>
+	<string name="long_loading_skipping">%1$s is taking a long time to load. Skipping.</string>
+	<string name="long_loading_skip_action">Skip</string>
 
 	<!-- Image descriptions -->
 	<string name="image_description">Image</string>
@@ -105,6 +106,11 @@
 	<string name="pref_title_slide_delay">Slide delay</string>
 	<string name="pref_description_slide_delay">Click to change the number of seconds an image will
 		be shown before changing to the next image.
+	</string>
+
+	<string name="pref_title_skip_long_load">Skip long loading images</string>
+	<string name="pref_description_skip_long_load">Skip images that take too long to load during
+		slideshow. A notification will be displayed when this happens.
 	</string>
 
 	<string name="pref_title_image_details">Show image details</string>

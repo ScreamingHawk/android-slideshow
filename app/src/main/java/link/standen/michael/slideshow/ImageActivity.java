@@ -64,6 +64,7 @@ public class ImageActivity extends BaseActivity {
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
 	private static boolean PLAY_GIF;
+	private static boolean SKIP_LONG_LOAD;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -81,16 +82,25 @@ public class ImageActivity extends BaseActivity {
 				if (path.length() > LOCATION_DETAIL_MAX_LENGTH){
 					path = "..." + path.substring(path.length() - (LOCATION_DETAIL_MAX_LENGTH - 3));
 				}
-				loadingSnackbar = Snackbar.make(mContentView,
-						getResources().getString(R.string.long_loading_warning, path),
-						Snackbar.LENGTH_INDEFINITE);
-				loadingSnackbar.setAction(R.string.long_loading_skip, new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						followingImage(false);
-					}
-				});
-				loadingSnackbar.show();
+				if (SKIP_LONG_LOAD && isRunning){
+					// Notify and skip it
+					Snackbar.make(mContentView,
+							getResources().getString(R.string.long_loading_skipping, path),
+							Snackbar.LENGTH_LONG).show();
+					followingImage(false);
+				} else {
+					// Show snackbar with option to skip
+					loadingSnackbar = Snackbar.make(mContentView,
+							getResources().getString(R.string.long_loading_warning, path),
+							Snackbar.LENGTH_INDEFINITE);
+					loadingSnackbar.setAction(R.string.long_loading_skip_action, new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							followingImage(false);
+						}
+					});
+					loadingSnackbar.show();
+				}
 			}
 		}
 	};
@@ -305,6 +315,7 @@ public class ImageActivity extends BaseActivity {
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
 		PLAY_GIF = preferences.getBoolean("enable_gif_support", true);
+		SKIP_LONG_LOAD = preferences.getBoolean("skip_long_load", false);
 
 		// Show/Hide the image details that are show during pause
 		if (!IMAGE_DETAILS){
