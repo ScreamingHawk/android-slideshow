@@ -333,6 +333,8 @@ public class ImageActivity extends BaseActivity {
 	private void loadImage(int position, boolean preload){
 		final FileItem item = fileList.get(position);
 
+		Glide.clear(mContentView);
+
 		final DrawableTypeRequest<String> glideLoad = Glide
 				.with(this)
 				.load(item.getPath());
