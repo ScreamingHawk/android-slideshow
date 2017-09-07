@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -65,6 +66,34 @@ public class ImageActivity extends BaseActivity {
 	private static boolean PLAY_GIF;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
+
+	// Loading warnings
+	private static final int LONG_LOAD_WARNING_DELAY = 5000;
+	private boolean isLoading = false;
+	private Snackbar loadingSnackbar = null;
+	private final Handler loadingHandler = new Handler();
+	private final Runnable loadingRunnable = new Runnable() {
+		@Override
+		public void run() {
+			if (isLoading) {
+				// Show snack bar with filename and option to skip
+				String path = fileList.get(imagePosition).getPath();
+				if (path.length() > LOCATION_DETAIL_MAX_LENGTH){
+					path = "..." + path.substring(path.length() - (LOCATION_DETAIL_MAX_LENGTH - 3));
+				}
+				loadingSnackbar = Snackbar.make(mContentView,
+						getResources().getString(R.string.long_loading_warning, path),
+						Snackbar.LENGTH_INDEFINITE);
+				loadingSnackbar.setAction(R.string.long_loading_skip, new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						followingImage(false);
+					}
+				});
+				loadingSnackbar.show();
+			}
+		}
+	};
 
 	private final Handler mSlideshowHandler = new Handler();
 	private final Runnable mSlideshowRunnable = new Runnable() {
@@ -333,7 +362,17 @@ public class ImageActivity extends BaseActivity {
 	private void loadImage(int position, boolean preload){
 		final FileItem item = fileList.get(position);
 
-		Glide.clear(mContentView);
+		if (!preload) {
+			Glide.clear(mContentView);
+			// Begin timer for long loading warning
+			isLoading = true;
+			if (loadingSnackbar != null){
+				loadingSnackbar.dismiss();
+				loadingSnackbar = null;
+			}
+			loadingHandler.removeCallbacks(loadingRunnable);
+			loadingHandler.postDelayed(loadingRunnable, LONG_LOAD_WARNING_DELAY);
+		}
 
 		final DrawableTypeRequest<String> glideLoad = Glide
 				.with(this)
@@ -351,16 +390,18 @@ public class ImageActivity extends BaseActivity {
 							@Override
 							public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
 								Log.e(TAG, "Error loading image", e);
+								isLoading = false;
 								return false;
 							}
 
 							@Override
 							public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
+								isLoading = false;
 								if (glideDrawable instanceof GifDrawable) {
 									// Queue the next slide after the animation completes
 									GifDrawable gifDrawable = (GifDrawable) glideDrawable;
 
-									int duration = 0;
+									int duration = 250; // Start with a little extra time
 									GifDecoder decoder = gifDrawable.getDecoder();
 									for (int i = 0; i < gifDrawable.getFrameCount(); i++) {
 										duration += decoder.getDelay(i);
@@ -392,11 +433,14 @@ public class ImageActivity extends BaseActivity {
 						.listener(new RequestListener<String, Bitmap>() {
 							@Override
 							public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
+								Log.e(TAG, "Error loading image", e);
+								isLoading = false;
 								return false;
 							}
 
 							@Override
 							public boolean onResourceReady(Bitmap bitmap, String s, Target<Bitmap> target, boolean b, boolean b1) {
+								isLoading = false;
 								updateImageDetails(item);
 
 								return false;
@@ -405,6 +449,8 @@ public class ImageActivity extends BaseActivity {
 						.into(mContentView);
 			}
 		}
+
+
 	}
 
 	/**

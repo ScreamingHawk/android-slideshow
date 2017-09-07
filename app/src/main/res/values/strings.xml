@@ -32,6 +32,9 @@
 
 	<string name="toast_no_files">No files to show</string>
 
+	<string name="long_loading_warning">%1$s is taking a long time to load.</string>
+	<string name="long_loading_skip">Skip</string>
+
 	<!-- Image descriptions -->
 	<string name="image_description">Image</string>
 	<string name="logo_description">Logo</string>
