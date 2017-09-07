@@ -65,6 +65,7 @@ public class ImageActivity extends BaseActivity {
 	private static boolean IMAGE_DETAILS;
 	private static boolean PLAY_GIF;
 	private static boolean SKIP_LONG_LOAD;
+	private static boolean PRELOAD_IMAGES;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -316,6 +317,7 @@ public class ImageActivity extends BaseActivity {
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
 		PLAY_GIF = preferences.getBoolean("enable_gif_support", true);
 		SKIP_LONG_LOAD = preferences.getBoolean("skip_long_load", false);
+		PRELOAD_IMAGES = preferences.getBoolean("preload_images", true);
 
 		// Show/Hide the image details that are show during pause
 		if (!IMAGE_DETAILS){
@@ -329,6 +331,11 @@ public class ImageActivity extends BaseActivity {
 	 * Show the next image.
 	 */
 	private void nextImage(boolean forwards, boolean preload){
+		if (preload && !PRELOAD_IMAGES){
+			// Stop
+			return;
+		}
+
 		int current = imagePosition;
 		int newPosition = imagePosition;
 		do {
@@ -372,6 +379,11 @@ public class ImageActivity extends BaseActivity {
 	 */
 	private void loadImage(int position, boolean preload){
 		final FileItem item = fileList.get(position);
+
+		if (preload && !PRELOAD_IMAGES){
+			// Stop
+			return;
+		}
 
 		if (!preload) {
 			Glide.clear(mContentView);
@@ -460,8 +472,6 @@ public class ImageActivity extends BaseActivity {
 						.into(mContentView);
 			}
 		}
-
-
 	}
 
 	/**
