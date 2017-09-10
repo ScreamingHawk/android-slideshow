@@ -386,6 +386,7 @@ public class ImageActivity extends BaseActivity {
 		}
 
 		if (!preload) {
+			setTitle(item.getName());
 			Glide.clear(mContentView);
 			// Begin timer for long loading warning
 			isLoading = true;
@@ -491,7 +492,6 @@ public class ImageActivity extends BaseActivity {
 	 * Update the image details
 	 */
 	private void updateImageDetails(FileItem item){
-		setTitle(item.getName());
 		File file = new File(item.getPath());
 
 		// Decode dimensions
