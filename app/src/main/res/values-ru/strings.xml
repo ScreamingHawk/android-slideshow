@@ -29,7 +29,10 @@
     <string name="image_detail_dimensions">Размерности: %1$dx%2$d</string>
     <string name="image_detail_size">Размер файла: %1$s</string>
     <string name="image_detail_modified">Модифицирован: %1$s</string>
-
+    <string name="long_loading_warning">%1$s требует много времени для загрузки.</string>
+    <string name="long_loading_skipping">%1$s требует много времени для загрузки. Пропускаю.</string>
+    <string name="long_loading_skip_action">Пропустить</string>
+    <string name="toast_no_files">Нет файлов для показа</string>
 	<!-- Image descriptions -->
     <string name="image_description">Изображение</string>
     <string name="logo_description">Логотип</string>
@@ -42,7 +45,9 @@
     <string name="credits_content3">Вы можете посмотреть исходный код приложения, сообщить о проблеме или предложить новые функции на <a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.</string>
     <string name="credits_content4">Это приложение с открытым исходным кодом и оно полностью бесплатно; лицензировано в соответствии с <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.</string>
     <string name="credits_content5">Благодарности  <a href="https://github.com/psyanite">Yan Tsui</a> за тестирование и дизайн иконки.</string>
-
+    <string name="credits_content6">Этот перевод &appname; предоставлен вам автором
+		<a href="https://michael.standen.link">&author;</a>.
+	</string>
 	<!-- Settings -->
 
     <string name="title_activity_settings">Настройки</string>
@@ -76,4 +81,29 @@
 
     <string name="pref_title_random_order">Случайный порядок</string>
     <string name="pref_description_random_order">Отобразить изображения во время слайд-шоу в случайном порядке.</string>
+
+    <string name="pref_description_auto_start">При открытии &appname; начнет слайдшоу
+		с последнего показанного изображения.
+	</string>
+    <string name="pref_title_enable_gif_support">Включить поддержку GIF</string>
+
+    <string name="pref_description_preload_images">Загружать следующее изображение пока находимся на текущем слайде
+		Отключение этой опции может повысить производительность на некоторых устройствах.
+	</string>
+    <string name="pref_description_remember_location">При открытии &appname; запустится в месте,
+		где слайдшоу было последний раз использовано.
+	</string>
+
+    <string name="pref_description_skip_long_load">Пропустить изображения, которые слишеом долго загружаются
+		во время слайдшоу. Когда это произойдет, будет показано уведомление.
+	</string>
+    <string name="pref_title_auto_start">Запускать автоматически</string>
+
+    <string name="pref_title_preload_images">Предзагрузка изображений</string>
+    <string name="pref_title_remember_location">Запускать в последнем местоположении</string>
+
+    <string name="pref_title_skip_long_load">Пропустить изображения, которые долго загружаются</string>
+    <string name="pref_description_enable_gif_support">Автоматически воспроизводить GIF при показе.
+	</string>
+
 </resources>
