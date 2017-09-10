@@ -39,19 +39,22 @@ import java.util.Collections;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
+import link.standen.michael.slideshow.strategy.image.GlideImageStrategy;
+import link.standen.michael.slideshow.strategy.image.ImageStrategy;
 import link.standen.michael.slideshow.util.FileItemHelper;
 
 /**
  * A full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class ImageActivity extends BaseActivity {
+public class ImageActivity extends BaseActivity implements ImageStrategy.ImageStrategyCallback {
 
 	private static final String TAG = ImageActivity.class.getName();
 
 	private boolean blockPreferenceReload = false;
 
 	private SharedPreferences preferences;
+	private ImageStrategy imageStrategy;
 
 	private int imagePosition;
 	private int firstImagePosition;
@@ -63,7 +66,6 @@ public class ImageActivity extends BaseActivity {
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
-	private static boolean PLAY_GIF;
 	private static boolean SKIP_LONG_LOAD;
 	private static boolean PRELOAD_IMAGES;
 
@@ -315,7 +317,6 @@ public class ImageActivity extends BaseActivity {
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
-		PLAY_GIF = preferences.getBoolean("enable_gif_support", true);
 		SKIP_LONG_LOAD = preferences.getBoolean("skip_long_load", false);
 		PRELOAD_IMAGES = preferences.getBoolean("preload_images", true);
 
@@ -325,6 +326,12 @@ public class ImageActivity extends BaseActivity {
 		} else {
 			findViewById(R.id.image_details2).setVisibility(View.VISIBLE);
 		}
+
+		// Set the image strategy.
+		imageStrategy = new GlideImageStrategy();
+		imageStrategy.setContext(this);
+		imageStrategy.setCallback(this);
+		imageStrategy.loadPreferences(preferences);
 	}
 
 	/**
@@ -374,103 +381,42 @@ public class ImageActivity extends BaseActivity {
 		return new FileItemHelper(this).isImage(fileList.get(position));
 	}
 
+	@Override
+	public void clearLoadingSnackbar(){
+		isLoading = false;
+		if (loadingSnackbar != null){
+			loadingSnackbar.dismiss();
+			loadingSnackbar = null;
+		}
+		loadingHandler.removeCallbacks(loadingRunnable);
+	}
+
+	@Override
+	public void beginLoadingSnackbar(){
+		clearLoadingSnackbar();
+		isLoading = true;
+		loadingHandler.removeCallbacks(loadingRunnable);
+		loadingHandler.postDelayed(loadingRunnable, LONG_LOAD_WARNING_DELAY);
+	}
+
 	/**
 	 * Load the image to the screen.
 	 */
 	private void loadImage(int position, boolean preload){
-		final FileItem item = fileList.get(position);
-
 		if (preload && !PRELOAD_IMAGES){
 			// Stop
 			return;
 		}
 
-		if (!preload) {
+		final FileItem item = fileList.get(position);
+
+		if (preload) {
+			imageStrategy.preload(item);
+		} else {
 			setTitle(item.getName());
 			// Begin timer for long loading warning
-			isLoading = true;
-			if (loadingSnackbar != null){
-				loadingSnackbar.dismiss();
-				loadingSnackbar = null;
-			}
-			loadingHandler.removeCallbacks(loadingRunnable);
-			loadingHandler.postDelayed(loadingRunnable, LONG_LOAD_WARNING_DELAY);
-		}
-
-		final DrawableTypeRequest<String> glideLoad = Glide
-				.with(this)
-				.load(item.getPath());
-		if (PLAY_GIF) {
-			// Play GIFs
-			if (preload) {
-				glideLoad.preload();
-			} else {
-				glideLoad
-						.placeholder(mContentView.getDrawable())
-						.fitCenter()
-						.dontAnimate()
-						.listener(new RequestListener<String, GlideDrawable>() {
-							@Override
-							public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
-								Log.e(TAG, "Error loading image", e);
-								isLoading = false;
-								return false;
-							}
-
-							@Override
-							public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
-								isLoading = false;
-								if (glideDrawable instanceof GifDrawable) {
-									// Queue the next slide after the animation completes
-									GifDrawable gifDrawable = (GifDrawable) glideDrawable;
-
-									int duration = 250; // Start with a little extra time
-									GifDecoder decoder = gifDrawable.getDecoder();
-									for (int i = 0; i < gifDrawable.getFrameCount(); i++) {
-										duration += decoder.getDelay(i);
-									}
-
-									queueSlide(duration);
-								} else {
-									queueSlide();
-								}
-
-								// Update image details
-								updateImageDetails(item);
-								return false;
-							}
-						})
-						.into(mContentView);
-			}
-		} else {
-			// Force bitmap so GIFs don't play
-			BitmapTypeRequest<String> glideBitmap = glideLoad
-					.asBitmap();
-			if (preload){
-				glideBitmap.preload();
-			} else {
-				glideBitmap
-						.placeholder(mContentView.getDrawable())
-						.fitCenter()
-						.dontAnimate()
-						.listener(new RequestListener<String, Bitmap>() {
-							@Override
-							public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
-								Log.e(TAG, "Error loading image", e);
-								isLoading = false;
-								return false;
-							}
-
-							@Override
-							public boolean onResourceReady(Bitmap bitmap, String s, Target<Bitmap> target, boolean b, boolean b1) {
-								isLoading = false;
-								updateImageDetails(item);
-
-								return false;
-							}
-						})
-						.into(mContentView);
-			}
+			beginLoadingSnackbar();
+			imageStrategy.load(item, mContentView);
 		}
 	}
 
@@ -490,7 +436,8 @@ public class ImageActivity extends BaseActivity {
 	/**
 	 * Update the image details
 	 */
-	private void updateImageDetails(FileItem item){
+	@Override
+	public void updateImageDetails(FileItem item){
 		File file = new File(item.getPath());
 
 		// Decode dimensions
@@ -647,14 +594,16 @@ public class ImageActivity extends BaseActivity {
 	/**
 	 * Queue the next slide in the slideshow
 	 */
-	private void queueSlide(){
+	@Override
+	public void queueSlide(){
 		queueSlide(SLIDESHOW_DELAY);
 	}
 
 	/**
 	 * Queue the next slide in the slideshow
 	 */
-	private void queueSlide(int delayMillis){
+	@Override
+	public void queueSlide(int delayMillis){
 		if (delayMillis < SLIDESHOW_DELAY){
 			delayMillis = SLIDESHOW_DELAY;
 		}
