@@ -29,6 +29,12 @@
 	<string name="image_detail_dimensions">Dimensiones: %1$dx%2$d</string>
 	<string name="image_detail_size">Tamaño de archivo: %1$s</string>
 	<string name="image_detail_modified">Modificado: %1$s</string>
+    
+	<string name="toast_no_files">No archivos que mostrar</string>
+
+	<string name="long_loading_warning">%1$s está tardando para cargar.</string>
+	<string name="long_loading_skipping">%1$s está tardando para cargar. Omitir.</string>
+    <string name="long_loading_skip_action">Omitir</string>
 
 	<!-- Image descriptions -->
 	<string name="image_description">Imagen</string>
@@ -71,13 +77,28 @@
 		opción mejorará el rendimiento, sin embargo no podrás distinguir cuáles archivos son
 		imágenes.
 	</string>
-	
+    
+	<string name="pref_title_remember_location">Comenzar en la última ubicación</string>
+	<string name="pref_description_remember_location">Al abrir, &appname; comenzarará en la 
+        ubicación donde la última reproducción de diapositivas fue usada.
+    </string>
+    
+	<string name="pref_title_auto_start">Comenzar automáticamente</string>
+	<string name="pref_description_auto_start">Al abrir, &appname; comenzarará una reproducción
+        de diapositivas desde la última imagen que fue mostrada.
+    </string>
+        
 	<string name="pref_title_play_from_here">Activar botón "Reproducir desde aquí"</string>
 	<string name="pref_description_play_from_here">El botón "Reproducir desde aquí" aparece en la
 		lista de archivos y permite comenzar una reproducción de diapositivas desde la carpeta
 		actual, incluyendo todas las sub-carpetas. Esta característica está deshabilitada por
 		defecto dado que puede tener un impacto negativo en el rendimiento.
 	</string>
+    
+	<string name="pref_title_enable_gif_support">Activar suporte de GIF</string>
+	<string name="pref_description_enable_gif_support">Automáticamente reproducir GIFs
+        al mostrarlos. Requiere Glide para la carga de imágenes.
+    </string>    
 
 	<string name="pref_title_use_device_root">Usar directorio raíz del dispositivo</string>
 	<string name="pref_description_use_device_root">Activar navegación al directorio raíz del
@@ -90,6 +111,23 @@
 	<string name="pref_description_slide_delay">Clic para cambiar la cantidad de segundos que una
 		imagen será mostrada antes de pasar a la imagen siguiente.
 	</string>
+
+	<string name="pref_title_image_strategy">Usar Glide para cargar imágenes</string>
+	<string name="pref_description_image_strategy">Usar Glide para cargar imágenes. Glide tiene soporte para
+        otras funciones como precarga y soporte de GIF. Desactivar esta opción activará la antigua estrategia
+        de carga de imágenes. Ésta función tiene mejor rendimiento en algunos dispositivos.
+    </string>
+    
+	<string name="pref_title_preload_images">Precargar imágenes</string>
+	<string name="pref_description_preload_images">Cargar la siguiente imagen durante la actual diaspositiva.
+        Desactivar esta función puede incrementar el rendimiento en algunos dispositivos. Requiere Glide para la 
+        carga de imágenes.
+    </string>
+        
+	<string name="pref_title_skip_long_load">Omitir imágenes que tardan en cargar</string>
+	<string name="pref_description_skip_long_load">Omitir imágenes que toman mucho tiempo en cargar durante
+        la reproducción de diaspositivas. Una notificación se mostrará cuando esto ocurra.
+    </string>
 
 	<string name="pref_title_image_details">Mostrar detalles de la imagen</string>
 	<string name="pref_description_image_details">Superponer detalles de la imagen durante la
