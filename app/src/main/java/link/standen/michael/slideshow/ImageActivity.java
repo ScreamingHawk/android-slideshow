@@ -387,7 +387,6 @@ public class ImageActivity extends BaseActivity {
 
 		if (!preload) {
 			setTitle(item.getName());
-			Glide.clear(mContentView);
 			// Begin timer for long loading warning
 			isLoading = true;
 			if (loadingSnackbar != null){
