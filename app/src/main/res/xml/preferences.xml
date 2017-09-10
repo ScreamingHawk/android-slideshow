@@ -19,12 +19,6 @@
 		android:title="@string/pref_title_play_from_here"/>
 
 	<SwitchPreference
-		android:defaultValue="true"
-		android:key="enable_gif_support"
-		android:summary="@string/pref_description_enable_gif_support"
-		android:title="@string/pref_title_enable_gif_support"/>
-
-	<SwitchPreference
 		android:defaultValue="false"
 		android:key="remember_location"
 		android:summary="@string/pref_description_remember_location"
@@ -59,6 +53,22 @@
 
 	<SwitchPreference
 		android:defaultValue="true"
+		android:key="glide_image_strategy"
+		android:summary="@string/pref_description_image_strategy"
+		android:title="@string/pref_title_image_strategy"/>
+
+	<SwitchPreference
+		android:defaultValue="true"
+		android:dependency="glide_image_strategy"
+		android:disableDependentsState="true"
+		android:key="enable_gif_support"
+		android:summary="@string/pref_description_enable_gif_support"
+		android:title="@string/pref_title_enable_gif_support"/>
+
+	<SwitchPreference
+		android:defaultValue="true"
+		android:dependency="glide_image_strategy"
+		android:disableDependentsState="true"
 		android:key="preload_images"
 		android:summary="@string/pref_description_preload_images"
 		android:title="@string/pref_title_preload_images"/>

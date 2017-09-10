@@ -50,6 +50,15 @@ public interface ImageStrategy {
 		void updateImageDetails(FileItem item);
 
 		/**
+		 * Updates the image details for the file item.
+		 * This method provides the width and height so they do not need to be recalculate.
+		 * @param item
+		 * @param width
+		 * @param height
+		 */
+		void updateImageDetails(FileItem item, int width, int height);
+
+		/**
 		 * Restarts the timer for the long loading warning snackbar.
 		 */
 		void beginLoadingSnackbar();

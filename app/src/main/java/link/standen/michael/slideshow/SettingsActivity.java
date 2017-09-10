@@ -146,6 +146,21 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 				}
 			});
 
+			final SwitchPreference glideSupportPref = (SwitchPreference)findPreference("glide_image_strategy");
+			final SwitchPreference preloadPref = (SwitchPreference)findPreference("preload_images");
+			final SwitchPreference gifPref = (SwitchPreference)findPreference("enable_gif_support");
+			// Disabling glide support disables preloading and GIF support
+			glideSupportPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if (Boolean.FALSE.equals(newValue)){
+						preloadPref.setChecked(false);
+						gifPref.setChecked(false);
+					}
+					return true;
+				}
+			});
+
 			// Bind the summaries of EditText/List/Dialog/Ringtone preferences
 			// to their values. When their values change, their summaries are
 			// updated to reflect the new value, per the Android Design

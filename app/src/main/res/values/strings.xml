@@ -95,6 +95,7 @@
 
 	<string name="pref_title_enable_gif_support">Enable GIF support</string>
 	<string name="pref_description_enable_gif_support">Automatically play GIFs when displayed.
+		Requires Glide image loading.
 	</string>
 
 	<string name="pref_title_use_device_root">Use device root</string>
@@ -108,9 +109,15 @@
 		be shown before changing to the next image.
 	</string>
 
+	<string name="pref_title_image_strategy">Use Glide to load images</string>
+	<string name="pref_description_image_strategy">Use Glide to load images. Glide has support for
+		other features, such as preloading and GIF support. Turning this off will enable to old custom image loading
+		strategy. This has better performance on some devices.
+	</string>
+
 	<string name="pref_title_preload_images">Preload images</string>
 	<string name="pref_description_preload_images">Load the next image during the current slide.
-		Disabling this feature may increase performance on some devices.
+		Disabling this feature may increase performance on some devices. Requires Glide image loading.
 	</string>
 
 	<string name="pref_title_skip_long_load">Skip long loading images</string>

@@ -29,6 +29,7 @@ import java.util.Collections;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
+import link.standen.michael.slideshow.strategy.image.CustomImageStrategy;
 import link.standen.michael.slideshow.strategy.image.GlideImageStrategy;
 import link.standen.michael.slideshow.strategy.image.ImageStrategy;
 import link.standen.michael.slideshow.util.FileItemHelper;
@@ -318,10 +319,17 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		}
 
 		// Set the image strategy.
-		imageStrategy = new GlideImageStrategy();
+		if (preferences.getBoolean("glide_image_strategy", true)){
+			imageStrategy = new GlideImageStrategy();
+			Log.d(TAG, "Glide image strategy");
+		} else {
+			imageStrategy = new CustomImageStrategy();
+			Log.d(TAG, "Custom image strategy");
+		}
 		imageStrategy.setContext(this);
 		imageStrategy.setCallback(this);
 		imageStrategy.loadPreferences(preferences);
+
 	}
 
 	/**
@@ -423,19 +431,19 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		editor.apply();
 	}
 
-	/**
-	 * Update the image details
-	 */
 	@Override
-	public void updateImageDetails(FileItem item){
-		File file = new File(item.getPath());
-
+	public void updateImageDetails(FileItem item) {
 		// Decode dimensions
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeFile(item.getPath(), options);
-		int width = options.outWidth;
-		int height = options.outHeight;
+
+		updateImageDetails(item, options.outWidth, options.outHeight);
+	}
+
+	@Override
+	public void updateImageDetails(FileItem item, int width, int height){
+		File file = new File(item.getPath());
 
 		// Location
 		String location = file.getParent().replace(getRootLocation(), "");
