@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto"
+	  xmlns:tools="http://schemas.android.com/tools"
+	  tools:context="link.standen.michael.slideshow.MainActivity">
+	<item
+		android:id="@+id/action_settings"
+		android:orderInCategory="100"
+		android:title="@string/action_settings"
+		app:showAsAction="never"/>
+	<item
+		android:id="@+id/action_credits"
+		android:orderInCategory="200"
+		android:title="@string/action_credits"
+		app:showAsAction="never"/>
+	<item
+		android:id="@+id/action_picture_in_picture"
+		android:orderInCategory="300"
+		android:title="@string/action_picture_in_picture"
+		android:icon="@mipmap/picture_in_picture"/>
+</menu>

@@ -8,6 +8,9 @@
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Settings</string>
 	<string name="action_credits">About</string>
+	<string name="action_picture_in_picture">Picture in Picture</string>
+
+	<string name="no_picture_in_picture">Picture in picture is not supported by your device.</string>
 
 	<!-- List -->
 	<string name="inaccessible">(inaccessible)</string>

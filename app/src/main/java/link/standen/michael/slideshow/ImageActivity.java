@@ -19,6 +19,8 @@ import android.support.v7.app.AlertDialog;
 import android.text.format.DateFormat;
 import android.text.format.Formatter;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,6 +53,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private int firstImagePosition;
 
 	private boolean isRunning = false;
+	private boolean inPipMode = false;
 
 	private static boolean STOP_ON_COMPLETE;
 	private static boolean REVERSE_ORDER;
@@ -106,7 +109,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		@Override
 		public void run() {
 			followingImage(false);
-			if (STOP_ON_COMPLETE && imagePosition == firstImagePosition) {
+			if (STOP_ON_COMPLETE && imagePosition == firstImagePosition && !inPipMode) {
 				show();
 			}
 		}
@@ -134,7 +137,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 					| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-			if (IMAGE_DETAILS) {
+			if (IMAGE_DETAILS && !inPipMode) {
 				mDetailsView.setVisibility(View.VISIBLE);
 			}
 
@@ -204,10 +207,16 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			}
 
 			@Override
-			protected void onSwipeUp() {}
+			protected void onSwipeUp() {
+				// Swipe up starts and stops the slideshow
+				toggle();
+			}
 
 			@Override
-			protected void onSwipeDown() {}
+			protected void onSwipeDown() {
+				// Swipe down enters picture in picture mode if supported
+				startPictureInPictureMode(false);
+			}
 		});
 
 		// Configure delete button
@@ -294,11 +303,66 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	}
 
 	@Override
-	protected void onStop(){
-		super.onStop();
+	protected void onPause(){
+		super.onPause();
 
-		// Stop slideshow
-		stopSlideshow();
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N || !inPipMode) {
+			// Stop slideshow
+			show();
+		}
+	}
+
+	/**
+	 * Swapping between picture in picture mode starts and stops the slideshow.
+	 */
+	@Override
+	public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
+		super.onPictureInPictureModeChanged(isInPictureInPictureMode);
+		inPipMode = isInPictureInPictureMode;
+		if (inPipMode) {
+			hide();
+		} else {
+			show();
+			// Force reloading image at full dimensions
+			loadImage(imagePosition, false);
+		}
+	}
+
+	/**
+	 * Starts picture in picture mode
+	 * @param toast If picture in picture is not supported, toast determines if a toast is displayed
+	 */
+	private void startPictureInPictureMode(boolean toast){
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+			//noinspection deprecation
+			this.enterPictureInPictureMode();
+			mDetailsView.setVisibility(View.GONE);
+		} else if (toast) {
+			Toast.makeText(this, R.string.no_picture_in_picture, Toast.LENGTH_LONG).show();
+		}
+	}
+
+	/**
+	 * Set the image activity specific options menu
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.image_main, menu);
+		return true;
+	}
+
+	/**
+	 * Handle image activity specific options menu
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+
+		if (id == R.id.action_picture_in_picture) {
+			this.startPictureInPictureMode(true);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/**
@@ -315,7 +379,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		SKIP_LONG_LOAD = preferences.getBoolean("skip_long_load", false);
 		PRELOAD_IMAGES = preferences.getBoolean("preload_images", true);
 
-		// Show/Hide the image details that are show during pause
+		// Show/Hide the image details that are shown during pause
 		if (!IMAGE_DETAILS){
 			findViewById(R.id.image_details2).setVisibility(View.GONE);
 		} else {
