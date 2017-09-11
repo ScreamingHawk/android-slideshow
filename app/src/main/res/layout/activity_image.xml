@@ -1,9 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			 xmlns:tools="http://schemas.android.com/tools"
-			 android:layout_width="match_parent"
-			 android:layout_height="match_parent"
-			 android:background="@color/image_background"
-			 tools:context="link.standen.michael.slideshow.ImageActivity">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/image_background"
+	tools:context="link.standen.michael.slideshow.ImageActivity">
 
 	<ImageView
 		android:id="@+id/fullscreen_content"
@@ -54,73 +54,79 @@
 		android:layout_height="match_parent"
 		android:fitsSystemWindows="true">
 
-		<RelativeLayout
-			android:id="@+id/fullscreen_content_controls"
+		<android.support.design.widget.CoordinatorLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			tools:ignore="UselessParent">
+			android:layout_height="match_parent"
+			android:id="@+id/snackbar_here">
 
-			<LinearLayout
-				android:id="@+id/fullscreen_content_controls_buttons"
-				style="?metaButtonBarStyle"
+			<RelativeLayout
+				android:id="@+id/fullscreen_content_controls"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_alignParentBottom="true"
-				android:layout_centerHorizontal="true"
-				android:background="@color/black_overlay"
-				android:orientation="horizontal">
+				tools:ignore="UselessParent">
 
-				<Button
-					android:id="@+id/delete_button"
-					style="?metaButtonBarButtonStyle"
-					android:layout_width="0dp"
+				<LinearLayout
+					android:id="@+id/fullscreen_content_controls_buttons"
+					style="?metaButtonBarStyle"
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/delete_button"/>
+					android:layout_alignParentBottom="true"
+					android:layout_centerHorizontal="true"
+					android:background="@color/black_overlay"
+					android:orientation="horizontal">
 
-				<Button
-					android:id="@+id/share_button"
-					style="?metaButtonBarButtonStyle"
-					android:layout_width="0dp"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/share_button"/>
-			</LinearLayout>
+					<Button
+						android:id="@+id/delete_button"
+						style="?metaButtonBarButtonStyle"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:text="@string/delete_button"/>
 
-			<!-- Image Details Overlay -->
-			<LinearLayout
-				android:id="@+id/image_details2"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_above="@+id/fullscreen_content_controls_buttons"
-				android:layout_alignParentStart="true"
-				android:orientation="vertical"
-				android:background="@color/black_overlay"
-				android:padding="@dimen/overlay_padding">
+					<Button
+						android:id="@+id/share_button"
+						style="?metaButtonBarButtonStyle"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:text="@string/share_button"/>
+				</LinearLayout>
 
-				<TextView
-					android:id="@+id/image_detail_location2"
+				<!-- Image Details Overlay -->
+				<LinearLayout
+					android:id="@+id/image_details2"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:textColor="@color/primary"/>
-				<TextView
-					android:id="@+id/image_detail_dimensions2"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textColor="@color/primary"/>
-				<TextView
-					android:id="@+id/image_detail_size2"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textColor="@color/primary"/>
-				<TextView
-					android:id="@+id/image_detail_modified2"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textColor="@color/primary"/>
+					android:layout_above="@+id/fullscreen_content_controls_buttons"
+					android:layout_alignParentStart="true"
+					android:orientation="vertical"
+					android:background="@color/black_overlay"
+					android:padding="@dimen/overlay_padding">
 
-			</LinearLayout>
-		</RelativeLayout>
+					<TextView
+						android:id="@+id/image_detail_location2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/primary"/>
+					<TextView
+						android:id="@+id/image_detail_dimensions2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/primary"/>
+					<TextView
+						android:id="@+id/image_detail_size2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/primary"/>
+					<TextView
+						android:id="@+id/image_detail_modified2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/primary"/>
+
+				</LinearLayout>
+			</RelativeLayout>
+		</android.support.design.widget.CoordinatorLayout>
 	</FrameLayout>
 
 </FrameLayout>

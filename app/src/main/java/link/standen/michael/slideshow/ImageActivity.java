@@ -64,6 +64,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 	// Loading warnings
 	private static final int LONG_LOAD_WARNING_DELAY = 5000;
+	private View snackbarPlayingView;
+	private View snackbarStoppedView;
 	private boolean isLoading = false;
 	private Snackbar loadingSnackbar = null;
 	private final Handler loadingHandler = new Handler();
@@ -78,13 +80,13 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 				}
 				if (SKIP_LONG_LOAD && isRunning){
 					// Notify and skip it
-					Snackbar.make(mContentView,
+					Snackbar.make(snackbarPlayingView,
 							getResources().getString(R.string.long_loading_skipping, path),
 							Snackbar.LENGTH_LONG).show();
 					followingImage(false);
 				} else {
 					// Show snackbar with option to skip
-					loadingSnackbar = Snackbar.make(mContentView,
+					loadingSnackbar = Snackbar.make(isRunning ? snackbarPlayingView : snackbarStoppedView,
 							getResources().getString(R.string.long_loading_warning, path),
 							Snackbar.LENGTH_INDEFINITE);
 					loadingSnackbar.setAction(R.string.long_loading_skip_action, new View.OnClickListener() {
@@ -175,6 +177,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
 		mContentView = findViewById(R.id.fullscreen_content);
 		mDetailsView = findViewById(R.id.image_details1); // Visible during slideshow play
+		snackbarPlayingView = mContentView;
+		snackbarStoppedView = findViewById(R.id.snackbar_here);
 
 		loadPreferences();
 		// Stop resume from reloading the same settings
