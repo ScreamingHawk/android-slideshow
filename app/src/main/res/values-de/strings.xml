@@ -14,7 +14,7 @@
 	<string name="go_home_folder">Hängengeblieben? Klicken Sie hier, nach Ihren Persönlichen Ordner zu gehen.</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">Bildaktivität</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Löschen</string>
 	<string name="delete_dialog_title">Bild löschen</string>
@@ -40,7 +40,7 @@
 	</string>
 	<string name="credits_content2">Ohne zusätzlichen Quatsch, diese Anwendung ist die einfachste Diashow-Anwendung auf dem Markt.
 	</string>
-	<string name="credits_content3">Sie können den Quellcode anschauen, Bugs protokollieren, oder Funktionen auf 
+	<string name="credits_content3">Sie können den Quellcode anschauen, Bugs protokollieren, oder Funktionen auf
 		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a> anfordern.
 	</string>
 	<string name="credits_content4">Diese Anwendung ist völlig kostenlos und Open Source; lizenziert

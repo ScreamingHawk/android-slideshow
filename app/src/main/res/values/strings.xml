@@ -18,7 +18,7 @@
 	<string name="play_folder">Play Slideshow from here</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Delete</string>
 	<string name="delete_dialog_title">Delete image</string>

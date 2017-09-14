@@ -15,7 +15,7 @@
 	<string name="play_folder">تشغيل عرض الشرائح من هنا</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">حذف</string>
 	<string name="delete_dialog_title">حذف الصورة</string>

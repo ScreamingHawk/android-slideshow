@@ -13,9 +13,9 @@
 	<string name="inaccessible">(inaccessible)</string>
 	<string name="go_home_folder">¿Atascado? Clic para ir al Inicio</string>
     <string name="play_folder">Comenzar Slideshow desde aquí</string>
-	
+
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Borrar</string>
 	<string name="delete_dialog_title">Borrar imagen</string>
@@ -29,7 +29,7 @@
 	<string name="image_detail_dimensions">Dimensiones: %1$dx%2$d</string>
 	<string name="image_detail_size">Tamaño de archivo: %1$s</string>
 	<string name="image_detail_modified">Modificado: %1$s</string>
-    
+
 	<string name="toast_no_files">Sin archivos que mostrar</string>
 
 	<string name="long_loading_warning">%1$s está tardando para cargar.</string>
@@ -77,28 +77,28 @@
 		opción mejorará el rendimiento, sin embargo no podrás distinguir cuáles archivos son
 		imágenes.
 	</string>
-    
+
 	<string name="pref_title_remember_location">Comenzar en la última ubicación</string>
-	<string name="pref_description_remember_location">Al abrir, &appname; comenzará en la 
+	<string name="pref_description_remember_location">Al abrir, &appname; comenzará en la
         ubicación donde la última reproducción de diapositivas fue iniciada.
     </string>
-    
+
 	<string name="pref_title_auto_start">Comenzar automáticamente</string>
 	<string name="pref_description_auto_start">Al abrir, &appname; comenzará una reproducción
         de diapositivas desde la última imagen que fue mostrada.
     </string>
-        
+
 	<string name="pref_title_play_from_here">Activar botón "Reproducir desde aquí"</string>
 	<string name="pref_description_play_from_here">El botón "Reproducir desde aquí" aparece en la
 		lista de archivos y permite comenzar una reproducción de diapositivas desde la carpeta
 		actual, incluyendo todas las sub-carpetas. Esta característica está deshabilitada por
 		defecto dado que puede tener un impacto negativo en el rendimiento.
 	</string>
-    
+
 	<string name="pref_title_enable_gif_support">Activar soporte de GIF</string>
 	<string name="pref_description_enable_gif_support">Automáticamente reproducir GIFs
         al mostrarlos. Requiere Glide para la carga de imágenes.
-    </string>    
+    </string>
 
 	<string name="pref_title_use_device_root">Usar directorio raíz del dispositivo</string>
 	<string name="pref_description_use_device_root">Activar navegación al directorio raíz del
@@ -117,13 +117,13 @@
         otras funciones como precarga y soporte de GIF. Desactivar esta opción activará la antigua estrategia
         de carga de imágenes. Esta función tiene mejor rendimiento en algunos dispositivos.
     </string>
-    
+
 	<string name="pref_title_preload_images">Precargar imágenes</string>
 	<string name="pref_description_preload_images">Cargar la siguiente imagen durante la actual diapositiva.
-        Desactivar esta función puede incrementar el rendimiento en algunos dispositivos. Requiere Glide para la 
+        Desactivar esta función puede incrementar el rendimiento en algunos dispositivos. Requiere Glide para la
         carga de imágenes.
     </string>
-        
+
 	<string name="pref_title_skip_long_load">Omitir imágenes que tardan en cargar</string>
 	<string name="pref_description_skip_long_load">Omitir imágenes que toman mucho tiempo en cargar durante
         la reproducción de diapositivas. Una notificación se mostrará cuando esto ocurra.

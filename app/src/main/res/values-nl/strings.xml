@@ -15,7 +15,7 @@
 	<string name="play_folder">Speel Slideshow vanaf hier</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">BeeldActiviteit</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Verwijderen</string>
 	<string name="delete_dialog_title">Verwijder beeld</string>
@@ -62,12 +62,12 @@
 	<string name="title_activity_settings">Instellingen</string>
 
 	<string name="pref_title_show_hidden_files">Toon verborgen bestanden</string>
-	<string name="pref_description_show_hidden_files">Toont bestanden die verborgen zijn door andere 
+	<string name="pref_description_show_hidden_files">Toont bestanden die verborgen zijn door andere
 		bestand managers.
 	</string>
 
 	<string name="pref_title_show_thumbnails">Toon miniaturen</string>
-	<string name="pref_description_show_thumbnails">Toont beeldminiaturen. Dit uitschakelen verhoogt 
+	<string name="pref_description_show_thumbnails">Toont beeldminiaturen. Dit uitschakelen verhoogt
 		de performantie, echter kan je dan niet zien welke bestanden beelden zijn en welke niet.
 	</string>
 
@@ -79,12 +79,12 @@
 
 	<string name="pref_title_use_device_root">Gebruik toestel root</string>
 	<string name="pref_description_use_device_root">Schakel toegang tot de root folder van het toestel in.
-		Dit laat toegang toe tot elk bestand in alle folders op het toestel inclusied externe opslag 
+		Dit laat toegang toe tot elk bestand in alle folders op het toestel inclusied externe opslag
 		zoals SD kaarten. Nota: Mogelijks heb je een "rooted" toestel nodig om dit te doen werken.
 	</string>
 
 	<string name="pref_title_slide_delay">Dia vertraging</string>
-	<string name="pref_description_slide_delay">Klik om het aantal seconden te veranderen dat een beeld 
+	<string name="pref_description_slide_delay">Klik om het aantal seconden te veranderen dat een beeld
 		zal getoond worden alvorens het volgende beeld te tonen.
 	</string>
 
@@ -93,17 +93,17 @@
 	</string>
 
 	<string name="pref_title_stop_on_complete">Stop bij einde</string>
-	<string name="pref_description_stop_on_complete">Stop de diavoorstelling wanneer alle beelden zijn 
+	<string name="pref_description_stop_on_complete">Stop de diavoorstelling wanneer alle beelden zijn
 		getoond.
 	</string>
 
 	<string name="pref_title_reverse_order">Omgekeerde volgorde</string>
-	<string name="pref_description_reverse_order">Toon de beelden van de diavoorstelling in omgekeerde 
+	<string name="pref_description_reverse_order">Toon de beelden van de diavoorstelling in omgekeerde
 		volgorde.
 	</string>
 
 	<string name="pref_title_random_order">Willekeurige volgorde</string>
-	<string name="pref_description_random_order">Toon de beelden van de diavoorstelling in willekeurige 
+	<string name="pref_description_random_order">Toon de beelden van de diavoorstelling in willekeurige
 		volgorde.
 	</string>
 </resources>

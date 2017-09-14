@@ -15,7 +15,7 @@
 	<string name="play_folder">ここからスライドショーを再生</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">削除</string>
 	<string name="delete_dialog_title">画像を削除</string>

@@ -14,7 +14,7 @@
 	<string name="go_home_folder">Užstrigo? Paspauskite, kad grįžti įpradžią</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">Nuotraukų veiksena</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Ištrinti</string>
 	<string name="delete_dialog_title">Ištrinti nuotrauką</string>
@@ -36,7 +36,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Apie &appname;</string>
 	<string name="credits_creator">sukūrė <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow yra paprasta programėlė nuotraukų peržiūrai Jūsų 
+	<string name="credits_content1">Slideshow yra paprasta programėlė nuotraukų peržiūrai Jūsų
 		telefone.
 	</string>
 	<string name="credits_content2">Be jokių ypatingų priedų, ši programėlė yra pati papraščiausia
@@ -57,24 +57,24 @@
 	<string name="title_activity_settings">Nustatymai</string>
 
 	<string name="pref_title_show_hidden_files">Rodyti paslėptas bylas</string>
-	<string name="pref_description_show_hidden_files">Parodo bylas, kurios yra paslėptos kitose 
+	<string name="pref_description_show_hidden_files">Parodo bylas, kurios yra paslėptos kitose
 		failų tvarkymo programose.
 	</string>
 
 	<string name="pref_title_show_thumbnails">Rodyti miniatiūras</string>
 	<string name="pref_description_show_thumbnails">Rodo miniatiūrines nuotraukas. Išjungus šią ypatybę
-		padidėja efektyvumas, tačiau Jūs negalėsite matyti kokia tai byla ar tai nuotrauka 
+		padidėja efektyvumas, tačiau Jūs negalėsite matyti kokia tai byla ar tai nuotrauka
 		ar ne.
 	</string>
 
 	<string name="pref_title_use_device_root">Naudoti įrenginio šakninį aplankalą</string>
-	<string name="pref_description_use_device_root">Įgalinti priėjimą prie įrenginio šakninio 
-		aplankalo. Tai įgalins priėjimą prie bet kurių bylų esančių įrenginyje, Įskaitant prijungtus atminties 
+	<string name="pref_description_use_device_root">Įgalinti priėjimą prie įrenginio šakninio
+		aplankalo. Tai įgalins priėjimą prie bet kurių bylų esančių įrenginyje, Įskaitant prijungtus atminties
 		įrenginius, kaip sd korteles. Pastaba: kad tinkamai veiktų galima būti reikalaujama, kad įrenginys būtų su įgalintu šakniniu rėžimu.
 	</string>
 
 	<string name="pref_title_slide_delay">Skaidrės užlaikymas</string>
-	<string name="pref_description_slide_delay">Paspauskite, kad pakeisti sekundžių kiekį, 
+	<string name="pref_description_slide_delay">Paspauskite, kad pakeisti sekundžių kiekį,
 		po kurio bus rodoma kita nuotrauka.
 	</string>
 
@@ -83,17 +83,17 @@
 	</string>
 
 	<string name="pref_title_stop_on_complete">Stop on complete</string>
-	<string name="pref_description_stop_on_complete">Sustabdyti skaidrių peržiūrą, kai visos nuotraukos baigtos 
+	<string name="pref_description_stop_on_complete">Sustabdyti skaidrių peržiūrą, kai visos nuotraukos baigtos
 		peržiūrėti.
 	</string>
 
 	<string name="pref_title_reverse_order">Atgalinė tvarka</string>
-	<string name="pref_description_reverse_order">Rodyti nuotraukas skaidrių rėžime atbuline 
+	<string name="pref_description_reverse_order">Rodyti nuotraukas skaidrių rėžime atbuline
 		tvarka.
 	</string>
 
 	<string name="pref_title_random_order">Atsitiktinė tvarka</string>
-	<string name="pref_description_random_order">Rodyti nuotraukas skaidrių rėžime atsitiktine 
+	<string name="pref_description_random_order">Rodyti nuotraukas skaidrių rėžime atsitiktine
 		tvarka.
 	</string>
 </resources>

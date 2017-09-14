@@ -15,7 +15,7 @@
     <string name="play_folder">Запустить Слайдшоу отсюда</string>
 
 	<!-- Slideshow -->
-    <string name="title_activity_image">Окно изображений</string>
+    <string name="title_activity_image">&appname;</string>
 
     <string name="delete_button">Удалить</string>
     <string name="delete_dialog_title">Удалить изображение</string>
@@ -63,7 +63,7 @@
 	    и позволит вам начать Слайдшоу из текущей директории, включая все поддиректории.
 		По умолчания эта свойство отключено, так как оно может негативно сказаться на производительности
     </string>
-	
+
     <string name="pref_title_use_device_root">Использовать корень устройства</string>
     <string name="pref_description_use_device_root">Включить навигацию к корневому каталогу устройства. Это позволит получить доступ к файлам в любом месте устройства, включая подключенные хранилища, такие как SD-карты. Примечание. Может потребоваться устройство с root доступом.</string>
 

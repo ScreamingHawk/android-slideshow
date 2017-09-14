@@ -15,7 +15,7 @@
 	<string name="play_folder">Tocar Slideshow daqui</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Deletar</string>
 	<string name="delete_dialog_title">Deletar imagem</string>
@@ -37,7 +37,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Sobre &appname;</string>
 	<string name="credits_creator">por <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow é uma aplicação simples para visualizar 
+	<string name="credits_content1">Slideshow é uma aplicação simples para visualizar
 		imagens no seu smartphone.
 	</string>
 	<string name="credits_content2">Sem enrolações, esta aplicação é a mais simples
@@ -61,7 +61,7 @@
 	<string name="title_activity_settings">Configurações</string>
 
 	<string name="pref_title_show_hidden_files">Mostrar arquivos ocultos</string>
-	<string name="pref_description_show_hidden_files">Mostrar arquivos ocultos de outros 
+	<string name="pref_description_show_hidden_files">Mostrar arquivos ocultos de outros
 		gerenciadores de arquivos.
 	</string>
 

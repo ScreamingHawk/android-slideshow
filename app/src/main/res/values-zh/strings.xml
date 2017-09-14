@@ -15,7 +15,7 @@
 	<string name="play_folder">在这儿看幻灯片</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">删除</string>
 	<string name="delete_dialog_title">删除照片</string>

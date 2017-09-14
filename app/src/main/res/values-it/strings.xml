@@ -14,7 +14,7 @@
 	<string name="go_home_folder">Bloccato? Clicca per andare alla Home</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Rimuovi</string>
 	<string name="delete_dialog_title">Rimuovi immagine</string>
@@ -39,7 +39,7 @@
 	<string name="credits_content1">Slideshow è una semplice applicazione per vedere immagini sul tuo
 	  telefono.
 	</string>
-	<string name="credits_content2">Senza fronzolli, questa applicazione è lo slideshow più semplice 
+	<string name="credits_content2">Senza fronzolli, questa applicazione è lo slideshow più semplice
 	  sul mercato.
 	</string>
 	<string name="credits_content3">Puoi vedere il codice sorgente, segnalare un bug o richidere funzionalità su
@@ -57,7 +57,7 @@
 	<string name="title_activity_settings">Impostazioni</string>
 
 	<string name="pref_title_show_hidden_files">Mostra documenti nascosti</string>
-	<string name="pref_description_show_hidden_files">Mostra documenti che sono nascosti da altri 
+	<string name="pref_description_show_hidden_files">Mostra documenti che sono nascosti da altri
 		gestori di documenti.
 	</string>
 

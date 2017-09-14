@@ -15,7 +15,7 @@
 	<string name="play_folder">Démarrer la présentation ici</string>
 
 	<!-- Slideshow -->
-	<string name="title_activity_image">ImageActivity</string>
+	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Supprimer</string>
 	<string name="delete_dialog_title">Supprimer l\'image</string>
