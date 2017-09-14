@@ -20,13 +20,14 @@ Great for showing off those vacation photos without having to scroll.
 * Automatically begins playing slideshow
 * Tap to pause, then tap to resume
 * Swipe left and right to skip
-* Ability to delete images from within the slideshow
-* Ability to share images from within the slideshow
+* Delete and share images from within the slideshow
 * Sequential, reversed or random display order
 * Configurable slideshow delay
 * Show / hide hidden files
 * Show image details (dimensions, size, modified date) from within the slideshow
 * Enable navigation to the root of the device
+* Picture in picture support on the latest devices
+* Much much more! Check the settings page!
 
 ## Un-Features
 * No sign up
