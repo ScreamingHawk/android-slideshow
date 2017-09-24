@@ -8,6 +8,9 @@
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Instellingen</string>
 	<string name="action_credits">Over</string>
+	<string name="action_picture_in_picture">Afbeelding in Afbeelding</string>
+
+	<string name="no_picture_in_picture">Afbeelding in Afbeelding is niet ondersteund door je toestel.</string>
 
 	<!-- List -->
 	<string name="inaccessible">(ontoegankelijk)</string>
@@ -30,6 +33,12 @@
 	<string name="image_detail_size">Bestandsgrootte: %1$s</string>
 	<string name="image_detail_modified">Aangepast: %1$s</string>
 
+	<string name="toast_no_files">Geen bestanden te tonen</string>
+
+	<string name="long_loading_warning">%1$s heeft een lange tijd nodig om te laden.</string>
+	<string name="long_loading_skipping">%1$s heeft een lange tijd nodig om te laden. Overslaan.</string>
+	<string name="long_loading_skip_action">Overslaan</string>
+	
 	<!-- Image descriptions -->
 	<string name="image_description">Beeld</string>
 	<string name="logo_description">Logo</string>
@@ -71,10 +80,25 @@
 		de performantie, echter kan je dan niet zien welke bestanden beelden zijn en welke niet.
 	</string>
 
+	<string name="pref_title_remember_location">Begin vanaf laatste locatie</string>
+	<string name="pref_description_remember_location">Wanneer geopend zal &appname; starten in de
+		locatie dat een diashow het laatst was gebruikt.
+	</string>
+
+	<string name="pref_title_auto_start">Start Automatically</string>
+	<string name="pref_description_auto_start">Wanneer geopend zal &appname; een diashow starten van het
+		laatste beeld dat getoond werd.
+	</string>
+
 	<string name="pref_title_play_from_here">Inschakelen "Speel vanaf hier" knop</string>
 	<string name="pref_description_play_from_here">De "Speel vanaf hier" knop verschijnt in de bestandslijst
 		en laat je toe de diashow te beginnen vanuit de huidige folder inclusief alle onderliggende folders.
 		Deze functie is standaard uitgeschakeld daar het mogelijks nadelig is voor de performantie.
+	</string>
+
+	<string name="pref_title_enable_gif_support">GIF ondersteuning inschakelen</string>
+	<string name="pref_description_enable_gif_support">Automatisch afspelen van GIFs wanneer deze getoond worden.
+		Maakt gebruik van Glide beeld laden.
 	</string>
 
 	<string name="pref_title_use_device_root">Gebruik toestel root</string>
@@ -86,6 +110,21 @@
 	<string name="pref_title_slide_delay">Dia vertraging</string>
 	<string name="pref_description_slide_delay">Klik om het aantal seconden te veranderen dat een beeld
 		zal getoond worden alvorens het volgende beeld te tonen.
+	</string>
+
+	<string name="pref_title_image_strategy">Gebruik Glide om beelden te laden</string>
+	<string name="pref_description_image_strategy">Gebruik Glide om beelden te laden. Glide ondersteunt
+		andere kenmerken, zoals vooraf laden en GIF ondersteuning. Wanneer dit uitgeschakeld is wordt de oude gewone manier van beeld laden gebruikt. Dit geeft mogelijk betere performantie op sommige toestellen.
+	</string>
+
+	<string name="pref_title_preload_images">Vooraf laden beelden</string>
+	<string name="pref_description_preload_images">Laad het volgende beeld tijdens de huidige dia.
+		Dit uitschakelen verhoogt mogelijks de performantie op sommige toestellen. Maakt gebruik van Glide beeld laden.
+	</string>
+
+	<string name="pref_title_skip_long_load">Sla lang laden beelden over</string>
+	<string name="pref_description_skip_long_load">Sla beelden over waar het te lang duurt om ze te laden tijdens de diashow. 
+		Er wordt een bericht getoond wanneer dit gebeurd.
 	</string>
 
 	<string name="pref_title_image_details">Toon beeld details</string>
