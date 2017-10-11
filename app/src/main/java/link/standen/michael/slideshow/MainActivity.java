@@ -194,7 +194,8 @@ public class MainActivity extends BaseActivity {
 				requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 				return false;
 			}
-		} else { //permission is automatically granted on sdk<23 upon installation
+		} else {
+			// Permission is automatically granted on sdk<23 upon installation
 			Log.v(TAG,"Permission is granted");
 			return true;
 		}
@@ -206,9 +207,11 @@ public class MainActivity extends BaseActivity {
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		Log.v(TAG,"Permission: " + permissions[0] + " was " + grantResults[0]);
-		if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-			updateListView();
+		if (permissions.length > 0) {
+			Log.v(TAG, "Permission: " + permissions[0] + " was " + grantResults[0]);
+			if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+				updateListView();
+			}
 		}
 	}
 
