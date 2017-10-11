@@ -60,6 +60,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private static boolean RANDOM_ORDER;
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
+	private static boolean IMAGE_DETAILS_DURING;
 	private static boolean SKIP_LONG_LOAD;
 	private static boolean PRELOAD_IMAGES;
 
@@ -137,7 +138,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 					| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-			if (IMAGE_DETAILS && !inPipMode) {
+			if (IMAGE_DETAILS_DURING && !inPipMode) {
 				mDetailsView.setVisibility(View.VISIBLE);
 			}
 
@@ -376,6 +377,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
+		IMAGE_DETAILS_DURING = preferences.getBoolean("image_details_during", false);
 		SKIP_LONG_LOAD = preferences.getBoolean("skip_long_load", false);
 		PRELOAD_IMAGES = preferences.getBoolean("preload_images", true);
 

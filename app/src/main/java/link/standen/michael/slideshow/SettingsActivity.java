@@ -161,6 +161,19 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 				}
 			});
 
+			final SwitchPreference imageDetailsPref = (SwitchPreference)findPreference("image_details");
+			final SwitchPreference imageDetailsDuringPref = (SwitchPreference)findPreference("image_details_during");
+			// Disabling remember location disables auto start
+			imageDetailsPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					if (Boolean.FALSE.equals(newValue)){
+						imageDetailsDuringPref.setChecked(false);
+					}
+					return true;
+				}
+			});
+
 			// Bind the summaries of EditText/List/Dialog/Ringtone preferences
 			// to their values. When their values change, their summaries are
 			// updated to reflect the new value, per the Android Design

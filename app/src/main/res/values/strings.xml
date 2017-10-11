@@ -129,7 +129,12 @@
 	</string>
 
 	<string name="pref_title_image_details">Show image details</string>
-	<string name="pref_description_image_details">Overlay image details during slideshow.
+	<string name="pref_description_image_details">Overlay image details during slideshow when paused.
+	</string>
+
+	<string name="pref_title_image_details_during">Show image details during slideshow</string>
+	<string name="pref_description_image_details_during">Overlay image details during slideshow when
+		slideshow is running.
 	</string>
 
 	<string name="pref_title_stop_on_complete">Stop on complete</string>
