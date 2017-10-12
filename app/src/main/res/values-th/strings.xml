@@ -57,7 +57,7 @@
 	</string>
 	<string name="credits_content5">ขอบคุณ <a href="https://github.com/psyanite">Yan Tsui</a> ที่ช่วยทดสอบและออกแบบไอคอนให้กับ &appname;
 	</string>
-	<string name="credits_content6">&appname;  แปลไทยโดย <a href="https://michael.standen.link">&author;</a>.
+	<string name="credits_content6">&appname;  แปลไทยโดย <a href="https://github.com/batenzar">batenzar</a>.
 	</string>
 
 	<!-- Settings -->
