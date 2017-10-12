@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">การตั้งค่า</string>
+	<string name="action_credits">เกี่ยวกับ</string>
+	<string name="action_picture_in_picture">Picture in Picture</string>
+
+	<string name="no_picture_in_picture">อุปกรณ์ของคุณไม่รองรับ Picture in picture</string>
+
+	<!-- List -->
+	<string name="inaccessible">(inaccessible)</string>
+	<string name="go_home_folder">ติดปัญหา? กดเพื่อกลับไปหน้าหลัก</string>
+	<string name="play_folder">เริ่มเล่นสไลด์จากตรงนี้</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">&appname;</string>
+
+	<string name="delete_button">ลบ</string>
+	<string name="delete_dialog_title">ลบภาพ</string>
+	<string name="delete_dialog_message">คุณแน่ใจหรือไม่?</string>
+	<string name="image_deleted">รูปถูกลบแล้ว</string>
+	<string name="image_not_deleted">ไม่สามารถลบรูปได้</string>
+
+	<string name="share_button">แบ่งปัน</string>
+	<string name="share_via">แบ่งปันผ่าน&#8230;</string>
+
+	<string name="image_detail_dimensions">มิติ: %1$dx%2$d</string>
+	<string name="image_detail_size">ขนาดไฟล์: %1$s</string>
+	<string name="image_detail_modified">แก้ไขล่าสุดเมื่อ: %1$s</string>
+
+	<string name="toast_no_files">ไม่พบไฟล์</string>
+
+	<string name="long_loading_warning">%1$s ใช้เวลานานในการโหลด</string>
+	<string name="long_loading_skipping">%1$s ใช้เวลานานในการโหลด กำลังข้ามรูป</string>
+	<string name="long_loading_skip_action">ข้ามรูป</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">รูปภาพ</string>
+	<string name="logo_description">โลโก้</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">เกี่ยวกับ &appname;</string>
+	<string name="credits_creator">สร้างโดย <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow คือแอพพลิเคชั่นดูรูปง่ายๆ บนมือถือ</string>
+	<string name="credits_content2">แบบเรียบง่ายและพื้นฐานมากที่สุดในตลาด โดยที่ไม่ต้องมีพื้นฐานมาก่อน
+	</string>
+	<string name="credits_content3">คุณสามารถดูซอร์สโค้ด หรือรายงานบัค หรือขอฟีเจอร์ได้ที่
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">แอพพลิเคชั่นนี้ฟรี และ open source
+		ภายใต้ <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">ขอบคุณ <a href="https://github.com/psyanite">Yan Tsui</a> ที่ช่วยทดสอบและออกแบบไอคอนให้กับ &appname;
+	</string>
+	<string name="credits_content6">&appname;  แปลไทยโดย <a href="https://michael.standen.link">&author;</a>.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">การตั้งค่า</string>
+
+	<string name="pref_title_show_hidden_files">แสดงไฟล์ที่ถูกซ่อน</string>
+	<string name="pref_description_show_hidden_files">แสดงไฟล์ที่ถูกซ่อนโดยแอพพลิเคชั่นอื่น</string>
+
+	<string name="pref_title_show_thumbnails">แสดงภาพขนาดเล็ก</string>
+	<string name="pref_description_show_thumbnails">ปิดการแสดงภาพขนาดเล็กเพื่อเพิ่มความเร็วในการใช้งาน 
+		แต่จะทำให้คุณไม่สามารถแยกความต่างระหว่างไฟล์กับรูปภาได้
+	</string>
+
+	<string name="pref_title_remember_location">เปิดแอพพลิเคชั่นที่ตำแหน่งที่ใช้ล่าสุด</string>
+	<string name="pref_description_remember_location">เมื่อเปิดแอพพลิเคชั่น  &appname; จะแสดงรูปภาพจากตำแหน่งที่แสดงสไลด์โชว์ล่าสุด
+	</string>
+
+	<string name="pref_title_auto_start">เริ่มสไลด์โชว์อัตโนมัติ</string>
+	<string name="pref_description_auto_start">เมื่อเปิดแอพพลิเคชั่น &appname; จะเริ่มแสดงสไลด์โขว์ต่อจากรูปภาพที่ใช้ล่าสุดโดยอัตโนมัติ</string>
+
+	<string name="pref_title_play_from_here">แสดงปุ่ม "เริ่มสลได์โชว์จากตรงนี้"</string>
+	<string name="pref_description_play_from_here">ปุ่ม "เริ่มสลได์โชว์จากตรงนี้" จะอยู่ในหน้ารายการไฟล์
+		เพื่อให้คุณสามารถเริ่มสไลด์โชว์จากโฟลเดอร์ปัจจุบันได้ และโฟลเดอร์ย่อย
+		ฟีเจอร์นี้ถูกปิดไว้เป็นค่าตั้งต้น เนื่องจากอาจทำให้การใช้งานช้าลง		
+	</string>
+
+	<string name="pref_title_enable_gif_support">เปิดการรองรับ GIF</string>
+	<string name="pref_description_enable_gif_support">เริ่มเล่น GIF อัตโนมัติทันทีที่รูปภาพถูกแสดง
+		ต้องการการโหลดรูปแบบ Glide
+	</string>
+
+	<string name="pref_title_use_device_root">แสดง root</string>
+	<string name="pref_description_use_device_root">เปิดการเข้าถึงรูปในไดเรกเมอรี่ root ของเครื่อง
+		ทำให้คุณสามารถเข้าถึงไฟล์รูปภาพทุกที่ในเครื่องรวมถึงการ์ดหน่วยความจำ เช่น SD card
+		คำเตือน: อาจจำเป็นต้องใช้กับเครื่องที่รูทแล้ว ถึงจะทำงานได้ปกติ
+	</string>
+
+	<string name="pref_title_slide_delay">เวลาในการแสดงสไลด์</string>
+	<string name="pref_description_slide_delay">กดเพื่อตั้งเวลา (วินาที) แสดงรูปภาพ ก่อนที่จะเปลี่ยนเป็นรูปถัดไป
+	</string>
+
+	<string name="pref_title_image_strategy">ใช้การโหลดรูปแบบ Glide</string>
+	<string name="pref_description_image_strategy">ใช้การโหลดรูปแบบ Glide ซึ่งจะทำให้รองรับฟีเจอร์ได้มากขึ้น
+		เช่น รองรับการรูปขึ้นมาก่อนการแสดงผล รองรับการเล่น GIF 
+		ปิดฟีเจอร์นี้เพื่อใช้การโหลดรูปแบบปกติ ซึ่งจะให้การทำงานเร็วกว่าในบางอุปกรณ์		
+	</string>
+
+	<string name="pref_title_preload_images">โหลดรูปขึ้นมาก่อน</string>
+	<string name="pref_description_preload_images">โหลดรูปถัดไปขึ้นมาในระหว่างที่กำลังแสดงสไลด์ปัจจุบัน
+		การปิดฟีเจอร์นี้อาจเพิ่มความเร็วในการทำงานในบางอุปกรณ์ จำเป็นต้องเปิดการโหลดแบบ Glide.
+	</string>
+
+	<string name="pref_title_skip_long_load">ข้ามรูปที่ใช้เวลาโหลดนาน</string>
+	<string name="pref_description_skip_long_load">ข้ามรูปที่ใช้เวลาโหลดนานระหว่างที่แสดงสไลด์
+		รูปที่ถูกข้ามจะแสดงในส่วนการแจ้งเตือน
+	</string>
+
+	<string name="pref_title_image_details">แสดงข้อมูลรูปภาพ</string>
+	<string name="pref_description_image_details">แสดงข้อมูลของรูปภาพซ้อนบนรูปภาพขณะที่หยุดพักการแสดงสไลด์
+	</string>
+
+	<string name="pref_title_image_details_during">แสดงข้อมูลรูปขณะที่กำลังแสดงสไลด์</string>
+	<string name="pref_description_image_details_during">แสดงข้อมูลของรูปภาพซ้อนบนรูปภาพขณะที่กำลังแสดงสไลด์
+	</string>
+
+	<string name="pref_title_stop_on_complete">หยุดสไลด์หลังจากที่แสดงรูป</string>
+	<string name="pref_description_stop_on_complete">หยุดสไลด์หลังจากที่แสดงรูปทุกรูป
+	</string>
+
+	<string name="pref_title_reverse_order">แสดงสไลด์กลับด้าน</string>
+	<string name="pref_description_reverse_order">แสดงรูปภาพในสไลด์จากหลังไปหน้า
+	</string>
+
+	<string name="pref_title_random_order">แสดงสไลด์แบบสุ่ม</string>
+	<string name="pref_description_random_order">แสดงรูปภาพในสไลด์แบบสุ่ม
+	</string>
+</resources>
