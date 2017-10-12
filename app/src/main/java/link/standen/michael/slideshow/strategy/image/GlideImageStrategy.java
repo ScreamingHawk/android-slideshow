@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.RequestListener;
@@ -57,6 +58,7 @@ public class GlideImageStrategy implements ImageStrategy {
 		if (PLAY_GIF) {
 			// Play GIFs
 			glideLoad
+					.diskCacheStrategy(DiskCacheStrategy.SOURCE)
 					.placeholder(view.getDrawable())
 					.fitCenter()
 					.dontAnimate()
