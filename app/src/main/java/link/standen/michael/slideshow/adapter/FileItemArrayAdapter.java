@@ -61,6 +61,7 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 		FileItemViewHolder holder;
 		if (view == null){
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			assert inflater != null;
 			view = inflater.inflate(resourceId, null);
 			holder = new FileItemViewHolder();
 			holder.setTextView((TextView) view.findViewById(R.id.file_name));
@@ -73,7 +74,6 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 		final FileItem item = getItem(position);
 		if (item != null){
 			holder.setFileItem(item);
-			item.setHolder(holder);
 			holder.getTextView().setText(item.getName());
 			// Set thumbnail image
 			final ImageView imageView = holder.getImageView();

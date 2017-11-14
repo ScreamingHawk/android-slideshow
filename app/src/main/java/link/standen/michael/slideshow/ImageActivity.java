@@ -167,6 +167,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		}
 	};
 
+	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -190,6 +191,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 		// Gesture / click detection
 		mContentView.setOnTouchListener(new OnSwipeTouchListener(this) {
+
 			@Override
 			public void onClick() {
 				toggle();

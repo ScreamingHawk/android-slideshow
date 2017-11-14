@@ -26,7 +26,6 @@ public class FileItem implements Comparable<FileItem> {
 	 */
 	private Boolean isImage;
 
-	private FileItemViewHolder holder;
 	private Boolean isSpecial = Boolean.FALSE;
 
 	public String getName() {
@@ -95,10 +94,6 @@ public class FileItem implements Comparable<FileItem> {
 			// Loading
 			return R.mipmap.loading;
 		}
-	}
-
-	public void setHolder(FileItemViewHolder holder) {
-		this.holder = holder;
 	}
 
 	public Boolean getIsImage() {

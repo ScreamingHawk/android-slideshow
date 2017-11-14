@@ -1,6 +1,5 @@
 package link.standen.michael.slideshow;
 
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -12,7 +11,6 @@ import android.preference.PreferenceActivity;
 import android.preference.SwitchPreference;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 /**
