@@ -53,7 +53,10 @@
 	<string name="credits_content5">感谢<a href="https://github.com/psyanite">Yan Tsui</a>
 		对测试和设计的贡献&appname;icon.
 	</string>
-	<string name="credits_content6"> 此版本翻译&appname;由<a href="https://github.com/wardbradt">Liuxi-G</a>
+	
+        <string name="credits_content6"> <a href="https://github.com/wardbradt">Ward Bradt</a>
+		把&appname;从英文翻译成中文。
+        <string name="credits_content6"> &appname的此版本翻译;由<a href="https://github.com/Liuxi-G">Liuxi-G</a>
 		完成。
 	</string>
 
