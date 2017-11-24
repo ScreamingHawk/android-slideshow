@@ -40,7 +40,7 @@
 	<string name="logo_description">Logo</string>
 
 	<!-- Credits -->
-	<string name="title_activity_credits">关于 &软件名;</string>
+	<string name="title_activity_credits">关于 &appname;</string>
 	<string name="credits_creator">由 <a href="https://michael.standen.link">&author;</a></string>
 	<string name="credits_content1">幻灯秀是一个在手机上看照片的简洁的应用。</string>
 	<string name="credits_content2">没有浮夸的装饰，本应用是市面上最简洁的幻灯片应用。</string>
@@ -53,10 +53,9 @@
 	<string name="credits_content5">感谢<a href="https://github.com/psyanite">Yan Tsui</a>
 		对测试和设计的贡献&appname;icon.
 	</string>
-	
-        <string name="credits_content6"> <a href="https://github.com/wardbradt">Ward Bradt</a>
-		把&appname;从英文翻译成中文。
-        <string name="credits_content6"> &appname;的此版本翻译由<a href="https://github.com/Liuxi-G">Liuxi-G</a>
+
+	<string name="credits_content6"><a href="https://github.com/wardbradt">Ward Bradt</a>
+		把&appname;从英文翻译成中文。&appname;的此版本翻译由<a href="https://github.com/Liuxi-G">Liuxi-G</a>
 		完成。
 	</string>
 
@@ -74,7 +73,7 @@
 	<string name="pref_title_remember_location">在最近浏览位置开始</string>
 	<string name="pref_description_remember_location">当 &appname; 打开时，将在最近浏览位置开始。
 	</string>
-        
+
         <string name="pref_title_auto_start">自动开始</string>
 	<string name="pref_description_auto_start">打开时, &appname; 将生成并播放一个从最近浏览位置开始的幻灯片。
 	</string>
@@ -106,11 +105,11 @@
               跳过是将会在屏幕上显示提醒。
 	</string>
 
-	<string name="pref_title_image_details"显示照片的属性</string>
+	<string name="pref_title_image_details">显示照片的属性</string>
 	<string name="pref_description_image_details">暂停时在图片上方显示照片属性。
 	</string>
-         
-        <string name="pref_title_image_details_during">放映幻灯片是显示照片属性</string>
+
+	<string name="pref_title_image_details_during">放映幻灯片是显示照片属性</string>
 	<string name="pref_description_image_details_during">放映时时在图片上方显示照片属性。
 	</string>
 
