@@ -374,7 +374,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private void loadPreferences(){
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		// Load preferences
-		SLIDESHOW_DELAY = (int) Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000;
+		SLIDESHOW_DELAY = (int) (Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000);
 		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
