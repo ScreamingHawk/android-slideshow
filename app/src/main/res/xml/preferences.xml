@@ -104,4 +104,10 @@
 		android:summary="@string/pref_description_random_order"
 		android:title="@string/pref_title_random_order"/>
 
+	<SwitchPreference
+		android:defaultValue="true"
+		android:key="delete_warning"
+		android:summary="@string/pref_description_delete_warning"
+		android:title="@string/pref_title_delete_warning"/>
+
 </PreferenceScreen>

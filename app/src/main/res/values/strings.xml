@@ -151,4 +151,9 @@
 	<string name="pref_description_random_order">Display the images in the slideshow in a random
 		order.
 	</string>
+
+	<string name="pref_title_delete_warning">Warn before deleting</string>
+	<string name="pref_description_delete_warning">Display a warning pop up before deleting an image.
+		Disable at your own risk.
+	</string>
 </resources>

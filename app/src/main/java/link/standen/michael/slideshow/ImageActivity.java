@@ -63,6 +63,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private static boolean IMAGE_DETAILS_DURING;
 	private static boolean SKIP_LONG_LOAD;
 	private static boolean PRELOAD_IMAGES;
+	private static boolean DELETE_WARNING;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -382,6 +383,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		IMAGE_DETAILS_DURING = preferences.getBoolean("image_details_during", false);
 		SKIP_LONG_LOAD = preferences.getBoolean("skip_long_load", false);
 		PRELOAD_IMAGES = preferences.getBoolean("preload_images", true);
+		DELETE_WARNING = preferences.getBoolean("delete_warning", true);
 
 		// Show/Hide the image details that are shown during pause
 		if (!IMAGE_DETAILS){
@@ -544,35 +546,46 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	}
 
 	/**
-	 * Delete the current image
+	 * Delete the current image with a warning pop up if required
 	 */
 	private void deleteImage(){
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(R.string.delete_dialog_title);
-		builder.setMessage(R.string.delete_dialog_message);
-		builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-				FileItem item = fileList.get(imagePosition);
-				if (new File(item.getPath()).delete()) {
-					fileList.remove(item);
-					Toast.makeText(ImageActivity.this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
-					// Show next image
-					imagePosition = imagePosition + (REVERSE_ORDER ? 1 : -1);
-					followingImage(false);
-				} else {
-					Toast.makeText(ImageActivity.this, R.string.image_not_deleted, Toast.LENGTH_SHORT).show();
+		if (DELETE_WARNING) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.delete_dialog_title);
+			builder.setMessage(R.string.delete_dialog_message);
+			builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					doDelete();
 				}
-			}
-		});
-		builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-			}
-		});
-		builder.create().show();
+			});
+			builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+			builder.create().show();
+		} else {
+			doDelete();
+		}
+	}
+
+	/**
+	 * Delete the current image
+	 */
+	private void doDelete(){
+		FileItem item = fileList.get(imagePosition);
+		if (new File(item.getPath()).delete()) {
+			fileList.remove(item);
+			Toast.makeText(ImageActivity.this, R.string.image_deleted, Toast.LENGTH_SHORT).show();
+			// Show next image
+			imagePosition = imagePosition + (REVERSE_ORDER ? 1 : -1);
+			followingImage(false);
+		} else {
+			Toast.makeText(ImageActivity.this, R.string.image_not_deleted, Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	/**
