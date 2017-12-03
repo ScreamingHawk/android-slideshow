@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
@@ -78,22 +82,25 @@ public class FileItemArrayAdapter extends ArrayAdapter<FileItem> {
 			// Set thumbnail image
 			final ImageView imageView = holder.getImageView();
 			if (thumbnailPreferenceOn() && item.couldHaveThumbnail()){
-				Glide.with(context)
-						.load(item.getPathUri())
-						.asBitmap()
+				RequestOptions options = new RequestOptions()
 						.placeholder(R.mipmap.loading)
-						.listener(new RequestListener<String, Bitmap>() {
+						.error(item.getImageResource());
+				Glide.with(context)
+						.asBitmap()
+						.load(item.getPathUri())
+						.apply(options)
+						.listener(new RequestListener<Bitmap>() {
 							@Override
-							public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
+							public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
 								item.setHasNoThumbnail();
 								return false;
 							}
 
 							@Override
-							public boolean onResourceReady(Bitmap bitmap, String s, Target<Bitmap> target, boolean b, boolean b1) {
+							public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
 								return false;
 							}
-						}).error(item.getImageResource())
+						})
 						.into(imageView);
 			} else {
 				Glide.with(context)
