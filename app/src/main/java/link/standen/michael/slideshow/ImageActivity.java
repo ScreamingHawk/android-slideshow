@@ -67,6 +67,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
+	private static final boolean SUPPORTS_PIP = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O;
+
 	// Loading warnings
 	private static final int LONG_LOAD_WARNING_DELAY = 5000;
 	private View snackbarPlayingView;
@@ -310,7 +312,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	protected void onPause(){
 		super.onPause();
 
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N || !inPipMode) {
+		if (!SUPPORTS_PIP || !inPipMode) {
 			// Stop slideshow
 			show();
 		}
@@ -337,7 +339,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	 * @param toast If picture in picture is not supported, toast determines if a toast is displayed
 	 */
 	private void startPictureInPictureMode(boolean toast){
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+		if (SUPPORTS_PIP) {
 			//noinspection deprecation
 			this.enterPictureInPictureMode();
 			mDetailsView.setVisibility(View.GONE);
@@ -352,6 +354,9 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.image_main, menu);
+		if (!SUPPORTS_PIP){
+			menu.findItem(R.id.action_picture_in_picture).setVisible(false);
+		}
 		return true;
 	}
 
