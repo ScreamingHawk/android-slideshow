@@ -33,9 +33,15 @@ public abstract class OnSwipeTouchListener implements View.OnTouchListener {
 		}
 
 		@Override
-		public boolean onSingleTapUp(MotionEvent e) {
+		public boolean onSingleTapConfirmed(MotionEvent e) {
 			onClick();
-			return super.onSingleTapUp(e);
+			return super.onSingleTapConfirmed(e);
+		}
+
+		@Override
+		public boolean onDoubleTap(MotionEvent e){
+			onDoubleClick();
+			return super.onDoubleTap(e);
 		}
 
 		@Override
@@ -94,4 +100,9 @@ public abstract class OnSwipeTouchListener implements View.OnTouchListener {
 	 * Implement this method to handle click events
 	 */
 	protected abstract void onClick();
+
+	/**
+	 * Implement this method to handle double click events
+	 */
+	protected abstract void onDoubleClick();
 }

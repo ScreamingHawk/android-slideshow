@@ -201,6 +201,11 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			}
 
 			@Override
+			public void onDoubleClick() {
+				toggleSlideshow();
+			}
+
+			@Override
 			public void onSwipeLeft() {
 				nextImage(true, false);
 				startSlideshowIfFullscreen();
@@ -220,8 +225,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 			@Override
 			protected void onSwipeDown() {
-				// Swipe down enters picture in picture mode if supported
-				startPictureInPictureMode(false);
+				// Swipe down starts and stops the slideshow
+				toggle();
 			}
 		});
 
@@ -616,6 +621,20 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		delayedHide();
 	}
 
+	/**
+	 * Pause or play the slideshow.
+	 */
+	private void toggleSlideshow(){
+		if (isRunning) {
+			stopSlideshow();
+		} else {
+			startSlideshowIfFullscreen();
+		}
+	}
+
+	/**
+	 * Stop or start the slideshow.
+	 */
 	private void toggle() {
 		if (mVisible) {
 			hide();
