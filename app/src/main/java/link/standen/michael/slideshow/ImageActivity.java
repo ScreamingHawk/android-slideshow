@@ -202,11 +202,13 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 			@Override
 			public void onDoubleClick() {
-				toggleSlideshow();
-				if (isRunning){
-					Toast.makeText(ImageActivity.this, R.string.toast_resumed, Toast.LENGTH_SHORT).show();
-				} else {
-					Toast.makeText(ImageActivity.this, R.string.toast_paused, Toast.LENGTH_SHORT).show();
+				if (!mVisible) {
+					toggleSlideshow();
+					if (isRunning) {
+						Toast.makeText(ImageActivity.this, R.string.toast_resumed, Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(ImageActivity.this, R.string.toast_paused, Toast.LENGTH_SHORT).show();
+					}
 				}
 			}
 
