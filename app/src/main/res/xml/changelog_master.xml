@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog>
+	<release version="2.4.0" versioncode="41">
+		<change>Double click to pause a slideshow without exiting full screen mode</change>
+		<change>Hide picture in picture mode for devices that do not support it</change>
+		<change>Correct picture in picture feature detection</change>
+	</release>
+	<release version="2.3.0" versioncode="40">
+		<change>Add quick delete feature option</change>
+	</release>
+	<release version="2.2.1" versioncode="39">
+		<change>Allow slide delays with fractions of a second</change>
+		<change>Fix GIF caching</change>
+		<change>Update Chinese and Thai translations</change>
+	</release>
+	<release version="2.2.0" versioncode="38">
+		<change>Add option to pick when image details are shown</change>
+		<change>Fix permission handling</change>
+		<change>Fix application title</change>
+		<change>Update Dutch, Russian and Spanish translations</change>
+	</release>
+	<release version="2.1.0" versioncode="37">
+		<change>Add picture in picture support</change>
+		<change>Fix snackbar pop up location</change>
+		<change>Add back in old image loading strategy. Glide is optional</change>
+		<change>Fix Glide caching</change>
+		<change>Update Spanish translations</change>
+	</release>
+	<release version="2.0.2" versioncode="36">
+		<change>Add option to preload images</change>
+		<change>Add option to skip images that take a long time to load</change>
+		<change>Add notification when image is taking a long time to load</change>
+	</release>
+	<release version="2.0.1" versioncode="35">
+		<change>Preload next image automatically</change>
+		<change>Add error when no images are selected for slideshow</change>
+	</release>
+	<release version="2.0.0" versioncode="34">
+		<change>Add GIF support</change>
+		<change>Replace Universal Image Loader with Glide</change>
+	</release>
+	<release version="1.7.1" versioncode="33">
+		<change>Fix auto start feature</change>
+	</release>
+	<release version="1.7.0" versioncode="32">
+		<change>Add auto start feature option</change>
+		<change>Update Portuguese and Chinese translations</change>
+	</release>
+	<release version="1.6.1" versioncode="31">
+		<change>Fix picture in picture support</change>
+		<change>Fix issue where thumbnail displays wrong image</change>
+	</release>
+	<release version="1.6.0" versioncode="30">
+		<change>Increase performance for thumbnail generation</change>
+	</release>
+	<release version="1.5.4" versioncode="29">
+		<change>Fix image path display in image details</change>
+	</release>
+	<release version="1.5.3" versioncode="28">
+		<change>Add setting to remember last used location</change>
+		<change>Update English credits</change>
+	</release>
+	<release version="1.5.2" versioncode="27">
+		<change>Change thumbnail generation strategy</change>
+	</release>
+	<release version="1.5.1" versioncode="26">
+		<change>Revert fix for thumbnail performance in 1.5.0</change>
+		<change>Update Swedish translations</change>
+	</release>
+	<release version="1.5.0" versioncode="25">
+		<change>Fix thumbnail performance</change>
+		<change>Add ellipse to long file names</change>
+		<change>Enhance file type test</change>
+		<change>Prevent crash when no images are selected for slideshow</change>
+		<change>Update French, Danish, Spanish, Japanese and Dutch translations</change>
+	</release>
+	<release version="1.4.0" versioncode="24">
+		<change>Ensure image details are updated correctly</change>
+		<change>Add location to image details</change>
+	</release>
+	<release version="1.3.5" versioncode="23">
+		<change>Fix file sharing feature</change>
+	</release>
+	<release version="1.3.4" versioncode="22">
+		<change>Update Dutch translations</change>
+	</release>
+	<release version="1.3.3" versioncode="21">
+		<change>Update application icon</change>
+		<change>Add application version to credits page</change>
+		<change>Update Japanese, Russian and Spanish translations</change>
+	</release>
+	<release version="1.3.2" versioncode="20">
+		<change>There is no 1.3.2... O_O oops...</change>
+	</release>
+	<release version="1.3.1" versioncode="19">
+		<change>Play From Here feature is optional</change>
+		<change>Update Arabic, Spanish, Dutch, Danish and Swedish translations</change>
+	</release>
+	<release version="1.3.0" versioncode="18">
+		<change>Add Play From Here feature</change>
+	</release>
+	<release version="1.2.4" versioncode="17">
+		<change>Update Spanish and Russian translations</change>
+	</release>
+	<release version="1.2.3" versioncode="16">
+		<change>Update credits</change>
+		<change>Update Danish, French, Arabic, Dutch, German, Italian and Spanish translations</change>
+	</release>
+	<release version="1.2.2" versioncode="15">
+		<change>Image details are visible when slideshow is paused</change>
+		<change>Catch errors caused by large images chewing up memory</change>
+		<change>Update Lithuanian translations</change>
+	</release>
+	<release version="1.2.1" versioncode="14">
+		<change>Add image details to slideshow</change>
+	</release>
+	<release version="1.2.0" versioncode="13">
+		<change>Add return to home link when stuck in folder navigation</change>
+		<change>Change application start location</change>
+		<change>Allow incomplete translations</change>
+	</release>
+	<release version="1.1.5" versioncode="12">
+		<change>Enable root navigation</change>
+		<change>Update Lithuanian translations</change>
+	</release>
+	<release version="1.1.4" versioncode="11">
+		<change>Add full SD card navigation</change>
+		<change>Update setting descriptions</change>
+		<change>Additional error handling</change>
+		<change>Fix timing when swiping the slideshow manually</change>
+	</release>
+	<release version="1.1.3" versioncode="10">
+		<change>Add share feature</change>
+		<change>Remember list position when navigating</change>
+		<change>Add initial picture in picture support</change>
+		<change>Update credits</change>
+	</release>
+	<release version="1.1.2" versioncode="9">
+		<change>Developer release</change>
+	</release>
+	<release version="1.1.1" versioncode="8">
+		<change>Update application icon</change>
+		<change>Put a star on special system folders</change>
+		<change>Add reverse order option</change>
+		<change>Fix preference reloading</change>
+		<change>Minor performance increases</change>
+		<change>Ensure correct image is used when starting slideshow</change>
+	</release>
+	<release version="1.1.0" versioncode="7">
+		<change>Enable large heap to combat large images</change>
+	</release>
+	<release version ="1.0.0" versioncode="6">
+		<change>Initial release</change>
+	</release>
+</changelog>

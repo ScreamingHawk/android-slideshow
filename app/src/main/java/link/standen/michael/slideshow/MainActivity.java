@@ -67,6 +67,8 @@ public class MainActivity extends BaseActivity {
 	protected void onStart() {
 		super.onStart();
 
+		showChangeLog(false);
+
 		// Permission check
 		if (isStoragePermissionGranted()){
 			updateListView();

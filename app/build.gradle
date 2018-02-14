@@ -17,7 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    //noinspection GroovyMissingReturnStatement
     lintOptions {
         disable 'MissingTranslation'
     }
@@ -30,4 +29,6 @@ dependencies {
     compile 'com.android.support:support-v4:26.1.0'
     compile 'com.android.support:support-vector-drawable:26.1.0'
 	compile 'com.github.bumptech.glide:glide:3.8.0'
+
+	compile 'de.cketti.library.changelog:ckchangelog:1.2.2'
 }
