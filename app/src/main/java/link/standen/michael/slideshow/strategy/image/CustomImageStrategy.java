@@ -66,24 +66,30 @@ public class CustomImageStrategy implements ImageStrategy {
 		// Load image
 		Bitmap image = BitmapFactory.decodeFile(item.getPath(), options);
 
+		if (image == null) {
+			// Decoding failed, clear snackbar and skip image loading
+			callback.clearLoadingSnackbar();
+		}
+		else {
 		/*
  	 	 * Step 2: scale maximum edge down to maximum texture size.
  		 * If Bitmap maximum edge > MAXIMUM_TEXTURE_SIZE, which can happen for panoramas,
  		 * scale to fit in MAXIMUM_TEXTURE_SIZE.
  		 */
-		if (image.getWidth() > GL11.GL_MAX_TEXTURE_SIZE || image.getHeight() > GL11.GL_MAX_TEXTURE_SIZE) {
-			// Scale down
-			int maxEdge = Math.max(width, height);
-			image = Bitmap.createScaledBitmap(image, width * GL11.GL_MAX_TEXTURE_SIZE / maxEdge,
-					height * GL11.GL_MAX_TEXTURE_SIZE / maxEdge, false);
+			if (image.getWidth() > GL11.GL_MAX_TEXTURE_SIZE || image.getHeight() > GL11.GL_MAX_TEXTURE_SIZE) {
+				// Scale down
+				int maxEdge = Math.max(width, height);
+				image = Bitmap.createScaledBitmap(image, width * GL11.GL_MAX_TEXTURE_SIZE / maxEdge,
+						height * GL11.GL_MAX_TEXTURE_SIZE / maxEdge, false);
 
+			}
+			view.setImageBitmap(image);
+
+			// Callback
+			callback.clearLoadingSnackbar();
+			callback.queueSlide();
+			callback.updateImageDetails(item, width, height);
 		}
-		view.setImageBitmap(image);
-
-		// Callback
-		callback.clearLoadingSnackbar();
-		callback.queueSlide();
-		callback.updateImageDetails(item, width, height);
 	}
 
 	@Override
