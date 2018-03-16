@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.ImageView;
 
 import javax.microedition.khronos.opengles.GL11;
@@ -15,6 +16,8 @@ import link.standen.michael.slideshow.model.FileItem;
  * This was the original implementation before Glide was added.
  */
 public class CustomImageStrategy implements ImageStrategy {
+
+	private static final String TAG = CustomImageStrategy.class.getName();
 
 	private ImageStrategyCallback callback;
 
@@ -66,16 +69,15 @@ public class CustomImageStrategy implements ImageStrategy {
 		// Load image
 		Bitmap image = BitmapFactory.decodeFile(item.getPath(), options);
 
-		if (image == null) {
-			// Decoding failed, clear snackbar and skip image loading
-			callback.clearLoadingSnackbar();
+		if( image == null ) {
+			Log.e(TAG, "Error loading image");
 		}
 		else {
-		/*
- 	 	 * Step 2: scale maximum edge down to maximum texture size.
- 		 * If Bitmap maximum edge > MAXIMUM_TEXTURE_SIZE, which can happen for panoramas,
- 		 * scale to fit in MAXIMUM_TEXTURE_SIZE.
- 		 */
+			/*
+			 * Step 2: scale maximum edge down to maximum texture size.
+			 * If Bitmap maximum edge > MAXIMUM_TEXTURE_SIZE, which can happen for panoramas,
+			 * scale to fit in MAXIMUM_TEXTURE_SIZE.
+			 */
 			if (image.getWidth() > GL11.GL_MAX_TEXTURE_SIZE || image.getHeight() > GL11.GL_MAX_TEXTURE_SIZE) {
 				// Scale down
 				int maxEdge = Math.max(width, height);
@@ -83,13 +85,13 @@ public class CustomImageStrategy implements ImageStrategy {
 						height * GL11.GL_MAX_TEXTURE_SIZE / maxEdge, false);
 
 			}
-			view.setImageBitmap(image);
-
-			// Callback
-			callback.clearLoadingSnackbar();
-			callback.queueSlide();
-			callback.updateImageDetails(item, width, height);
 		}
+		view.setImageBitmap(image);
+
+		// Callback
+		callback.clearLoadingSnackbar();
+		callback.queueSlide();
+		callback.updateImageDetails(item, width, height);
 	}
 
 	@Override
