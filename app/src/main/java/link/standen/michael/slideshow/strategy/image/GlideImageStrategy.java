@@ -15,6 +15,7 @@ import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
+import link.standen.michael.slideshow.R;
 import link.standen.michael.slideshow.model.FileItem;
 
 public class GlideImageStrategy implements ImageStrategy {
@@ -101,11 +102,14 @@ public class GlideImageStrategy implements ImageStrategy {
 					.placeholder(view.getDrawable())
 					.fitCenter()
 					.dontAnimate()
+					.error(R.color.image_background)
 					.listener(new RequestListener<String, Bitmap>() {
 						@Override
 						public boolean onException(Exception e, String s, Target<Bitmap> target, boolean b) {
 							Log.e(TAG, "Error loading image", e);
 							callback.clearLoadingSnackbar();
+							callback.queueSlide();
+							callback.updateImageDetails(item);
 							return false;
 						}
 
