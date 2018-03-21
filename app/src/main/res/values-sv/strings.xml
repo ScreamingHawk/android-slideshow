@@ -8,7 +8,10 @@
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Inställningar</string>
 	<string name="action_credits">Om appen</string>
+	<string name="action_change_log">Förändringslogg</string>
+	<string name="action_picture_in_picture">Picture in Picture</string>
 
+	<string name="no_picture_in_picture">Picture in picture stöds inte av din enhet.</string>
 	<!-- List -->
 	<string name="inaccessible">(otillgänglig)</string>
 	<string name="go_home_folder">Fastnat? Klicka för att komma till hemskärmen</string>
@@ -30,6 +33,14 @@
 	<string name="image_detail_size">Filstorlek: %1$s</string>
 	<string name="image_detail_modified">Senast ändrad: %1$s</string>
 
+	<string name="toast_no_files">Inga filer att visa</string>
+
+	<string name="toast_paused">Pausad</string>
+	<string name="toast_resumed">Återupptagen</string>
+
+	<string name="long_loading_warning">%1$s tar lång tid att ladda.</string>
+	<string name="long_loading_skipping">%1$s tar lång tid att ladda. Hoppar över.</string>
+	<string name="long_loading_skip_action">Hoppa över</string>
 	<!-- Image descriptions -->
 	<string name="image_description">Bild</string>
 	<string name="logo_description">Logga</string>
@@ -37,9 +48,9 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Om &appname;</string>
 	<string name="credits_creator">av <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow är ett enkelt program för att visa bilder på din telefon.
+	<string name="credits_content1">&appname; är ett enkelt program för att visa bilder på din telefon.
 	</string>
-	<string name="credits_content2">Utan onödiga funktioner, den här appen är den enklaste bildspelsapplikationen på marknaden.
+	<string name="credits_content2">Utan onödiga funktioner, är &appname; den enklaste bildspelsapplikationen på marknaden.
 	</string>
 	<string name="credits_content3">Du kan se källkod, rapportera buggar och föreslå nya funktioner på
 		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
@@ -63,15 +74,29 @@
 	<string name="pref_description_show_hidden_files">Visa filer som är dolda av andra filhanterare.
 	</string>
 
-	<string name="pref_title_show_thumbnails">Visa minatyrer</string>
-	<string name="pref_description_show_thumbnails">Visa minatyrbilder. Stäng av detta för att öka prestanda,
+	<string name="pref_title_show_thumbnails">Visa miniatyrer</string>
+	<string name="pref_description_show_thumbnails">Visa miniatyrbilder. Stäng av detta för att öka prestanda,
 		observera att du inte kommer att kunna se vilka filer som är bilder och vilka som inte är det.
+	</string>
+
+<string name="pref_title_remember_location">Starta senaste</string>
+	<string name="pref_description_remember_location">När &appname; startar kommer bildspelet att använda samma
+		plats som den använde senast.
+	</string>
+<string name="pref_title_auto_start">Starta automatiskt</string>
+	<string name="pref_description_auto_start">När &appname; öppnas kommer ett bildspel att startas från den
+		sista bilden som visades.
 	</string>
 
 	<string name="pref_title_play_from_here">Aktivera spela upp bildspel härifrån</string>
 	<string name="pref_description_play_from_here">"Spela upp bildspel härifrån"-knappen visas i fillistan och låter dig
 		börja ett bildspel från den mapp du står i och inkluderar alla undermappar.
 		Funktionen är avaktiverad som default eftersom den kan ha negativ påverkan på prestandan.
+	</string>
+
+		<string name="pref_title_enable_gif_support">Aktivera GIF-stöd</string>
+	<string name="pref_description_enable_gif_support">Spela automatiskt upp GIFar när de visas.
+		Kräver Glide image loading.
 	</string>
 
 	<string name="pref_title_use_device_root">Använd enhetens rotkatalog</string>
@@ -83,9 +108,27 @@
 	<string name="pref_description_slide_delay">Klicka för att ändra hur många sekunder varje bild visas.
 	</string>
 
+<string name="pref_title_image_strategy">Använd Glide för att ladda bilder</string>
+	<string name="pref_description_image_strategy">Använd Glide för att ladda bilder. Glide har stöd för
+		andra funktioner, exempelvis förladdning och GIF-stöd. Avaktiveras denna kommer den gamla bildladdningsstrategin 
+		att användas. På vissa enheter ökar detta prestandan.
+	</string>
+
+	<string name="pref_title_preload_images">Förladda bilder</string>
+	<string name="pref_description_preload_images">Ladda nästa bild medans den nuvarande bilden visas.
+		Stäng av denna för att öka prestanda på vissa enheter. Kräver Glide image loading.
+	</string>
+
+	<string name="pref_title_skip_long_load">Hoppa över bilder</string>
+	<string name="pref_description_skip_long_load">Hoppa över bilder som tar för lång tid att ladda under bildspelet.
+		Ett meddelande kommer att visas när detta händer.
+	</string>
+
 	<string name="pref_title_image_details">Visa bilddetaljer</string>
 	<string name="pref_description_image_details">Visar detaljerad information om bilden under bildspelets gång.
 	</string>
+	<string name="pref_title_image_details_during">Visa bilddetaljer under bildspel</string>
+	<string name="pref_description_image_details_during">Visa bildens detaljer ovanpå bilden medans bildspelet rullar.</string>
 
 	<string name="pref_title_stop_on_complete">Stoppa efter sista bilden</string>
 	<string name="pref_description_stop_on_complete">Stoppa bildspelet efter att alla bilder har visats en gång.
@@ -97,5 +140,10 @@
 
 	<string name="pref_title_random_order">Slumpmässig ordning</string>
 	<string name="pref_description_random_order">Visa bildspelet i slumpmässig ordning.
+	</string>
+
+	<string name="pref_title_delete_warning">Varna före radering</string>
+	<string name="pref_description_delete_warning">Visa ett varningsmeddelande innan en bild raderas.
+		Avaktivera på egen risk.
 	</string>
 </resources>
