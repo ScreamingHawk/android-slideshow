@@ -69,10 +69,9 @@ public class CustomImageStrategy implements ImageStrategy {
 		// Load image
 		Bitmap image = BitmapFactory.decodeFile(item.getPath(), options);
 
-		if( image == null ) {
+		if (image == null) {
 			Log.e(TAG, "Error loading image");
-		}
-		else {
+		} else {
 			/*
 			 * Step 2: scale maximum edge down to maximum texture size.
 			 * If Bitmap maximum edge > MAXIMUM_TEXTURE_SIZE, which can happen for panoramas,
@@ -83,7 +82,6 @@ public class CustomImageStrategy implements ImageStrategy {
 				int maxEdge = Math.max(width, height);
 				image = Bitmap.createScaledBitmap(image, width * GL11.GL_MAX_TEXTURE_SIZE / maxEdge,
 						height * GL11.GL_MAX_TEXTURE_SIZE / maxEdge, false);
-
 			}
 		}
 		view.setImageBitmap(image);
