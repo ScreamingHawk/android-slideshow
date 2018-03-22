@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -20,6 +21,8 @@ public class CustomImageStrategy implements ImageStrategy {
 	private static final String TAG = CustomImageStrategy.class.getName();
 
 	private ImageStrategyCallback callback;
+
+	private static boolean AUTO_ROTATE_DIMEN;
 
 	@Override
 	public void setContext(Context context) {
@@ -63,7 +66,7 @@ public class CustomImageStrategy implements ImageStrategy {
 
 		options = new BitmapFactory.Options();
 		options.inSampleSize = sampleSize;
-				/* 32K buffer. */
+		/* 32K buffer. */
 		options.inTempStorage = new byte[32 * 1024];
 
 		// Load image
@@ -72,12 +75,24 @@ public class CustomImageStrategy implements ImageStrategy {
 		if (image == null) {
 			Log.e(TAG, "Error loading image");
 		} else {
+			if (AUTO_ROTATE_DIMEN && image.getWidth() > image.getHeight()) {
+				// Rotate the image if it is landscape
+				Matrix matrix = new Matrix();
+				matrix.postRotate(90);
+				image = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
+
+				int temp = width;
+				//noinspection SuspiciousNameCombination
+				width = height;
+				height = temp;
+			}
+
 			/*
 			 * Step 2: scale maximum edge down to maximum texture size.
 			 * If Bitmap maximum edge > MAXIMUM_TEXTURE_SIZE, which can happen for panoramas,
 			 * scale to fit in MAXIMUM_TEXTURE_SIZE.
 			 */
-			if (image.getWidth() > GL11.GL_MAX_TEXTURE_SIZE || image.getHeight() > GL11.GL_MAX_TEXTURE_SIZE) {
+			if (image != null && (image.getWidth() > GL11.GL_MAX_TEXTURE_SIZE || image.getHeight() > GL11.GL_MAX_TEXTURE_SIZE)) {
 				// Scale down
 				int maxEdge = Math.max(width, height);
 				image = Bitmap.createScaledBitmap(image, width * GL11.GL_MAX_TEXTURE_SIZE / maxEdge,
@@ -94,6 +109,6 @@ public class CustomImageStrategy implements ImageStrategy {
 
 	@Override
 	public void loadPreferences(SharedPreferences preferences) {
-		// No preferences to load
+		AUTO_ROTATE_DIMEN = preferences.getBoolean("auto_rotate_dimen", false);
 	}
 }

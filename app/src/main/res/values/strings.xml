@@ -127,6 +127,11 @@
 		Disabling this feature may increase performance on some devices. Requires Glide image loading.
 	</string>
 
+	<string name="pref_title_auto_rotate_dimen">Auto rotate by dimensions</string>
+	<string name="pref_description_auto_rotate_dimen">Automatically rotate images into landscape mode
+		when the image is wider than it is high.
+	</string>
+
 	<string name="pref_title_skip_long_load">Skip long loading images</string>
 	<string name="pref_description_skip_long_load">Skip images that take too long to load during
 		slideshow. A notification will be displayed when this happens.

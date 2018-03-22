@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.bumptech.glide.BitmapRequestBuilder;
+import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.gifdecoder.GifDecoder;
@@ -17,6 +19,7 @@ import com.bumptech.glide.request.target.Target;
 
 import link.standen.michael.slideshow.R;
 import link.standen.michael.slideshow.model.FileItem;
+import link.standen.michael.slideshow.strategy.image.glide.GlideRotateDimenTransformation;
 
 public class GlideImageStrategy implements ImageStrategy {
 
@@ -26,6 +29,7 @@ public class GlideImageStrategy implements ImageStrategy {
 	private ImageStrategyCallback callback;
 
 	private static boolean PLAY_GIF;
+	private static boolean AUTO_ROTATE_DIMEN;
 
 	@Override
 	public void setContext(Context context) {
@@ -53,16 +57,20 @@ public class GlideImageStrategy implements ImageStrategy {
 
 	@Override
 	public void load(final FileItem item, final ImageView view) {
-		final DrawableTypeRequest<String> glideLoad = Glide
+		DrawableTypeRequest<String> glideLoad = Glide
 				.with(context)
 				.load(item.getPath());
 		if (PLAY_GIF) {
 			// Play GIFs
-			glideLoad
-					.diskCacheStrategy(DiskCacheStrategy.SOURCE)
-					.placeholder(view.getDrawable())
-					.fitCenter()
+			DrawableRequestBuilder<String> builder = glideLoad.diskCacheStrategy(DiskCacheStrategy.SOURCE)
 					.dontAnimate()
+					.fitCenter();
+
+			if (AUTO_ROTATE_DIMEN) {
+				builder = builder.transform(new GlideRotateDimenTransformation(context));
+			}
+
+			builder.placeholder(view.getDrawable())
 					.listener(new RequestListener<String, GlideDrawable>() {
 						@Override
 						public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
@@ -97,11 +105,15 @@ public class GlideImageStrategy implements ImageStrategy {
 					.into(view);
 		} else {
 			// Force bitmap so GIFs don't play
-			glideLoad
-					.asBitmap()
-					.placeholder(view.getDrawable())
-					.fitCenter()
+			BitmapRequestBuilder<String, Bitmap> builder = glideLoad.asBitmap()
 					.dontAnimate()
+					.fitCenter();
+
+			if (AUTO_ROTATE_DIMEN) {
+				builder = builder.transform(new GlideRotateDimenTransformation(context));
+			}
+
+			builder.placeholder(view.getDrawable())
 					.error(R.color.image_background)
 					.listener(new RequestListener<String, Bitmap>() {
 						@Override
@@ -129,5 +141,6 @@ public class GlideImageStrategy implements ImageStrategy {
 	@Override
 	public void loadPreferences(SharedPreferences preferences) {
 		PLAY_GIF = preferences.getBoolean("enable_gif_support", true);
+		AUTO_ROTATE_DIMEN = preferences.getBoolean("auto_rotate_dimen", false);
 	}
 }

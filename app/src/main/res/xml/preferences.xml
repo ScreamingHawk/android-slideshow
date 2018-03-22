@@ -75,6 +75,12 @@
 
 	<SwitchPreference
 		android:defaultValue="false"
+		android:key="auto_rotate_dimen"
+		android:summary="@string/pref_description_auto_rotate_dimen"
+		android:title="@string/pref_title_auto_rotate_dimen"/>
+
+	<SwitchPreference
+		android:defaultValue="false"
 		android:key="image_details"
 		android:summary="@string/pref_description_image_details"
 		android:title="@string/pref_title_image_details"/>
