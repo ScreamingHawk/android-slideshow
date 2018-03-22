@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.5.0" versioncode="42">
+		<change>Add rotate image by dimensions feature</change>
+		<change>Add change log</change>
+		<change>Fix crash when unable to decode image. Thanks ph4k4!</change>
+		<change>Fix pausing slideshow when controls are visible</change>
+		<change>Update Swedish translations</change>
+	</release>
 	<release version="2.4.0" versioncode="41">
 		<change>Double click to pause a slideshow without exiting full screen mode</change>
 		<change>Hide picture in picture mode for devices that do not support it</change>
