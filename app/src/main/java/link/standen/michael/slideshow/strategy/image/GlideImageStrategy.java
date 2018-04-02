@@ -63,11 +63,12 @@ public class GlideImageStrategy implements ImageStrategy {
 		if (PLAY_GIF) {
 			// Play GIFs
 			DrawableRequestBuilder<String> builder = glideLoad.diskCacheStrategy(DiskCacheStrategy.SOURCE)
-					.dontAnimate()
-					.fitCenter();
+					.dontAnimate();
 
 			if (AUTO_ROTATE_DIMEN) {
 				builder = builder.transform(new GlideRotateDimenTransformation(context));
+			} else {
+				builder = builder.fitCenter();
 			}
 
 			builder.placeholder(view.getDrawable())
@@ -106,11 +107,12 @@ public class GlideImageStrategy implements ImageStrategy {
 		} else {
 			// Force bitmap so GIFs don't play
 			BitmapRequestBuilder<String, Bitmap> builder = glideLoad.asBitmap()
-					.dontAnimate()
-					.fitCenter();
+					.dontAnimate();
 
 			if (AUTO_ROTATE_DIMEN) {
 				builder = builder.transform(new GlideRotateDimenTransformation(context));
+			} else {
+				builder = builder.fitCenter();
 			}
 
 			builder.placeholder(view.getDrawable())
