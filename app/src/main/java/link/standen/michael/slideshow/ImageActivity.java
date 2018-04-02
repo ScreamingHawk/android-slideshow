@@ -611,11 +611,13 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private void shareImage(){
 		FileItem item = fileList.get(imagePosition);
 		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType(new FileItemHelper(this).getImageMimeType(item));
+		String mime = new FileItemHelper(this).getImageMimeType(item);
+		intent.setType(mime);
 		intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this,
 				getApplicationContext().getPackageName() + ".provider",
 				new File(item.getPath())));
 		intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+		Log.d(TAG, String.format("Sharing image at %s of type %s", item.getPath(), mime));
 		startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_via)));
 	}
 
