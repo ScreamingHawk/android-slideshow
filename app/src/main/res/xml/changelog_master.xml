@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.5.1" versioncode="43">
+		<change>Fix rotate image performance for Glide</change>
+	</release>
 	<release version="2.5.0" versioncode="42">
 		<change>Add rotate image by dimensions feature</change>
 		<change>Add change log</change>
