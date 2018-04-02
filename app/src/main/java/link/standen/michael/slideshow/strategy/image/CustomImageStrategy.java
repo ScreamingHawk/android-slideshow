@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import javax.microedition.khronos.opengles.GL11;
 
 import link.standen.michael.slideshow.model.FileItem;
+import link.standen.michael.slideshow.strategy.image.custom.CustomRotateDimenTransformation;
 
 /**
  * A strategy for loading images that was taken from Google's Camera2 app.
@@ -23,6 +24,7 @@ public class CustomImageStrategy implements ImageStrategy {
 	private ImageStrategyCallback callback;
 
 	private static boolean AUTO_ROTATE_DIMEN;
+	private final CustomRotateDimenTransformation CUSTOM_ROTATE_DIMEN_TRANSFORM = new CustomRotateDimenTransformation();
 
 	@Override
 	public void setContext(Context context) {
@@ -75,16 +77,14 @@ public class CustomImageStrategy implements ImageStrategy {
 		if (image == null) {
 			Log.e(TAG, "Error loading image");
 		} else {
-			if (AUTO_ROTATE_DIMEN && image.getWidth() > image.getHeight()) {
-				// Rotate the image if it is landscape
-				Matrix matrix = new Matrix();
-				matrix.postRotate(90);
-				image = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
-
-				int temp = width;
-				//noinspection SuspiciousNameCombination
-				width = height;
-				height = temp;
+			if (AUTO_ROTATE_DIMEN){
+				image = CUSTOM_ROTATE_DIMEN_TRANSFORM.rotate(image);
+				if (CUSTOM_ROTATE_DIMEN_TRANSFORM.wasRotated()) {
+					int temp = width;
+					//noinspection SuspiciousNameCombination
+					width = height;
+					height = temp;
+				}
 			}
 
 			/*
