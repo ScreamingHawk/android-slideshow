@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Cài Đặt</string>
+	<string name="action_credits">Về tác giả </string>
+	<string name="action_change_log">Thay đổi truy cập</string>
+	<string name="action_picture_in_picture">Hình ảnh trong hình ảnh</string>
+
+	<string name="no_picture_in_picture">Thiết bị của bạn không hỗ trợ hình ảnh này trong hình ảnh.</string>
+
+	<!-- List -->
+	<string name="inaccessible">(không thể truy cập)</string>
+	<string name="go_home_folder">Không thể truy cập? Bấm vào đây để về trang chủ</string>
+	<string name="play_folder">Chạy trình chiếu ở đây</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">&appname;</string>
+
+	<string name="delete_button">Xoá</string>
+	<string name="delete_dialog_title">Xoá hình ảnh</string>
+	<string name="delete_dialog_message">Bạn có chắc không?</string>
+	<string name="image_deleted">Đã xoá hình ảnh</string>
+	<string name="image_not_deleted">Không thể xoá hình ảnh</string>
+
+	<string name="share_button">Chia sẻ</string>
+	<string name="share_via">Chia sẻ qua&#8230;</string>
+
+	<string name="image_detail_dimensions">Kích thước: %1$dx%2$d</string>
+	<string name="image_detail_size">Kích thước tập tin: %1$s</string>
+	<string name="image_detail_modified">Sửa đổi: %1$s</string>
+
+	<string name="toast_no_files">Không có tập tin nào để xem</string>
+
+	<string name="toast_paused">Tạm ngừng</string>
+	<string name="toast_resumed">Tiếp tục</string>
+
+	<string name="long_loading_warning">%1$s sẽ mất nhiều thời gian để tải.</string>
+	<string name="long_loading_skipping">%1$s đang mất nhiều thời gian để tải. Bỏ qua.</string>
+	<string name="long_loading_skip_action">Bỏ qua</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Hình ảnh</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">Về &appname;</string>
+	<string name="credits_creator">bởi <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">Slideshow là một ứng dụng đơn giản để xem hình ảnh trên điện thoại của bạn.
+	</string>
+	<string name="credits_content2">Không có tính năng đặc biệt, đây là ứng dụng đơn giản nhất trong các ứng dụng xem trình chiếu ở thị trường
+	</string>
+	<string name="credits_content3">Bạn có thể xem mã nguồn, truy cập lỗi hoặc yêu cầu các tính năng trên
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+	<string name="credits_content4">Ứng dụng này hoàn toàn là phần mềm tự do nguồn mở; được cấp phép bởi <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">Cám ơn <a href="https://github.com/psyanite">Yan Tsui</a>
+		đã kiểm tra và thiết kế icon của &appname; .
+	</string>
+	<string name="credits_content6">Thông dịch của &appname; này được mang đến bởi
+		<a href="https://michael.standen.link">&author;</a>.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Cài đặt</string>
+
+	<string name="pref_title_show_hidden_files">Hiện các tập tin ẩn</string>
+	<string name="pref_description_show_hidden_files">Hiện các tập tin được ẩn bởi các tập tin điều hành khác.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Hiện các hình nhỏ</string>
+	<string name="pref_description_show_thumbnails">Hiện hình nhỏ. Tắt tính năng này sẽ tăng hiệu xuất, nhưng bạn sẽ không thấy được tập tin nào là hình ảnh.
+	</string>
+
+	<string name="pref_title_remember_location">Bắt đầu từ vị trí lúc cuối</string>
+	<string name="pref_description_remember_location">Khi mở ra, &appname; sẽ bắt đầu từ lúc trình chiếu được sử dụng lần cuối.
+	</string>
+
+	<string name="pref_title_auto_start">Tự động bắt đầu</string>
+	<string name="pref_description_auto_start">Khi mở ra, &appname; sẽ bắt đầu một trình chiếu từ hình ảnh được xem lúc trước.
+	</string>
+
+	<string name="pref_title_play_from_here">Cho phép nút "Chạy từ đây"</string>
+	<string name="pref_description_play_from_here">Nút "Chạy từ đây" xuất hiện trong danh sách tập tin và cho phép bạn bắt đầu một trình chiếu từ tập tin đang lưu hành, gồm tất cả những tập tin nhỏ.
+		Tính năng này không được chạy theo mặc định vì nó sẽ ảnh hưởng tiêu cực tới hiệu xuất.
+	</string>
+
+	<string name="pref_title_enable_gif_support">Cho phép chạy GIF</string>
+	<string name="pref_description_enable_gif_support">Tự động chạy các hình ảnh GIF khi được mở.
+		Yêu cầu tải hình ảnh Glide.
+	</string>
+
+	<string name="pref_title_use_device_root">Dùng quyền truy cập ưu tiên</string>
+	<string name="pref_description_use_device_root">Cho phép sự truy cập vào danh mục ưu tiên của thiết bị.
+		Điều này sẽ cho phép ứung dụng truy cập vào bất cứ tập tin nào trên thiết bị, bao gồm các lưu trữ gắn kết như thẻ ghi nhớ.
+		Ghi chú: có thể cần thiết bị ưu tiên hoạt động chính xác.
+	</string>
+
+	<string name="pref_title_slide_delay">Trình chiếu trì hoãn</string>
+	<string name="pref_description_slide_delay">Nhấn vào đây để thay đổi số giây hình ảnh sẽ được trình chiếu trước khi thay đổi hình ảnh tiếp theo.
+	</string>
+
+	<string name="pref_title_image_strategy">Sử dụng Glide để tải hình ảnh</string>
+	<string name="pref_description_image_strategy">Sử dụng Glide để tải hình ảnh. Glide chạy được cái tính năng khác, như tải trước hình ảnh hoặc hình ảnh GIF.
+		Tắt tính năng này sẽ cho phép tính năng tải hình ảnh cũ chạy. Điều này giúp hiệu xuẩt tốt hơn trên một số thiết bị.
+	</string>
+
+	<string name="pref_title_preload_images">Tải trước hình ảnh</string>
+	<string name="pref_description_preload_images">Tải hình ảnh tiếp theo trong khi trình chiếu đang chạy.
+		Tắt tính năng này có thể tăng hiệu xuất trên một số thiết bị. Yêu cầu chạy hình ảnh Glide.
+	</string>
+
+	<string name="pref_title_auto_rotate_dimen">Tự động xoay theo kích thước</string>
+	<string name="pref_description_auto_rotate_dimen">Tự động xoay hình ảnh theo chế độ phong cảnh khi chiều rộng của ảnh lớn hơn chiều dài.
+	</string>
+
+	<string name="pref_title_skip_long_load">Bỏ qua tải hình ảnh lâu</string>
+	<string name="pref_description_skip_long_load">Bỏ qua hình ảnh được tải quá lâu trong khi trình chiếu. Thông báo sẽ hiện diện khi điều này xảy ra.
+	</string>
+
+	<string name="pref_title_image_details">Trình bày chi tiết của hình ảnh</string>
+	<string name="pref_description_image_details">Phủ chi tiết của hình ảnh khi tạm dừng trình chiếu.
+	</string>
+
+	<string name="pref_title_image_details_during">Trình bày chi tiết của hình ảnh khi chạy trình</string>
+	<string name="pref_description_image_details_during">Phủ chi tiết của hình ảnh khi tạm dừng trình chiếu đang chạy.
+	</string>
+
+	<string name="pref_title_stop_on_complete">Dừng khi hoàn thành</string>
+	<string name="pref_description_stop_on_complete">Dừng trình chiếu khi tất cả hình ảnh đã được chạy.
+	</string>
+
+	<string name="pref_title_reverse_order">Đảo ngược trật tự</string>
+	<string name="pref_description_reverse_order">Chạy hình ảnh trong trình chiếu theo trật tự đảo ngược.
+	</string>
+
+	<string name="pref_title_random_order">Trật tự ngẫu nhiên</string>
+	<string name="pref_description_random_order">Chạy hình ảnh trong trình chiếu theo trật tự ngẫu nhiên.
+	</string>
+
+	<string name="pref_title_delete_warning">Cảnh báo trước khi xoá</string>
+	<string name="pref_description_delete_warning">Chạy cảnh báo trước khi xoá hình ảnh.
+		Tự chịu rủi ro khi tắt tính năng này.
+	</string>
+</resources>
