@@ -37,7 +37,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">حول &appname;</string>
 	<string name="credits_creator">بواسطة <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow هو تطبيق بسيط لعرض الصور على هاتفك.	</string>
+	<string name="credits_content1">&appname; هو تطبيق بسيط لعرض الصور على هاتفك.	</string>
 	<string name="credits_content2">دون أجراس أو صفارات هذا التطبيق هو أبسط تطبيق عرض الشرائح في السوق.
 	</string>
 	<string name="credits_content3">يمكنك عرض شفرة المصدر، وتسجيل الأخطاء أو طلب مميزات على

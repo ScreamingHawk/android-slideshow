@@ -37,7 +37,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Om &appname;</string>
 	<string name="credits_creator">Lavet af <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow er et simpelt program til at se billeder på din telefon.
+	<string name="credits_content1">&appname; er et simpelt program til at se billeder på din telefon.
 	</string>
 	<string name="credits_content2">Uden unødvendige ting er dette program det simpleste slideshow program på markedet</string>
 	<string name="credits_content3">Du kan se kildekoden, rapportere fejl eller forspørge funktioner på

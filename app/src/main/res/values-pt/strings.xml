@@ -37,7 +37,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Sobre &appname;</string>
 	<string name="credits_creator">por <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow é uma aplicação simples para visualizar
+	<string name="credits_content1">&appname; é uma aplicação simples para visualizar
 		imagens no seu smartphone.
 	</string>
 	<string name="credits_content2">Sem enrolações, esta aplicação é a mais simples

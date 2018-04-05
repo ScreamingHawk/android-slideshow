@@ -38,7 +38,7 @@
 	<string name="long_loading_warning">%1$s heeft een lange tijd nodig om te laden.</string>
 	<string name="long_loading_skipping">%1$s heeft een lange tijd nodig om te laden. Overslaan.</string>
 	<string name="long_loading_skip_action">Overslaan</string>
-	
+
 	<!-- Image descriptions -->
 	<string name="image_description">Beeld</string>
 	<string name="logo_description">Logo</string>
@@ -46,7 +46,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Over &appname;</string>
 	<string name="credits_creator">door <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow is een eenvoudige applicatie om beelden te bekijken op je telefoon.
+	<string name="credits_content1">&appname; is een eenvoudige applicatie om beelden te bekijken op je telefoon.
 
 	</string>
 	<string name="credits_content2">Zonder toeters of bellen is dit simpelweg de eenvoudigste applicatie op de markt.
@@ -123,7 +123,7 @@
 	</string>
 
 	<string name="pref_title_skip_long_load">Sla lang laden beelden over</string>
-	<string name="pref_description_skip_long_load">Sla beelden over waar het te lang duurt om ze te laden tijdens de diashow. 
+	<string name="pref_description_skip_long_load">Sla beelden over waar het te lang duurt om ze te laden tijdens de diashow.
 		Er wordt een bericht getoond wanneer dit gebeurd.
 	</string>
 

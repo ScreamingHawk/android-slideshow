@@ -36,7 +36,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Apie &appname;</string>
 	<string name="credits_creator">sukūrė <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow yra paprasta programėlė nuotraukų peržiūrai Jūsų
+	<string name="credits_content1">&appname; yra paprasta programėlė nuotraukų peržiūrai Jūsų
 		telefone.
 	</string>
 	<string name="credits_content2">Be jokių ypatingų priedų, ši programėlė yra pati papraščiausia

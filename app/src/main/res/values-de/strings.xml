@@ -36,7 +36,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">Info &appname;</string>
 	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow ist eine einfache Anwendung für die Anzeige von Bildern auf Ihrem Handy.
+	<string name="credits_content1">&appname; ist eine einfache Anwendung für die Anzeige von Bildern auf Ihrem Handy.
 	</string>
 	<string name="credits_content2">Ohne zusätzlichen Quatsch, diese Anwendung ist die einfachste Diashow-Anwendung auf dem Markt.
 	</string>

@@ -37,7 +37,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">&appname; について</string>
 	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow はお使いの電話で画像を表示する
+	<string name="credits_content1">&appname; はお使いの電話で画像を表示する
 		シンプルなアプリケーションです。
 	</string>
 	<string name="credits_content2">ベルや笛はありません。このアプリケーションは

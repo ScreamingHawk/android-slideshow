@@ -37,7 +37,7 @@
 	<!-- Credits -->
 	<string name="title_activity_credits">A Propos de &appname;</string>
 	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Slideshow est une application pour visualiser des images sur votre téléphone.</string>
+	<string name="credits_content1">&appname; est une application pour visualiser des images sur votre téléphone.</string>
 	<string name="credits_content2">Sans fioritures, cette application est la plus simple visionneuse
 		sur le marché.
 	</string>
