@@ -1,5 +1,7 @@
 package link.standen.michael.slideshow;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Environment;
@@ -23,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 	String currentPath;
 	List<FileItem> fileList = new ArrayList<>();
+	private Dialog changeLog;
 
 	private static final String CHANGE_LOG_CSS = "body { padding: 0.8em; } " +
 			"h1 { margin-left: 0px; font-size: 1.2em; } " +
@@ -81,16 +84,23 @@ public abstract class BaseActivity extends AppCompatActivity {
 	 */
 	void showChangeLog(boolean force) {
 		// Only show if forced or in English, as change log is only in English
-		if (isEnglish() || force) {
+		if ((isEnglish() || force) && changeLog == null) {
 			final ChangeLog cl = new ChangeLog(this, CHANGE_LOG_CSS);
 			if (force || cl.isFirstRun()) {
 				if (cl.getChangeLog(false).size() == 0) {
 					// Force the display of the full dialog list.
-					cl.getFullLogDialog().show();
+					changeLog = cl.getFullLogDialog();
 				} else {
 					// Show only the new stuff.
-					cl.getLogDialog().show();
+					changeLog = cl.getLogDialog();
 				}
+				changeLog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+					@Override
+					public void onDismiss(DialogInterface dialogInterface) {
+						changeLog = null;
+					}
+				});
+				changeLog.show();
 			}
 		}
 	}
