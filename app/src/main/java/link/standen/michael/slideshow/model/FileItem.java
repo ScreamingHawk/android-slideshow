@@ -56,7 +56,7 @@ public class FileItem implements Comparable<FileItem> {
 	@Override
 	public int compareTo(@NonNull FileItem other) {
 		if (this.getIsDirectory() == other.getIsDirectory()) {
-			return this.getName().compareToIgnoreCase(other.getName());
+			return this.getPath().compareToIgnoreCase(other.getPath());
 		} else {
 			return this.getIsDirectory() ? -1 : 1;
 		}
