@@ -7,8 +7,8 @@ android {
         applicationId "link.standen.michael.slideshow"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 43
-        versionName "2.5.1"
+        versionCode 44
+        versionName "2.5.2"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
