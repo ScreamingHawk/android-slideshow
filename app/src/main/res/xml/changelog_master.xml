@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.5.3" versioncode="45">
+		<change>Fix status bar colour. Thanks Thomas Lansing!</change>
+	</release>
 	<release version="2.5.2" versioncode="44">
 		<change>Fix change log so it only appears once</change>
 		<change>Update sort order when using Play From Here. Thanks brandanlockwood!</change>
