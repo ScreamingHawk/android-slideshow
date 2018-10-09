@@ -554,7 +554,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		((TextView)findViewById(R.id.image_detail_size2)).setText(size);
 		// Modified
 		String modified = getResources().getString(R.string.image_detail_modified,
-				DateFormat.getDateFormat(this).format(file.lastModified()));
+				DateFormat.getMediumDateFormat(this).format(file.lastModified()));
 		((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
 		((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
 
