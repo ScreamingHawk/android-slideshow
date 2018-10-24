@@ -105,5 +105,18 @@
     <string name="pref_title_skip_long_load">Пропустить изображения, которые долго загружаются</string>
     <string name="pref_description_enable_gif_support">Автоматически воспроизводить GIF при показе.
 	</string>
+    <string name="action_picture_in_picture">Картинка в картинке</string>
+    <string name="no_picture_in_picture">Опция картинка в картинке недоступна для вашего устройства</string>
+    <string name="action_change_log">Последние изменения</string>
+    <string name="toast_paused">Приостановлено</string>
+    <string name="toast_resumed">Возобновлено</string>
+    <string name="pref_title_image_strategy">Использовать Glide для загрузки изображений</string>
+    <string name="pref_description_image_strategy">Использовать Glide для загрузки изображений. Эта библиотека имеет и другие функции, такие как предзагрузка и поддержка GIF. Если Glide будет отключен, вместо него будет использоваться старая стратегия загрузки изображений. Иногда это работает быстрее на некоторых устройствах.</string>
+    <string name="pref_title_auto_rotate_dimen">Автоматически поворачивать на основе размера изображения</string>
+    <string name="pref_description_auto_rotate_dimen">Автоматически поворачивать изображения в пейзажный режим, если ширина изображения больше, чем его высота</string>
+    <string name="pref_title_delete_warning">Предупреждать перед удалением</string>
+    <string name="pref_description_delete_warning">Показать предупреждение перед удалением изображения. Отключайте на свой страх и риск</string>
+    <string name="pref_title_image_details_during">Показывать свойства изображения во время слайдшоу</string>
+    <string name="pref_description_image_details_during">Перекрывать свойства изображения во время показа слайдшоу</string>
 
 </resources>
