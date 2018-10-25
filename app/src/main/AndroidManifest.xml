@@ -38,6 +38,7 @@
 		</activity>
 		<activity
 			android:name=".CreditsActivity"
+			android:theme="@style/AppTheme.NoActionBar"
 			android:label="@string/title_activity_credits">
 		</activity>
 		<activity
