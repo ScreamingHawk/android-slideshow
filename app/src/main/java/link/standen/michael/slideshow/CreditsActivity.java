@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,6 +25,13 @@ public class CreditsActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_credits);
+
+		Toolbar toolbar = findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+		if (getSupportActionBar() != null) {
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		}
+
 		setTitle(R.string.title_activity_credits);
 
 		// Version
@@ -49,6 +58,15 @@ public class CreditsActivity extends AppCompatActivity {
 		if (getCurrentLocale().getLanguage().equals(DEFAULT_LANGUAGE)){
 			findViewById(R.id.credits_content6).setVisibility(View.GONE);
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			onBackPressed();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/**
