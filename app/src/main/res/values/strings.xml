@@ -34,6 +34,7 @@
 	<string name="image_detail_size">File Size: %1$s</string>
 	<string name="image_detail_modified">Modified: %1$s</string>
 
+	<string name="toast_error_loading_image">Error occurred during loading image</string>
 	<string name="toast_no_files">No files to show</string>
 
 	<string name="toast_paused">Paused</string>
