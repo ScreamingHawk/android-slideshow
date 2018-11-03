@@ -497,15 +497,20 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			return;
 		}
 
+		try {
 		final FileItem item = fileList.get(position);
 
-		if (preload) {
-			imageStrategy.preload(item);
-		} else {
-			setTitle(item.getName());
-			// Begin timer for long loading warning
-			beginLoadingSnackbar();
-			imageStrategy.load(item, mContentView);
+			if (preload) {
+				imageStrategy.preload(item);
+			} else {
+				setTitle(item.getName());
+				// Begin timer for long loading warning
+				beginLoadingSnackbar();
+				imageStrategy.load(item, mContentView);
+			}
+		} catch (NullPointerException npe) {
+			Toast.makeText(this,R.string.toast_error_loading_image, Toast.LENGTH_SHORT).show();
+			finish();
 		}
 	}
 
