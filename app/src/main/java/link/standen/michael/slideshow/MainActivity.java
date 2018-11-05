@@ -46,7 +46,9 @@ public class MainActivity extends BaseActivity {
 		rootLocation = getRootLocation();
 
 		// Path is external absolute directory
-		currentPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+		if (currentPath == null) {
+			currentPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+		}
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		if (preferences.getBoolean("remember_location", false)){
 			// Override using remembered location
