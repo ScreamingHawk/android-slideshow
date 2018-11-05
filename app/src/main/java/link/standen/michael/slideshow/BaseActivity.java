@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -27,11 +28,26 @@ public abstract class BaseActivity extends AppCompatActivity {
 	List<FileItem> fileList = new ArrayList<>();
 	private Dialog changeLog;
 
+	static final String STATE_PATH = "path";
+
 	private static final String CHANGE_LOG_CSS = "body { padding: 0.8em; } " +
 			"h1 { margin-left: 0px; font-size: 1.2em; } " +
 			"ul { padding-left: 1.2em; } " +
 			"li { margin-left: 0px; }";
 	private static final String DEFAULT_LANGUAGE = new Locale("en").getLanguage();
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// Check whether we're recreating a previously destroyed instance
+		if (savedInstanceState != null) {
+			// Restore value of members from saved state
+			currentPath = savedInstanceState.getString(STATE_PATH);
+		} else {
+			// Probably initialize members with default values for a new instance
+			currentPath = "NewPath";
+		}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,4 +134,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 		}
 		return locale.getLanguage().equals(DEFAULT_LANGUAGE);
 	}
+
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putString(STATE_PATH, currentPath);
+		// Always call the superclass so it can save the view hierarchy state
+		super.onSaveInstanceState(outState);
+	}
+
 }

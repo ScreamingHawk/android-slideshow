@@ -30,8 +30,7 @@
 			android:theme="@style/FullscreenTheme"
 			android:resizeableActivity="true"
 			android:supportsPictureInPicture="true"
-			android:configChanges=
-				"screenSize|smallestScreenSize|keyboardHidden|screenLayout|orientation">
+			android:configChanges= "screenSize|smallestScreenSize|keyboardHidden|screenLayout|orientation">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
 				android:value="link.standen.michael.slideshow.MainActivity"/>
