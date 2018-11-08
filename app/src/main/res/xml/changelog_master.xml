@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.5.4" versioncode="46">
+		<change>Additional error handling. Thanks patm22!</change>
+		<change>Add missing back button in Credits. Thanks Valentina M. Konjukhova!</change>
+		<change>Update Russian transaction. Thanks Valentina M. Konjukhova!</change>
+		<change>Change modified date format</change>
+	</release>
 	<release version="2.5.3" versioncode="45">
 		<change>Fix status bar colour. Thanks Thomas Lansing!</change>
 	</release>
