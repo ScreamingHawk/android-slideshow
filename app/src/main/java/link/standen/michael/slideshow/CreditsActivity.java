@@ -11,8 +11,12 @@ import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
 
 public class CreditsActivity extends AppCompatActivity {
@@ -58,6 +62,17 @@ public class CreditsActivity extends AppCompatActivity {
 		if (getCurrentLocale().getLanguage().equals(DEFAULT_LANGUAGE)){
 			findViewById(R.id.credits_content6).setVisibility(View.GONE);
 		}
+
+		// Donate button
+		String donateString = getDonateString();
+		if (donateString != null && !donateString.isEmpty()){
+			WebView web = findViewById(R.id.donate_button);
+			web.setBackgroundColor(0);
+			web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
+			web.loadData(donateString, "text/html", "UTF-8");
+		} else {
+			findViewById(R.id.donate_button_wrapper).setVisibility(View.GONE);
+		}
 	}
 
 	@Override
@@ -86,5 +101,21 @@ public class CreditsActivity extends AppCompatActivity {
 			//noinspection deprecation
 			return getResources().getConfiguration().locale;
 		}
+	}
+
+	private String getDonateString() {
+		InputStream raw = getResources().openRawResource(R.raw.donate);
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		try {
+			int i = raw.read();
+			while (i != -1) {
+				stream.write(i);
+				i = raw.read();
+			}
+			raw.close();
+		} catch (IOException e) {
+			Log.e(TAG, "Unable to read donate HTML");
+		}
+		return stream.toString();
 	}
 }

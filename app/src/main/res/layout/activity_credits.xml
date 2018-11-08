@@ -109,6 +109,18 @@
 				android:padding="@dimen/credits_padding"
 				android:text="@string/credits_content6"/>
 
+			<LinearLayout
+				android:id="@+id/donate_button_wrapper"
+				android:layout_width="match_parent"
+				android:layout_height="@dimen/donate_button_height"
+				android:orientation="vertical">
+				<WebView
+					android:id="@+id/donate_button"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:padding="@dimen/credits_padding"/>
+			</LinearLayout>
+
 		</LinearLayout>
 	</ScrollView>
 </android.support.design.widget.CoordinatorLayout>

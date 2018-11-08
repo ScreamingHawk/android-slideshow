@@ -17,4 +17,5 @@
 
 	<!-- Credits -->
 	<dimen name="credits_padding">10dp</dimen>
+	<dimen name="donate_button_height">100dp</dimen>
 </resources>
