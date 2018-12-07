@@ -40,6 +40,9 @@
 	<string name="toast_paused">Paused</string>
 	<string name="toast_resumed">Resumed</string>
 
+	<string name="toast_input_blocked">Input blocked. Long press to enable</string>
+	<string name="toast_input_allowed">Input enabled</string>
+
 	<string name="long_loading_warning">%1$s is taking a long time to load.</string>
 	<string name="long_loading_skipping">%1$s is taking a long time to load. Skipping.</string>
 	<string name="long_loading_skip_action">Skip</string>

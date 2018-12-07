@@ -45,6 +45,12 @@ public abstract class OnSwipeTouchListener implements View.OnTouchListener {
 		}
 
 		@Override
+		public void onLongPress(MotionEvent e){
+			onLongClick();
+			super.onLongPress(e);
+		}
+
+		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 			boolean result = false;
 			try {
@@ -105,4 +111,9 @@ public abstract class OnSwipeTouchListener implements View.OnTouchListener {
 	 * Implement this method to handle double click events
 	 */
 	protected abstract void onDoubleClick();
+
+	/**
+	 * Implement this method to handle long click events
+	 */
+	protected abstract void onLongClick();
 }
