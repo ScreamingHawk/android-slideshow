@@ -34,10 +34,14 @@
 	<string name="image_detail_size">File Size: %1$s</string>
 	<string name="image_detail_modified">Modified: %1$s</string>
 
+	<string name="toast_error_loading_image">Error occurred during loading image</string>
 	<string name="toast_no_files">No files to show</string>
 
 	<string name="toast_paused">Paused</string>
 	<string name="toast_resumed">Resumed</string>
+
+	<string name="toast_input_blocked">Input blocked. Long press to enable</string>
+	<string name="toast_input_allowed">Input enabled</string>
 
 	<string name="long_loading_warning">%1$s is taking a long time to load.</string>
 	<string name="long_loading_skipping">%1$s is taking a long time to load. Skipping.</string>

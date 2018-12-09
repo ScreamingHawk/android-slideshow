@@ -170,6 +170,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		}
 	};
 
+	private boolean userInputAllowed = true;
+
 	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -197,12 +199,14 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 			@Override
 			public void onClick() {
-				toggle();
+				if (checkUserInputAllowed()){
+					toggle();
+				}
 			}
 
 			@Override
 			public void onDoubleClick() {
-				if (!mVisible) {
+				if (!mVisible && checkUserInputAllowed()) {
 					toggleSlideshow();
 					if (isRunning) {
 						Toast.makeText(ImageActivity.this, R.string.toast_resumed, Toast.LENGTH_SHORT).show();
@@ -213,27 +217,46 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			}
 
 			@Override
+			public void onLongClick() {
+				// Prevents grandma stopping the slideshow when dusting
+				userInputAllowed = !userInputAllowed;
+				if (checkUserInputAllowed()){
+					Toast.makeText(ImageActivity.this, R.string.toast_input_allowed, Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(ImageActivity.this, R.string.toast_input_blocked, Toast.LENGTH_SHORT).show();
+				}
+			}
+
+			@Override
 			public void onSwipeLeft() {
-				nextImage(true, false);
-				startSlideshowIfFullscreen();
+				if (checkUserInputAllowed()) {
+					nextImage(true, false);
+					startSlideshowIfFullscreen();
+				}
 			}
 
 			@Override
 			public void onSwipeRight() {
-				nextImage(false, false);
-				startSlideshowIfFullscreen();
+				if (checkUserInputAllowed()) {
+					nextImage(false, false);
+					startSlideshowIfFullscreen();
+				}
 			}
 
 			@Override
 			protected void onSwipeUp() {
-				// Swipe up starts and stops the slideshow
-				toggle();
+				if (checkUserInputAllowed()) {
+					// Swipe up starts and stops the slideshow
+					toggle();
+				}
 			}
 
 			@Override
 			protected void onSwipeDown() {
-				// Swipe down starts and stops the slideshow
-				toggle();
+				if (checkUserInputAllowed()) {
+					// Swipe down starts and stops the slideshow
+					toggle();
+				}
 			}
 		});
 
@@ -304,6 +327,17 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 		// Show the first image
 		loadImage(imagePosition, false);
+	}
+
+	/**
+	 * Checks if user input is allowed and toasts if not.
+	 * @return True if allowed, false otherwise
+	 */
+	private boolean checkUserInputAllowed(){
+		if (!userInputAllowed) {
+			Toast.makeText(ImageActivity.this, R.string.toast_input_blocked, Toast.LENGTH_SHORT).show();
+		}
+		return userInputAllowed;
 	}
 
 	@Override
@@ -497,15 +531,20 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			return;
 		}
 
+		try {
 		final FileItem item = fileList.get(position);
 
-		if (preload) {
-			imageStrategy.preload(item);
-		} else {
-			setTitle(item.getName());
-			// Begin timer for long loading warning
-			beginLoadingSnackbar();
-			imageStrategy.load(item, mContentView);
+			if (preload) {
+				imageStrategy.preload(item);
+			} else {
+				setTitle(item.getName());
+				// Begin timer for long loading warning
+				beginLoadingSnackbar();
+				imageStrategy.load(item, mContentView);
+			}
+		} catch (NullPointerException npe) {
+			Toast.makeText(this,R.string.toast_error_loading_image, Toast.LENGTH_SHORT).show();
+			finish();
 		}
 	}
 
