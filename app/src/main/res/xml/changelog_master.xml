@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.6.0" versioncode="47">
+		<change>Add long press to disable user input</change>
+	</release>
 	<release version="2.5.4" versioncode="46">
 		<change>Additional error handling. Thanks patm22!</change>
 		<change>Add missing back button in Credits. Thanks Valentina M. Konjukhova!</change>
