@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -24,7 +23,6 @@ public class CustomImageStrategy implements ImageStrategy {
 	private ImageStrategyCallback callback;
 
 	private static boolean AUTO_ROTATE_DIMEN;
-	private final CustomRotateDimenTransformation CUSTOM_ROTATE_DIMEN_TRANSFORM = new CustomRotateDimenTransformation();
 
 	@Override
 	public void setContext(Context context) {
@@ -40,6 +38,7 @@ public class CustomImageStrategy implements ImageStrategy {
 	public void preload(FileItem item) {
 		// This implementation does not support preloading
 	}
+
 
 	@Override
 	public void load(FileItem item, ImageView view) {
@@ -77,15 +76,26 @@ public class CustomImageStrategy implements ImageStrategy {
 		if (image == null) {
 			Log.e(TAG, "Error loading image");
 		} else {
-			if (AUTO_ROTATE_DIMEN){
-				image = CUSTOM_ROTATE_DIMEN_TRANSFORM.rotate(image);
-				if (CUSTOM_ROTATE_DIMEN_TRANSFORM.wasRotated()) {
-					int temp = width;
-					//noinspection SuspiciousNameCombination
-					width = height;
-					height = temp;
-				}
-			}
+            // calculate degrees to rotate
+            int degrees = CustomRotateDimenTransformation.getRotationFromExif(item.getPath());
+            if (degrees == -1) {
+                if (AUTO_ROTATE_DIMEN) {
+                    degrees = CustomRotateDimenTransformation.getRotationFromDimensions(image);
+                } else {
+                    // no rotation necessary
+                    degrees = 0;
+                }
+            }
+            // do the actual rotation if degrees > 0
+            if (degrees > 0) {
+                image = CustomRotateDimenTransformation.rotate(image, degrees);
+                if (CustomRotateDimenTransformation.isCoordinatesSwapped(degrees)) {
+                    int temp = width;
+                    //noinspection SuspiciousNameCombination
+                    width = height;
+                    height = temp;
+                }
+            }
 
 			/*
 			 * Step 2: scale maximum edge down to maximum texture size.
