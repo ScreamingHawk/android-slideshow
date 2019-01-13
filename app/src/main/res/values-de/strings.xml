@@ -8,28 +8,43 @@
 	<string name="app_name">&appname;</string>
 	<string name="action_settings">Einstellungen</string>
 	<string name="action_credits">Info</string>
+    <string name="action_change_log">Change Log</string>
+    <string name="action_picture_in_picture">Bild in Bild</string>
 
-	<!-- List -->
+    <string name="no_picture_in_picture">Die Bild in Bild Funktion wird von Ihrem Gerät nicht untersützt.</string>
+
+    <!-- List -->
 	<string name="inaccessible">(unerreichbar)</string>
 	<string name="go_home_folder">Hängengeblieben? Klicken Sie hier, nach Ihren Persönlichen Ordner zu gehen.</string>
+    <string name="play_folder">Diashow ab hier abspielen</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">Löschen</string>
 	<string name="delete_dialog_title">Bild löschen</string>
-	<string name="delete_dialog_message">Bist du sicher?</string>
-	<string name="image_deleted">Bild gelöscht</string>
+	<string name="delete_dialog_message">Sind Sie sicher?</string>
+	<string name="image_deleted">Bild wurde gelöscht</string>
 	<string name="image_not_deleted">Bild konnte nicht gelöscht werden</string>
 
 	<string name="share_button">Teilen</string>
-	<string name="share_via">Teilen durch&#8230;</string>
+	<string name="share_via">Teilen mit&#8230;</string>
 
 	<string name="image_detail_dimensions">Dimensionen: %1$dx%2$d</string>
 	<string name="image_detail_size">Dateigröße: %1$s</string>
-        <string name="image_detail_modified">Geändert: %1$s</string>
+    <string name="image_detail_modified">Geändert: %1$s</string>
 
-	<!-- Image descriptions -->
+    <string name="toast_error_loading_image">Fehler beim Laden des Bildes</string>
+    <string name="toast_no_files">Keine Bilder zum Anzeigen</string>
+
+    <string name="toast_paused">Pausiert</string>
+    <string name="toast_resumed">Pause beendet</string>
+
+    <string name="long_loading_warning">Ladevorgang für %1$s dauert lange.</string>
+    <string name="long_loading_skipping">Ladevorgang für %1$s dauert lange. Ignoriere Datei.</string>
+    <string name="long_loading_skip_action">Ignoriere</string>
+
+    <!-- Image descriptions -->
 	<string name="image_description">Bild</string>
 	<string name="logo_description">Logo</string>
 
@@ -47,7 +62,7 @@
 		unter den <a href="https://tldrlegal.com/license/mit-license">MIT Lizenz</a>.
 	</string>
 	<string name="credits_content5">Danke an <a href="https://github.com/psyanite">Yan Tsui</a>
-		für die Prüfung und den Aussehen der &appname; Ikone.
+		für die Prüfung und die Gestaltung des &appname; Icons.
 	</string>
 
 	<!-- Settings -->
@@ -62,28 +77,73 @@
 	<string name="pref_description_show_thumbnails">Zeigt Miniaturbilder an. Wenn Sie dies ausschalten, erhöht sich die Leistung, aber Sie werden nicht in der Lage sein, Bilder von anderen Daten zu unterscheiden.
 	</string>
 
+    <string name="pref_title_remember_location">Start an letzter Position</string>
+    <string name="pref_description_remember_location">Beim Öffnen der App wird &appname; die Diashow an der Position fortsetzen, die zuletzt gezeigt wurde.
+	</string>
+
+    <string name="pref_title_auto_start">Automatischer Start</string>
+    <string name="pref_description_auto_start">Beim Öffnen der App wird &appname; die Slideshow automatisch mit dem Bild fortsetzen, das zuletzt gezeigt wurde.
+	</string>
+
+    <string name="pref_title_play_from_here">Aktiviere "Ab hier abspielen" Button</string>
+    <string name="pref_description_play_from_here">Der "Ab hier abspielen" Button erscheint in der
+		Dateiliste und erlaubt Ihnen eine Diashow vom aktuellen Ordner zu beginnen, inklusive aller Unterordner.
+		Diese Funktion ist standardmäßig deaktiviert, da sie einen negativen Effekt für die Leistung haben kann.
+	</string>
+
+    <string name="pref_title_enable_gif_support">Aktiviere GIF Unterstützung</string>
+    <string name="pref_description_enable_gif_support">Automatisches Abspielen von GIFs bei der Anzeige.
+		Erfordert die Nutzung der Glide Bibliothek.
+	</string>
+
 	<string name="pref_title_use_device_root">Stammverzeichnis des Gerätes verwenden</string>
-	<string name="pref_description_use_device_root">Aktiviere die Navigation zum Stammverzeichnis des Gerätes. Dies ermöglicht den Zugriff auf Dateien überall auf dem Gerät, einschließlich montierten Speicher wie SD-Karten.
+	<string name="pref_description_use_device_root">Aktiviert die Navigation bis zum Stammverzeichnis des Gerätes. Dies ermöglicht den Zugriff auf Dateien überall auf dem Gerät, einschließlich eingebundenem Speicher wie SD-Karten.
 	</string>
 
-	<string name="pref_title_slide_delay">Folienverzögerung</string>
-	<string name="pref_description_slide_delay">Klicken Sie auf, um die Anzahl der Sekunden zu ändern, in der ein Bild angezeigt wird, bevor Sie zum nächsten Bild wechseln.
+	<string name="pref_title_slide_delay">Verzögerung zwischen den Bildern</string>
+	<string name="pref_description_slide_delay">Auswählen, um die Anzahl der Sekunden zu ändern, für die ein Bild angezeigt wird, bevor zum nächsten Bild gechselt wird.
 	</string>
 
-	<string name="pref_title_image_details">Bilddetails anzeigen</string>
-	<string name="pref_description_image_details">Die Bilddetails während der Diashow überlagern.
+    <string name="pref_title_image_strategy">Benutze Glide Bibliothek zum Laden von Bildern</string>
+    <string name="pref_description_image_strategy">Benutzen der Glide Bibliothek zum Laden von Bildern. Glide unterstützt auch
+        andere Funktionen, wie beispielsweise das Laden von Bildern im Hintergrund und GIF Unterstützung. Wenn diese
+        Option ausgeschaltet ist, wird die alte eigene Strategy genutzt zum Laden der Bilder. Dies kann bei manchen Geräten
+        zu einer besseren Leistung führen.
+	</string>
+
+    <string name="pref_title_preload_images">Laden von Bildern im Hintergrund</string>
+    <string name="pref_description_preload_images">Lädt das nächste Bild im Hintergrund während das aktuelle Bild angezeigt wird.
+		Das Auschalten dieser Funktion kann die Leistung auf manchen Geräten verbessern. Erfordert die Nutzung der Glide Bibliothek.
+	</string>
+
+    <string name="pref_title_auto_rotate_dimen">Automatische Drehung anhand der Abmessungen</string>
+    <string name="pref_description_auto_rotate_dimen">Dreht die Bilder automatisch ins Querformat wenn das Bild
+        breiter als hoch ist.
+	</string>
+
+    <string name="pref_title_skip_long_load">Überspringe Bilder die lange laden</string>
+    <string name="pref_description_skip_long_load">Überspringt Bilder während der Diashow wenn sie zu lange zum Laden benötigen.
+        Wenn dies Passiert, wird ein Hinweistext angezeigt.
+	</string>
+
+    <string name="pref_title_image_details">Bilddetails anzeigen</string>
+	<string name="pref_description_image_details">Die Bilddetails während der Diashow überlagert anzeigen.
 	</string>
 
 	<string name="pref_title_stop_on_complete">Aufhören, wenn fertig</string>
-	<string name="pref_description_stop_on_complete">Die Diashow aufhören, sobald jedes Bild gezeigt wurde.
+	<string name="pref_description_stop_on_complete">Beendet die Diashow, sobald jedes Bild gezeigt wurde.
 	</string>
 
 	<string name="pref_title_reverse_order">Umgekehrte Reihenfolge</string>
-	<string name="pref_description_reverse_order">Die Bilder in der Diashow in umgekehrter Reihenfolge anzeigen.
+	<string name="pref_description_reverse_order">Zeigt die Bilder in der Diashow in umgekehrter Reihenfolge an.
 	</string>
 
-	<string name="pref_title_random_order">Zufällige Reihenfolge
-</string>
-	<string name="pref_description_random_order">Die Bilder in der Diashow in zufällige Reihenfolge anzeigen.
+	<string name="pref_title_random_order">Zufällige Reihenfolge</string>
+	<string name="pref_description_random_order">Zeigt die Bilder in der Diashow in zufälliger Reihenfolge an.
+	</string>
+
+    <string name="pref_title_delete_warning">Waren vor dem Löschen</string>
+    <string name="pref_description_delete_warning">Zeigt eine Warnung, bevor ein Bild gelöscht wird.
+		Disable at your own risk.
 	</string>
 </resources>
