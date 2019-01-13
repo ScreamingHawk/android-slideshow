@@ -2,7 +2,7 @@ package link.standen.michael.slideshow.strategy.image.custom;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.media.ExifInterface;
+import android.support.media.ExifInterface;
 import android.util.Log;
 
 import java.io.IOException;
