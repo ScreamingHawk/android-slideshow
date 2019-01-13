@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.7.0" versioncode="48">
+		<change>Add automatic rotation based on EXIF data. Thanks Matthias Wetzka!</change>
+		<change>Update German translation. Thanks Matthias Wetzka!</change>
+	</release>
 	<release version="2.6.0" versioncode="47">
 		<change>Add long press to disable user input</change>
 	</release>
