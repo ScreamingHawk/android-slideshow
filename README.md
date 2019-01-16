@@ -15,6 +15,18 @@ Quickly browse through your file system for the directory you want to view, clic
 
 Great for showing off those vacation photos without having to scroll.
 
+## Controls
+
+There are a couple hidden controls when using a slideshow. 
+
+**Swipe left / right** to change to next / previous image.
+
+**Single tap** to start / stop the slideshow.
+
+**Long press during the slideshow** to disable user input. This is handy when you don't want grandma to accidently stop the slideshow when she is dusting the device. 
+
+**Double tap** to pause the slideshow without showing the details panel.
+
 ## Features
 * Select any directory on your phone
 * Automatically begins playing slideshow
