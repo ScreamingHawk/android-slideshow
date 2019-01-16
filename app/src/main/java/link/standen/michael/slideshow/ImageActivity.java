@@ -426,15 +426,25 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private void loadPreferences(){
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		// Load preferences
+		Log.d(TAG, "Loaded preferences:");
 		SLIDESHOW_DELAY = (int) (Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000);
+		Log.d(TAG, String.format("SLIDESHOW_DELAY: %d", SLIDESHOW_DELAY));
 		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
+		Log.d(TAG, String.format("STOP_ON_COMPLETE: %b", STOP_ON_COMPLETE));
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
+		Log.d(TAG, String.format("REVERSE_ORDER: %b", REVERSE_ORDER));
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
+		Log.d(TAG, String.format("RANDOM_ORDER: %b", RANDOM_ORDER));
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
+		Log.d(TAG, String.format("IMAGE_DETAILS: %b", IMAGE_DETAILS));
 		IMAGE_DETAILS_DURING = preferences.getBoolean("image_details_during", false);
+		Log.d(TAG, String.format("IMAGE_DETAILS_DURING: %b", IMAGE_DETAILS_DURING));
 		SKIP_LONG_LOAD = preferences.getBoolean("skip_long_load", false);
+		Log.d(TAG, String.format("SKIP_LONG_LOAD: %b", SKIP_LONG_LOAD));
 		PRELOAD_IMAGES = preferences.getBoolean("preload_images", true);
+		Log.d(TAG, String.format("PRELOAD_IMAGES: %b", PRELOAD_IMAGES));
 		DELETE_WARNING = preferences.getBoolean("delete_warning", true);
+		Log.d(TAG, String.format("DELETE_WARNING: %b", DELETE_WARNING));
 
 		// Show/Hide the image details that are shown during pause
 		if (!IMAGE_DETAILS){
@@ -582,20 +592,24 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		}
 		((TextView)findViewById(R.id.image_detail_location1)).setText(location);
 		((TextView)findViewById(R.id.image_detail_location2)).setText(location);
+		Log.d(TAG, String.format("Current image location: %s", location));
 		// Dimensions
 		String dimensions = getResources().getString(R.string.image_detail_dimensions, width, height);
 		((TextView)findViewById(R.id.image_detail_dimensions1)).setText(dimensions);
 		((TextView)findViewById(R.id.image_detail_dimensions2)).setText(dimensions);
+		Log.d(TAG, String.format("Current image dimensions: %s", dimensions));
 		// Size
 		String size = getResources().getString(R.string.image_detail_size,
 				Formatter.formatShortFileSize(this, file.length()));
 		((TextView)findViewById(R.id.image_detail_size1)).setText(size);
 		((TextView)findViewById(R.id.image_detail_size2)).setText(size);
+		Log.d(TAG, String.format("Current image size: %s", size));
 		// Modified
 		String modified = getResources().getString(R.string.image_detail_modified,
 				DateFormat.getMediumDateFormat(this).format(file.lastModified()));
 		((TextView)findViewById(R.id.image_detail_modified1)).setText(modified);
 		((TextView)findViewById(R.id.image_detail_modified2)).setText(modified);
+		Log.d(TAG, String.format("Current image modified: %s", modified));
 
 		// Save this spot
 		saveCurrentImagePath();
