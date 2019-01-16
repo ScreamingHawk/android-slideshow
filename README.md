@@ -23,7 +23,7 @@ There are a couple hidden controls when using a slideshow.
 
 **Single tap** to start / stop the slideshow.
 
-**Long press during the slideshow** to disable user input. This is handy when you don't want grandma to accidently stop the slideshow when she is dusting the device. 
+**Long press during the slideshow** to disable user input. This is handy when you don't want grandma to accidentally stop the slideshow when she is dusting the device. 
 
 **Double tap** to pause the slideshow without showing the details panel.
 
