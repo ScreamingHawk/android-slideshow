@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Locale;
 
 import de.cketti.library.changelog.ChangeLog;
+import link.standen.michael.slideshow.dialog.ControlsDialog;
 import link.standen.michael.slideshow.model.FileItem;
 
 /**
@@ -62,6 +63,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 			return true;
 		} else if (id == R.id.action_change_log) {
 			showChangeLog(true);
+			return true;
+		} else if (id == R.id.action_controls) {
+			new ControlsDialog().show(getSupportFragmentManager(), ControlsDialog.TAG);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

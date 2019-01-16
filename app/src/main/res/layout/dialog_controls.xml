@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="@dimen/dialog_padding">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textAlignment="center"
+			android:text="@string/controls_title"
+			android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+			android:padding="@dimen/dialog_padding"/>
+
+		<TextView
+			android:id="@+id/controls_content1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/dialog_padding"
+			android:text="@string/controls_content1"/>
+
+		<TextView
+			android:id="@+id/controls_content2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/dialog_padding"
+			android:text="@string/controls_content2"/>
+
+		<TextView
+			android:id="@+id/controls_content3"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/dialog_padding"
+			android:text="@string/controls_content3"/>
+
+		<TextView
+			android:id="@+id/controls_content4"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/dialog_padding"
+			android:text="@string/controls_content4"/>
+
+		<TextView
+			android:id="@+id/controls_content5"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/dialog_padding"
+			android:text="@string/controls_content5"/>
+
+	</LinearLayout>
+</ScrollView>

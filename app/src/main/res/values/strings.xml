@@ -9,6 +9,7 @@
 	<string name="action_settings">Settings</string>
 	<string name="action_credits">About</string>
 	<string name="action_change_log">Change Log</string>
+	<string name="action_controls">Controls</string>
 	<string name="action_picture_in_picture">Picture in Picture</string>
 
 	<string name="no_picture_in_picture">Picture in picture is not supported by your device.</string>
@@ -46,6 +47,14 @@
 	<string name="long_loading_warning">%1$s is taking a long time to load.</string>
 	<string name="long_loading_skipping">%1$s is taking a long time to load. Skipping.</string>
 	<string name="long_loading_skip_action">Skip</string>
+
+	<!-- Controls -->
+	<string name="controls_title">&appname; Controls</string>
+	<string name="controls_content1">There are a couple hidden controls when viewing a slideshow.</string>
+	<string name="controls_content2">*Swipe left / right* to change to next / previous image.</string>
+	<string name="controls_content3">*Single tap* to start / stop the slideshow.</string>
+	<string name="controls_content5">*Double tap* to pause the slideshow without showing the details panel.</string>
+	<string name="controls_content4">*Long press during the slideshow* to disable user input. This is handy when you don\'t want grandma to accidentally stop the slideshow when she is dusting the device.</string>
 
 	<!-- Image descriptions -->
 	<string name="image_description">Image</string>
