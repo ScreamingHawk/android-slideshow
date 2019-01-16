@@ -52,3 +52,8 @@ This software is provided under the [MIT License](https://tldrlegal.com/license/
 Special thanks to all [the contributors](https://github.com/ScreamingHawk/android-slideshow/graphs/contributors) of Slideshow, who have provided images and translations.
 
 I really mean it. You guys rock!
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/ScreamingHawk/android-slideshow/badge.svg?style=beer-square)](https://beerpay.io/ScreamingHawk/android-slideshow)  [![Beerpay](https://beerpay.io/ScreamingHawk/android-slideshow/make-wish.svg?style=flat-square)](https://beerpay.io/ScreamingHawk/android-slideshow?focus=wish)
