@@ -29,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 	List<FileItem> fileList = new ArrayList<>();
 	private Dialog changeLog;
 
-	static final String STATE_PATH = "path";
+	static final String STATE_PATH = "pathState";
 
 	private static final String CHANGE_LOG_CSS = "body { padding: 0.8em; } " +
 			"h1 { margin-left: 0px; font-size: 1.2em; } " +
@@ -46,7 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 			currentPath = savedInstanceState.getString(STATE_PATH);
 		} else {
 			// Probably initialize members with default values for a new instance
-			currentPath = "NewPath";
+			currentPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 		}
 	}
 
