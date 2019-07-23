@@ -108,6 +108,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 			addPreferencesFromResource(R.xml.preferences);
 			setHasOptionsMenu(true);
 
+			final SwitchPreference reloadFolderPref = (SwitchPreference)findPreference("reload_folder");
+
 			final SwitchPreference reverseOrderPref = (SwitchPreference)findPreference("reverse_order");
 			final SwitchPreference randomOrderPref = (SwitchPreference)findPreference("random_order");
 			// Enabling reverse disables random
