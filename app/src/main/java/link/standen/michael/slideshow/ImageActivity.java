@@ -58,6 +58,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private static boolean STOP_ON_COMPLETE;
 	private static boolean REVERSE_ORDER;
 	private static boolean RANDOM_ORDER;
+	private static boolean REFRESH_FOLDER;
 	private static int SLIDESHOW_DELAY;
 	private static boolean IMAGE_DETAILS;
 	private static boolean IMAGE_DETAILS_DURING;
@@ -435,6 +436,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		Log.d(TAG, String.format("REVERSE_ORDER: %b", REVERSE_ORDER));
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
 		Log.d(TAG, String.format("RANDOM_ORDER: %b", RANDOM_ORDER));
+		REFRESH_FOLDER = preferences.getBoolean("refresh_folder", false);
+		Log.d(TAG, String.format("REFRESH_FOLDER: %b", REFRESH_FOLDER));
 		IMAGE_DETAILS = preferences.getBoolean("image_details", false);
 		Log.d(TAG, String.format("IMAGE_DETAILS: %b", IMAGE_DETAILS));
 		IMAGE_DETAILS_DURING = preferences.getBoolean("image_details_during", false);
@@ -478,6 +481,13 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 		int current = imagePosition;
 		int newPosition = imagePosition;
+		if (REFRESH_FOLDER && newPosition == 0) { // Time to reload, easy base case
+			fileList = new FileItemHelper(this).getFileList(currentPath, false, getIntent().getStringExtra("imagePath") == null);
+			if (RANDOM_ORDER){
+				Collections.shuffle(fileList);
+			}
+		}
+
 		do {
 			newPosition += forwards ? 1 : -1;
 			if (newPosition < 0){
