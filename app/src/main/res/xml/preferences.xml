@@ -111,6 +111,12 @@
 		android:title="@string/pref_title_random_order"/>
 
 	<SwitchPreference
+		android:defaultValue="false"
+		android:key="refresh_folder"
+		android:summary="@string/pref_description_refresh_folder"
+		android:title="@string/pref_title_refresh_folder"/>
+
+	<SwitchPreference
 		android:defaultValue="true"
 		android:key="delete_warning"
 		android:summary="@string/pref_description_delete_warning"

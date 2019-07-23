@@ -169,6 +169,10 @@
 		order.
 	</string>
 
+	<string name="pref_title_refresh_folder">Refresh Folder</string>
+	<string name="pref_description_refresh_folder">Refresh the folder every time through the show.
+	</string>
+
 	<string name="pref_title_random_order">Random order</string>
 	<string name="pref_description_random_order">Display the images in the slideshow in a random
 		order.
