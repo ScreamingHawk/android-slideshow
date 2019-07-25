@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.8.0" versioncode="49">
+		<change>Add folder content watching. Thanks Toyam Cox!</change>
+		<change>Fix screen rotation restarting application. Thanks Samuel Biros!</change>
+		<change>Add control explanation</change>
+	</release>
 	<release version="2.7.0" versioncode="48">
 		<change>Add automatic rotation based on EXIF data. Thanks Matthias Wetzka!</change>
 		<change>Update German translation. Thanks Matthias Wetzka!</change>
