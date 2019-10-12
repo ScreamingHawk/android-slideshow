@@ -8,6 +8,11 @@
 	<string name="app_name">&appname;</string>
     <string name="action_settings">Настройки</string>
     <string name="action_credits">О приложении</string>
+    <string name="action_change_log">Последние изменения</string>
+    <string name="action_controls">Управление</string>
+    <string name="action_picture_in_picture">Картинка в картинке</string>
+
+    <string name="no_picture_in_picture">Опция картинка в картинке недоступна для вашего устройства</string>
 
 	<!-- List -->
     <string name="inaccessible">(недоступен)</string>
@@ -29,10 +34,28 @@
     <string name="image_detail_dimensions">Размерности: %1$dx%2$d</string>
     <string name="image_detail_size">Размер файла: %1$s</string>
     <string name="image_detail_modified">Модифицирован: %1$s</string>
+
+    <string name="toast_error_loading_image">Возникла ошибка во время загрузки изображения</string>
+    <string name="toast_no_files">Нет файлов для показа</string>
+
+    <string name="toast_paused">Приостановлено</string>
+    <string name="toast_resumed">Возобновлено</string>
+
+    <string name="toast_input_blocked">Ввод заблокирован. Долгое нажатие чтобы включить</string>
+    <string name="toast_input_allowed">Ввод включен</string>
+
     <string name="long_loading_warning">%1$s требует много времени для загрузки.</string>
     <string name="long_loading_skipping">%1$s требует много времени для загрузки. Пропускаю.</string>
     <string name="long_loading_skip_action">Пропустить</string>
-    <string name="toast_no_files">Нет файлов для показа</string>
+
+    <!-- Controls -->
+    <string name="controls_title">&appname; Управление</string>
+    <string name="controls_content1">Тут есть спятанное управление во время просмотра слайдшоу.</string>
+    <string name="controls_content2">*Смахнуть влево / вправо* чтобы переключиться на следующее / предыдущее изображение.</string>
+    <string name="controls_content3">*Одиночное касание* чтобы начать / остановить слайдшоу.</string>
+    <string name="controls_content5">*Двойное касание* чтобы поставить слайдшоу на паузу без показа панели с деталями.</string>
+    <string name="controls_content4">*Долгое нажатие во время слайдшоу* чтобы отключить пользовательский ввод. Это пригодится когда Вы не хотите, чтобы бабушка случайно остановила слайдшоу когда вытирает устройство от пыли.</string>
+
 	<!-- Image descriptions -->
     <string name="image_description">Изображение</string>
     <string name="logo_description">Логотип</string>
@@ -48,6 +71,7 @@
     <string name="credits_content6">Этот перевод &appname; предоставлен вам автором
 		<a href="https://github.com/JekRock">Евгений Бадёров</a>
 	</string>
+
 	<!-- Settings -->
 
     <string name="title_activity_settings">Настройки</string>
@@ -58,11 +82,25 @@
     <string name="pref_title_show_thumbnails">Показать миниатюры</string>
     <string name="pref_description_show_thumbnails">Отображает уменьшенные изображения. Отключение этого режима приведет к увеличению производительности, однако вы не сможете увидеть, какие файлы являются изображениями, а какие нет.</string>
 
+    <string name="pref_title_remember_location">Запускать в последнем местоположении</string>
+    <string name="pref_description_remember_location">При открытии &appname; запустится в месте,
+		где слайдшоу было последний раз использовано.
+	</string>
+
+    <string name="pref_title_auto_start">Запускать автоматически</string>
+    <string name="pref_description_auto_start">При открытии &appname; начнет слайдшоу
+		с последнего показанного изображения.
+	</string>
+
     <string name="pref_title_play_from_here">Активировать "Запустить отсюда" кнопку</string>
     <string name="pref_description_play_from_here">Кнопка "Запустить отсюда" появится в списке файлов
 	    и позволит вам начать Слайдшоу из текущей директории, включая все поддиректории.
 		По умолчания эта свойство отключено, так как оно может негативно сказаться на производительности
     </string>
+
+    <string name="pref_title_enable_gif_support">Включить поддержку GIF</string>
+    <string name="pref_description_enable_gif_support">Автоматически воспроизводить GIF при показе.
+	</string>
 
     <string name="pref_title_use_device_root">Использовать корень устройства</string>
     <string name="pref_description_use_device_root">Включить навигацию к корневому каталогу устройства. Это позволит получить доступ к файлам в любом месте устройства, включая подключенные хранилища, такие как SD-карты. Примечание. Может потребоваться устройство с root доступом.</string>
@@ -70,8 +108,27 @@
     <string name="pref_title_slide_delay">Пауза слайдов</string>
     <string name="pref_description_slide_delay">Нажмите чтобы изменить количество секунд в течении которых изображение будет показано перед сменой изображения.</string>
 
+    <string name="pref_title_image_strategy">Использовать Glide для загрузки изображений</string>
+    <string name="pref_description_image_strategy">Использовать Glide для загрузки изображений. Эта библиотека имеет и другие функции, такие как предзагрузка и поддержка GIF. Если Glide будет отключен, вместо него будет использоваться старая стратегия загрузки изображений. Иногда это работает быстрее на некоторых устройствах.</string>
+
+    <string name="pref_title_preload_images">Предзагрузка изображений</string>
+    <string name="pref_description_preload_images">Загружать следующее изображение пока находимся на текущем слайде
+		Отключение этой опции может повысить производительность на некоторых устройствах.
+	</string>
+
+    <string name="pref_title_auto_rotate_dimen">Автоматически поворачивать на основе размера изображения</string>
+    <string name="pref_description_auto_rotate_dimen">Автоматически поворачивать изображения в пейзажный режим, если ширина изображения больше, чем его высота</string>
+
+    <string name="pref_title_skip_long_load">Пропустить изображения, которые долго загружаются</string>
+    <string name="pref_description_skip_long_load">Пропустить изображения, которые слишеом долго загружаются
+		во время слайдшоу. Когда это произойдет, будет показано уведомление.
+	</string>
+
     <string name="pref_title_image_details">Отобразить информацию изображения</string>
     <string name="pref_description_image_details">Отобразить информацию изображения во время слайд-шоу.</string>
+
+    <string name="pref_title_image_details_during">Показывать свойства изображения во время слайдшоу</string>
+    <string name="pref_description_image_details_during">Перекрывать свойства изображения во время показа слайдшоу</string>
 
     <string name="pref_title_stop_on_complete">Остановить по завершению</string>
     <string name="pref_description_stop_on_complete">Остановить слайд-шоу после того как все изображения будут показаны.</string>
@@ -79,44 +136,13 @@
     <string name="pref_title_reverse_order">Обратный порядок</string>
     <string name="pref_description_reverse_order">Отобразить изображения во время слайд-шоу в обратном порядке.</string>
 
+    <string name="pref_title_refresh_folder">Обновить Папку</string>
+    <string name="pref_description_refresh_folder">Обновлять папку каждый раз во время показа.
+	</string>
+
     <string name="pref_title_random_order">Случайный порядок</string>
     <string name="pref_description_random_order">Отобразить изображения во время слайд-шоу в случайном порядке.</string>
 
-    <string name="pref_description_auto_start">При открытии &appname; начнет слайдшоу
-		с последнего показанного изображения.
-	</string>
-    <string name="pref_title_enable_gif_support">Включить поддержку GIF</string>
-
-    <string name="pref_description_preload_images">Загружать следующее изображение пока находимся на текущем слайде
-		Отключение этой опции может повысить производительность на некоторых устройствах.
-	</string>
-    <string name="pref_description_remember_location">При открытии &appname; запустится в месте,
-		где слайдшоу было последний раз использовано.
-	</string>
-
-    <string name="pref_description_skip_long_load">Пропустить изображения, которые слишеом долго загружаются
-		во время слайдшоу. Когда это произойдет, будет показано уведомление.
-	</string>
-    <string name="pref_title_auto_start">Запускать автоматически</string>
-
-    <string name="pref_title_preload_images">Предзагрузка изображений</string>
-    <string name="pref_title_remember_location">Запускать в последнем местоположении</string>
-
-    <string name="pref_title_skip_long_load">Пропустить изображения, которые долго загружаются</string>
-    <string name="pref_description_enable_gif_support">Автоматически воспроизводить GIF при показе.
-	</string>
-    <string name="action_picture_in_picture">Картинка в картинке</string>
-    <string name="no_picture_in_picture">Опция картинка в картинке недоступна для вашего устройства</string>
-    <string name="action_change_log">Последние изменения</string>
-    <string name="toast_paused">Приостановлено</string>
-    <string name="toast_resumed">Возобновлено</string>
-    <string name="pref_title_image_strategy">Использовать Glide для загрузки изображений</string>
-    <string name="pref_description_image_strategy">Использовать Glide для загрузки изображений. Эта библиотека имеет и другие функции, такие как предзагрузка и поддержка GIF. Если Glide будет отключен, вместо него будет использоваться старая стратегия загрузки изображений. Иногда это работает быстрее на некоторых устройствах.</string>
-    <string name="pref_title_auto_rotate_dimen">Автоматически поворачивать на основе размера изображения</string>
-    <string name="pref_description_auto_rotate_dimen">Автоматически поворачивать изображения в пейзажный режим, если ширина изображения больше, чем его высота</string>
     <string name="pref_title_delete_warning">Предупреждать перед удалением</string>
     <string name="pref_description_delete_warning">Показать предупреждение перед удалением изображения. Отключайте на свой страх и риск</string>
-    <string name="pref_title_image_details_during">Показывать свойства изображения во время слайдшоу</string>
-    <string name="pref_description_image_details_during">Перекрывать свойства изображения во время показа слайдшоу</string>
-
 </resources>
