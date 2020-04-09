@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+	<!ENTITY appname "Slideshow">
+	<!ENTITY author "Michael Standen">
+	]>
+
+<resources>
+	<string name="app_name">&appname;</string>
+	<string name="action_settings">Ustawienia</string>
+	<string name="action_credits">O programie</string>
+	<string name="action_change_log">Dziennik zmian</string>
+	<string name="action_controls">Sterowanie</string>
+	<string name="action_picture_in_picture">Obraz w obrazie</string>
+
+	<string name="no_picture_in_picture">Obraz w obrazie nie jest obsługiwany przez twoje urządzenie.</string>
+
+	<!-- List -->
+	<string name="inaccessible">(niedostępny)</string>
+	<string name="go_home_folder">Kliknij, aby przejść do głownego katalogu</string>
+	<string name="play_folder">Rozpocznij pokaz slajdów stąd</string>
+
+	<!-- Slideshow -->
+	<string name="title_activity_image">&appname;</string>
+
+	<string name="delete_button">Usuń</string>
+	<string name="delete_dialog_title">Usuń obraz</string>
+	<string name="delete_dialog_message">Jesteś pewien?</string>
+	<string name="image_deleted">Obraz usunięty</string>
+	<string name="image_not_deleted">Nie można usunąć obrazu</string>
+
+	<string name="share_button">Udostępnij</string>
+	<string name="share_via">Udostępnij przez&#8230;</string>
+
+	<string name="image_detail_dimensions">Wymiary: %1$dx%2$d</string>
+	<string name="image_detail_size">Rozmiar pliku: %1$s</string>
+	<string name="image_detail_modified">Zmodyfikowano: %1$s</string>
+
+	<string name="toast_error_loading_image">Wystąpił błąd podczas ładowania obrazu</string>
+	<string name="toast_no_files">Brak plików do wyświetlenia</string>
+
+	<string name="toast_paused">Wstrzymano</string>
+	<string name="toast_resumed">Wznów</string>
+
+	<string name="toast_input_blocked">Wejście zablokowane. Naciśnij długo, aby włączyć</string>
+	<string name="toast_input_allowed">Wejście włączone</string>
+
+	<string name="long_loading_warning">Załadowanie %1$s zajmuje dużo czasu.</string>
+	<string name="long_loading_skipping">Załadowanie %1$s zajmuje dużo czasu. Pomijam.</string>
+	<string name="long_loading_skip_action">Pomiń</string>
+
+	<!-- Controls -->
+	<string name="controls_title">&appname; Sterowanie</string>
+	<string name="controls_content1">Istnieje kilka ukrytych elementów sterujących podczas wyświetlania pokazu slajdów.</string>
+	<string name="controls_content2">* Przesuń w lewo / w prawo *, aby przejść do następnego / poprzedniego obrazu.</string>
+	<string name="controls_content3">* Pojedyncze dotknięcie *, aby rozpocząć / zatrzymać pokaz slajdów.</string>
+	<string name="controls_content5">* Kliknij dwukrotnie *, aby wstrzymać pokaz slajdów bez pokazywania panelu szczegółów.</string>
+	<string name="controls_content4">* Długie naciśnięcie podczas pokazu slajdów *, aby wyłączyć wprowadzanie przez użytkownika. Jest to przydatne, gdy nie chcesz, aby babcia przypadkowo zatrzymała pokaz slajdów, gdy odkurza urządzenie.</string>
+
+	<!-- Image descriptions -->
+	<string name="image_description">Obraz</string>
+	<string name="logo_description">Logo</string>
+
+	<!-- Credits -->
+	<string name="title_activity_credits">O programie &appname;</string>
+	<string name="credits_creator">autor <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">&appname; to prosta aplikacja do przeglądania obrazów na urządzeniu</string>
+	<string name="credits_content2">Bez dzwonków ani gwizdów, ta aplikacja jest najprostszym pokazem slajdów na rynku.
+	</string>
+	<string name="credits_content3">Możesz przeglądać kod źródłowy, rejestrować błędy lub prosić o nowe funkcje na
+		<a href="https://github.com/Screaminghawk/android-slideshow">Githubie</a>.
+	</string>
+	<string name="credits_content4">Ta aplikacja jest całkowicie darmowa i open source; licencja
+		<a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
+	</string>
+	<string name="credits_content5">Dziękuję <a href="https://github.com/psyanite">Yan Tsui</a>
+		za przetestowanie i zaprojektowanie ikony aplikacji &appname; .
+	</string>
+	<string name="credits_content6">To tłumaczenie zostało wykonane przez
+		<a href="mailto:roznicki@o2.pl">Piotra Różnickiego</a>.
+	</string>
+
+	<!-- Settings -->
+
+	<string name="title_activity_settings">Ustawienia</string>
+
+	<string name="pref_title_show_hidden_files">Pokaż ukryte pliki</string>
+	<string name="pref_description_show_hidden_files">Wyświetla pliki ukryte przez inne aplikacje.
+	</string>
+
+	<string name="pref_title_show_thumbnails">Pokaż miniatury</string>
+	<string name="pref_description_show_thumbnails">Wyświetla miniatury. Wyłączenie tego spowoduje
+		zwiększenie wydajności, jednak nie będzie można zobaczyć, które pliki są obrazami, a które nie.
+	</string>
+
+	<string name="pref_title_remember_location">Rozpocznij w ostatniej lokalizacji</string>
+	<string name="pref_description_remember_location">Po otwarciu, pokaz slajdów rozpocznie się w miejscu, w którym ostatnio go użyto.
+	</string>
+
+	<string name="pref_title_auto_start">Uruchom automatycznie</string>
+	<string name="pref_description_auto_start">Po otwarciu pokaz slajdów rozpocznie sie od razu.
+	</string>
+
+	<string name="pref_title_play_from_here">Włącz przycisk „Rozpocznij pokaz slajdów stąd”</string>
+	<string name="pref_description_play_from_here">Przycisk "Rozpocznij pokaz slajdów stąd" pojawi się na liście plików i pozwala 
+	    rozpocząć pokaz slajdów z bieżącego folderu, w tym wszystkich podfolderów.
+		Ta funkcja jest domyślnie wyłączona, ponieważ może mieć negatywny wpływ na wydajność.
+	</string>
+
+	<string name="pref_title_enable_gif_support">Włącz obsługę GIFów</string>
+	<string name="pref_description_enable_gif_support">Automatycznie odtwarzaj pliki GIF, gdy są wyświetlane.
+		Wymaga Szybkiego ładowania obrazu.
+	</string>
+
+	<string name="pref_title_use_device_root">Użyj katalogu root</string>
+	<string name="pref_description_use_device_root">Włącz nawigację do katalogu głównego urządzenia
+		Umożliwi to dostęp do plików w dowolnym miejscu na urządzeniu, w tym do zainstalowanej pamięci
+        takich jak karty SD. Uwaga: Może wymagać zrootowanego urządzenia do poprawnego działania.
+	</string>
+
+	<string name="pref_title_slide_delay">Opóźnienie slajdów</string>
+	<string name="pref_description_slide_delay">Kliknij, aby zmienić liczbę sekund, przez jaką obraz będzie wyświetlany
+		zanim przejdziesz do następnego obrazu..
+	</string>
+
+	<string name="pref_title_image_strategy">Użyj Glide, aby załadować obrazy</string>
+	<string name="pref_description_image_strategy">Użyj Glide, aby załadować obrazy. Glide ma obsługę
+		innych funkcji, takich jak wstępne ładowanie i obsługa GIF. 
+		Wyłączenie tej opcji umożliwi ładowanie obrazu na niektórych użądzeniach. 
+		Włączenie opcji oferuje lepszą wydajność na niektórych urządzeniach..
+	</string>
+
+	<string name="pref_title_preload_images">Wstępnie załaduj obrazy</string>
+	<string name="pref_description_preload_images">Załaduj następny obraz podczas bieżącego slajdu.
+		Wyłączenie tej funkcji może zwiększyć wydajność niektórych urządzeń. Wymaga ładowania obrazu Glide.
+	</string>
+
+	<string name="pref_title_auto_rotate_dimen">Automatyczne obracanie według wymiarów</string>
+	<string name="pref_description_auto_rotate_dimen">Automatycznie obracaj zdjęcia do trybu poziomego 
+		gdy obraz jest szerszy niż wyższy.
+	</string>
+
+	<string name="pref_title_skip_long_load">Pomiń długo ładujące się zdjęcia</string>
+	<string name="pref_description_skip_long_load">Pomiń obrazy, których ładowanie trwa zbyt długo podczas 
+		pokazu slajdów. Powiadomienie zostanie wyświetlone, gdy to nastąpi.
+	</string>
+
+	<string name="pref_title_image_details">Pokaż szczegóły obrazu</string>
+	<string name="pref_description_image_details">Pokaż szczegóły obrazu podczas pokazu slajdów, gdy jest on wstrzymany.
+	</string>
+
+	<string name="pref_title_image_details_during">Pokaż szczegóły obrazu podczas pokazu slajdów</string>
+	<string name="pref_description_image_details_during">Pokaż szczegóły obrazu podczas pokazu slajdów, gdy 
+		pokaz slajdów jest uruchomiony..
+	</string>
+
+	<string name="pref_title_stop_on_complete">Zatrzymaj po zakończeniu</string>
+	<string name="pref_description_stop_on_complete">>Zatrzymaj pokaz slajdów po pokazaniu wszystkich zdjęć.
+	</string>
+
+	<string name="pref_title_reverse_order">Odwrotna kolejność</string>
+	<string name="pref_description_reverse_order">Wyświetl obrazy w pokazie slajdów w odwrotnej kolejności.
+	</string>
+
+	<string name="pref_title_refresh_folder">Odśwież folder</string>
+	<string name="pref_description_refresh_folder">Odśwież folder za każdym zdjęciu podczas pokazu.
+	</string>
+
+	<string name="pref_title_random_order">Losowa kolejność</string>
+	<string name="pref_description_random_order">Wyświetlaj zdjęcia w pokazie slajdów w losowej kolejności.
+	</string>
+
+	<string name="pref_title_delete_warning">Ostrzegaj przed usunięciem</string>
+	<string name="pref_description_delete_warning">Wyświetl ostrzeżenie przed usunięciem obrazu.
+		Wyłącz na własne ryzyko..
+	</string>
+</resources>
