@@ -79,10 +79,6 @@
 	<string name="pref_description_image_details">إضهار تفاصيل الصورة أثناء عرض الشرائح.
 	</string>
 
-	<string name="pref_title_stop_on_complete">توقف عند الإنتهاء</string>
-	<string name="pref_description_stop_on_complete">إيقاف عرض الشرائح بعد إضهار كل الصور.
-	</string>
-
 	<string name="pref_title_reverse_order">عكس الترتيب</string>
 	<string name="pref_description_reverse_order">عرض الصور في عرض الشرائح في ترتيب عكسي.
 	</string>

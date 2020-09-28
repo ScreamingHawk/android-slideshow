@@ -124,10 +124,6 @@
 	<string name="pref_description_image_details_during">แสดงข้อมูลของรูปภาพซ้อนบนรูปภาพขณะที่กำลังแสดงสไลด์
 	</string>
 
-	<string name="pref_title_stop_on_complete">หยุดสไลด์หลังจากที่แสดงรูป</string>
-	<string name="pref_description_stop_on_complete">หยุดสไลด์หลังจากที่แสดงรูปทุกรูป
-	</string>
-
 	<string name="pref_title_reverse_order">แสดงสไลด์กลับด้าน</string>
 	<string name="pref_description_reverse_order">แสดงรูปภาพในสไลด์จากหลังไปหน้า
 	</string>

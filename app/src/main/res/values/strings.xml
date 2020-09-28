@@ -40,6 +40,7 @@
 
 	<string name="toast_paused">Paused</string>
 	<string name="toast_resumed">Resumed</string>
+	<string name="toast_completed">Completed</string>
 
 	<string name="toast_input_blocked">Input blocked. Long press to enable</string>
 	<string name="toast_input_allowed">Input enabled</string>
@@ -159,10 +160,23 @@
 		slideshow is running.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Stop on complete</string>
-	<string name="pref_description_stop_on_complete">Stop the slideshow once every image has been
-		shown.
-	</string>
+	<string name="pref_title_action_on_complete">Behaviour when slideshow is complete</string>
+	<array name="pref_list_title_action_on_complete">
+		<item>Restart</item>
+		<item>Stop</item>
+		<item>Pause</item>
+	</array>
+	<array name="pref_list_description_action_on_complete">
+		<item>Restart the slideshow from the beginning</item>
+		<item>Stop the slideshow</item>
+		<item>Pause the slideshow</item>
+	</array>
+	<string name="pref_default_value_action_on_complete">Restart</string>
+	<array name="pref_list_values_action_on_complete">
+		<item>Restart</item>
+		<item>Stop</item>
+		<item>Pause</item>
+	</array>
 
 	<string name="pref_title_reverse_order">Reverse order</string>
 	<string name="pref_description_reverse_order">Display the images in the slideshow in reverse

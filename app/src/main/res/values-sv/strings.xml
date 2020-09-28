@@ -130,10 +130,6 @@
 	<string name="pref_title_image_details_during">Visa bilddetaljer under bildspel</string>
 	<string name="pref_description_image_details_during">Visa bildens detaljer ovanpå bilden medans bildspelet rullar.</string>
 
-	<string name="pref_title_stop_on_complete">Stoppa efter sista bilden</string>
-	<string name="pref_description_stop_on_complete">Stoppa bildspelet efter att alla bilder har visats en gång.
-	</string>
-
 	<string name="pref_title_reverse_order">Omvänd ordning</string>
 	<string name="pref_description_reverse_order">Visa bildspelet i omvänd ordning.
 	</string>

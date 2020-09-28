@@ -92,11 +92,6 @@
 	<string name="pref_description_image_details">スライドショー中の画像の詳細をオーバーレイします。
 	</string>
 
-	<string name="pref_title_stop_on_complete">完了時に停止</string>
-	<string name="pref_description_stop_on_complete">すべての画像を表示したら、
-		スライドショーを停止します。
-	</string>
-
 	<string name="pref_title_reverse_order">逆順</string>
 	<string name="pref_description_reverse_order">スライドショーの画像を
 		逆順に表示します。

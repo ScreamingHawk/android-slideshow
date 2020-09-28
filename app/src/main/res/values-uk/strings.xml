@@ -85,9 +85,6 @@
     <string name="pref_title_image_details">Відобразити інформацію зображення</string>
     <string name="pref_description_image_details">Відобразити інформацію зображення під час слайд-шоу.</string>
 
-    <string name="pref_title_stop_on_complete">Зупинити по завершенню</string>
-    <string name="pref_description_stop_on_complete">Зупинити слайд-шоу після того як всі зображення будуть показани.</string>
-
     <string name="pref_title_reverse_order">Зворотня послідовність</string>
     <string name="pref_description_reverse_order">Відобразити зображення під час слайд-шоу в зворотній послідовності.</string>
 

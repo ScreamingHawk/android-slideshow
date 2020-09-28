@@ -29,7 +29,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 	 * A preference value change listener that updates the preference's summary
 	 * to reflect its new value.
 	 */
-	private final static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+	private final static Preference.OnPreferenceChangeListener listSummaryListener = new Preference.OnPreferenceChangeListener() {
 		@Override
 		public boolean onPreferenceChange(Preference preference, Object value) {
 			String stringValue = value.toString();
@@ -108,8 +108,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 			addPreferencesFromResource(R.xml.preferences);
 			setHasOptionsMenu(true);
 
-			final SwitchPreference reloadFolderPref = (SwitchPreference)findPreference("reload_folder");
-
 			final SwitchPreference reverseOrderPref = (SwitchPreference)findPreference("reverse_order");
 			final SwitchPreference randomOrderPref = (SwitchPreference)findPreference("random_order");
 			// Enabling reverse disables random
@@ -174,12 +172,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 				}
 			});
 
-			// Bind the summaries of EditText/List/Dialog/Ringtone preferences
-			// to their values. When their values change, their summaries are
-			// updated to reflect the new value, per the Android Design
-			// guidelines.
-			//bindPreferenceSummaryToValue(findPreference("example_text"));
-			//bindPreferenceSummaryToValue(findPreference("example_list"));
+			// Bind the summaries of List Preferences
+			ListPreference onCompletePref = (ListPreference)findPreference("action_on_complete");
+			onCompletePref.setOnPreferenceChangeListener(listSummaryListener);
+			listSummaryListener.onPreferenceChange(onCompletePref, onCompletePref.getValue());
 		}
 
 		@Override

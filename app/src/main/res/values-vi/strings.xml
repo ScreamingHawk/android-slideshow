@@ -132,10 +132,6 @@
 	<string name="pref_description_image_details_during">Phủ chi tiết của hình ảnh khi tạm dừng trình chiếu đang chạy.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Dừng khi hoàn thành</string>
-	<string name="pref_description_stop_on_complete">Dừng trình chiếu khi tất cả hình ảnh đã được chạy.
-	</string>
-
 	<string name="pref_title_reverse_order">Đảo ngược trật tự</string>
 	<string name="pref_description_reverse_order">Chạy hình ảnh trong trình chiếu theo trật tự đảo ngược.
 	</string>

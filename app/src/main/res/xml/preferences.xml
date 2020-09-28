@@ -92,11 +92,14 @@
 		android:summary="@string/pref_description_image_details_during"
 		android:title="@string/pref_title_image_details_during"/>
 
-	<SwitchPreference
-		android:defaultValue="false"
-		android:key="stop_on_complete"
-		android:summary="@string/pref_description_stop_on_complete"
-		android:title="@string/pref_title_stop_on_complete"/>
+	<ListPreference
+		android:defaultValue="@string/pref_default_value_action_on_complete"
+		android:entries="@array/pref_list_title_action_on_complete"
+		android:entryValues="@array/pref_list_values_action_on_complete"
+		android:key="action_on_complete"
+		android:negativeButtonText="@null"
+		android:positiveButtonText="@null"
+		android:title="@string/pref_title_action_on_complete" />
 
 	<SwitchPreference
 		android:defaultValue="false"

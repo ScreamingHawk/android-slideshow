@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Collections;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
@@ -56,6 +57,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private boolean inPipMode = false;
 
 	private static boolean STOP_ON_COMPLETE;
+	private static boolean PAUSE_ON_COMPLETE;
 	private static boolean REVERSE_ORDER;
 	private static boolean RANDOM_ORDER;
 	private static boolean REFRESH_FOLDER;
@@ -113,10 +115,17 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private final Runnable mSlideshowRunnable = new Runnable() {
 		@Override
 		public void run() {
-			followingImage(false);
-			if (STOP_ON_COMPLETE && imagePosition == firstImagePosition && !inPipMode) {
-				show();
+			int nextPos = followingImagePosition();
+			if (nextPos == firstImagePosition) {
+				if (STOP_ON_COMPLETE && !inPipMode) {
+					show();
+				} else if (PAUSE_ON_COMPLETE) {
+					stopSlideshow();
+					Toast.makeText(ImageActivity.this, R.string.toast_completed, Toast.LENGTH_SHORT).show();
+					return;
+				}
 			}
+			nextImage(nextPos, false);
 		}
 	};
 
@@ -430,8 +439,6 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		Log.d(TAG, "Loaded preferences:");
 		SLIDESHOW_DELAY = (int) (Float.parseFloat(preferences.getString("slide_delay", "3")) * 1000);
 		Log.d(TAG, String.format("SLIDESHOW_DELAY: %d", SLIDESHOW_DELAY));
-		STOP_ON_COMPLETE = preferences.getBoolean("stop_on_complete", false);
-		Log.d(TAG, String.format("STOP_ON_COMPLETE: %b", STOP_ON_COMPLETE));
 		REVERSE_ORDER = preferences.getBoolean("reverse_order", false);
 		Log.d(TAG, String.format("REVERSE_ORDER: %b", REVERSE_ORDER));
 		RANDOM_ORDER = preferences.getBoolean("random_order", false);
@@ -448,6 +455,13 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		Log.d(TAG, String.format("PRELOAD_IMAGES: %b", PRELOAD_IMAGES));
 		DELETE_WARNING = preferences.getBoolean("delete_warning", true);
 		Log.d(TAG, String.format("DELETE_WARNING: %b", DELETE_WARNING));
+		// List prefs
+		int action_on_complete = Arrays.asList(getResources().getStringArray(R.array.pref_list_values_action_on_complete)).indexOf(
+				preferences.getString("action_on_complete", getResources().getString(R.string.pref_default_value_action_on_complete)));
+		STOP_ON_COMPLETE = action_on_complete == 1;
+		Log.d(TAG, String.format("STOP_ON_COMPLETE: %b", STOP_ON_COMPLETE));
+		PAUSE_ON_COMPLETE = action_on_complete == 2;
+		Log.d(TAG, String.format("STOP_ON_COMPLETE: %b", PAUSE_ON_COMPLETE));
 
 		// Show/Hide the image details that are shown during pause
 		if (!IMAGE_DETAILS){
@@ -474,13 +488,19 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	 * Show the next image.
 	 */
 	private void nextImage(boolean forwards, boolean preload){
+		nextImage(nextImagePosition(forwards), preload);
+	}
+
+	/**
+	 * Show the next image.
+	 */
+	private void nextImage(int newPosition, boolean preload){
 		if (preload && !PRELOAD_IMAGES){
 			// Stop
 			return;
 		}
 
 		int current = imagePosition;
-		int newPosition = imagePosition;
 		if (REFRESH_FOLDER && newPosition == 0) { // Time to reload, easy base case
 			fileList = new FileItemHelper(this).getFileList(currentPath, false, getIntent().getStringExtra("imagePath") == null);
 			if (RANDOM_ORDER){
@@ -488,20 +508,11 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			}
 		}
 
-		do {
-			newPosition += forwards ? 1 : -1;
-			if (newPosition < 0){
-				newPosition = fileList.size() - 1;
-			}
-			if (newPosition >= fileList.size()){
-				newPosition = 0;
-			}
-			if (newPosition == current){
-				// Looped. Exit
-				onBackPressed();
-				return;
-			}
-		} while (!testPositionIsImage(newPosition));
+		if (newPosition == current){
+			// Looped. Exit
+			onBackPressed();
+			return;
+		}
 		if (!preload){
 			imagePosition = newPosition;
 		}
@@ -514,6 +525,32 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	 */
 	private void followingImage(boolean preload){
 		nextImage(!REVERSE_ORDER, preload);
+	}
+
+	/**
+	 * Gets the position of the next image.
+	 */
+	private int nextImagePosition(boolean forwards){
+		int newPosition = imagePosition;
+
+		do {
+			newPosition += forwards ? 1 : -1;
+			if (newPosition < 0){
+				newPosition = fileList.size() - 1;
+			}
+			if (newPosition >= fileList.size()){
+				newPosition = 0;
+			}
+		} while (!testPositionIsImage(newPosition));
+		return newPosition;
+	}
+
+	/**
+	 * Gets the position of the following image.
+	 * This method handles whether or not the slideshow is in reverse order.
+	 */
+	private int followingImagePosition(){
+		return nextImagePosition(!REVERSE_ORDER);
 	}
 
 	/**

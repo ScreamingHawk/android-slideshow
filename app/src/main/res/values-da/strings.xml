@@ -78,10 +78,6 @@
 	<string name="pref_description_image_details">Overlejre billededetaljer under slideshowet.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Stop efter sidste billede</string>
-	<string name="pref_description_stop_on_complete">Stop slideshowet når alle billeder er vist.
-	</string>
-
 	<string name="pref_title_reverse_order">Omvendt rækkefølge</string>
 	<string name="pref_description_reverse_order">Vis billederne i omvendt rækkefølge.
 	</string>

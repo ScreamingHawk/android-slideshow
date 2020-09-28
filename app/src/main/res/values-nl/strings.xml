@@ -131,11 +131,6 @@
 	<string name="pref_description_image_details">Toon de beeld details tijdens de diavoorstelling.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Stop bij einde</string>
-	<string name="pref_description_stop_on_complete">Stop de diavoorstelling wanneer alle beelden zijn
-		getoond.
-	</string>
-
 	<string name="pref_title_reverse_order">Omgekeerde volgorde</string>
 	<string name="pref_description_reverse_order">Toon de beelden van de diavoorstelling in omgekeerde
 		volgorde.

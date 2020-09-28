@@ -81,10 +81,6 @@
 	<string name="pref_description_image_details">Sur-imprimer les détails de l\'image pendant la présentation.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Stopper quand fini</string>
-	<string name="pref_description_stop_on_complete">Stopper la présentation après que la denière image ait été montrée.
-	</string>
-
 	<string name="pref_title_reverse_order">Inverser</string>
 	<string name="pref_description_reverse_order">Afficher les images dans l\'ordre inverse.
 	</string>

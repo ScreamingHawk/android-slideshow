@@ -113,10 +113,6 @@
 	<string name="pref_description_image_details_during">放映时时在图片上方显示照片属性。
 	</string>
 
-	<string name="pref_title_stop_on_complete">放映结束后停止</string>
-	<string name="pref_description_stop_on_complete">放映完所有幻灯片后停止。
-	</string>
-
 	<string name="pref_title_reverse_order">倒序</string>
 	<string name="pref_description_reverse_order">倒序播放幻灯片的照片。
 	</string>

@@ -134,11 +134,6 @@
 		presentación.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Cerrar al terminar</string>
-	<string name="pref_description_stop_on_complete">Parar la presentación una vez que todas las
-		imágenes hayan sido mostradas.
-	</string>
-
 	<string name="pref_title_reverse_order">Orden inverso</string>
 	<string name="pref_description_reverse_order">Mostrar las imágenes en la presentación en orden
 		inverso.

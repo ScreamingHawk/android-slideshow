@@ -96,11 +96,6 @@
 	<string name="pref_description_image_details">Sobrepõe os detalhes da imagem durante o slideshow.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Parar ao completar</string>
-	<string name="pref_description_stop_on_complete">Para o slideshow assim que todas as imagens são
-		mostradas
-	</string>
-
 	<string name="pref_title_reverse_order">Ordem Reversa</string>
 	<string name="pref_description_reverse_order">Mostra as imagens no slideshow na ordem reversa.
 	</string>

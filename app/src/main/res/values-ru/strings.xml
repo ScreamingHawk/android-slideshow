@@ -130,9 +130,6 @@
     <string name="pref_title_image_details_during">Показывать свойства изображения во время слайдшоу</string>
     <string name="pref_description_image_details_during">Перекрывать свойства изображения во время показа слайдшоу</string>
 
-    <string name="pref_title_stop_on_complete">Остановить по завершению</string>
-    <string name="pref_description_stop_on_complete">Остановить слайд-шоу после того как все изображения будут показаны.</string>
-
     <string name="pref_title_reverse_order">Обратный порядок</string>
     <string name="pref_description_reverse_order">Отобразить изображения во время слайд-шоу в обратном порядке.</string>
 

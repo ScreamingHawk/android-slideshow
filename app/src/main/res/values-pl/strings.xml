@@ -153,10 +153,6 @@
 		pokaz slajdów jest uruchomiony..
 	</string>
 
-	<string name="pref_title_stop_on_complete">Zatrzymaj po zakończeniu</string>
-	<string name="pref_description_stop_on_complete">>Zatrzymaj pokaz slajdów po pokazaniu wszystkich zdjęć.
-	</string>
-
 	<string name="pref_title_reverse_order">Odwrotna kolejność</string>
 	<string name="pref_description_reverse_order">Wyświetl obrazy w pokazie slajdów w odwrotnej kolejności.
 	</string>

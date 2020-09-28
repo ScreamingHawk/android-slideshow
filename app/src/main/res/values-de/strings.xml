@@ -130,10 +130,6 @@
 	<string name="pref_description_image_details">Die Bilddetails während der Diashow überlagert anzeigen.
 	</string>
 
-	<string name="pref_title_stop_on_complete">Aufhören, wenn fertig</string>
-	<string name="pref_description_stop_on_complete">Beendet die Diashow, sobald jedes Bild gezeigt wurde.
-	</string>
-
 	<string name="pref_title_reverse_order">Umgekehrte Reihenfolge</string>
 	<string name="pref_description_reverse_order">Zeigt die Bilder in der Diashow in umgekehrter Reihenfolge an.
 	</string>
