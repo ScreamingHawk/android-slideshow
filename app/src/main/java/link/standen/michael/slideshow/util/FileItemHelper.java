@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import java.io.File;
