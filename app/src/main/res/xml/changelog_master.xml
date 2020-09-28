@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release version="2.9.0" versioncode="51">
+		<change>Add pause on complete feature</change>
+		<change>Update support libraries</change>
+	</release>
 	<release version="2.8.1" versioncode="50">
 		<change>Add Ukrainian translation. Thanks Yevhen Badorov!</change>
 		<change>Update Russian translation. Thanks again Yevhen Badorov!</change>
