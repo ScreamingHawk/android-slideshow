@@ -9,11 +9,11 @@ A simple slideshow application for your mobile.
 </a>
 
 ## Description
-Now you can view files on your devices with ease!
+Now you can view files on your devices with ease!!!
 
 Quickly browse through your file system for the directory you want to view, click an image and the slideshow will automatically begin.
 
-Great for showing off those vacation photos without having to scroll.
+Awesome for showing off those vacation photos without having to scroll.
 
 ## Controls
 
