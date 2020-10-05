@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
 	<!ENTITY appname "Slideshow">
 	<!ENTITY author "Michael Standen">
@@ -6,118 +6,191 @@
 
 <resources>
 	<string name="app_name">&appname;</string>
-	<string name="action_settings">设定</string>
+	<string name="action_settings">设置</string>
 	<string name="action_credits">关于</string>
+	<string name="action_change_log">变更日志</string>
+	<string name="action_controls">操控</string>
+	<string name="action_picture_in_picture">画中画</string>
+
+	<string name="no_picture_in_picture">你的设备不支持画中画</string>
 
 	<!-- List -->
-	<string name="inaccessible">(无法通过)</string>
-	<string name="go_home_folder">有问题吗？点击返回首页</string>
-	<string name="play_folder">在此运行幻灯秀</string>
+	<string name="inaccessible">(无法访问)</string>
+	<string name="go_home_folder">卡住了？点击前往主页</string>
+	<string name="play_folder">从此处播放幻灯片</string>
 
 	<!-- Slideshow -->
 	<string name="title_activity_image">&appname;</string>
 
 	<string name="delete_button">删除</string>
-	<string name="delete_dialog_title">删除照片</string>
-	<string name="delete_dialog_message">确定删除？</string>
-	<string name="image_deleted">照片已被删除</string>
-	<string name="image_not_deleted">照片未能删除</string>
+	<string name="delete_dialog_title">删除图片</string>
+	<string name="delete_dialog_message">你确定吗？</string>
+	<string name="image_deleted">图片已删除</string>
+	<string name="image_not_deleted">无法删除图片</string>
 
 	<string name="share_button">分享</string>
-	<string name="share_via">通过&#8230;分享</string>
+	<string name="share_via">分享 通过&#8230;</string>
 
-	<string name="image_detail_dimensions">尺寸: %1$dx%2$d</string>
-	<string name="image_detail_size">文件大小: %1$s</string>
-	<string name="image_detail_modified">文件修改: %1$s</string>
-        <string name="toast_no_files">无文件显示</string>
+	<string name="image_detail_dimensions">尺寸：%1$dx%2$d</string>
+	<string name="image_detail_size">文件大小： %1$s</string>
+	<string name="image_detail_modified">修改时间： %1$s</string>
 
-	<string name="long_loading_warning">%1$s 加载时间过长.</string>
-	<string name="long_loading_skipping">%1$s 加载时间过长. 跳过.</string>
+	<string name="toast_error_loading_image">加载图像期间发生错误</string>
+	<string name="toast_no_files">没有文件可显示</string>
+
+	<string name="toast_paused">已暂停</string>
+	<string name="toast_resumed">已恢复</string>
+	<string name="toast_completed">已完成</string>
+
+	<string name="toast_input_blocked">输入受阻。长按启用。</string>
+	<string name="toast_input_allowed">已启用输入</string>
+
+	<string name="long_loading_warning">加载 %1$s 花了很长时间</string>
+	<string name="long_loading_skipping">加载 %1$s 花了很长时间。正跳过。</string>
 	<string name="long_loading_skip_action">跳过</string>
 
+	<!-- Controls -->
+	<string name="controls_title">&appname; 操控</string>
+	<string name="controls_content1">观看幻灯片时，有两三个隐藏的操作手势。</string>
+	<string name="controls_content2">*左/右滑动*更改为下一张/上一张图片</string>
+	<string name="controls_content3">*单击*开始/停止幻灯放映</string>
+	<string name="controls_content5">*双击*暂停幻灯片放映而不显示详细信息面板</string>
+	<string name="controls_content4">*在幻灯片放映期间长按*禁用用户输入。这对防止你的奶奶/外婆在给设备除灰时不小心停止幻灯放映来说很有用。</string>
+
 	<!-- Image descriptions -->
-	<string name="image_description">照片</string>
-	<string name="logo_description">Logo</string>
+	<string name="image_description">图片</string>
+	<string name="logo_description">标识</string>
 
 	<!-- Credits -->
 	<string name="title_activity_credits">关于 &appname;</string>
-	<string name="credits_creator">由 <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">幻灯秀是一个在手机上看照片的简洁的应用。</string>
-	<string name="credits_content2">没有浮夸的装饰，本应用是市面上最简洁的幻灯片应用。</string>
-	<string name="credits_content3">在<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>
-		上你可以查看源代码，报告故障，和提出建议。
+	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_content1">&appname; 是一款查看你手机上图片的简单应用
+	程序</string>
+	<string name="credits_content2">没有花哨的功能, 此应用程序是市面上最简单的图片幻灯浏览
+	应用</string>
+	<string name="credits_content3">你可以在<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>上
+	查看源代码、记录错误或请求功能。
 	</string>
-	<string name="credits_content4">这个应用软件完全免费且开源；遵循
-		<a href="https://tldrlegal.com/license/mit-license">MIT 许可证</a>。
+	<string name="credits_content4">此应用程序完全免费和开源，并在<a href="https://tldrlegal.com/license/mit-license">MIT 许可</a>下授权。
 	</string>
-	<string name="credits_content5">感谢<a href="https://github.com/psyanite">Yan Tsui</a>
-		对测试和设计的贡献&appname;icon.
+	<string name="credits_content5">感谢 <a href="https://github.com/psyanite">Yan Tsui</a>
+		测试并设计了&appname; 的图标。
 	</string>
-
-	<string name="credits_content6"><a href="https://github.com/wardbradt">Ward Bradt</a>
-		把&appname;从英文翻译成中文。&appname;的此版本翻译由<a href="https://github.com/Liuxi-G">Liuxi-G</a>
-		完成。
+	<string name="credits_content6"><a href="https://github.com/wardbradt">Ward Bradt</a>负责初版
+	简中翻译，<a href="https://github.com/Liuxi-G">Liuxi-G</a>进行了后续完善。
 	</string>
 
 	<!-- Settings -->
 
 	<string name="title_activity_settings">设置</string>
 
-	<string name="pref_title_show_hidden_files">展示隐藏文件</string>
-	<string name="pref_description_show_hidden_files">展示被其他文件管理器隐藏的文件。</string>
-
-	<string name="pref_title_show_thumbnails">展示缩略图</string>
-	<string name="pref_description_show_thumbnails">展示缩略图。关闭此功能将提升软件速度，但你将无法知道文件是否为图片。
+	<string name="pref_title_show_hidden_files">显示隐藏文件</string>
+	<string name="pref_description_show_hidden_files">展示被其他文件管理器
+	隐藏的文件
 	</string>
 
-	<string name="pref_title_remember_location">在最近浏览位置开始</string>
-	<string name="pref_description_remember_location">当 &appname; 打开时，将在最近浏览位置开始。
+	<string name="pref_title_show_thumbnails">显示缩略图</string>
+	<string name="pref_description_show_thumbnails">展示缩略图。关闭此选项会
+		提升性能，但是，你将无法看到哪些文件是图像，哪些
+		不是。
 	</string>
 
-        <string name="pref_title_auto_start">自动开始</string>
-	<string name="pref_description_auto_start">打开时, &appname; 将生成并播放一个从最近浏览位置开始的幻灯片。
+	<string name="pref_title_remember_location">从上一个位置处启动</string>
+	<string name="pref_description_remember_location">打开后, &appname; 将从幻灯片放映
+	上次使用的位置启动。
 	</string>
 
-	<string name="pref_title_play_from_here">激活"从这里开始"键</string>
-	<string name="pref_description_play_from_here">在文件的列表显示的"从这里开始"键可在当前文件夹及其子文件夹生成并播放幻灯片。
-		基于可能的负面影响，预设禁用这个功能。
+	<string name="pref_title_auto_start">自动启动</string>
+	<string name="pref_description_auto_start">打开后, &appname; 将从所展示的最后一张图片那里开始
+	幻灯放映。
 	</string>
 
-	<string name="pref_title_use_device_root">开启GIF格式支持</string>
-	<string name="pref_description_use_device_root">前往设备的根目录。将会获得访问手机所有文件权限。包括访问外部存储比如存储卡。(需要有根目录正确工作。）
+	<string name="pref_title_play_from_here">启用 "从这里放映" 按钮</string>
+	<string name="pref_description_play_from_here">"从这里放映" 按钮出现在文件列表
+		中，并允许你从当前文件夹，包括所有子文件夹，开始幻灯片演示。
+		默认情况下此功能处于禁用状态，因为它可能会对性能产生负面影响。
 	</string>
 
-        <string name="pref_title_slide_delay">展示时间</string>
-	<string name="pref_description_slide_delay">点击修改每张图片展示的时间.
+	<string name="pref_title_enable_gif_support">启用GIF支持</string>
+	<string name="pref_description_enable_gif_support">出现GIF文件时，自动播放它们。
+		需要 Glide 图片加载库。
+	</string>
+
+	<string name="pref_title_use_device_root">使用设备根目录</string>
+	<string name="pref_description_use_device_root">允许导航到设备的
+		根目录。这将允许访问设备上任何地方的文件，包括已安装的存储
+		如SD卡。注意:可能需要一部已获取根权限的设备才能正常工作。
+	</string>
+
+	<string name="pref_title_slide_delay">幻灯延迟</string>
+	<string name="pref_description_slide_delay">点击更改切换到下一张
+		图片前，上一张图片展示应持续多少秒。
 	</string>
 
 	<string name="pref_title_image_strategy">使用Glide加载图片</string>
-	<string name="pref_description_image_strategy">使用Glide加载图片. Glide支持其它功能, 如预加载GIF图像。 禁用该功能将使用旧的用户设置，在有些机型上可能会提升性能。
+	<string name="pref_description_image_strategy">使用Glide加载图片。Glide 支持
+		其他功能，比如预加载和GIF支持。关闭此选项将启用旧的图片自定义加载
+		策略。它在一些设备上有更好的性能。
 	</string>
 
-	<string name="pref_title_preload_images">预加载图像</string>
-	<string name="pref_description_preload_images">在当前幻灯片放映时加载下一张图像。
-		禁用该功能在有些机型上可能会提升性能 ，需要开启Glide图像加载功能。
+	<string name="pref_title_preload_images">预加载图片</string>
+	<string name="pref_description_preload_images">在当前幻灯放映期间加载下一张图片。
+		禁用此功能可能会提高某些设备的性能。需要Glide图像加载。
+	</string>
+
+	<string name="pref_title_auto_rotate_dimen">按尺寸自动旋转</string>
+	<string name="pref_description_auto_rotate_dimen">当图片宽度大于高度时，
+		自动旋转图片到横向模式。
 	</string>
 
 	<string name="pref_title_skip_long_load">跳过加载时间过长的图片</string>
-	<string name="pref_description_skip_long_load">跳过加载时间过长的图片。
-              跳过是将会在屏幕上显示提醒。
+	<string name="pref_description_skip_long_load">在幻灯放映期间，跳过那些加载时间
+		过长的图片。 当这种情况发生时，应用将显示一个通知。
 	</string>
 
-	<string name="pref_title_image_details">显示照片的属性</string>
-	<string name="pref_description_image_details">暂停时在图片上方显示照片属性。
+	<string name="pref_title_image_details">显示图片详情</string>
+	<string name="pref_description_image_details">幻灯放映暂停时在图片上方显示详情。
 	</string>
 
-	<string name="pref_title_image_details_during">放映幻灯片是显示照片属性</string>
-	<string name="pref_description_image_details_during">放映时时在图片上方显示照片属性。
+	<string name="pref_title_image_details_during">幻灯放映期间显示图片详情</string>
+	<string name="pref_description_image_details_during">幻灯放映运行期间在图片
+		上方显示详情。
 	</string>
 
-	<string name="pref_title_reverse_order">倒序</string>
-	<string name="pref_description_reverse_order">倒序播放幻灯片的照片。
+	<string name="pref_title_action_on_complete">幻灯放映结束时行为</string>
+	<array name="pref_list_title_action_on_complete">
+		<item>重启</item>
+		<item>停止</item>
+		<item>暂停</item>
+	</array>
+	<array name="pref_list_description_action_on_complete">
+		<item>从头开始重新启动幻灯放映</item>
+		<item>停止幻灯放映</item>
+		<item>暂停幻灯放映</item>
+	</array>
+	<string name="pref_default_value_action_on_complete">重启</string>
+	<array name="pref_list_values_action_on_complete">
+		<item>重启</item>
+		<item>停止</item>
+		<item>暂停</item>
+	</array>
+
+	<string name="pref_title_reverse_order">逆序</string>
+	<string name="pref_description_reverse_order">倒序显示幻灯放映中的
+		图片。
+	</string>
+
+	<string name="pref_title_refresh_folder">刷新文件夹</string>
+	<string name="pref_description_refresh_folder">整场放映期间每次刷新文件夹。
 	</string>
 
 	<string name="pref_title_random_order">随机顺序</string>
-	<string name="pref_description_random_order">随机播放幻灯片的图片。
+	<string name="pref_description_random_order">以随机顺序展示放映中的
+		图片。
+	</string>
+
+	<string name="pref_title_delete_warning">删除前警告</string>
+	<string name="pref_description_delete_warning">删除图片前展示一个警告弹窗。
+		禁用此功能，风险自负。
 	</string>
 </resources>
