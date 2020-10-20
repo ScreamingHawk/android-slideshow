@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY appname "Slideshow">
+    <!ENTITY author "Michael Standen">
+    ]>
+
+<resources>
+    <string name="app_name">&appname;</string>
+    <string name="action_settings">Ayarlar</string>
+    <string name="action_credits">Hakkında</string>
+    <string name="action_change_log">Değişlik Kaydı</string>
+    <string name="action_controls">Kontroller</string>
+    <string name="action_picture_in_picture">Küçük Pencere</string>
+
+    <string name="no_picture_in_picture">Küçük pencere özelliği cihazınız tarafından desteklenmemektedir.</string>
+
+    <!-- List -->
+    <string name="inaccessible">(erişim dışı)</string>
+    <string name="go_home_folder">Takıldınız mı? Ana sayfaya dönmek için tıklayınız</string>
+    <string name="play_folder">Slayt gösterisini buradan başlatın</string>
+
+    <!-- Slideshow -->
+    <string name="title_activity_image">&appname;</string>
+
+    <string name="delete_button">Sil</string>
+    <string name="delete_dialog_title">Resmi sil</string>
+    <string name="delete_dialog_message">Emin misin?</string>
+    <string name="image_deleted">Resim silindi</string>
+    <string name="image_not_deleted">Resim silinemedi</string>
+
+    <string name="share_button">Paylaş</string>
+    <string name="share_via">&#8230; ile paylaş</string>
+
+    <string name="image_detail_dimensions">Boyutlar: %1$dx%2$d</string>
+    <string name="image_detail_size">Dosya Boyutu: %1$s</string>
+    <string name="image_detail_modified">Değiştirildi: %1$s</string>
+
+    <string name="toast_error_loading_image">Resim yüklenirken hata ile karşılaşıldı</string>
+    <string name="toast_no_files">Gösterilecek bir dosya bulunmamaktadır</string>
+
+    <string name="toast_paused">Durduruldu</string>
+    <string name="toast_resumed">Yeniden başlatıldı</string>
+    <string name="toast_completed">Tamamlandı</string>
+
+    <string name="toast_input_blocked">Kontroller kilitlendi. Basılı tutarak açın</string>
+    <string name="toast_input_allowed">Kontroller açıldı</string>
+
+    <string name="long_loading_warning">%1$s yüklemesi uzun zaman alıyor.</string>
+    <string name="long_loading_skipping">%1$s yüklemesi uzun zaman alıyor. Atlanıyor.</string>
+    <string name="long_loading_skip_action">Atla</string>
+
+    <!-- Controls -->
+    <string name="controls_title">&appname; Kontroller</string>
+    <string name="controls_content1"> Slayt gösterisi sırasında kullanılabilecek gizli kontroller
+        bulunmaktadır</string>
+    <string name="controls_content2">Sonraki / önceki görsele geçmek için *Sola / sağa kaydır*.
+    </string>
+    <string name="controls_content3">Slayt gösterisini başlatmak / durdurmak için *Bir kere dokun*.
+    </string>
+    <string name="controls_content5">Ayrıntı panelini göstermeden slayt gösterisini durdurmak içn
+        *Çift dokun*.</string>
+    <string name="controls_content4">Kullanıcı kontrolünü devre dışı bırakmak için *Slayt gösterisi
+        sırasında uzunca dokun*. Babaannenizin cihazın tozunu aldığı sırada yanlışlıkla slayt
+        gösterisini durdurmaması için kullanışlı bir seçenek.</string>
+
+    <!-- Image descriptions -->
+    <string name="image_description">Resim</string>
+    <string name="logo_description">Logo</string>
+
+    <!-- Credits -->
+    <string name="title_activity_credits">Hakkında &appname;</string>
+    <string name="credits_creator"><a href="https://michael.standen.link">&author;</a> tarafından
+    </string>
+    <string name="credits_content1">&appname; Telefonunuzdaki resimleri görüntülemek için kolay ve
+        kullanışlı bir uygulama </string>
+    <string name="credits_content2">Gereksiz karmaşıklıktan uzak bu uygulama piyasadaki en kolay ve
+        kullanışlı slayt gösterisi uygulamasıdır.
+	</string>
+    <string name="credits_content3">Buradan kaynak kodunu görebilir, hata bildirebilir ya da yeni
+        özellik talep edebilirsiniz:
+		<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>.
+	</string>
+    <string name="credits_content4">Bu uygulama tamamen ücretsiz olup, açık kaynaklıdır;
+        <a href="https://tldrlegal.com/license/mit-license">MIT lisansı ile lisanslanmıştır.</a>.
+	</string>
+    <string name="credits_content5">Teşekkürler <a href="https://github.com/psyanite">Yan Tsui</a>
+		 &appname; ikonunun test ve tasarımı için.
+	</string>
+    <string name="credits_content6">&appname; çevirisi
+		<a href="https://michael.standen.link">&author;</a> tarafından size ulaştırılmıştır.
+	</string>
+
+    <!-- Settings -->
+
+    <string name="title_activity_settings">Ayarlar</string>
+
+    <string name="pref_title_show_hidden_files">Gizli dosyaları göster</string>
+    <string name="pref_description_show_hidden_files">Diğer dosya yöneticileri tarafından gizlenmiş
+        dosyaları göster
+	</string>
+
+    <string name="pref_title_show_thumbnails">Küçük resimleri göster</string>
+    <string name="pref_description_show_thumbnails">Küçük resimleri gösterir. Bu seçeneği kapatmak
+        performansı arttırır, ancak bu durumda hangi dosyaların resim olup olmadığı görülemez.
+	</string>
+
+    <string name="pref_title_remember_location">Son kullanılan konumda başlat</string>
+    <string name="pref_description_remember_location">Bu seçenek etkinse, &appname; slayt
+        gösterisini kullanılan son dosya konumunda başlatır.
+	</string>
+
+    <string name="pref_title_auto_start">Otomatik başlat</string>
+    <string name="pref_description_auto_start">Bu seçenek etkinse, &appname; slayt gösterisini
+        gösterilen son resimden itibaren başlatır.
+	</string>
+
+    <string name="pref_title_play_from_here">"Buradan başlat" düğmesini etkinleştir</string>
+    <string name="pref_description_play_from_here">"Buradan başlat" düğmesi dosya listesinde bulunur
+        ve o anki klasör içinde, tüm alt klasörler dahil, slayt gösterisinin başlatılmasını sağlar.
+        Performansa olumsuz etki oluşturabilmesi sebebiyle bu seçenek başlangıçta kapalı durumdadır.
+	</string>
+
+    <string name="pref_title_enable_gif_support">GIF desteğini etkinleştir</string>
+    <string name="pref_description_enable_gif_support">GIF dosyalarını otomatik olarak oynatır.
+		Glide görüntü yüklemesini gerektirir.
+	</string>
+
+    <string name="pref_title_use_device_root">Cihaz kök klasörünü kullan</string>
+    <string name="pref_description_use_device_root">Cihazın kök klasörüne ulaşımı etkinleştirir.
+        Cihazın herhangi bir klasöründeki dosyalara, SD kart gibi dışarıdan takılı bellekler dahil,
+        erişimi mümkün hale getirir. Not: Düzgün çalışabilmesi için "kök" hale getirilmiş bir cihaz
+        gerekebilir.
+	</string>
+
+    <string name="pref_title_slide_delay">Slayt süresi</string>
+    <string name="pref_description_slide_delay">Sıradaki diğer resme geçmeden önce, bir resmin
+        ekranda gösterim süresini (saniye) değiştirmek için dokununuz.
+	</string>
+
+    <string name="pref_title_image_strategy">Resimleri yüklemek için Glide kullan</string>
+    <string name="pref_description_image_strategy">Resimleri yüklemek için Glide kullanır. Glide
+        ön yükleme ve GIF desteği gibi diğer özelliklere sahiptir. Bu seçeneği kapatmak eski
+        görsel yükleme stratejisinin kullanılmasını sağlar. Bu durum bazı cihazlarda daha iyi
+        performans verebilmektedir.
+	</string>
+
+    <string name="pref_title_preload_images">Resimleri önceden yükle</string>
+    <string name="pref_description_preload_images">Oynatılan slayt sırasında sonraki resimleri
+        yükler. Bu seçeneği kapatmak bazı cihazlarda performans artışı sağlayabiler. Glide görüntü
+        yüklemesi seçeneğinin açık olmasını gerektirir.
+	</string>
+
+    <string name="pref_title_auto_rotate_dimen">Boyutlara göre otomatik döndür</string>
+    <string name="pref_description_auto_rotate_dimen">Resmin eni boyundan büyük olduğunda otomatik
+        olarak yatay modda gösterir.
+	</string>
+
+    <string name="pref_title_skip_long_load">Yüklemesi uzun süren resimleri atla</string>
+    <string name="pref_description_skip_long_load">Slayt gösterisi sırasında yüklemesi çok uzun
+        süren resimleri atla. Bir resim atlandığında uyarı mesajı görüntülenir.
+	</string>
+
+    <string name="pref_title_image_details">Resim ayrıntılarını göster</string>
+    <string name="pref_description_image_details">Slayt gösterisi durdurulduğunda resim ile ilgili
+        ayrıntılı bilgileri gösterir.
+	</string>
+
+    <string name="pref_title_image_details_during">Slayt gösterisi sırasında resim ayrıntılarını göster</string>
+    <string name="pref_description_image_details_during">Slayt gösterisi oynatılırken resim ile
+        ilgili ayrıntılı bilgileri gösterir.
+	</string>
+
+    <string name="pref_title_action_on_complete">Slayt gösterisi bittiğinde yapılacak işlem</string>
+    <array name="pref_list_title_action_on_complete">
+        <item>Tekrar başlat</item>
+        <item>Durdur</item>
+        <item>Duraklat</item>
+    </array>
+    <array name="pref_list_description_action_on_complete">
+        <item>Slayt gösterisini baştan başlatır</item>
+        <item>Slayt gösterisini durdurur</item>
+        <item>Slayt gösterisini duraklatır</item>
+    </array>
+    <string name="pref_default_value_action_on_complete">Yeniden başlat</string>
+    <array name="pref_list_values_action_on_complete">
+        <item>Tekrar başlat</item>
+        <item>Durdur</item>
+        <item>Duraklat</item>
+    </array>
+
+    <string name="pref_title_reverse_order">Ters sıra</string>
+    <string name="pref_description_reverse_order">Slayt gösterisindeki resimleri sondan başa doğru
+        gösterir.
+	</string>
+
+    <string name="pref_title_refresh_folder">Klasörü yenile</string>
+    <string name="pref_description_refresh_folder">Gösterim sırasında sürekli klasörü yeniler.
+	</string>
+
+    <string name="pref_title_random_order">Rastgele sıra</string>
+    <string name="pref_description_random_order">Slayt gösterisindeki resimleri rastgele sırada
+        gösterir.
+	</string>
+
+    <string name="pref_title_delete_warning">Silmeden önce uyar</string>
+    <string name="pref_description_delete_warning">Bir resmi silmeden önce uyarı mesajı gösterilir.
+        Kapatılırsa, resimlerin yanlışlıkla silinme riski oluşabilir.
+	</string>
+</resources>
