@@ -86,9 +86,6 @@
     <string name="credits_content5">Teşekkürler <a href="https://github.com/psyanite">Yan Tsui</a>
 		 &appname; ikonunun test ve tasarımı için.
 	</string>
-    <string name="credits_content6">&appname; çevirisi
-		<a href="https://michael.standen.link">&author;</a> tarafından size ulaştırılmıştır.
-	</string>
 
     <!-- Settings -->
 
