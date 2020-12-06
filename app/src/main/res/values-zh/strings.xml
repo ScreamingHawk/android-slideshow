@@ -65,13 +65,16 @@
 	<string name="title_activity_credits">关于 &appname;</string>
 	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
 	<string name="credits_content1">&appname; 是一款查看你手机上图片的简单应用
-	程序</string>
+	程序
+	</string>
 	<string name="credits_content2">没有花哨的功能, 此应用程序是市面上最简单的图片幻灯浏览
-	应用</string>
+	应用。
+	</string>
 	<string name="credits_content3">你可以在<a href="https://github.com/Screaminghawk/android-slideshow">Github</a>上
 	查看源代码、记录错误或请求功能。
 	</string>
-	<string name="credits_content4">此应用程序完全免费和开源，并在<a href="https://tldrlegal.com/license/mit-license">MIT 许可</a>下授权。
+	<string name="credits_content4">此应用程序完全免费和开源，并在<a href="https://tldrlegal.com/license/mit-license">MIT 许可</a>下
+	授权。
 	</string>
 	<string name="credits_content5">感谢 <a href="https://github.com/psyanite">Yan Tsui</a>
 		测试并设计了&appname; 的图标。
