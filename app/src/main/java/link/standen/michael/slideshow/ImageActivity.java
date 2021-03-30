@@ -541,7 +541,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			if (newPosition >= fileList.size()){
 				newPosition = 0;
 			}
-		} while (!testPositionIsImage(newPosition));
+		} while (!testPositionIsImage(newPosition) || !testPositionExists(newPosition));
 		return newPosition;
 	}
 
@@ -559,6 +559,14 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
      */
 	private boolean testPositionIsImage(int position){
 		return new FileItemHelper(this).isImage(fileList.get(position));
+	}
+
+	/**
+	 * Tests if the current file item still exists.
+	 * @return True if it's there, false otherwise.
+     */
+	private boolean testPositionExists(int position){
+		return new File(fileList.get(position).getPath()).exists();
 	}
 
 	@Override
