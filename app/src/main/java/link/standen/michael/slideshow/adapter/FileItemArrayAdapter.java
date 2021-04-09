@@ -3,7 +3,7 @@ package link.standen.michael.slideshow.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
