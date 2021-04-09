@@ -54,7 +54,7 @@
 		android:layout_height="match_parent"
 		android:fitsSystemWindows="true">
 
-		<androidx.coordinatorlayout.widget.CoordinatorLayout
+		<android.support.design.widget.CoordinatorLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:id="@+id/snackbar_here">
@@ -126,7 +126,7 @@
 
 				</LinearLayout>
 			</RelativeLayout>
-		</androidx.coordinatorlayout.widget.CoordinatorLayout>
+		</android.support.design.widget.CoordinatorLayout>
 	</FrameLayout>
 
 </FrameLayout>
