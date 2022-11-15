@@ -14,6 +14,21 @@
 		android:contentDescription="@string/image_description"/>
 
 	<!-- Image Details Overlay -->
+
+	<TextView
+		android:id="@+id/clockText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="30px"
+		android:shadowColor="@color/clock_shadow"
+		android:shadowDx="5"
+		android:shadowDy="5"
+		android:shadowRadius="5"
+		android:text=" 12:00 AM"
+		android:textColor="@color/clock_text"
+		android:textSize="80sp"
+		android:visibility="invisible" />
+
 	<LinearLayout
 		android:id="@+id/image_details1"
 		android:layout_width="wrap_content"
@@ -125,6 +140,7 @@
 						android:textColor="@color/primary"/>
 
 				</LinearLayout>
+
 			</RelativeLayout>
 		</android.support.design.widget.CoordinatorLayout>
 	</FrameLayout>
