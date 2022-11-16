@@ -24,7 +24,6 @@
 		android:shadowDx="5"
 		android:shadowDy="5"
 		android:shadowRadius="5"
-		android:text=" 12:00 AM"
 		android:textColor="@color/clock_text"
 		android:textSize="80sp"
 		android:visibility="invisible" />

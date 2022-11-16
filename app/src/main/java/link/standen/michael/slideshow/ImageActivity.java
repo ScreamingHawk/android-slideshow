@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
@@ -69,6 +70,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private static boolean SKIP_LONG_LOAD;
 	private static boolean PRELOAD_IMAGES;
 	private static boolean DELETE_WARNING;
+	private static boolean SHOW_CLOCK;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -137,12 +139,13 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private final Runnable clockRunnable = new Runnable() {
 		public void run() {
 			clockHandler.postDelayed(clockRunnable, CLOCK_REFRESH_INT);
+			SimpleDateFormat clockFormat = new SimpleDateFormat("hh:mm aa");
 			Date currentTime = Calendar.getInstance().getTime();
 			TextView t = (TextView) clockText;
-			int hours = currentTime.getHours();
-			int minutes = currentTime.getMinutes();
-			String ampm = hours > 12 ? "PM" : "AM";
-			String clockString = (hours > 12 ? hours - 12 : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + " " + ampm;
+			String clockString = clockFormat.format(currentTime);
+			if(clockString.substring(0,1).equals("0")){
+				clockString = clockString.substring(1);
+			}
 			t.setText(clockString);
 		}
 	};
@@ -476,6 +479,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		Log.d(TAG, String.format("PRELOAD_IMAGES: %b", PRELOAD_IMAGES));
 		DELETE_WARNING = preferences.getBoolean("delete_warning", true);
 		Log.d(TAG, String.format("DELETE_WARNING: %b", DELETE_WARNING));
+		SHOW_CLOCK = preferences.getBoolean("show_clock", true);
+		Log.d(TAG, String.format("SHOW_CLOCK: %b", SHOW_CLOCK));
 		// List prefs
 		int action_on_complete = Arrays.asList(getResources().getStringArray(R.array.pref_list_values_action_on_complete)).indexOf(
 				preferences.getString("action_on_complete", getResources().getString(R.string.pref_default_value_action_on_complete)));
@@ -788,7 +793,9 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			actionBar.hide();
 		}
 		mControlsView.setVisibility(View.GONE);
-		clockText.setVisibility(View.VISIBLE);
+		if(SHOW_CLOCK) {
+			clockText.setVisibility(View.VISIBLE);
+		}
 		mVisible = false;
 
 		// Schedule a runnable to remove the status and navigation bar after a delay
