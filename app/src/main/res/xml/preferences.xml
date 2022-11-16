@@ -125,4 +125,10 @@
 		android:summary="@string/pref_description_delete_warning"
 		android:title="@string/pref_title_delete_warning"/>
 
+	<SwitchPreference
+		android:defaultValue="false"
+		android:key="show_clock"
+		android:summary="@string/pref_description_show_clock"
+		android:title="@string/pref_title_show_clock"/>
+
 </PreferenceScreen>
