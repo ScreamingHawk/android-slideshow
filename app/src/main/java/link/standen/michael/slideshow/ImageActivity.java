@@ -27,8 +27,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 
 import link.standen.michael.slideshow.listener.OnSwipeTouchListener;
 import link.standen.michael.slideshow.model.FileItem;
@@ -67,6 +70,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private static boolean SKIP_LONG_LOAD;
 	private static boolean PRELOAD_IMAGES;
 	private static boolean DELETE_WARNING;
+	private static boolean SHOW_CLOCK;
 
 	private static final int LOCATION_DETAIL_MAX_LENGTH = 35;
 
@@ -76,6 +80,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 	private static final int LONG_LOAD_WARNING_DELAY = 5000;
 	private View snackbarPlayingView;
 	private View snackbarStoppedView;
+	private View clockText;
 	private boolean isLoading = false;
 	private Snackbar loadingSnackbar = null;
 	private final Handler loadingHandler = new Handler();
@@ -126,6 +131,22 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 				}
 			}
 			nextImage(nextPos, false);
+		}
+	};
+
+	private static final int CLOCK_REFRESH_INT = 1000;
+	private final Handler clockHandler = new Handler();
+	private final Runnable clockRunnable = new Runnable() {
+		public void run() {
+			clockHandler.postDelayed(clockRunnable, CLOCK_REFRESH_INT);
+			SimpleDateFormat clockFormat = new SimpleDateFormat("hh:mm aa");
+			Date currentTime = Calendar.getInstance().getTime();
+			TextView t = (TextView) clockText;
+			String clockString = clockFormat.format(currentTime);
+			if(clockString.substring(0,1).equals("0")){
+				clockString = clockString.substring(1);
+			}
+			t.setText(clockString);
 		}
 	};
 
@@ -194,6 +215,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		}
 
 		mVisible = true;
+		clockText = findViewById(R.id.clockText);
 		mControlsView = findViewById(R.id.fullscreen_content_controls);
 		mContentView = findViewById(R.id.fullscreen_content);
 		mDetailsView = findViewById(R.id.image_details1); // Visible during slideshow play
@@ -337,6 +359,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 
 		// Show the first image
 		loadImage(imagePosition, false);
+		//Start clock
+		clockHandler.postDelayed(clockRunnable, CLOCK_REFRESH_INT);
 	}
 
 	/**
@@ -455,6 +479,8 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		Log.d(TAG, String.format("PRELOAD_IMAGES: %b", PRELOAD_IMAGES));
 		DELETE_WARNING = preferences.getBoolean("delete_warning", true);
 		Log.d(TAG, String.format("DELETE_WARNING: %b", DELETE_WARNING));
+		SHOW_CLOCK = preferences.getBoolean("show_clock", true);
+		Log.d(TAG, String.format("SHOW_CLOCK: %b", SHOW_CLOCK));
 		// List prefs
 		int action_on_complete = Arrays.asList(getResources().getStringArray(R.array.pref_list_values_action_on_complete)).indexOf(
 				preferences.getString("action_on_complete", getResources().getString(R.string.pref_default_value_action_on_complete)));
@@ -767,6 +793,9 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 			actionBar.hide();
 		}
 		mControlsView.setVisibility(View.GONE);
+		if(SHOW_CLOCK) {
+			clockText.setVisibility(View.VISIBLE);
+		}
 		mVisible = false;
 
 		// Schedule a runnable to remove the status and navigation bar after a delay
@@ -782,6 +811,7 @@ public class ImageActivity extends BaseActivity implements ImageStrategy.ImageSt
 		mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 				| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
 		mDetailsView.setVisibility(View.GONE);
+		clockText.setVisibility(View.INVISIBLE);
 		mVisible = true;
 
 		// Schedule a runnable to display UI elements after a delay
